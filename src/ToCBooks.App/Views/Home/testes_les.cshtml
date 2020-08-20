@@ -1,0 +1,45 @@
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<button id="btn_iniciar_teste">Butao</button>
+<script>
+
+
+jQuery("#btn_iniciar_teste").on("click", function() {
+
+	var testObject = { titulo: 'Livro para Teste', preco: 9.99, foto: 'string_foto_base_64', descricao : "Livro de Teste" };
+
+	jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 2, mapKey: 'Livro', JsonString: JSON.stringify(testObject) },
+        cache: false,
+        beforeSend: function (xhr) {
+			
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var resposta_controle = JSON.parse(e.responseText);
+
+						
+                } catch (error) {
+                    console.log(error);
+                    iziToast.error({
+                        message: "<strong>Erro na Autenticação...</strong>"
+                    });
+                }
+            }
+        }
+    });
+});
+
+</script>
