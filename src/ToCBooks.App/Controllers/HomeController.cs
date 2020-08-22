@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Rewrite.Internal.UrlMatches;
-using ToCBooks.App.Interfaces;
 using ToCBooks.App.Models;
 using ToCBooks.App.Commands;
 using ToCBooks.App.ViewHelpers;
+using ToCBooks.App.Patterns.Commands;
+using ToCBooks.App.Interfaces;
+using System.Threading.Tasks;
 
 namespace ToCBooks.App.Controllers
 {
@@ -20,7 +17,7 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("1", new ConsultarLivrosCommand());
             mapCommand.Add("2", new CadastrarLivroCommand());
 
-            mapVH.Add("Livro", new LivroVH());
+            mapVH.Add("LivrosModel", new LivroVH());
         }
 
         private Dictionary<string, IViewHelper> mapVH = new Dictionary<string, IViewHelper>();
@@ -50,7 +47,7 @@ namespace ToCBooks.App.Controllers
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
             var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]));
 
-            return lMensagem.Resposta;
+            return lMensagem.Result.Resposta;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

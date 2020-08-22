@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ToCBooks.App.Models;
+﻿using ToCBooks.App.Business.Models;
 
 namespace ToCBooks.App.Interfaces
 {
-    interface IViewHelper
+    public interface IViewHelper
     {
-        Entidade GetEntidade(string JsonString);
+        EntidadeDominio GetEntidade(string JsonString);
     }
 }

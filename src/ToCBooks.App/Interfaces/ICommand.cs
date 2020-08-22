@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ToCBooks.App.Models;
+﻿using System.Threading.Tasks;
+using ToCBooks.App.Business.Models;
 
 namespace ToCBooks.App.Interfaces
 {
-    interface ICommand
+    public interface ICommand
     {
-        Mensagem Executar(Entidade Objeto);
+        Task<MensagemModel> Executar(EntidadeDominio Objeto);
     }
 }

@@ -20,8 +20,6 @@ namespace ToCBooks.App.Configurations
                 o.ModelBindingMessageProvider.SetValueIsInvalidAccessor((x) => "O valor preenchido é inválido para este campo.");
                 o.ModelBindingMessageProvider.SetValueMustBeANumberAccessor(x => "O campo deve ser numérico.");
                 o.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(x => "Este campo precisa ser preenchido.");
-
-                o.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); //Todos os requests irão passar pela validação de Token
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             return services;

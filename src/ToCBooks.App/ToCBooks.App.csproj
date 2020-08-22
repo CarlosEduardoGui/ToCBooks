@@ -14,7 +14,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\ToCBooks.Data\ToCBooks.Data.csproj" />
+    <Folder Include="layout\" />
   </ItemGroup>
 
 </Project>

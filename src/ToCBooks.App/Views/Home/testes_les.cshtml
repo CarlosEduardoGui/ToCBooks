@@ -14,12 +14,12 @@
 
 jQuery("#btn_iniciar_teste").on("click", function() {
 
-	var testObject = { titulo: 'Livro para Teste', preco: 9.99, foto: 'string_foto_base_64', descricao : "Livro de Teste" };
+	var testObject = { titulo: 'Livro para Teste', preco: 9.99, descricao : "Livro de Teste" };
 
 	jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
-        data: { oper: 2, mapKey: 'Livro', JsonString: JSON.stringify(testObject) },
+        data: { oper: 2, mapKey: 'LivrosModel', JsonString: JSON.stringify(testObject) },
         cache: false,
         beforeSend: function (xhr) {
 			

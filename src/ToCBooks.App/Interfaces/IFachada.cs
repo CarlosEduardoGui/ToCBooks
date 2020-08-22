@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ToCBooks.App.Models;
+﻿using ToCBooks.App.Business.Models;
 
 namespace ToCBooks.App.Interfaces
 {
-    interface IFachada
+    public interface IFachada
     {
-        Mensagem Consultar(Entidade Objeto);
-        Mensagem Cadastrar(Entidade Objeto);
-        Mensagem Atualizar(Entidade Objeto);
-        Mensagem Excluir(Entidade Objeto);
+        MensagemModel Consultar(EntidadeDominio Objeto);
+        MensagemModel Cadastrar(EntidadeDominio Objeto);
+        MensagemModel Atualizar(EntidadeDominio Objeto);
+        MensagemModel Excluir(EntidadeDominio Objeto);
     }
 }

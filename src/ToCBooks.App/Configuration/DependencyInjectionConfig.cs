@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ToCBooks.Data.Context;
+using ToCBooks.App.Data.Context;
 
 namespace ToCBooks.App.Configurations
 {
