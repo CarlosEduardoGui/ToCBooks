@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using ToCBooks.App.Business.Interfaces;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Validadores;
@@ -27,12 +26,12 @@ namespace ToCBooks.Data.Business.Patterns
             mapValidadores.Add("LivrosModel", ValidadoresLivro);
         }
 
-        public async Task<MensagemModel> Atualizar(EntidadeDominio Objeto)
+        public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<MensagemModel> Cadastrar(EntidadeDominio Objeto)
+        public MensagemModel Cadastrar(EntidadeDominio Objeto)
         {
             MensagemModel Mensagem = new MensagemModel();
             try
@@ -40,7 +39,7 @@ namespace ToCBooks.Data.Business.Patterns
                 foreach (var Validador in mapValidadores[Objeto.GetType().Name])
                     Validador.Validar(Objeto);
 
-                return await mapDao[Objeto.GetType().Name].Cadastrar(Objeto);
+                return mapDao[Objeto.GetType().Name].Cadastrar(Objeto);
             }
             catch (Exception Error)
             {
@@ -52,12 +51,12 @@ namespace ToCBooks.Data.Business.Patterns
             return Mensagem;
         }
 
-        public async Task<MensagemModel> Consultar(EntidadeDominio Objeto)
+        public MensagemModel Consultar(EntidadeDominio Objeto)
         {
-            return await mapDao[Objeto.GetType().Name].Consultar(Objeto);
+            return mapDao[Objeto.GetType().Name].Consultar(Objeto);
         }
 
-        public async Task<MensagemModel> Excluir(EntidadeDominio Objeto)
+        public MensagemModel Excluir(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
         }

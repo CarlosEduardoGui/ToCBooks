@@ -6,7 +6,6 @@ using ToCBooks.App.Commands;
 using ToCBooks.App.ViewHelpers;
 using ToCBooks.App.Patterns.Commands;
 using ToCBooks.App.Interfaces;
-using System.Threading.Tasks;
 
 namespace ToCBooks.App.Controllers
 {
@@ -47,7 +46,7 @@ namespace ToCBooks.App.Controllers
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
             var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]));
 
-            return lMensagem.Result.Resposta;
+            return lMensagem.Resposta;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

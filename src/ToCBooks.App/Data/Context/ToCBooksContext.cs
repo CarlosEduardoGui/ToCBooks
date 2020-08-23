@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using ToCBooks.App.Models;
 
 namespace ToCBooks.App.Data.Context
@@ -27,7 +24,7 @@ namespace ToCBooks.App.Data.Context
 
             foreach (var relacionamento in modelBuilder.Model.GetEntityTypes()
                 .SelectMany(x => x.GetForeignKeys()))
-                relacionamento.DeleteBehavior = DeleteBehavior.ClientSetNull;
+                relacionamento.DeleteBehavior = DeleteBehavior.Cascade;
 
             base.OnModelCreating(modelBuilder);
         }
