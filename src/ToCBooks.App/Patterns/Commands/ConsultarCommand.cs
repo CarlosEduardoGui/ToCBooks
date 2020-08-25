@@ -2,20 +2,23 @@
 using ToCBooks.Data.Business.Patterns;
 using ToCBooks.App.Business.Models;
 using System.Threading.Tasks;
+using System;
 
 namespace ToCBooks.App.Commands
 {
-    public class ConsultarLivrosCommand : ICommand
+    public class ConsultarCommand : ICommand
     {
         private readonly Fachada Fachada;
-        public ConsultarLivrosCommand()
+        public ConsultarCommand()
         {
             Fachada = new Fachada();
         }
 
-        public Task<MensagemModel> Executar(EntidadeDominio Objeto)
+
+        public MensagemModel Executar(EntidadeDominio Objeto)
         {
-            return Fachada.Consultar(Objeto);
+            return this.Fachada.Consultar(Objeto);
         }
+
     }
 }

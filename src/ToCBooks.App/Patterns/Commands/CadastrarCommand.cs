@@ -5,15 +5,15 @@ using ToCBooks.Data.Business.Patterns;
 
 namespace ToCBooks.App.Patterns.Commands
 {
-    public class CadastrarLivroCommand : ICommand
+    public class CadastrarCommand : ICommand
     {
         private readonly Fachada Fachada;
-        public CadastrarLivroCommand()
+        public CadastrarCommand()
         {
             Fachada = new Fachada();
         }
 
-        public Task<MensagemModel> Executar(EntidadeDominio Objeto)
+        public MensagemModel Executar(EntidadeDominio Objeto)
         {
             return Fachada.Cadastrar(Objeto);
         }

@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using ToCBooks.App.Business.Models;
 using ToCBooks.App.Models;
 
 namespace ToCBooks.App.Data.Context
@@ -10,10 +11,13 @@ namespace ToCBooks.App.Data.Context
     public class ToCBooksContext : DbContext
     {
         public DbSet<LivrosModel> Livro { get; set; }
+        public DbSet<Parametro> Parametros { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-FOC45IJ\SQLEXPRESS2017;Database=ToCBooks;User Id=sa; Password=syslg;MultipleActiveResultSets=true");
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-FOC45IJ\SQLEXPRESS2017;Database=ToCBooks;User Id=sa; Password=syslg;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-C46EB5G\SQLEXPRESS;Database=ToCBooks;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -21,7 +25,7 @@ namespace ToCBooks.App.Data.Context
             foreach (var propriedade in modelBuilder.Model.GetEntityTypes()
                 .SelectMany(x => x.GetProperties()
                     .Where(y => y.ClrType == typeof(string))))
-                propriedade.Relational().ColumnType = "varchar(250)";
+                propriedade.Relational().ColumnType = "VARCHAR(MAX)";
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ToCBooksContext).Assembly);
 

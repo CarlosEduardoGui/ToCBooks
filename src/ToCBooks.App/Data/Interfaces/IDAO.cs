@@ -8,7 +8,7 @@ namespace ToCBooks.App.Data.Interfaces
 {
     public interface IDAO : IDisposable
     {
-        Task<MensagemModel> Cadastrar(EntidadeDominio Objeto);
+        MensagemModel Cadastrar(EntidadeDominio Objeto);
 
         Task<MensagemModel> Atualizar(EntidadeDominio Objeto);
 
@@ -16,7 +16,8 @@ namespace ToCBooks.App.Data.Interfaces
 
         Task<MensagemModel> Excluir(EntidadeDominio Objeto);
 
-        Task<MensagemModel> Consultar(EntidadeDominio Objeto);
+        MensagemModel Consultar(EntidadeDominio Objeto);
+        MensagemModel Desativar(EntidadeDominio Objeto);
 
         Task<IEnumerable<MensagemModel>> Buscar(Expression<Func<EntidadeDominio, bool>> predicate);
     }

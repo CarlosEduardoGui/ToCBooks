@@ -5,8 +5,8 @@ namespace ToCBooks.App.Patterns.Interfaces
 {
     public interface IFachada
     {
-        Task<MensagemModel> Consultar(EntidadeDominio Objeto);
-        Task<MensagemModel> Cadastrar(EntidadeDominio Objeto);
+        MensagemModel Consultar(EntidadeDominio Objeto);
+        MensagemModel Cadastrar(EntidadeDominio Objeto);
         Task<MensagemModel> Atualizar(EntidadeDominio Objeto);
         Task<MensagemModel> Excluir(EntidadeDominio Objeto);
     }

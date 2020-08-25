@@ -18,13 +18,20 @@ namespace ToCBooks.Data.Business.Patterns
         public Fachada()
         {
             mapDao.Add("LivrosModel", new LivrosDAO());
+            mapDao.Add("Parametro", new ParametroDAO());
 
             List<IStrategy> ValidadoresLivro = new List<IStrategy> 
             { 
                 new ValidadorLivro()
             };
 
+            List<IStrategy> ValidadoresParametro = new List<IStrategy>
+            {
+                new ValidadorParametro()
+            };
+
             mapValidadores.Add("LivrosModel", ValidadoresLivro);
+            mapValidadores.Add("Parametro", ValidadoresParametro);
         }
 
         public async Task<MensagemModel> Atualizar(EntidadeDominio Objeto)
@@ -32,7 +39,7 @@ namespace ToCBooks.Data.Business.Patterns
             throw new NotImplementedException();
         }
 
-        public async Task<MensagemModel> Cadastrar(EntidadeDominio Objeto)
+        public MensagemModel Cadastrar(EntidadeDominio Objeto)
         {
             MensagemModel Mensagem = new MensagemModel();
             try
@@ -40,7 +47,13 @@ namespace ToCBooks.Data.Business.Patterns
                 foreach (var Validador in mapValidadores[Objeto.GetType().Name])
                     Validador.Validar(Objeto);
 
-                return await mapDao[Objeto.GetType().Name].Cadastrar(Objeto);
+                var respostaDao = mapDao[Objeto.GetType().Name].Cadastrar(Objeto);
+
+                Mensagem.Codigo = 0;
+                Mensagem.Resposta = "Dados Cadastrados...";
+                Mensagem.Dados = null;
+
+                return Mensagem;
             }
             catch (Exception Error)
             {
@@ -52,9 +65,29 @@ namespace ToCBooks.Data.Business.Patterns
             return Mensagem;
         }
 
-        public async Task<MensagemModel> Consultar(EntidadeDominio Objeto)
+        public MensagemModel DesativarRegistro(EntidadeDominio Objeto)
         {
-            return await mapDao[Objeto.GetType().Name].Consultar(Objeto);
+            MensagemModel Mensagem = new MensagemModel();
+            try
+            {
+                if (Objeto.Id == null)
+                    throw new Exception("Objeto inválido para Desativação...");
+
+                return mapDao[Objeto.GetType().Name].Desativar(Objeto);
+            }
+            catch (Exception Error)
+            {
+                Mensagem.Codigo = 0;
+                Mensagem.Resposta = Error.Message;
+                Mensagem.Dados = null;
+            }
+
+            return Mensagem;
+        }
+
+        public MensagemModel Consultar(EntidadeDominio Objeto)
+        {
+            return mapDao[Objeto.GetType().Name].Consultar(Objeto);
         }
 
         public async Task<MensagemModel> Excluir(EntidadeDominio Objeto)

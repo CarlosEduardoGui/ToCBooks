@@ -5,6 +5,6 @@ namespace ToCBooks.App.Interfaces
 {
     public interface ICommand
     {
-        Task<MensagemModel> Executar(EntidadeDominio Objeto);
+        MensagemModel Executar(EntidadeDominio Objeto);
     }
 }

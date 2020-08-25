@@ -6,25 +6,17 @@ using System.Threading.Tasks;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
-using ToCBooks.App.Models;
 
 namespace ToCBooks.App.Data.DAOs
 {
-    public class LivrosDAO : ToCBooksContext, IDAO
+    public class ParametroDAO : IDAO
     {
-
-        public virtual async Task<MensagemModel> Atualizar(EntidadeDominio Objeto)
+        public Task<MensagemModel> Atualizar(EntidadeDominio Objeto)
         {
-            using (var db = new ToCBooksContext())
-            {
-                await db.FindAsync<EntidadeDominio>(Objeto.Id);
-            }
-
-
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<MensagemModel>> Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
+        public Task<IEnumerable<MensagemModel>> Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
         {
             throw new NotImplementedException();
         }
@@ -47,10 +39,16 @@ namespace ToCBooks.App.Data.DAOs
         public MensagemModel Consultar(EntidadeDominio Objeto)
         {
             MensagemModel Mensagem = new MensagemModel();
+
+            
             using (var db = new ToCBooksContext())
             {
-                db.Livro.Where(x => x.StatusAtual == EntidadeDominio.Status.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
+                if (db.Parametros.Where(x => x.Id.CompareTo(Objeto.Id) != 0).Any())
+                    db.Parametros.Where(x => x.StatusAtual == EntidadeDominio.Status.Ativo && x.Id == Objeto.Id).ToList().ForEach(x => Mensagem.Dados.Add(x));
+                else
+                    db.Parametros.Where(x => x.StatusAtual == EntidadeDominio.Status.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
             }
+            
 
             Mensagem.Codigo = 0;
             Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
@@ -60,26 +58,20 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Desativar(EntidadeDominio Objeto)
         {
-            MensagemModel Mensagem = new MensagemModel();
-            using (var db = new ToCBooksContext())
-            {
-                LivrosModel Livro = db.Livro.Where(x => x.Id == Objeto.Id).First();
-                Livro.StatusAtual = EntidadeDominio.Status.Inativo;
-                db.SaveChanges();
-            }
-
-            Mensagem.Codigo = 0;
-            Mensagem.Resposta = "Livro Desativado...";
-
-            return Mensagem;
+            throw new NotImplementedException();
         }
 
-        public async Task<MensagemModel> Editar(EntidadeDominio Objeto)
+        public void Dispose()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<MensagemModel> Excluir(EntidadeDominio Objeto)
+        public Task<MensagemModel> Editar(EntidadeDominio Objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<MensagemModel> Excluir(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
         }
