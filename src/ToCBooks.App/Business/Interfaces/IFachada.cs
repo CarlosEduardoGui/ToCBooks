@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using ToCBooks.App.Business.Models;
+﻿using ToCBooks.App.Business.Models;
 
 namespace ToCBooks.App.Patterns.Interfaces
 {
@@ -7,7 +6,7 @@ namespace ToCBooks.App.Patterns.Interfaces
     {
         MensagemModel Consultar(EntidadeDominio Objeto);
         MensagemModel Cadastrar(EntidadeDominio Objeto);
-        Task<MensagemModel> Atualizar(EntidadeDominio Objeto);
-        Task<MensagemModel> Excluir(EntidadeDominio Objeto);
+        MensagemModel Atualizar(EntidadeDominio Objeto);
+        MensagemModel Excluir(EntidadeDominio Objeto);
     }
 }

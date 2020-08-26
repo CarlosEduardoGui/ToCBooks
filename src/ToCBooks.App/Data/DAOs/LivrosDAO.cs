@@ -13,18 +13,18 @@ namespace ToCBooks.App.Data.DAOs
     public class LivrosDAO : ToCBooksContext, IDAO
     {
 
-        public virtual async Task<MensagemModel> Atualizar(EntidadeDominio Objeto)
+        public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
             using (var db = new ToCBooksContext())
             {
-                await db.FindAsync<EntidadeDominio>(Objeto.Id);
+                db.Find<EntidadeDominio>(Objeto.Id);
             }
 
 
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<MensagemModel>> Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
+        public IEnumerable<MensagemModel> Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
         {
             throw new NotImplementedException();
         }
@@ -36,10 +36,11 @@ namespace ToCBooks.App.Data.DAOs
                 db.Add(Objeto);
                 db.SaveChanges();
             }
-            MensagemModel Mensagem = new MensagemModel();
-
-            Mensagem.Codigo = 1;
-            Mensagem.Dados = null;
+            MensagemModel Mensagem = new MensagemModel
+            {
+                Codigo = 1,
+                Dados = null
+            };
 
             return Mensagem;
         }
@@ -74,12 +75,12 @@ namespace ToCBooks.App.Data.DAOs
             return Mensagem;
         }
 
-        public async Task<MensagemModel> Editar(EntidadeDominio Objeto)
+        public MensagemModel Editar(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<MensagemModel> Excluir(EntidadeDominio Objeto)
+        public MensagemModel Excluir(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
         }
