@@ -32,6 +32,18 @@ jQuery(document).ready(function () {
         buscarParametro(id_grupo);
     });
 
+    jQuery(document).on('click', '.editar', function () {
+        var id_grupo = jQuery(this).attr('id_grupo');
+
+        jQuery("#modal_cad_grupo").modal('show');
+    });
+
+    jQuery(document).on('click', '.excluir', function () {
+        var id_grupo = jQuery(this).attr('id_grupo');
+
+        jQuery("#modal_confirmacao_delecao").modal('show');
+    });
+
 
     jQuery('.preco').mask('00.00%');
 });

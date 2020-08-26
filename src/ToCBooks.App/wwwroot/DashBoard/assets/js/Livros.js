@@ -2,10 +2,6 @@
 
 jQuery(document).ready(function () {
 
-    jQuery('select').selectpicker({
-        noneSelectedText: "Selecione..."
-    });
-
 
     buscarLivros();
     jQuery("#btn_cad_livro").on('click', function () {
@@ -22,9 +18,10 @@ jQuery(document).ready(function () {
 
     jQuery(document).on('click', '.desativar', function (e) {
         e.preventDefault();
-   
-        var id_livro = jQuery(this).attr('id_livro');
-        desativarLivro(id_livro);
+
+        jQuery("#modal_confirmacao_delecao").modal('show');
+        //var id_livro = jQuery(this).attr('id_livro');
+        //desativarLivro(id_livro);
     });
 
     jQuery("#form_cad_livro").on('submit', function (e) {
@@ -46,7 +43,28 @@ jQuery(document).ready(function () {
         encodeImageFileAsURL('input_file_img_livro', 'foto', 'preview_imagem_livro');
     });
 
+    jQuery(document).on('click', '.editar_livro', function () {
+        jQuery("#modal_cad_livro").modal('show');
+    });
+
+    jQuery(document).on('click', '.definir_preco', function () {
+        jQuery("#modal_definir_precificacao").modal('show');
+    });
+
+    jQuery("#btn_consultar").on('click', function () {
+
+        jQuery("#modal_busca").modal("show");
+    });
+
+    jQuery(document).on("click", '.restaurar', function () {
+        jQuery("#modal_confirmacao_ativacao").modal('show');
+    });
+
     jQuery('.preco').mask('#.##0.00', { reverse: true });
+
+    jQuery('select').selectpicker({
+        noneSelectedText: "Selecione..."
+    });
 });
 
 function desativarLivro(id_livro) { 
@@ -126,7 +144,7 @@ function buscarLivros() {
                             htmlLivros += '</p></div></div>';
                         }
 
-                        jQuery("#tabela_livros").html(htmlLivros);
+                        //jQuery("#tabela_livros").html(htmlLivros);
                     }
 
                 } catch (error) {

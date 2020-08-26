@@ -43,12 +43,8 @@ namespace ToCBooks.App.Data.DAOs
             
             using (var db = new ToCBooksContext())
             {
-                if (db.Parametros.Where(x => x.Id.CompareTo(Objeto.Id) != 0).Any())
-                    db.Parametros.Where(x => x.StatusAtual == EntidadeDominio.Status.Ativo && x.Id == Objeto.Id).ToList().ForEach(x => Mensagem.Dados.Add(x));
-                else
-                    db.Parametros.Where(x => x.StatusAtual == EntidadeDominio.Status.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
+                db.Parametros.Where(x => x.StatusAtual == EntidadeDominio.Status.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
             }
-            
 
             Mensagem.Codigo = 0;
             Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
@@ -72,6 +68,26 @@ namespace ToCBooks.App.Data.DAOs
         }
 
         public Task<MensagemModel> Excluir(EntidadeDominio Objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        MensagemModel IDAO.Atualizar(EntidadeDominio Objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerable<MensagemModel> IDAO.Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        MensagemModel IDAO.Editar(EntidadeDominio Objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        MensagemModel IDAO.Excluir(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
         }

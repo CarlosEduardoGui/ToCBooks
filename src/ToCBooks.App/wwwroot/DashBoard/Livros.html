@@ -48,6 +48,10 @@
             border-color: gray;
         }
 
+        #modal_busca .form-control {
+            border-color: gray;
+        }
+
         .error {
             color: red !important;
             border-color: red !important;
@@ -781,11 +785,76 @@
                                 <div class="card-header justify-content-between mb-4">
                                     <h2>Livros</h2>
                                     <div>
+                                        <button id="btn_consultar" class="text-black-50 mr-2 font-size-20"><strong><i class="mdi mdi-table-search"></i></strong></button>
                                         <button class="text-black-50 mr-2 font-size-20"><strong><i class="mdi mdi-cached"></i></strong></button>
                                         <button id="btn_cad_livro" class="text-black-50 mr-2 font-size-20"><strong><i class="mdi mdi-open-in-new"></i></strong></button>
                                     </div>
                                 </div>
                                 <div class="card-body py-0" id="tabela_livros" style="overflow-y: scroll;">
+                                    <div class="media d-flex mb-5">
+                                        <div class="media-image align-self-center mr-3 rounded">
+                                            <a href="#"><img style="border-radius: 20px; max-height: 100px; max-width: 100px;" src="assets/img/no-image.png" alt="customer image"></a>
+                                        </div>
+                                        <div class="media-body align-self-center">
+                                            <a href="#"><h6 class="mb-3 text-dark font-weight-medium"> A Menina que Roubava Livros</h6></a>
+                                            <p class="float-md-right">
+                                                <button type="button" class="definir_preco"><i style="font-size: 20px;" class="mdi mdi-square-inc-cash"></i></button> |
+                                                <button type="button" class="editar_livro"><i style="font-size: 20px;" class="mdi mdi-account-edit"></i></button> |
+                                                <button type="button" class="desativar"><i style="font-size: 20px;" class="mdi mdi-trash-can"></i></button>
+                                            </p>
+                                            <p class="d-none d-md-block">Uma menina na alemanha que curte roubar livros.</p>
+                                            <p class="mb-0">
+                                                R$300
+                                            </p>
+                                            <br />
+                                            <p>
+                                                <span class="mb-2 mr-2 badge badge-success">Ativo</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="media d-flex mb-5">
+                                        <div class="media-image align-self-center mr-3 rounded">
+                                            <a href="#"><img style="border-radius: 20px; max-height: 100px; max-width: 100px;" src="assets/img/no-image.png" alt="customer image"></a>
+                                        </div>
+                                        <div class="media-body align-self-center">
+                                            <a href="#"><h6 class="mb-3 text-dark font-weight-medium"> A Menina que Roubava Livros</h6></a>
+                                            <p class="float-md-right">
+                                                <button type="button" class="definir_preco"><i style="font-size: 20px;" class="mdi mdi-square-inc-cash"></i></button> |
+                                                <button type="button" class="editar_livro"><i style="font-size: 20px;" class="mdi mdi-account-edit"></i></button> |
+                                                <button type="button" class="restaurar"><i style="font-size: 20px;" class="mdi mdi-delete-restore"></i></button>
+                                            </p>
+                                            <p class="d-none d-md-block">Uma menina na alemanha que curte roubar livros.</p>
+                                            <p class="mb-0">
+                                                R$300
+                                            </p>
+                                            <br />
+                                            <p>
+                                                <span class="mb-2 mr-2 badge badge-warning">Inativo</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="media d-flex mb-5">
+                                        <div class="media-image align-self-center mr-3 rounded">
+                                            <a href="#"><img style="border-radius: 20px; max-height: 100px; max-width: 100px;" src="assets/img/no-image.png" alt="customer image"></a>
+                                        </div>
+                                        <div class="media-body align-self-center">
+                                            <a href="#"><h6 class="mb-3 text-dark font-weight-medium"> A Menina que Roubava Livros</h6></a>
+                                            <p class="float-md-right">
+                                                <button type="button" class="definir_preco"><i style="font-size: 20px;" class="mdi mdi-square-inc-cash"></i></button> |
+                                                <button type="button" class="editar_livro"><i style="font-size: 20px;" class="mdi mdi-account-edit"></i></button> |
+                                                <button type="button" class="restaurar"><i style="font-size: 20px;" class="mdi mdi-delete-restore"></i></button>
+                                            </p>
+                                            <p class="d-none d-md-block">Uma menina na alemanha que curte roubar livros.</p>
+                                            <p class="mb-0">
+                                                R$300
+                                            </p>
+                                            <br />
+                                            <p>
+                                                <span class="mb-2 mr-2 badge badge-danger">Fora de Mercado</span>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -809,6 +878,311 @@
                 </script>
             </footer>
 
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal_busca">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Consultar Livros</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="form_consulta_livros" name="form_consulta_livros">
+                        <div id="accordion">
+
+                            <div class="row" style="margin-top: 5%">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Titulo</label>
+                                        <input type="text" id="titulo" class="form-control titulo" name="titulo" required />
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Autor</label>
+                                        <input type="text" id="autor" class="form-control titulo" name="autor" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 5%">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Editora</label>
+                                        <input type="text" id="editora" class="form-control titulo" name="editora" required />
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Codigo De Barras</label>
+                                        <input type="text" id="barras" class="form-control titulo" name="barras" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12" style="text-align: center;">
+                                    <div class="form-group">
+                                        <label>Status</label><br />
+                                        <select class="selectpicker">
+                                            <option value=""></option>
+                                            <option value="Ativo">Ativo</option>
+                                            <option value="Inativo">Inativo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br />
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <a class="card-link" data-toggle="collapse" href="#collapseOne" style="color: black; padding: 15px;">
+                                        <div class="row">
+                                            <div class="col-6" style="text-align: left;">
+                                                Busca Avançada
+                                            </div>
+                                            <div class="col-6" style="text-align: right;">
+                                                <i style="font-size: 18px;" class="mdi mdi-arrow-down-bold"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="collapse" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <div class="row" style="margin-top: 5%">
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>Ano</label>
+                                                    <input type="text" id="ano" class="form-control" name="ano" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>Edição</label>
+                                                    <input type="text" id="edicao" class="form-control" name="edicao" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>Qtde Paginas</label>
+                                                    <input type="text" id="paginas" class="form-control" name="paginas" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 5%">
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>Altura</label>
+                                                    <input type="text" id="altura" class="form-control" name="altura" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>Largura</label>
+                                                    <input type="text" id="largura" class="form-control" name="largura" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>Peso</label>
+                                                    <input type="text" id="peso" class="form-control" name="peso" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 5%">
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>Profundidade</label>
+                                                    <input type="text" id="profundidade" class="form-control" name="profundidade" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>ISBN</label>
+                                                    <input type="text" id="isbn" class="form-control" name="isbn" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label>Categoria</label>
+                                                    <select class="selectpicker" multiple data-live-search="true">
+                                                        <option value=""></option>
+                                                        <option value="Terror">Terror</option>
+                                                        <option value="Aventura">Aventura</option>
+                                                        <option value="Romance">Romance</option>
+                                                        <option value="Filosofia">Filosofia</option>
+                                                        <option value="Sociologia">Sociologia</option>
+                                                        <option value="História">História</option>
+                                                        <option value="Ciência">Ciência</option>
+                                                        <option value="Matemática">Matemática</option>
+                                                        <option value="Biologia">Biologia</option>
+                                                        <option value="Medicina">Medicina</option>
+                                                        <option value="Física">Física</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-top: 5%">
+                                            <div class="col-12">
+                                                <div class="form-group" style="width: 60%; margin-left:35%;">
+                                                    <label>Grupo de Precificação</label><br />
+                                                    <select class="selectpicker">
+                                                        <option value=""></option>
+                                                        <option value="Grupo AY">Grupo AY</option>
+                                                        <option value="Grupo AZ">Grupo AZ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" id="btn_consultar_livros">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal_confirmacao_delecao">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Deseja Inativar o Livro Selecionado ?</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="form_delecao" name="form_delecao">
+
+                        <div class="row" style="margin-top: 5%">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Justificativa</label>
+                                    <textarea rows="5" style="resize: none;" name="descricao" id="descricao" class="form-control" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 5%">
+                            <div class="col-6" style="text-align: center;">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-success" id="btn_sim">Sim</button>
+                                </div>
+                            </div>
+                            <div class="col-6" style="text-align: center;">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-danger" id="btn_sim">Não</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal_confirmacao_ativacao">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Deseja Ativar o Livro Selecionado ?</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="form_delecao" name="form_delecao">
+
+                        <div class="row" style="margin-top: 5%">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Justificativa</label>
+                                    <textarea rows="5" style="resize: none;" name="descricao" id="descricao" class="form-control" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 5%">
+                            <div class="col-6" style="text-align: center;">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-success" id="btn_sim">Sim</button>
+                                </div>
+                            </div>
+                            <div class="col-6" style="text-align: center;">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-danger" id="btn_sim">Não</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal_definir_precificacao">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Precificacao</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="form_delecao" name="form_delecao">
+                        <div class="row" style="margin-top: 5%">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Grupo Precificação</label>
+                                    <select id="grupo_def_preco" name="grupo_def_preco" class="selectpicker">
+                                        <option value=""></option>
+                                        <option value="Grupo AY">Grupo AY</option>
+                                        <option value="Grupo AZ">Grupo AZ</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Valor do Livro</label>
+                                    <input type="text" id="valor_livro" name="valor_livro" class="form-control" name="isbn" required />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Preço Final</label>
+                                    <input type="text" id="preco_livro" name="precolivro" class="form-control" name="isbn" required />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="btn_salvar_precificacao">Salvar</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -940,7 +1314,11 @@
                             <div class="col-12">
                                 <div class="form-group" style="width: 60%; margin-left:35%;">
                                     <label>Grupo de Precificação</label><br />
-                                    <select class="selectpicker"></select>
+                                    <select class="selectpicker">
+                                        <option value=""></option>
+                                        <option value="Grupo AY">Grupo AY</option>
+                                        <option value="Grupo AZ">Grupo AZ</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
