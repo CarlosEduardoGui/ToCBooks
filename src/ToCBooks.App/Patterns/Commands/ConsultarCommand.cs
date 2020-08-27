@@ -1,6 +1,8 @@
 ﻿using ToCBooks.App.Interfaces;
 using ToCBooks.Data.Business.Patterns;
 using ToCBooks.App.Business.Models;
+using System.Threading.Tasks;
+using System;
 
 namespace ToCBooks.App.Commands
 {
@@ -12,9 +14,11 @@ namespace ToCBooks.App.Commands
             Fachada = new Fachada();
         }
 
+
         public MensagemModel Executar(EntidadeDominio Objeto)
         {
-            return Fachada.Consultar(Objeto);
+            return this.Fachada.Consultar(Objeto);
         }
+
     }
 }

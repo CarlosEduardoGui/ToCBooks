@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
+using ToCBooks.App.Models;
 
 namespace ToCBooks.App.Data.DAOs
 {
@@ -44,8 +46,32 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Consultar(EntidadeDominio Objeto)
         {
+            MensagemModel Mensagem = new MensagemModel();
+            using (var db = new ToCBooksContext())
+            {
+                db.Livro.Where(x => x.StatusAtual == EntidadeDominio.Status.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
+            }
 
-            throw new NotImplementedException();
+            Mensagem.Codigo = 0;
+            Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
+
+            return Mensagem;
+        }
+
+        public MensagemModel Desativar(EntidadeDominio Objeto)
+        {
+            MensagemModel Mensagem = new MensagemModel();
+            using (var db = new ToCBooksContext())
+            {
+                LivrosModel Livro = db.Livro.Where(x => x.Id == Objeto.Id).First();
+                Livro.StatusAtual = EntidadeDominio.Status.Inativo;
+                db.SaveChanges();
+            }
+
+            Mensagem.Codigo = 0;
+            Mensagem.Resposta = "Livro Desativado...";
+
+            return Mensagem;
         }
 
         public MensagemModel Editar(EntidadeDominio Objeto)

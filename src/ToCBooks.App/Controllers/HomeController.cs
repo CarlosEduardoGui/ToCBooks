@@ -6,6 +6,8 @@ using ToCBooks.App.Commands;
 using ToCBooks.App.ViewHelpers;
 using ToCBooks.App.Patterns.Commands;
 using ToCBooks.App.Interfaces;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using ToCBooks.App.Patterns.ViewHelpers;
 
 namespace ToCBooks.App.Controllers
@@ -16,8 +18,10 @@ namespace ToCBooks.App.Controllers
         {
             mapCommand.Add("1", new ConsultarCommand());
             mapCommand.Add("2", new CadastrarCommand());
+            mapCommand.Add("3", new DesativarCommand());
 
             mapVH.Add("LivrosModel", new LivroVH());
+            mapVH.Add("Parametro", new ParametroVH());
             mapVH.Add("ClienteModel", new ClienteVH());
         }
 
@@ -48,7 +52,7 @@ namespace ToCBooks.App.Controllers
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
             var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]));
 
-            return lMensagem.Resposta;
+            return JsonConvert.SerializeObject(lMensagem, Formatting.Indented);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
