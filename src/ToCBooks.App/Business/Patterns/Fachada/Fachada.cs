@@ -35,7 +35,7 @@ namespace ToCBooks.Data.Business.Patterns
             mapValidadores.Add("Parametro", ValidadoresParametro);
         }
 
-        public async Task<MensagemModel> Atualizar(EntidadeDominio Objeto)
+        public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
         }
@@ -71,10 +71,9 @@ namespace ToCBooks.Data.Business.Patterns
             MensagemModel Mensagem = new MensagemModel();
             try
             {
-                if (Objeto.Id == null)
-                    throw new Exception("Objeto inválido para Desativação...");
-
-                return mapDao[Objeto.GetType().Name].Desativar(Objeto);
+                return Objeto.Id == null
+                    ? throw new Exception("Objeto inválido para Desativação...")
+                    : mapDao[Objeto.GetType().Name].Desativar(Objeto);
             }
             catch (Exception Error)
             {

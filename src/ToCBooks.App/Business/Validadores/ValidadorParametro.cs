@@ -18,10 +18,12 @@ namespace ToCBooks.App.Business.Validadores
             if (Parametro.Valor <= 0)
                 throw new Exception("Valor Inválido...");
 
-            MensagemModel Mensagem = new MensagemModel();
-            Mensagem.Codigo = 0;
-            Mensagem.Resposta = "Dados Validados";
-            Mensagem.Dados = null;
+            MensagemModel Mensagem = new MensagemModel
+            {
+                Codigo = 0,
+                Resposta = "Dados Validados",
+                Dados = null
+            };
 
             return Mensagem;
         }

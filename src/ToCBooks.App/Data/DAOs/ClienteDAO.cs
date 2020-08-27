@@ -30,6 +30,11 @@ namespace ToCBooks.App.Data.DAOs
             throw new NotImplementedException();
         }
 
+        public MensagemModel Desativar(EntidadeDominio Objeto)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Dispose()
         {
             throw new NotImplementedException();
