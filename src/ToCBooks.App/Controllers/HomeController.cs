@@ -6,6 +6,7 @@ using ToCBooks.App.Commands;
 using ToCBooks.App.ViewHelpers;
 using ToCBooks.App.Patterns.Commands;
 using ToCBooks.App.Interfaces;
+using ToCBooks.App.Patterns.ViewHelpers;
 
 namespace ToCBooks.App.Controllers
 {
@@ -13,10 +14,11 @@ namespace ToCBooks.App.Controllers
     {
         public HomeController()
         {
-            mapCommand.Add("1", new ConsultarLivrosCommand());
-            mapCommand.Add("2", new CadastrarLivroCommand());
+            mapCommand.Add("1", new ConsultarCommand());
+            mapCommand.Add("2", new CadastrarCommand());
 
             mapVH.Add("LivrosModel", new LivroVH());
+            mapVH.Add("ClienteModel", new ClienteVH());
         }
 
         private Dictionary<string, IViewHelper> mapVH = new Dictionary<string, IViewHelper>();
@@ -32,6 +34,7 @@ namespace ToCBooks.App.Controllers
         {
             return View("testes_les");
         }
+
         public IActionResult Privacy()
         {
             return View();
@@ -39,7 +42,6 @@ namespace ToCBooks.App.Controllers
 
         [HttpPost]
         [Route("Operations")]
-        [IgnoreAntiforgeryToken]
         public string Operations()
         {
             var lVH = mapVH[HttpContext.Request.Form["mapKey"]];

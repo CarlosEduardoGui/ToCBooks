@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using ToCBooks.App.Models;
+using ToCBooks.App.Business.Models;
 
 namespace ToCBooks.App.Data.Context
 {

@@ -1,6 +1,4 @@
-﻿using ToCBooks.App.Business.Models;
-
-namespace ToCBooks.App.Models
+﻿namespace ToCBooks.App.Business.Models
 {
     public class LivrosModel : EntidadeDominio
     {

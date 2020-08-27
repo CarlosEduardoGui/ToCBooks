@@ -17,6 +17,7 @@ namespace ToCBooks.Data.Business.Patterns
         public Fachada()
         {
             mapDao.Add("LivrosModel", new LivrosDAO());
+            mapDao.Add("ClienteModel", new ClienteDAO());
 
             List<IStrategy> ValidadoresLivro = new List<IStrategy> 
             { 

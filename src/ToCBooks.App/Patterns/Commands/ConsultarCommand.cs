@@ -4,10 +4,10 @@ using ToCBooks.App.Business.Models;
 
 namespace ToCBooks.App.Commands
 {
-    public class ConsultarLivrosCommand : ICommand
+    public class ConsultarCommand : ICommand
     {
         private readonly Fachada Fachada;
-        public ConsultarLivrosCommand()
+        public ConsultarCommand()
         {
             Fachada = new Fachada();
         }
