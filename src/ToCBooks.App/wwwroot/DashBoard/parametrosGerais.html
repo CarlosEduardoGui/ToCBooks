@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -57,7 +57,7 @@
         }
     </style>
     <script>
-        NProgress.configure({ showSpinner: false });
+        NProgress.confi'gu're({ showSpinner: false });
         NProgress.start();
     </script>
 
@@ -207,12 +207,10 @@
                         <div class="col-12">
                             <div class="card card-table-border-none" data-scroll-height="550">
                                 <div class="card-header justify-content-between">
-                                    <h2>Grupos de Precificação</h2>
+                                    <h2>Parâmetros</h2>
                                     <div>
                                         <button class="text-black-50 mr-2 font-size-20"><i
                                                 class="mdi mdi-cached"></i></button>
-                                        <button id="btn_cad_grupo" class="text-black-50 mr-2 font-size-20"><strong><i
-                                                    class="mdi mdi-open-in-new"></i></strong></button>
                                     </div>
                                 </div>
                                 <div class="card-body slim-scroll py-0">
@@ -220,32 +218,18 @@
                                         <thead>
                                             <tr>
                                                 <th>Nome</th>
-                                                <th>Percentual</th>
-                                                <th>Ações</th>
-                                                <th></th>
+                                                <th>Valor</th>
+                                                <th class="text-center">Ações</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tbody_tabela_grupo">
                                             <tr>
-                                                <td class="text-dark">Grupo AY</td>
-                                                <td class="text-dark">12.50% </td>
-                                                <td>
+                                                <td class="text-dark">Quantidade Automatica para Desativação</td>
+                                                <td class="text-dark">1 Unidade</td>
+                                                <td class="text-center">
                                                     <button type="button" class="editar"><i
                                                             style="font-size: 20px;"
-                                                            class="mdi mdi-account-edit"></i></button> |
-                                                    <button type="button" class="excluir"><i style="font-size: 20px;"
-                                                            class="mdi mdi-trash-can"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-dark">Grupo AZ</td>
-                                                <td class="text-dark">20% </td>
-                                                <td>
-                                                    <button type="button" class="editar"><i
-                                                            style="font-size: 20px;"
-                                                            class="mdi mdi-account-edit"></i></button> |
-                                                    <button type="button" class="excluir"><i style="font-size: 20px;"
-                                                            class="mdi mdi-trash-can"></i></button>
+                                                            class="mdi mdi-account-edit"></i></button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -281,7 +265,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Cadastro Grupo</h4>
+                    <h4 class="modal-title">Parametro</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -290,16 +274,10 @@
                     <form id="form_cad_grupo" name="form_cad_grupo">
                         <input type="hidden" id="id_grupo" name="Id" />
                         <div class="row" style="margin-top: 5%">
-                            <div class="col-6">
+                            <div class="col-12" style="text-align: center;">
                                 <div class="form-group">
-                                    <label>Nome do Grupo</label>
-                                    <input type="text" id="nome" class="form-control" name="nome" required />
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label>Margem de Lucro</label>
-                                    <input type="text" id="valor" class="form-control preco" name="valor" required />
+                                    <label>Valor</label>
+                                    <input style="width: 40%; margin-left: 30%;" type="text" id="nome" class="form-control" name="nome" required />
                                 </div>
                             </div>
                         </div>
@@ -314,41 +292,6 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="modal_confirmacao_delecao">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Deseja Apagar o Parametro Selecionado ?</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form id="form_delecao" name="form_delecao">
-
-                        <div class="row" style="margin-top: 5%">
-                            <div class="col-6" style="text-align: center;">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-success" id="btn_sim">Sim</button>
-                                </div>
-                            </div>
-                            <div class="col-6" style="text-align: center;">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-danger" id="btn_sim">Não</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <input type="file" id="input_file_img_livro" style="display: none;" />
 
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCn8TFXGg17HAUcNpkwtxxyT9Io9B_NcM" defer></script>

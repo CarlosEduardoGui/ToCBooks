@@ -2098,7 +2098,7 @@ if (acquisition3 !== null) {
       labels: ["4 Jan", "5 Jan", "6 Jan", "7 Jan", "8 Jan", "9 Jan", "10 Jan"],
       datasets: [
         {
-          label: "Referral",
+          label: "A Menina que Roubava Livros",
           backgroundColor: "rgb(76, 132, 255)",
           borderColor: "rgba(76, 132, 255,0)",
           data: [78, 90, 70, 75, 45, 52, 22],
@@ -2108,7 +2108,7 @@ if (acquisition3 !== null) {
           pointHitRadius: 30
         },
         {
-          label: "Direct",
+          label: "Os Rapazes que Enfrentaram a Lenda",
           backgroundColor: "rgb(254, 196, 0)",
           borderColor: "rgba(254, 196, 0,0)",
           data: [88, 115, 80, 96, 65, 77, 38],
@@ -2118,7 +2118,7 @@ if (acquisition3 !== null) {
           pointHitRadius: 30
         },
         {
-          label: "Social",
+          label: "Toretto - O Mestre do Volante",
           backgroundColor: "rgb(41, 204, 151)",
           borderColor: "rgba(41, 204, 151,0)",
           data: [103, 135, 102, 116, 83, 97, 55],

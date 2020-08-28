@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,7 +9,8 @@
     <title>Sleek - Admin Dashboard Template</title>
 
     <!-- GOOGLE FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
+        rel="stylesheet" />
     <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
 
     <!-- PLUGINS CSS STYLE -->
@@ -60,16 +62,10 @@
                 <!-- Aplication Brand -->
                 <div class="app-brand">
                     <a href="/index.html">
-                        <svg class="brand-icon"
-                             xmlns="http://www.w3.org/2000/svg"
-                             preserveAspectRatio="xMidYMid"
-                             width="30"
-                             height="33"
-                             viewBox="0 0 30 33">
+                        <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                            width="30" height="33" viewBox="0 0 30 33">
                             <g fill="none" fill-rule="evenodd">
-                                <path class="logo-fill-blue"
-                                      fill="#7DBCFF"
-                                      d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
+                                <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
                                 <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
                             </g>
                         </svg>
@@ -84,62 +80,65 @@
 
 
 
-                        <li class="has-sub active expand">
-                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#dashboard"
-                               aria-expanded="false" aria-controls="dashboard">
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
+                                data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
                                 <span class="nav-text">Dashboard</span> <b class="caret"></b>
                             </a>
-                            <ul class="collapse show" id="dashboard"
-                                data-parent="#sidebar-menu">
+                            <ul class="collapse" id="dashboard" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
-
-
-
-                                    <li class="active">
+                                    <li class="">
                                         <a class="sidenav-item-link" href="index.html">
                                             <span class="nav-text">Ecommerce</span>
-
                                         </a>
                                     </li>
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="cupom.html">
-                                            <span class="nav-text">Cupom</span>
-
-                                        </a>
-                                    </li>
-
-
                                 </div>
                             </ul>
                         </li>
 
-                    </ul>
 
-                </div>
+                        <li class="has-sub">
+                            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
+                                data-target="#parametros" aria-expanded="false" aria-controls="parametros">
+                                <i class="mdi mdi-view-dashboard-outline"></i>
+                                <span class="nav-text">Parâmetros</span> <b class="caret"></b>
+                            </a>
+                            <ul class="collapse" id="parametros" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="precificacao.html">
+                                            <span class="nav-text">Precificação</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="sidenav-item-link" href="parametrosGerais.html">
+                                            <span class="nav-text">Gerais</span>
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
 
-                <hr class="separator" />
+                        <li>
+                            <a class="sidenav-item-link" href="Livros.html">
+                                <i class="mdi mdi-view-dashboard-outline"></i>
+                                <span class="nav-text">Livros</span>
+                            </a>
+                        </li>
 
-                <div class="sidebar-footer">
-                    <div class="sidebar-footer-content">
-                        <h6 class="text-uppercase">
-                            Cpu Uses <span class="float-right">40%</span>
-                        </h6>
-                        <div class="progress progress-xs">
-                            <div class="progress-bar active"
-                                 style="width: 40%;"
-                                 role="progressbar"></div>
-                        </div>
-                        <h6 class="text-uppercase">
-                            Memory Uses <span class="float-right">65%</span>
-                        </h6>
-                        <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-warning"
-                                 style="width: 65%;"
-                                 role="progressbar"></div>
-                        </div>
-                    </div>
+                        <li>
+                            <a class="sidenav-item-link" href="Vendas.html">
+                                <i class="mdi mdi-view-dashboard-outline"></i>
+                                <span class="nav-text">Vendas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="sidenav-item-link" href="cupom.html">
+                                <i class="mdi mdi-view-dashboard-outline"></i>
+                                <span class="nav-text">Cupons</span>
+                            </a>
+                        </li>
                 </div>
             </div>
         </aside>
@@ -158,10 +157,11 @@
                     <div class="search-form d-none d-lg-inline-block">
                         <div class="input-group">
                             <button type="button" name="search" id="search-btn" class="btn btn-flat">
-                                <i class="mdi mdi-magnify"></i>
+                                <i style="display: none;" class="mdi mdi-magnify"></i>
                             </button>
-                            <input type="text" name="query" id="search-input" class="form-control" placeholder="'button', 'chart' etc."
-                                   autofocus autocomplete="off" />
+                            <input style="display: none;" type="text" name="query" id="search-input"
+                                class="form-control" placeholder="'button', 'chart' etc." autofocus
+                                autocomplete="off" />
                         </div>
                         <div id="search-results-container">
                             <ul id="search-results"></ul>
@@ -170,47 +170,6 @@
 
                     <div class="navbar-right ">
                         <ul class="nav navbar-nav">
-                            <li class="dropdown notifications-menu">
-                                <button class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="mdi mdi-bell-outline"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li class="dropdown-header">You have 5 notifications</li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="mdi mdi-account-plus"></i> New user registered
-                                            <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="mdi mdi-account-remove"></i> User deleted
-                                            <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 07 AM</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="mdi mdi-chart-areaspline"></i> Sales report is ready
-                                            <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 12 PM</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="mdi mdi-account-supervisor"></i> New client
-                                            <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 10 AM</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="mdi mdi-server-network-off"></i> Server overloaded
-                                            <span class=" font-size-12 d-inline-block float-right"><i class="mdi mdi-clock-outline"></i> 05 AM</span>
-                                        </a>
-                                    </li>
-                                    <li class="dropdown-footer">
-                                        <a class="text-center" href="#"> View All </a>
-                                    </li>
-                                </ul>
-                            </li>
                             <!-- User Account -->
                             <li class="dropdown user-menu">
                                 <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -218,21 +177,6 @@
                                     <span class="d-none d-lg-inline-block">Abdus Salam</span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <!-- User image -->
-                                    <li class="dropdown-header">
-                                        <img src="assets/img/user/user.png" class="img-circle" alt="User Image" />
-                                        <div class="d-inline-block">
-                                            Abdus Salam <small class="pt-1">abdus@gmail.com</small>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <a href="user-profile.html">
-                                            <i class="mdi mdi-account"></i> Minha Conta
-                                        </a>
-                                    </li>
-
-
                                     <li class="dropdown-footer">
                                         <a href="signin.html"> <i class="mdi mdi-logout"></i> Log Out </a>
                                     </li>
@@ -241,8 +185,6 @@
                         </ul>
                     </div>
                 </nav>
-
-
             </header>
 
 
@@ -258,7 +200,8 @@
                                     <form class="form-pill">
                                         <div class="form-group">
                                             <label for="exampleFormControlInput3">Nome do Cupom</label>
-                                            <input type="text" class="form-control" id="exampleFormControlInput3" placeholder="DESCON20">
+                                            <input type="text" class="form-control" id="exampleFormControlInput3"
+                                                placeholder="DESCON20">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect3">Quantos poderão existir?</label>
@@ -280,9 +223,7 @@
                 <div class="copyright bg-white">
                     <p>
                         &copy; <span id="copy-year">2019</span> Copyright Sleek Dashboard Bootstrap Template by
-                        <a class="text-primary"
-                           href="http://www.iamabdus.com/"
-                           target="_blank">Abdus</a>.
+                        <a class="text-primary" href="http://www.iamabdus.com/" target="_blank">Abdus</a>.
                     </p>
                 </div>
                 <script>
@@ -321,4 +262,5 @@
 
 
 </body>
+
 </html>
