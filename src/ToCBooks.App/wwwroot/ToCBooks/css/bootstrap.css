@@ -9312,3 +9312,15 @@ a.text-dark:hover {
 }
 
 /*# sourceMappingURL=bootstrap.min.css.map */
+
+.card-switch {
+    float: right;
+}
+
+.confirm-switch {
+    display: inline-block;
+}
+
+.default-checkbox {
+    display: inline-block;
+}

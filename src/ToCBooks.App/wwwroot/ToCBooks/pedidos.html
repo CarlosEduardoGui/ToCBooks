@@ -48,7 +48,7 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Index.html">Home</a></li>
                             <li class="nav-item submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                    aria-expanded="false">Shop</a>
@@ -215,8 +215,8 @@
         </div>
 
         <!-- Modal -->
-        <div id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <!--class="modal fade" -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!--class="modal fade"-->
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -226,13 +226,34 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div>
-
+                        <div class="">
+                            <div class="order_box">
+                                <h2>Sua Compra</h2>
+                                <ul class="list">
+                                    <li><a href="#">Produto <span>Total</span></a></li>
+                                    <li><a href="#">Harry Potter<span class="middle">x 02</span> <span class="last">R$720.00</span></a></li>
+                                    <li><a href="#">Mecânica Quântica<span class="middle">x 02</span> <span class="last">R$720.00</span></a></li>
+                                    <li><a href="#">Cálculo básico<span class="middle">x 02</span> <span class="last">R$720.00</span></a></li>
+                                </ul>
+                                <ul class="list list_2">
+                                    <li><a href="#">Subtotal <span>R$2160.00</span></a></li>
+                                    <li><a href="#">Total <span>R$2160.00</span></a></li>
+                                </ul>
+                                <ul class="list">
+                                    <li><a>Status: Devolvido</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-block" data-dismiss="modal">Devolução</button>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            </div>
+                            <div class="col-lg-8">
+                                <button type="button" class="btn btn-block" data-dismiss="modal">Devolução</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

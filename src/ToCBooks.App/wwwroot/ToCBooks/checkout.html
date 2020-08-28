@@ -38,7 +38,7 @@
             <nav class="navbar navbar-expand-lg navbar-light main_box">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+                    <a class="navbar-brand logo_h" href="/Index.html"><img src="img/logo.png" alt=""></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
@@ -48,7 +48,7 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/Index.html">Home</a></li>
                             <li class="nav-item submenu dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                    aria-expanded="false">Shop</a>
@@ -62,15 +62,7 @@
                             </li>
                             <li class="nav-item submenu dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                   aria-expanded="false">Blog</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                   aria-expanded="false">Pages</a>
+                                   aria-expanded="false">Páginas</a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
                                     <li class="nav-item"><a class="nav-link" href="tracking.html">Tracking</a></li>
@@ -128,6 +120,14 @@
                                     <a class="card-link" data-toggle="collapse" href="#collapseOne">
                                         Endereço de Cobrança #1
                                     </a>
+
+                                    <div class="card-switch">
+                                        <div>
+                                            <input type="radio" name="exampleCheck1" class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Usar este</label>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div id="collapseOne" class="collapse show" data-parent="#accordion">
                                     <div class="card-body">
@@ -173,6 +173,12 @@
                                     <a class="card-link" data-toggle="collapse" href="#collapseTwo">
                                         Endereço de Cobrança #2
                                     </a>
+                                    <div class="card-switch">
+                                        <div>
+                                            <input type="radio" name="exampleCheck1"  class="form-check-input" id="exampleCheck1">
+                                            <label class="form-check-label" for="exampleCheck1">Usar este</label>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
@@ -218,6 +224,14 @@
                                     <a class="card-link" data-toggle="collapse" href="#collapseThree">
                                         Endereço de Cobrança #3
                                     </a>
+                                    <div class="card-switch">
+                                        <div class="card-switch">
+                                            <div>
+                                                <input type="radio" name="exampleCheck1"  class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Usar este</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div id="collapseThree" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
@@ -314,6 +328,14 @@
                                 <a class="card-link" data-toggle="collapse" href="#collapseOne">
                                     Cartão de Crédito #1
                                 </a>
+                                <div class="card-switch">
+                                    <div class="card-switch">
+                                        <div>
+                                            <input type="radio" name="cardExemple1" class="form-check-input" id="cardExemple1">
+                                            <label class="form-check-label" for="exampleCheck1">Usar este</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div id="collapseOne" class="collapse show" data-parent="#accordion">
                                 <div class="card-body">
@@ -369,13 +391,12 @@
                                 <li><a href="#">Subtotal <span>R$2160.00</span></a></li>
                                 <li><a href="#">Total <span>R$2160.00</span></a></li>
                             </ul>
-                            <div>
-                                <div class="check_title">
-                                    <h2>Tem Cupom?</h2>
-                                </div>
-                                <input type="text" placeholder="Insira o Cupom">
-                                <a class="tp_btn" href="#">Aplique o cupom</a>
-                            </div>
+                            <br />
+                            <br />
+                            <ul class="list">
+                                <li><input style="text-align:center" type="text" placeholder="Insira um Cupom"></li>
+                                <li><a style="text-align:center" class="tp_btn" href="#">Aplique o cupom</a></li>
+                            </ul>
                             <br />
                             <br />
                             <br />
