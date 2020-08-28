@@ -34,7 +34,7 @@ namespace ToCBooks.Data.Business.Patterns
             mapValidadores.Add("Parametro", ValidadoresParametro);
         }
 
-        public async Task<MensagemModel> Atualizar(EntidadeDominio Objeto)
+        public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
         }
@@ -90,7 +90,7 @@ namespace ToCBooks.Data.Business.Patterns
             return mapDao[Objeto.GetType().Name].Consultar(Objeto);
         }
 
-        public async Task<MensagemModel> Excluir(EntidadeDominio Objeto)
+        public MensagemModel Excluir(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
         }
