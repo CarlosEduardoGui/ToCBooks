@@ -28,10 +28,11 @@ namespace ToCBooks.App.Data.DAOs
                 db.Add(Objeto);
                 db.SaveChanges();
             }
-            MensagemModel Mensagem = new MensagemModel();
-
-            Mensagem.Codigo = 1;
-            Mensagem.Dados = null;
+            MensagemModel Mensagem = new MensagemModel
+            {
+                Codigo = 1,
+                Dados = null
+            };
 
             return Mensagem;
         }

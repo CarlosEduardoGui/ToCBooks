@@ -22,6 +22,7 @@ namespace ToCBooks.App.Controllers
 
             mapVH.Add("LivrosModel", new LivroVH());
             mapVH.Add("Parametro", new ParametroVH());
+            mapVH.Add("ClienteModel", new ClienteVH());
         }
 
         private Dictionary<string, IViewHelper> mapVH = new Dictionary<string, IViewHelper>();
@@ -37,6 +38,7 @@ namespace ToCBooks.App.Controllers
         {
             return View("testes_les");
         }
+
         public IActionResult Privacy()
         {
             return View();
@@ -44,7 +46,6 @@ namespace ToCBooks.App.Controllers
 
         [HttpPost]
         [Route("Operations")]
-        [IgnoreAntiforgeryToken]
         public string Operations()
         {
             var lVH = mapVH[HttpContext.Request.Form["mapKey"]];

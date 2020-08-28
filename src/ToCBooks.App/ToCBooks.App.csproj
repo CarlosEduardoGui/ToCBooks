@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Content Remove="Views\Shared\IndexV02.cshtml" />
+    <Content Remove="wwwroot\ToCBooks\js\registration.js" />
   </ItemGroup>
 
 
@@ -21,7 +22,7 @@
 
 
   <ItemGroup>
-    <Folder Include="layout\" />
+    <Folder Include="wwwroot\layout\" />
   </ItemGroup>
 
 
@@ -682,6 +683,8 @@
     <None Include="wwwroot\DashBoard\assets\scss\_variables.scss" />
     <None Include="wwwroot\DashBoard\assets\scss\_widgets.scss" />
     <None Include="wwwroot\Index.html" />
+    <None Include="wwwroot\layout\karma.zip" />
+    <None Include="wwwroot\layout\sleek-dashboard-free-bootstrap-4-admin-dashboard-template-and-ui-kit.zip" />
     <None Include="wwwroot\ToCBooks\css\.DS_Store" />
     <None Include="wwwroot\ToCBooks\css\bootstrap.map" />
     <None Include="wwwroot\ToCBooks\css\main.css.map" />
@@ -694,6 +697,7 @@
     <None Include="wwwroot\ToCBooks\img\.DS_Store" />
     <None Include="wwwroot\ToCBooks\img\organic-food\.DS_Store" />
     <None Include="wwwroot\ToCBooks\js\.DS_Store" />
+    <None Include="wwwroot\ToCBooks\js\registration.js" />
     <None Include="wwwroot\ToCBooks\js\countdown.js" />
     <None Include="wwwroot\ToCBooks\js\gmaps.min.js" />
     <None Include="wwwroot\ToCBooks\js\ion.rangeSlider.js" />
@@ -724,5 +728,8 @@
     <None Include="wwwroot\ToCBooks\scss\theme\_reset.scss" />
     <None Include="wwwroot\ToCBooks\scss\theme\_variables.scss" />
   </ItemGroup>
+
+
+  <ProjectExtensions><VisualStudio><UserProperties wwwroot_4dashboard_4assets_4plugins_4bootstrap_4js_4bootstrap_1bundle_1min_1js_1map__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

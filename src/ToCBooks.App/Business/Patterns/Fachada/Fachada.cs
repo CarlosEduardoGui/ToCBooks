@@ -18,6 +18,7 @@ namespace ToCBooks.Data.Business.Patterns
         public Fachada()
         {
             mapDao.Add("LivrosModel", new LivrosDAO());
+            mapDao.Add("ClienteModel", new ClienteDAO());
             mapDao.Add("Parametro", new ParametroDAO());
 
             List<IStrategy> ValidadoresLivro = new List<IStrategy> 
@@ -70,10 +71,9 @@ namespace ToCBooks.Data.Business.Patterns
             MensagemModel Mensagem = new MensagemModel();
             try
             {
-                if (Objeto.Id == null)
-                    throw new Exception("Objeto inválido para Desativação...");
-
-                return mapDao[Objeto.GetType().Name].Desativar(Objeto);
+                return Objeto.Id == null
+                    ? throw new Exception("Objeto inválido para Desativação...")
+                    : mapDao[Objeto.GetType().Name].Desativar(Objeto);
             }
             catch (Exception Error)
             {

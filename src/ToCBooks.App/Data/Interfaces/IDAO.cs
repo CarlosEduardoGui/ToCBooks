@@ -15,6 +15,8 @@ namespace ToCBooks.App.Data.Interfaces
 
         MensagemModel Editar(EntidadeDominio Objeto);
 
+        MensagemModel Desativar(EntidadeDominio Objeto);
+
         MensagemModel Excluir(EntidadeDominio Objeto);
 
         MensagemModel Consultar(EntidadeDominio Objeto);

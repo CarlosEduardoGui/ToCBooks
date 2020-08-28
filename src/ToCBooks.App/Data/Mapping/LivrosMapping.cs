@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ToCBooks.App.Models;
+using ToCBooks.App.Business.Models;
 
 namespace ToCBooks.App.Data.Mapping
 {
