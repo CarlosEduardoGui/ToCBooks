@@ -62,6 +62,15 @@ jQuery(document).ready(function () {
 
     jQuery('.preco').mask('#.##0.00', { reverse: true });
 
+    jQuery(document).on("click", '.definir_estoque', function () {
+        jQuery("#modal_estoque").modal("show");
+    });
+    
+    jQuery("#habilitar_edicao_estoque").on("click", function () {
+        jQuery("#qtde_estoque").removeAttr("disabled");
+        jQuery("#btn_salvar_estoque").fadeIn("300");
+    });
+
     jQuery('select').selectpicker({
         noneSelectedText: "Selecione..."
     });
