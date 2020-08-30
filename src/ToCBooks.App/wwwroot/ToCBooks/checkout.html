@@ -131,39 +131,53 @@
                                 </div>
                                 <div id="collapseOne" class="collapse show" data-parent="#accordion">
                                     <div class="card-body">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <input type="text" class="form-control" id="endereco" placeholder="Manoel de Oliveira Mello">
+                                        <form>
+                                            <h3>Deseja usar outro Endereço?</h3>
+                                            <div class="form-row">
+                                                <div class="col-md-3 form-group">
+                                                    <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
+                                                        <option value="0">Tipo de Logradouro</option>
+                                                        <option value="1">Avenida</option>
+                                                        <option value="2">Rua</option>
+                                                        <option value="3">Vila</option>
+                                                        <option value="4">Viela</option>
+                                                        <option value="5">Conjunto</option>
+                                                        <option value="6">Condominio</option>
+                                                        <option value="7">Fazenda</option>
+                                                        <option value="8">Jardim</option>
+                                                        <option value="9">Ladeira</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3 form-group">
+                                                    <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
+                                                        <option value="0">Tipo de Residência</option>
+                                                        <option value="1">Casa</option>
+                                                        <option value="2">Apartamento</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" class="form-control" id="endereco" placeholder="Manoel de Oliveira Mello">
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
+                                                </div>
                                             </div>
-                                            <div class="col-md-2 form-group">
-                                                <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
-                                                    <option value="1">Casa</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3 form-group">
-                                                <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
-                                                    <option value="6">Condominio</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
-                                            </div>
-                                            <div class="col-md-8 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
-                                            </div>
-                                            <div class="col-md-8 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -182,39 +196,53 @@
                                 </div>
                                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <input type="text" class="form-control" id="endereco" placeholder="Manoel de Oliveira Mello">
+                                        <form>
+                                            <h3>Deseja usar outro Endereço?</h3>
+                                            <div class="form-row">
+                                                <div class="col-md-3 form-group">
+                                                    <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
+                                                        <option value="0">Tipo de Logradouro</option>
+                                                        <option value="1">Avenida</option>
+                                                        <option value="2">Rua</option>
+                                                        <option value="3">Vila</option>
+                                                        <option value="4">Viela</option>
+                                                        <option value="5">Conjunto</option>
+                                                        <option value="6">Condominio</option>
+                                                        <option value="7">Fazenda</option>
+                                                        <option value="8">Jardim</option>
+                                                        <option value="9">Ladeira</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3 form-group">
+                                                    <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
+                                                        <option value="0">Tipo de Residência</option>
+                                                        <option value="1">Casa</option>
+                                                        <option value="2">Apartamento</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" class="form-control" id="endereco" placeholder="Manoel de Oliveira Mello">
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
+                                                </div>
                                             </div>
-                                            <div class="col-md-2 form-group">
-                                                <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
-                                                    <option value="1">Casa</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3 form-group">
-                                                <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
-                                                    <option value="6">Condominio</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
-                                            </div>
-                                            <div class="col-md-8 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
-                                            </div>
-                                            <div class="col-md-8 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -235,39 +263,53 @@
                                 </div>
                                 <div id="collapseThree" class="collapse" data-parent="#accordion">
                                     <div class="card-body">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <input type="text" class="form-control" id="endereco" placeholder="Manoel de Oliveira Mello">
+                                        <form>
+                                            <h3>Deseja usar outro Endereço?</h3>
+                                            <div class="form-row">
+                                                <div class="col-md-3 form-group">
+                                                    <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
+                                                        <option value="0">Tipo de Logradouro</option>
+                                                        <option value="1">Avenida</option>
+                                                        <option value="2">Rua</option>
+                                                        <option value="3">Vila</option>
+                                                        <option value="4">Viela</option>
+                                                        <option value="5">Conjunto</option>
+                                                        <option value="6">Condominio</option>
+                                                        <option value="7">Fazenda</option>
+                                                        <option value="8">Jardim</option>
+                                                        <option value="9">Ladeira</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3 form-group">
+                                                    <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
+                                                        <option value="0">Tipo de Residência</option>
+                                                        <option value="1">Casa</option>
+                                                        <option value="2">Apartamento</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" class="form-control" id="endereco" placeholder="Manoel de Oliveira Mello">
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
+                                                </div>
                                             </div>
-                                            <div class="col-md-2 form-group">
-                                                <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
-                                                    <option value="1">Casa</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3 form-group">
-                                                <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
-                                                    <option value="6">Condominio</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
-                                            </div>
-                                            <div class="col-md-8 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
-                                            </div>
-                                            <div class="col-md-8 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

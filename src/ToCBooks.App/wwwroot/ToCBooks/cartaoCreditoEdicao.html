@@ -97,7 +97,7 @@
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
-                    <h1 style="text-align: right">Alteração de Endereco Entrega</h1>
+                    <h1 style="text-align: right">Alteração de Cartão de Crédito</h1>
                     <nav class="d-flex align-items-center">
                         <a href="/Index.html">Home<span class="lnr lnr-arrow-right"></span></a>
                         <a href="perfil.html">Perfil</a>
@@ -110,31 +110,73 @@
     <!--================Tracking Box Area =================-->
     <section class="order_details section_gap">
         <div class="container">
-            <form>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="0000 0000 0000 0000" onfocus="this.placeholder = ''" onblur="this.placeholder = '0000 0000 0000 0000" '">
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                            Cartão de Crédito #1
+                        </a>
+                        <div class="card-switch">
+                            <div class="card-switch">
+                                <div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Carlos E G Souza" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Carlos E G Souza'">
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000'">
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" id="bandeiraCartao" name="bandeiraCartao" placeholder="Master Card" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Master Card'">
-                    </div>
-                    <div class="col-md-6 switch-wrap d-flex justify-content-between">
-                        <h4 style="font-size: 14px">Cartão Principal?</h4>
-                        <div class="confirm-switch">
-                            <input type="checkbox" id="confirm-switch" checked="">
-                            <label for="confirm-switch"></label>
+                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="000 000 000 000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000 000 000 000'">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Carlos E G Souza" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Carlos E G Souza'">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000'">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="bandeiraCartao" name="bandeiraCartao" placeholder="Master Card" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Master Card'">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success">Salvar</button>&nbsp;
-                <button class="btn btn-info">Voltar</button>
-            </form>
+                <div class="card">
+                    <div class="card-header">
+                        <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                            Cartão de Crédito #2
+                        </a>
+                        <div class="card-switch">
+                            <div class="card-switch">
+                                <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="collapseOne" class="collapse" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="000 000 000 000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000 000 000 000'">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Carlos E G Souza" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Carlos E G Souza'">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000'">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="bandeiraCartao" name="bandeiraCartao" placeholder="Master Card" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Master Card'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br /><br />
+            <button type="submit" class="btn btn-success">Salvar</button>&nbsp;
+            <button class="btn btn-info">Voltar</button>
         </div>
     </section>
     <!--================End Tracking Box Area =================-->

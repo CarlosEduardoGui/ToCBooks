@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="zxx" class="no-js">
+<html lang="pt-br" class="no-js">
 
 <head>
     <!-- Mobile Specific Meta -->
@@ -15,15 +15,12 @@
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
-    <title>Karma Shop</title>
+    <title>ToCBooks</title>
 
-    <!--
-            CSS
-            ============================================= -->
     <link rel="stylesheet" href="css/linearicons.css">
     <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/nice-select.css">
     <link rel="stylesheet" href="css/nouislider.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -97,70 +94,69 @@
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
-                    <h1 style="text-align: right">Novo de Endereco Cobrança</h1>
+                    <h1>Alteração de Dados</h1>
                     <nav class="d-flex align-items-center">
-                        <a href="/Index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="perfil.html">Perfil</a>
+                        <a href="~/Index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="login.html">Já possuí conta?</a>
                     </nav>
                 </div>
             </div>
         </div>
     </section>
     <!-- End Banner Area -->
-    <!--================Tracking Box Area =================-->
-    <section class="order_details section_gap">
+    <!--================Register Box Area =================-->
+    <section class="login_box_area section_gap">
         <div class="container">
-            <form>
-                <div class="form-row">
-                    <div class="col-md-3 form-group">
-                        <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
-                            <option value="0">Tipo de Logradouro</option>
-                            <option value="1">Avenida</option>
-                            <option value="2">Rua</option>
-                            <option value="3">Vila</option>
-                            <option value="4">Viela</option>
-                            <option value="5">Conjunto</option>
-                            <option value="6">Condominio</option>
-                            <option value="7">Fazenda</option>
-                            <option value="8">Jardim</option>
-                            <option value="9">Ladeira</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="endereco" placeholder="Manoel de Oliveira Mello">
-                    </div>
-                    <div class="col-md-3 form-group">
-                        <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
-                            <option value="0">Tipo de Residência</option>
-                            <option value="1">Casa</option>
-                            <option value="2">Apartamento</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4 form-group">
-                        <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
-                    </div>
-                    <div class="col-md-8 form-group">
-                        <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
-                    </div>
-                    <div class="col-md-4 form-group">
-                        <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
-                    </div>
-                    <div class="col-md-8 form-group">
-                        <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>
+                        <h3>Dados</h3>
+                        <hr />
+                        <form class="row login_form">
+                            <div class="col-md-12 form-group">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Insira seu E-mail">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <input type="password" class="form-control" id="senha" name="senha" placeholder="Insira sua senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira sua senha'">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome Completo'">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="number" class="form-control" id="cpf" name="cpf" placeholder="CPF" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF'">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <select id="genero" name="genero">
+                                    <option value="0">Gênero</option>
+                                    <option value="1">Homem</option>
+                                    <option value="2">Mulher</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="date" class="form-control" id="dataNascimento" name="dataNascimento">
+                                <label>Data de Nascimento</label><br />
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" class="form-control" id="ddd" name="ddd" placeholder="DDD" onfocus="this.placeholder = ''" onblur="this.placeholder = 'DDD'">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefone'">
+                            </div>
+
+                            <br /><br />
+                            <br /><br />
+                            <br /><br />
+
+                            <div class="col-md-4 form-group">
+                                <button class="primary-btn" id="btn_salvar">Salvar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success">Salvar</button>&nbsp;
-                <button class="btn btn-info">Voltar</button>
-            </form>
+            </div>
         </div>
     </section>
-    <!--================End Tracking Box Area =================-->
+    <!--================End Login Box Area =================-->
     <!-- start footer Area -->
     <footer class="footer-area section_gap">
         <div class="container">
@@ -232,11 +228,7 @@
     <!-- End footer Area -->
 
 
-
-
     <script src="js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-            crossorigin="anonymous"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/jquery.ajaxchimp.min.js"></script>
     <script src="js/jquery.nice-select.min.js"></script>
@@ -244,10 +236,112 @@
     <script src="js/nouislider.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
-    <!--gmaps Js-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-    <script src="js/gmaps.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/registration.js"></script>
 </body>
 
 </html>
+
+<script>
+    jQuery(document).ready(function () {
+        jQuery("#btn_salvar").on("click", function (e) {
+            e.preventDefault();
+
+            var telefone = {
+                ddd: jQuery('#ddd').val(),
+                numero: jQuery('#telefone').val()
+            };
+
+            var cidadeCobranca = {
+                nome: jQuery('#enderecoCobrancaCidade').val(),
+            };
+
+            var estadoCobranca = {
+                nome: jQuery('#enderecoCobrancaEstado').val(),
+                cidade: cidadeCobranca
+            };
+
+            var paisCobranca = {
+                nome: jQuery('#enderecoCobrancaPais').val(),
+                estado: estadoCobranca
+            };
+
+            var cidadeEntrega = {
+                nome: jQuery('#enderecoEntregaCidade').val(),
+            };
+
+            var estadoEntrega = {
+                nome: jQuery('#enderecoEntregaEstado').val(),
+                cidade: cidadeEntrega
+            };
+
+            var paisEntrega = {
+                nome: jQuery('#enderecoEntregaPais').val(),
+                estado: estadoEntrega
+            };
+
+            var enderecoCobranca = {
+                enderecocobranca: jQuery('#enderecoCobranca').val(),
+                tipologradouro: jQuery('#enderecoCobrancaEtipologradouro').val(),
+                tiporesidencia: jQuery('#enderecoCobrancaEtiporesidencia').val(),
+                cep: jQuery('#enderecoCobrancaCep').val(),
+                bairro: jQuery('#enderecoCobrancaBairro').val(),
+                numero: jQuery('#enderecoCobrancaNumero').val(),
+                pais: paisCobranca
+            };
+
+            var enderecoEntrega = {
+                numero: jQuery('#enderecoEntregaNumero').val(),
+                nome: jQuery('#enderecoEntrega').val(),
+                bairro: jQuery('#enderecoEntregaBairro').val(),
+                cep: jQuery('#enderecoEntregaCep').val(),
+                pais: paisEntrega,
+                tipologradouro: jQuery('#enderecoEntregaEtipologradouro').val(),
+                tipoResidencia: jQuery('#enderecoEntregaEtiporesidencia').val()
+            };
+
+            var Object = {
+                nome: jQuery('#nome').val(),
+                cpf: jQuery('#cpf').val(),
+                email: jQuery('#email').val(),
+                senha: jQuery('#senha').val(),
+                telefone: telefone,
+                genero: jQuery('#genero').val(),
+                datanascimento: jQuery('#datanascimento').val(),
+                enderecoCobranca: enderecoCobranca,
+                enderecoEntrega: enderecoEntrega,
+                tipoUsuario: 2,
+                tipoGenero: jQuery('#genero').val()
+            };
+
+            console.log(Object);
+
+            jQuery.ajax({
+                type: "POST",
+                url: 'https://localhost:44354/Operations',
+                data: { oper: 2, mapKey: 'ClienteModel', JsonString: JSON.stringify(Object) },
+                cache: false,
+                beforeSend: function (xhr) {
+
+                },
+                complete: function (e, xhr, result) {
+                    console.log(e.readyState);
+                    console.log(e.status);
+                    if (e.readyState == 4 && e.status == 200) {
+
+                        try {
+                            var resposta_controle = JSON.parse(e.responseText);
+                            console.log(reposta_controle);
+
+                        } catch (error) {
+                            console.log(error);
+                            iziToast.error({
+                                message: "<strong>Erro na Autenticação...</strong>"
+                            });
+                        }
+                    }
+                }
+            });
+        });
+    });
+</script>
