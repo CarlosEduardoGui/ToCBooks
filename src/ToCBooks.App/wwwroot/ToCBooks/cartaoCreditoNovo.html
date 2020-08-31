@@ -121,7 +121,11 @@
                         <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="CVV" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CVV'">
                     </div>
                     <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" id="bandeiraCartao" name="bandeiraCartao" placeholder="Bandeira" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bandeira'">
+                        <select id="grupo_def_preco" name="grupo_def_preco" >
+                            <option value="">Selecione a Bandeira</option>
+                            <option value="Grupo AY">Mastercard</option>
+                            <option value="Grupo AZ">Visa</option>
+                        </select>
                     </div>
                     <div class="col-md-6 switch-wrap d-flex justify-content-between">
                         <h4 style="font-size: 14px">Cartão Principal?</h4>

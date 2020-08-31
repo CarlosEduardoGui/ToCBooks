@@ -111,7 +111,7 @@
         <div class="container">
             <form>
                 <div class="form-row">
-                    <div class="col-md-3 form-group">
+                    <div class="col-md-4 form-group">
                         <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
                             <option value="0">Tipo de Logradouro</option>
                             <option value="1">Avenida</option>
@@ -125,10 +125,10 @@
                             <option value="9">Ladeira</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="endereco" placeholder="Manoel de Oliveira Mello">
+                    <div class="col-md-4 form-group">
+                        <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="Logradouro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Logradouro'">
                     </div>
-                    <div class="col-md-3 form-group">
+                    <div class="col-md-4 form-group">
                         <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
                             <option value="0">Tipo de Residência</option>
                             <option value="1">Casa</option>
@@ -152,6 +152,9 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <textarea class="form-control" rows="5" placeholder="Observacoes"></textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success">Salvar</button>&nbsp;

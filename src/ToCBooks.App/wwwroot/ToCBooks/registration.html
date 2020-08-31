@@ -118,6 +118,9 @@
                             <div class="col-md-12 form-group">
                                 <input type="password" class="form-control" id="senha" name="senha" placeholder="Insira sua senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira sua senha'">
                             </div>
+                            <div class="col-md-12 form-group">
+                                <input type="password" class="form-control" id="senha" name="senha" placeholder="Insira sua senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirme a Senha'">
+                            </div>
                             <div class="col-md-6 form-group">
                                 <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome Completo'">
                             </div>
@@ -135,16 +138,23 @@
                                 <input type="date" class="form-control" id="dataNascimento" name="dataNascimento">
                                 <label>Data de Nascimento</label><br />
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <input type="text" class="form-control" id="ddd" name="ddd" placeholder="DDD" onfocus="this.placeholder = ''" onblur="this.placeholder = 'DDD'">
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefone'">
                             </div>
-                            <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="enderecoCobranca" name="enderecoCobranca" placeholder="Endereco de Cobrança" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Endereco de Cobrança'">
+                            <div class="col-md-4 form-group">
+                                <select id="grupo_def_preco" name="grupo_def_preco" >
+                                    <option value="">Selecione a Tipo de Telefone</option>
+                                    <option value="Grupo AY">Fixo</option>
+                                    <option value="Grupo AZ">Celular</option>
+                                </select>
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-12 form-group" style="margin-top: 4%; margin-bottom: 4%;">
+                                <h3>Endereço de Cobrança</h3>
+                            </div>
+                            <div class="col-md-4 form-group">
                                 <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
                                     <option value="0">Tipo de Logradouro</option>
                                     <option value="1">Avenida</option>
@@ -158,7 +168,10 @@
                                     <option value="9">Ladeira</option>
                                 </select>
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
+                                <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="Logradouro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Logradouro'">
+                            </div>
+                            <div class="col-md-4 form-group">
                                 <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
                                     <option value="0">Tipo de Residência</option>
                                     <option value="1">Casa</option>
@@ -183,16 +196,15 @@
                             <div class="col-md-6 form-group">
                                 <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
                             </div>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-
-
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="enderecoEntrega" name="enderecoEntrega" placeholder="Endereco de Entrega" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Endereco de Cobrança'">
+                                <textarea class="form-control" rows="5" placeholder="Observacoes"></textarea>
                             </div>
-                            <div class="col-md-6 form-group">
+
+                            <div class="col-md-12 form-group" style="margin-top: 4%; margin-bottom: 4%;">
+                                <h3>Endereço de Entrega</h3>
+                            </div>
+
+                            <div class="col-md-4 form-group">
                                 <select id="enderecoEntregaEtipologradouro" name="enderecoEntregaEtipologradouro">
                                     <option value="0">Tipo de Logradouro</option>
                                     <option value="1">Avenida</option>
@@ -206,7 +218,10 @@
                                     <option value="9">Ladeira</option>
                                 </select>
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
+                                <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="Logradouro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Logradouro'">
+                            </div>
+                            <div class="col-md-4 form-group">
                                 <select id="enderecoEntregaEtiporesidencia" name="enderecoEntregaEtiporesidencia">
                                     <option value="0">Tipo de Residência</option>
                                     <option value="1">Casa</option>
@@ -231,11 +246,13 @@
                             <div class="col-md-6 form-group">
                                 <input type="text" class="form-control" id="enderecoEntregaPais" name="enderecoEntregaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
                             </div>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
+                            <div class="col-md-12 form-group">
+                                <textarea class="form-control" rows="5" placeholder="Observacoes"></textarea>
+                            </div>
 
+                            <div class="col-md-12 form-group" style="margin-top: 4%; margin-bottom: 4%;">
+                                <h3>Cartão de Crédito</h3>
+                            </div>
 
                             <div class="col-md-12 form-group">
                                 <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="Número do Cartão" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número do Cartão'">
@@ -247,7 +264,11 @@
                                 <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="CVV" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CVV'">
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="text" class="form-control" id="bandeiraCartao" name="bandeiraCartao" placeholder="Bandeira" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bandeira'">
+                                <select id="grupo_def_preco" name="grupo_def_preco" >
+                                    <option value="">Selecione a Bandeira</option>
+                                    <option value="Grupo AY">Mastercard</option>
+                                    <option value="Grupo AZ">Visa</option>
+                                </select>
                             </div>
                             <br />
                             <br />
