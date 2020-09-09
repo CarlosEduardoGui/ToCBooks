@@ -10,12 +10,17 @@ namespace ToCBooks.App.Data.DAOs
 {
     public class ClienteDAO : IDAO
     {
+        public MensagemModel Ativar(EntidadeDominio Objeto)
+        {
+            throw new NotImplementedException();
+        }
+
         public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MensagemModel> Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
+        public MensagemModel Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
         {
             throw new NotImplementedException();
         }

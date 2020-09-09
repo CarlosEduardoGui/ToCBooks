@@ -1,4 +1,5 @@
 ﻿
+var idTempExclusao;
 
 jQuery(document).ready(function () {
 
@@ -6,6 +7,9 @@ jQuery(document).ready(function () {
 
 
     jQuery("#btn_cad_grupo").on('click', function () {
+        jQuery("#id_grupo").val('');
+        jQuery("#nome").val('');
+        jQuery("#valor").val('');
         jQuery("#modal_cad_grupo").modal("show");
     });
 
@@ -20,7 +24,12 @@ jQuery(document).ready(function () {
         e.preventDefault();
 
         var formData = new FormData(this);
-        var objetoEnvio = { oper: '2', mapKey: 'Parametro', jsonString: JSON.stringify({ Nome: formData.get("nome"), Valor: formData.get('valor').replace("%", ''), Tipo: '1' }) }
+        var guid = formData.get('Id');
+        var objetoEnvio;
+        if (guid != null && guid != '')
+            objetoEnvio = { oper: '2', mapKey: 'Parametro', jsonString: JSON.stringify({ Id: formData.get('Id'), Nome: formData.get("nome"), Valor: formData.get('valor').replace("%", ''), Tipo: '0' }) }
+        else
+            objetoEnvio = { oper: '2', mapKey: 'Parametro', jsonString: JSON.stringify({ Nome: formData.get("nome"), Valor: formData.get('valor').replace("%", ''), Tipo: '0' }) }
 
         cadastrarGrupo(objetoEnvio);
     });
@@ -39,14 +48,54 @@ jQuery(document).ready(function () {
     });
 
     jQuery(document).on('click', '.excluir', function () {
-        var id_grupo = jQuery(this).attr('id_grupo');
+        idTempExclusao = jQuery(this).attr('id_grupo');
 
         jQuery("#modal_confirmacao_delecao").modal('show');
     });
 
+    jQuery("#btn_sim").on('click', function () {
+        excluirParametro(idTempExclusao);
+    });
+
+
+    jQuery("#btn_nao").on('click', function () {
+        jQuery("#modal_confirmacao_delecao").modal('hide');
+    });
 
     jQuery('.preco').mask('00.00%');
 });
+
+
+function excluirParametro(id_grupo) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "4", mapKey: "Parametro", JsonString: JSON.stringify({ Id: id_grupo}) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Codigo == 0) {
+                        buscarParametros();
+                        jQuery("#modal_confirmacao_delecao").modal('hide');
+                    }
+                    else
+                        alert("Erro ao Buscar Livros...");
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
 
 function buscarParametro(id_grupo) {
     jQuery.ajax({
@@ -63,11 +112,13 @@ function buscarParametro(id_grupo) {
                 try {
                     var respostaControle = JSON.parse(e.responseText);
 
-                    if (respostaControle.Codigo == 1)
-                        alert("Erro ao Buscar Livros...");
-                    else {
-                        
+                    if (respostaControle.Codigo == 0) {
+                        jQuery("#id_grupo").val(respostaControle.Dados[0].Id);
+                        jQuery("#nome").val(respostaControle.Dados[0].Nome);
+                        jQuery("#valor").val(respostaControle.Dados[0].Valor);
                     }
+                    else
+                        alert("Erro ao Buscar Livros...");
 
                 } catch (error) {
                     console.log(error);
@@ -107,6 +158,13 @@ function buscarParametros() {
                             htmlTabela += '</td></tr>';
                         });
 
+                        if (htmlTabela == '') {
+                            htmlTabela += '<tr><td class="text-dark">Nenhum Registro Encontrado</td>';
+                            htmlTabela += '<td class="text-center"></td>';
+                            htmlTabela += '<td class="text-right">';
+                            htmlTabela += '</td></tr>';
+                        }
+
                         jQuery("#tbody_tabela_grupo").html(htmlTabela);
                     }
 
@@ -135,7 +193,6 @@ function cadastrarGrupo(objetoEnvio) {
                     var respostaControle = JSON.parse(e.responseText);
 
                     if (respostaControle.Codigo == 0) {
-                        alert("Grupo Cadastrado");
                         buscarParametros();
                     }
                     else

@@ -2,7 +2,7 @@
 
 namespace ToCBooks.App.Business.Models
 {
-    public class EnderecoCobrancaModel
+    public class EnderecoCobrancaModel : EntidadeDominio
     {
         public int Numero { get; set; }
 
@@ -12,7 +12,7 @@ namespace ToCBooks.App.Business.Models
 
         public int CEP { get; set; }
 
-        public PaisModel Pais { get; set; }
+        public CidadeModel Cidade { get; set; }
 
         public ETipoLogradouro TipoLogradouro { get; set; }
 

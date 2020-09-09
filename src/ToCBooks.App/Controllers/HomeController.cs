@@ -19,6 +19,9 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("1", new ConsultarCommand());
             mapCommand.Add("2", new CadastrarCommand());
             mapCommand.Add("3", new DesativarCommand());
+            mapCommand.Add("4", new ExcluirCommand());
+            mapCommand.Add("5", new BuscarCommand());
+            mapCommand.Add("6", new AtivarCommand());
 
             mapVH.Add("LivrosModel", new LivroVH());
             mapVH.Add("Parametro", new ParametroVH());

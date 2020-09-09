@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ToCBooks.App.Data.Context;
 
 namespace ToCBooks.App.Migrations
 {
     [DbContext(typeof(ToCBooksContext))]
-    partial class ToCBooksContextModelSnapshot : ModelSnapshot
+    [Migration("20200909000537_Atualizacao07")]
+    partial class Atualizacao07
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,8 +34,6 @@ namespace ToCBooks.App.Migrations
                     b.Property<string>("NomeCategoria")
                         .HasColumnType("VARCHAR(MAX)");
 
-                    b.Property<int>("StatusAtual");
-
                     b.HasKey("Id");
 
                     b.HasIndex("LivrosModelId");
@@ -51,8 +51,6 @@ namespace ToCBooks.App.Migrations
                     b.Property<string>("Justificativa");
 
                     b.Property<string>("Nome");
-
-                    b.Property<int>("StatusAtual");
 
                     b.HasKey("Id");
 
@@ -81,8 +79,6 @@ namespace ToCBooks.App.Migrations
                     b.Property<string>("Observacao");
 
                     b.Property<string>("Senha");
-
-                    b.Property<int>("StatusAtual");
 
                     b.Property<int?>("TelefoneId");
 
@@ -118,8 +114,6 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<int>("Numero");
 
-                    b.Property<int>("StatusAtual");
-
                     b.Property<int>("TipoLogradouro");
 
                     b.Property<int>("TipoResidencia");
@@ -148,8 +142,6 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<int>("Numero");
 
-                    b.Property<int>("StatusAtual");
-
                     b.Property<int>("TipoLogradouro");
 
                     b.HasKey("Id");
@@ -169,8 +161,6 @@ namespace ToCBooks.App.Migrations
                     b.Property<string>("Nome");
 
                     b.Property<Guid?>("PaisId");
-
-                    b.Property<int>("StatusAtual");
 
                     b.HasKey("Id");
 
@@ -227,8 +217,6 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<double>("Profundidade");
 
-                    b.Property<int>("StatusAtual");
-
                     b.Property<string>("Titulo")
                         .IsRequired()
                         .HasColumnType("varchar(200)");
@@ -249,8 +237,6 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<string>("Nome");
 
-                    b.Property<int>("StatusAtual");
-
                     b.HasKey("Id");
 
                     b.ToTable("PaisModel");
@@ -266,8 +252,6 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<string>("Nome")
                         .HasColumnType("VARCHAR(MAX)");
-
-                    b.Property<int>("StatusAtual");
 
                     b.Property<int>("Tipo");
 

@@ -13,7 +13,6 @@ namespace ToCBooks.App.Business.Models
             ValorInativacao = 1
         }
 
-
         public string Nome { get; set; }
         public double Valor { get; set; }
         public TipoParametro Tipo { get; set; }

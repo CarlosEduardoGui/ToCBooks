@@ -1,4 +1,5 @@
 ﻿using System;
+using ToCBooks.App.Business.Models.Enum;
 
 namespace ToCBooks.App.Business.Models
 {
@@ -7,21 +8,12 @@ namespace ToCBooks.App.Business.Models
         protected EntidadeDominio()
         {
             Id = Guid.NewGuid();
-            StatusAtual = Status.Ativo;
-        }
-        public enum Status
-        {
-            Ativo = 0,
-            Inativo = 1
+            StatusAtual = ETipoStatus.Ativo;
         }
 
         public Guid Id { get; set; }
-        private Status _status;
-        public Status StatusAtual
-        {
-            get { return _status; }
-            set { _status = value; }
-        }
+        public ETipoStatus StatusAtual { get; set; }
+        public string Justificativa { get; set; }
 
     }
 }

@@ -10,6 +10,7 @@ namespace ToCBooks.App.Data.Interfaces
         MensagemModel Cadastrar(EntidadeDominio Objeto);
 
         MensagemModel Desativar(EntidadeDominio Objeto);
+        MensagemModel Ativar(EntidadeDominio Objeto);
 
         MensagemModel Atualizar(EntidadeDominio Objeto);
 
@@ -19,6 +20,6 @@ namespace ToCBooks.App.Data.Interfaces
 
         MensagemModel Consultar(EntidadeDominio Objeto);
 
-        IEnumerable<MensagemModel> Buscar(Expression<Func<EntidadeDominio, bool>> predicate);
+        MensagemModel Buscar(Expression<Func<EntidadeDominio, bool>> predicate);
     }
 }

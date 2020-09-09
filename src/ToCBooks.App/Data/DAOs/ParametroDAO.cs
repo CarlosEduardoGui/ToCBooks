@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using ToCBooks.App.Business.Models;
+using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
 
@@ -11,12 +12,30 @@ namespace ToCBooks.App.Data.DAOs
 {
     public class ParametroDAO : IDAO
     {
-        public Task<MensagemModel> Atualizar(EntidadeDominio Objeto)
+        public MensagemModel Ativar(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<MensagemModel>> Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
+        public MensagemModel Atualizar(EntidadeDominio Objeto)
+        {
+            using (var db = new ToCBooksContext())
+            {
+                Parametro Parametro = (Parametro)Objeto;
+                db.Parametros.Update(Parametro);
+                db.SaveChanges();
+            }
+
+            MensagemModel Mensagem = new MensagemModel
+            {
+                Codigo = 1,
+                Dados = null
+            };
+
+            return Mensagem;
+        }
+
+        public MensagemModel Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
         {
             throw new NotImplementedException();
         }
@@ -28,6 +47,7 @@ namespace ToCBooks.App.Data.DAOs
                 db.Add(Objeto);
                 db.SaveChanges();
             }
+
             MensagemModel Mensagem = new MensagemModel
             {
                 Codigo = 1,
@@ -40,13 +60,16 @@ namespace ToCBooks.App.Data.DAOs
         public MensagemModel Consultar(EntidadeDominio Objeto)
         {
             MensagemModel Mensagem = new MensagemModel();
-
-            
             using (var db = new ToCBooksContext())
             {
-                db.Parametros.Where(x => x.StatusAtual == EntidadeDominio.Status.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
+                var ObjetoPersistido = db.Find<Parametro>(Objeto.Id);
+                if (ObjetoPersistido != null)
+                    Mensagem.Dados.Add(ObjetoPersistido);
+                else
+                    db.Parametros.Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
             }
 
+            Mensagem.Dados.OrderBy(x => x.Id);
             Mensagem.Codigo = 0;
             Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
 
@@ -63,34 +86,25 @@ namespace ToCBooks.App.Data.DAOs
             throw new NotImplementedException();
         }
 
-        public Task<MensagemModel> Editar(EntidadeDominio Objeto)
+        public MensagemModel Editar(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
         }
 
-        public Task<MensagemModel> Excluir(EntidadeDominio Objeto)
+        public MensagemModel Excluir(EntidadeDominio Objeto)
         {
-            throw new NotImplementedException();
+            MensagemModel Mensagem = new MensagemModel();
+            using (var db = new ToCBooksContext())
+            {
+                db.Remove(Objeto);
+                db.SaveChanges();
+            }
+
+            Mensagem.Codigo = 0;
+            Mensagem.Resposta = "Dados Excluidos Com Sucesso ...";
+
+            return Mensagem;
         }
 
-        MensagemModel IDAO.Atualizar(EntidadeDominio Objeto)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<MensagemModel> IDAO.Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        MensagemModel IDAO.Editar(EntidadeDominio Objeto)
-        {
-            throw new NotImplementedException();
-        }
-
-        MensagemModel IDAO.Excluir(EntidadeDominio Objeto)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

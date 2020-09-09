@@ -369,15 +369,15 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Titulo</label>
-                                        <input type="text" id="titulo" class="form-control titulo" name="titulo"
-                                            required />
+                                        <input type="text" id="busca_titulo" class="form-control titulo" name="titulo"
+                                             />
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Autor</label>
-                                        <input type="text" id="autor" class="form-control titulo" name="autor"
-                                            required />
+                                        <input type="text" id="busca_autor" class="form-control titulo" name="autor"
+                                             />
                                     </div>
                                 </div>
                             </div>
@@ -386,15 +386,15 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Editora</label>
-                                        <input type="text" id="editora" class="form-control titulo" name="editora"
-                                            required />
+                                        <input type="text" id="busca_editora" class="form-control titulo" name="editora"
+                                             />
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Codigo De Barras</label>
-                                        <input type="text" id="barras" class="form-control titulo" name="barras"
-                                            required />
+                                        <input type="text" id="busca_barras" class="form-control titulo" name="barras"
+                                             />
                                     </div>
                                 </div>
                             </div>
@@ -403,10 +403,10 @@
                                 <div class="col-12" style="text-align: center;">
                                     <div class="form-group">
                                         <label>Status</label><br />
-                                        <select class="selectpicker">
+                                        <select class="selectpicker" id="busca_status" name="status">
                                             <option value=""></option>
-                                            <option value="Ativo">Ativo</option>
-                                            <option value="Inativo">Inativo</option>
+                                            <option value="0">Ativo</option>
+                                            <option value="1">Inativo</option>
                                         </select>
                                     </div>
                                 </div>
@@ -434,22 +434,22 @@
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label>Ano</label>
-                                                    <input type="text" id="ano" class="form-control" name="ano"
-                                                        required />
+                                                    <input type="text" id="busca_ano" class="form-control" name="ano"
+                                                         />
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label>Edição</label>
-                                                    <input type="text" id="edicao" class="form-control" name="edicao"
-                                                        required />
+                                                    <input type="text" id="busca_edicao" class="form-control" name="edicao"
+                                                         />
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label>Qtde Paginas</label>
-                                                    <input type="text" id="paginas" class="form-control" name="paginas"
-                                                        required />
+                                                    <input type="text" id="busca_paginas" class="form-control" name="paginas"
+                                                         />
                                                 </div>
                                             </div>
                                         </div>
@@ -457,22 +457,22 @@
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label>Altura</label>
-                                                    <input type="text" id="altura" class="form-control" name="altura"
-                                                        required />
+                                                    <input type="text" id="busca_altura" class="form-control" name="altura"
+                                                         />
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label>Largura</label>
-                                                    <input type="text" id="largura" class="form-control" name="largura"
-                                                        required />
+                                                    <input type="text" id="busca_largura" class="form-control" name="largura"
+                                                         />
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label>Peso</label>
-                                                    <input type="text" id="peso" class="form-control" name="peso"
-                                                        required />
+                                                    <input type="text" id="busca_peso" class="form-control" name="peso"
+                                                         />
                                                 </div>
                                             </div>
                                         </div>
@@ -480,21 +480,21 @@
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label>Profundidade</label>
-                                                    <input type="text" id="profundidade" class="form-control"
-                                                        name="profundidade" required />
+                                                    <input type="text" id="busca_profundidade" class="form-control"
+                                                        name="profundidade"  />
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label>ISBN</label>
-                                                    <input type="text" id="isbn" class="form-control" name="isbn"
+                                                    <input type="text" id="busca_isbn" class="form-control" name="isbn"
                                                         required />
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label>Categoria</label>
-                                                    <select class="selectpicker" multiple data-live-search="true">
+                                                    <select class="selectpicker" multiple data-live-search="true" id="busca_categoria">
                                                         <option value=""></option>
                                                         <option value="Terror">Terror</option>
                                                         <option value="Aventura">Aventura</option>
@@ -515,7 +515,7 @@
                                             <div class="col-12">
                                                 <div class="form-group" style="width: 60%; margin-left:35%;">
                                                     <label>Grupo de Precificação</label><br />
-                                                    <select class="selectpicker">
+                                                    <select class="selectpicker" id="busca_precificacao">
                                                         <option value=""></option>
                                                         <option value="Grupo AY">Grupo AY</option>
                                                         <option value="Grupo AZ">Grupo AZ</option>
@@ -556,7 +556,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Justificativa</label>
-                                    <textarea rows="5" style="resize: none;" name="descricao" id="descricao"
+                                    <textarea rows="5" style="resize: none;" name="descricao" id="descricao_del"
                                         class="form-control" required></textarea>
                                 </div>
                             </div>
@@ -565,12 +565,12 @@
                         <div class="row" style="margin-top: 5%">
                             <div class="col-6" style="text-align: center;">
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-success" id="btn_sim">Sim</button>
+                                    <button type="button" class="btn btn-success" id="btn_del_sim">Sim</button>
                                 </div>
                             </div>
                             <div class="col-6" style="text-align: center;">
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-danger" id="btn_sim">Não</button>
+                                    <button type="button" class="btn btn-danger" id="btn_del_nao">Não</button>
                                 </div>
                             </div>
                         </div>
@@ -598,7 +598,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Justificativa</label>
-                                    <textarea rows="5" style="resize: none;" name="descricao" id="descricao"
+                                    <textarea rows="5" style="resize: none;" name="descricao" id="atv_justificativa"
                                         class="form-control" required></textarea>
                                 </div>
                             </div>
@@ -607,12 +607,12 @@
                         <div class="row" style="margin-top: 5%">
                             <div class="col-6" style="text-align: center;">
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-success" id="btn_sim">Sim</button>
+                                    <button type="button" class="btn btn-success" id="btn_atv_sim">Sim</button>
                                 </div>
                             </div>
                             <div class="col-6" style="text-align: center;">
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-danger" id="btn_sim">Não</button>
+                                    <button type="button" class="btn btn-danger" id="btn_atv_nao">Não</button>
                                 </div>
                             </div>
                         </div>
@@ -816,7 +816,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Categoria</label>
-                                    <select class="selectpicker" multiple data-live-search="true">
+                                    <select class="selectpicker" multiple data-live-search="true" id="cad_categoria_livro">
                                         <option value=""></option>
                                         <option value="Terror">Terror</option>
                                         <option value="Aventura">Aventura</option>
@@ -837,10 +837,7 @@
                             <div class="col-12">
                                 <div class="form-group" style="width: 60%; margin-left:35%;">
                                     <label>Grupo de Precificação</label><br />
-                                    <select class="selectpicker">
-                                        <option value=""></option>
-                                        <option value="Grupo AY">Grupo AY</option>
-                                        <option value="Grupo AZ">Grupo AZ</option>
+                                    <select id="cad_grupo_precificacao">
                                     </select>
                                 </div>
                             </div>

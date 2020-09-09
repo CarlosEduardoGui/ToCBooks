@@ -1,10 +1,9 @@
-﻿
+﻿var idEntidadeTemp;
 
 jQuery(document).ready(function () {
-
-
     buscarLivros();
     jQuery("#btn_cad_livro").on('click', function () {
+        buscarParametros();
         jQuery("#modal_cad_livro").modal("show");
     });
 
@@ -19,17 +18,32 @@ jQuery(document).ready(function () {
     jQuery(document).on('click', '.desativar', function (e) {
         e.preventDefault();
 
+        idEntidadeTemp = jQuery(this).attr('id_livro');
+
         jQuery("#modal_confirmacao_delecao").modal('show');
-        //var id_livro = jQuery(this).attr('id_livro');
-        //desativarLivro(id_livro);
     });
 
     jQuery("#form_cad_livro").on('submit', function (e) {
         e.preventDefault();
         var formData = new FormData(this);
-        var livro = { Titulo: formData.get('titulo'), Preco: formData.get('preco'), Descricao: formData.get('descricao'), Foto: formData.get("foto")  };
+
+        var Categorias = new Array();
+        jQuery("#cad_categoria_livro").val().forEach(elemento => {
+            var categoria = { NomeCategoria: '' };
+            categoria.NomeCategoria = elemento;
+            Categorias.push(categoria);
+        });
+
+        var livro = {
+            Titulo: formData.get('titulo'), Preco: formData.get('preco'), Descricao: formData.get('descricao'), Foto: formData.get("foto"),
+            Autor: formData.get("autor"), Ano: formData.get('ano'), Editora: formData.get('editora'), Edicao: formData.get("edicao"),
+            CodigoDeBarras: formData.get('barras'), ISBN: formData.get('isbn'), Paginas: formData.get("paginas"), Altura: formData.get("altura"),
+            Largura: formData.get("largura"), Profundidade: formData.get('profundidade'), Peso: formData.get("peso"),
+            Categorias: Categorias, Precificacao: { Id: jQuery("#cad_grupo_precificacao").val() },Preco: '0.00'
+        };
 
         var objetoEnvio = { oper: '2', mapKey: 'LivrosModel', jsonString: JSON.stringify(livro) }
+
         cadastrarLivro(objetoEnvio);
     });
 
@@ -53,6 +67,13 @@ jQuery(document).ready(function () {
 
     jQuery("#btn_consultar").on('click', function () {
 
+        jQuery("#busca_ano").val(new Date().getFullYear());
+        jQuery("#busca_edicao").val("0");
+        jQuery("#busca_paginas").val("0");
+        jQuery("#busca_altura").val("0.00");
+        jQuery("#busca_largura").val("0.00");
+        jQuery("#busca_peso").val("0.00");
+        jQuery("#busca_profundidade").val("0.00");
         jQuery("#modal_busca").modal("show");
     });
 
@@ -65,22 +86,194 @@ jQuery(document).ready(function () {
     jQuery(document).on("click", '.definir_estoque', function () {
         jQuery("#modal_estoque").modal("show");
     });
-    
+
     jQuery("#habilitar_edicao_estoque").on("click", function () {
         jQuery("#qtde_estoque").removeAttr("disabled");
         jQuery("#btn_salvar_estoque").fadeIn("300");
     });
 
-    jQuery('select').selectpicker({
+    jQuery('.selectpicker').selectpicker({
         noneSelectedText: "Selecione..."
+    });
+
+    jQuery("#btn_del_nao").on('click', function () {
+        jQuery("#modal_confirmacao_delecao").modal('hide');
+    });
+
+    jQuery("#btn_del_sim").on('click', function () {
+        desativarLivro({ Id: idEntidadeTemp, Justificativa: jQuery("#descricao_del").val() });
+    });
+
+    jQuery("#btn_consultar_livros").on('click', function (e) {
+        e.preventDefault();
+
+        if (jQuery("#form_consulta_livros").valid())
+            jQuery("#form_consulta_livros").submit();
+    });
+
+    jQuery("#form_consulta_livros").on('submit', function (e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+
+        var Categorias = new Array();
+        jQuery("#busca_categoria").val().forEach(elemento => {
+            var categoria = { NomeCategoria: '' };
+            categoria.NomeCategoria = elemento;
+            Categorias.push(categoria);
+        });
+
+        var livro = {
+            Titulo: formData.get('titulo'), Preco: formData.get('preco'), Descricao: formData.get('descricao'),
+            Autor: formData.get("autor"), Ano: formData.get('ano'), Editora: formData.get('editora'), Edicao: formData.get("edicao"),
+            CodigoDeBarras: formData.get('barras'), ISBN: formData.get('isbn'), Paginas: formData.get("paginas"), Altura: formData.get("altura"),
+            Largura: formData.get("largura"), Profundidade: formData.get('profundidade'), Peso: formData.get("peso"),
+            Categorias: Categorias, Preco: '0.00', StatusAtual: formData.get("status")
+        };
+
+        var objetoEnvio = { oper: '5', mapKey: 'LivrosModel', jsonString: JSON.stringify(livro) }
+
+        consultarLivro(objetoEnvio);
+    });
+
+    jQuery(document).on('click', '.ativar', function () {
+        idEntidadeTemp = jQuery(this).attr("id_livro");
+        jQuery("#modal_confirmacao_ativacao").modal('show');
+    });
+
+    jQuery("#btn_atv_sim").on('click', function () {
+        ativarLivro({ Id: idEntidadeTemp, Justificativa: jQuery("#atv_justificativa").val() });
+    });
+
+    jQuery("#btn_atv_nao").on('click', function () {
+        jQuery("#modal_confirmacao_ativacao").modal('hide');
     });
 });
 
-function desativarLivro(id_livro) { 
+
+function consultarLivro(objetoEnvio) {
     jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
-        data: { oper: "3", mapKey: "LivrosModel", JsonString: JSON.stringify({Id: id_livro}) },
+        data: {
+            oper: '1', mapKey: 'LivrosModel', JsonString: objetoEnvio.jsonString },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Dados.length > 0) {
+
+
+                    }
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+function ativarLivro(objetoEnvio) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "6", mapKey: "LivrosModel", JsonString: JSON.stringify(objetoEnvio) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Codigo == 1)
+                        alert("Erro ao Ativar Livro...");
+                    else {
+                        jQuery("#modal_confirmacao_ativacao").modal("hide");
+                        buscarLivros();
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+
+function consultarLivro(objetoEnvio) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: objetoEnvio.oper, mapKey: objetoEnvio.mapKey, JsonString: objetoEnvio.jsonString },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Dados.length > 0) {
+
+                        var htmlLivros = '';
+
+                        respostaControle.Dados.forEach(Livro => {
+                            htmlLivros += '<div class="media d-flex mb-5"><div class="media-image align-self-center mr-3 rounded"><a href="#">';
+                            htmlLivros += '<img style="border-radius: 20px; max-height: 100px; max-width: 100px;" src="' + Livro.Foto + '" alt="customer image"></a></div>';
+                            htmlLivros += '<div class="media-body align-self-center"><a href="#"><h6 class="mb-3 text-dark font-weight-medium">';
+                            htmlLivros += Livro.Titulo;
+                            htmlLivros += '</h6></a><p class="float-md-right"><span class="text-dark mr-2">';
+                            htmlLivros += '<button type="button" class="editar_livro" id_livro="' + Livro.Id + '"><i style="font-size: 20px;" class="mdi mdi-account-edit"></i></button>';
+
+                            if (Livro.StatusAtual == 0)
+                                htmlLivros += '</span><button type="button" class="desativar" id_livro="' + Livro.Id + '"><i style="font-size: 20px;" class="mdi mdi-trash-can"></i></button></p>';
+                            else
+                                htmlLivros += '</span><button type="button" class="ativar" id_livro="' + Livro.Id + '"><i style="font-size: 20px;" class="mdi mdi-delete-restore"></i></button></p>';
+
+                            htmlLivros += '<p class="d-none d-md-block">';
+                            htmlLivros += Livro.Descricao;
+                            htmlLivros += '</p><p class="mb-0" >';
+                            htmlLivros += 'R$' + Livro.Preco;
+                            htmlLivros += '</p></div></div>';
+                        });
+                    } else {
+                        htmlLivros += '<div class="media d-flex mb-5"><div class="media-image align-self-center mr-3 rounded"><a href="#">';
+                        htmlLivros += '</a></div>';
+                        htmlLivros += '<div class="media-body align-self-center"><a href="#"><h6 class="mb-3 text-dark font-weight-medium">';
+                        htmlLivros += "Nenhum Livro Cadastrado.";
+                        htmlLivros += '</h6></a><p class="float-md-right"><span class="text-dark mr-2">';
+                        htmlLivros += '</span></p>';
+                        htmlLivros += '<p class="d-none d-md-block">';
+                        htmlLivros += '</p><p class="mb-0" >';
+                        htmlLivros += '</p></div></div>';
+                    }
+
+                    jQuery("#modal_busca").modal("hide");
+                    jQuery("#tabela_livros").html(htmlLivros);
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+
+function desativarLivro(objetoEnvio) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "3", mapKey: "LivrosModel", JsonString: JSON.stringify(objetoEnvio) },
         cache: false,
         beforeSend: function (xhr) {
 
@@ -93,8 +286,49 @@ function desativarLivro(id_livro) {
                     if (respostaControle.Codigo == 1)
                         alert("Erro ao Desativar Livro...");
                     else {
-                        alert("Livro desativado...");
+                        jQuery("#modal_confirmacao_delecao").modal("hide");
                         buscarLivros();
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+
+function buscarParametros() {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "1", mapKey: "Parametro", JsonString: JSON.stringify({}) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Codigo == 1)
+                        alert("Erro ao Buscar Livros...");
+                    else {
+                        var htmlSelect = '<option value=""></option>';
+
+                        respostaControle.Dados.forEach(grupo => {
+                            htmlSelect += '<option value="' + grupo.Id + '">' + grupo.Nome + '</option>';
+                        });
+
+                        console.log(htmlSelect);
+
+                        jQuery("#cad_grupo_precificacao").html(htmlSelect);
+                        jQuery("#cad_grupo_precificacao").selectpicker({
+                            noneSelectedText: "Selecione..."
+                        });
                     }
 
                 } catch (error) {
@@ -153,7 +387,7 @@ function buscarLivros() {
                             htmlLivros += '</p></div></div>';
                         }
 
-                        //jQuery("#tabela_livros").html(htmlLivros);
+                        jQuery("#tabela_livros").html(htmlLivros);
                     }
 
                 } catch (error) {
@@ -182,7 +416,6 @@ function cadastrarLivro(objetoEnvio) {
                     var respostaControle = JSON.parse(e.responseText);
 
                     if (respostaControle.Codigo == 0) {
-                        alert("Livro Cadastrado");
                         buscarLivros();
                     }
                     else

@@ -1,9 +1,7 @@
 ﻿namespace ToCBooks.App.Business.Models
 {
-    public class PaisModel
+    public class PaisModel : EntidadeDominio
     {
         public string Nome { get; set; }
-
-        public EstadoModel Estado { get; set; }
     }
 }

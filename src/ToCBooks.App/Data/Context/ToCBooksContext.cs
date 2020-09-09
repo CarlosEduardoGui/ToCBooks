@@ -9,7 +9,7 @@ namespace ToCBooks.App.Data.Context
     {
         public DbSet<LivrosModel> Livro { get; set; }
         public DbSet<Parametro> Parametros { get; set; }
-
+        public DbSet<Parametro> Categoria { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

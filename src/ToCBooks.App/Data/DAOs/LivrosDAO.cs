@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using ToCBooks.App.Business.Models;
+using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
 using ToCBooks.App.Models;
@@ -11,6 +12,22 @@ namespace ToCBooks.App.Data.DAOs
 {
     public class LivrosDAO : ToCBooksContext, IDAO
     {
+        public MensagemModel Ativar(EntidadeDominio Objeto)
+        {
+            MensagemModel Mensagem = new MensagemModel();
+            using (var db = new ToCBooksContext())
+            {
+                LivrosModel Livro = db.Find<LivrosModel>(Objeto.Id);
+                Livro.StatusAtual = ETipoStatus.Ativo;
+                Livro.Justificativa = Objeto.Justificativa;
+                db.SaveChanges();
+            }
+
+            Mensagem.Codigo = 0;
+            Mensagem.Resposta = "Livro Ativado...";
+
+            return Mensagem;
+        }
 
         public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
@@ -23,22 +40,35 @@ namespace ToCBooks.App.Data.DAOs
             throw new NotImplementedException();
         }
 
-        public IEnumerable<MensagemModel> Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
+        public MensagemModel Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
         {
-            throw new NotImplementedException();
+            MensagemModel Mensagem = new MensagemModel();
+            using (var db = new ToCBooksContext())
+            {
+                db.Livro.Where(predicate.Compile()).ToList().ForEach(x => Mensagem.Dados.Add(x));
+            }
+
+            Mensagem.Codigo = 0;
+            Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
+
+            return Mensagem;
         }
 
         public MensagemModel Cadastrar(EntidadeDominio Objeto)
         {
+            LivrosModel Livro = (LivrosModel)Objeto;
+
             using (var db = new ToCBooksContext())
             {
-                db.Add(Objeto);
+                Livro.Precificacao = db.Find<Parametro>(Livro.Precificacao.Id);
+
+                db.Livro.Add(Livro);
                 db.SaveChanges();
             }
             MensagemModel Mensagem = new MensagemModel
             {
-                Codigo = 1,
-                Resposta = "Foi"
+                Codigo = 0,
+                Resposta = "Livro Foi Cadastrado Com Sucesso..."
             };
 
             return Mensagem;
@@ -49,7 +79,11 @@ namespace ToCBooks.App.Data.DAOs
             MensagemModel Mensagem = new MensagemModel();
             using (var db = new ToCBooksContext())
             {
-                db.Livro.Where(x => x.StatusAtual == EntidadeDominio.Status.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
+                var ObjetoPersistido = db.Find<LivrosModel>(Objeto.Id);
+                if (ObjetoPersistido != null)
+                    Mensagem.Dados.Add(ObjetoPersistido);
+                else
+                    db.Livro.Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
             }
 
             Mensagem.Codigo = 0;
@@ -63,8 +97,9 @@ namespace ToCBooks.App.Data.DAOs
             MensagemModel Mensagem = new MensagemModel();
             using (var db = new ToCBooksContext())
             {
-                LivrosModel Livro = db.Livro.Where(x => x.Id == Objeto.Id).First();
-                Livro.StatusAtual = EntidadeDominio.Status.Inativo;
+                LivrosModel Livro = db.Find<LivrosModel>(Objeto.Id);
+                Livro.StatusAtual = ETipoStatus.Inativo;
+                Livro.Justificativa = Objeto.Justificativa;
                 db.SaveChanges();
             }
 
