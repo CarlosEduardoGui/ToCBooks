@@ -116,10 +116,10 @@
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Insira seu E-mail">
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="password" class="form-control" id="senha" name="senha" placeholder="Insira sua senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira sua senha'">
+                                <input type="password" class="form-control" id="senha1" name="senha1" placeholder="Insira sua senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira sua senha'">
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="password" class="form-control" id="senha" name="senha" placeholder="Insira sua senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirme a Senha'">
+                                <input type="password" class="form-control" id="senha2" name="senha2" placeholder="Repita a senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Repita a senha'">
                             </div>
                             <div class="col-md-6 form-group">
                                 <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome Completo'">
@@ -145,10 +145,10 @@
                                 <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefone'">
                             </div>
                             <div class="col-md-4 form-group">
-                                <select id="grupo_def_preco" name="grupo_def_preco" >
-                                    <option value="">Selecione a Tipo de Telefone</option>
-                                    <option value="Grupo AY">Fixo</option>
-                                    <option value="Grupo AZ">Celular</option>
+                                <select id="etipotelefone" name="etipotelefone" >
+                                    <option value="0">Selecione a Tipo de Telefone</option>
+                                    <option value="1">Fixo</option>
+                                    <option value="2">Celular</option>
                                 </select>
                             </div>
                             <div class="col-md-12 form-group" style="margin-top: 4%; margin-bottom: 4%;">
@@ -169,7 +169,7 @@
                                 </select>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="Logradouro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Logradouro'">
+                                <input type="text" class="form-control" id="enderecoCobranca" name="enderecoCobranca" placeholder="Logradouro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Logradouro'">
                             </div>
                             <div class="col-md-4 form-group">
                                 <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
@@ -179,7 +179,7 @@
                                 </select>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
+                                <input type="number" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
                             </div>
                             <div class="col-md-8 form-group">
                                 <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
@@ -197,8 +197,12 @@
                                 <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
                             </div>
                             <div class="col-md-12 form-group">
-                                <textarea class="form-control" rows="5" placeholder="Observacoes"></textarea>
+                                <textarea class="form-control" rows="5" id="enderecoObservacoesCobranca" name="enderecoObservacoesCobranca" placeholder="Observações"></textarea>
                             </div>
+
+
+
+
 
                             <div class="col-md-12 form-group" style="margin-top: 4%; margin-bottom: 4%;">
                                 <h3>Endereço de Entrega</h3>
@@ -219,7 +223,7 @@
                                 </select>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="Logradouro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Logradouro'">
+                                <input type="text" class="form-control" id="enderecoEntrega" name="enderecoEntrega" placeholder="Logradouro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Logradouro'">
                             </div>
                             <div class="col-md-4 form-group">
                                 <select id="enderecoEntregaEtiporesidencia" name="enderecoEntregaEtiporesidencia">
@@ -229,7 +233,7 @@
                                 </select>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="text" class="form-control" id="enderecoEntregaCep" name="enderecoEntregaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
+                                <input type="number" class="form-control" id="enderecoEntregaCep" name="enderecoEntregaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
                             </div>
                             <div class="col-md-8 form-group">
                                 <input type="text" class="form-control" id="enderecoEntregaBairro" name="enderecoEntregaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
@@ -247,7 +251,7 @@
                                 <input type="text" class="form-control" id="enderecoEntregaPais" name="enderecoEntregaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
                             </div>
                             <div class="col-md-12 form-group">
-                                <textarea class="form-control" rows="5" placeholder="Observacoes"></textarea>
+                                <textarea class="form-control" rows="5" id="enderecoObservacoesEntrega" name="enderecoObservacoesEntrega" placeholder="Oberservações"></textarea>
                             </div>
 
                             <div class="col-md-12 form-group" style="margin-top: 4%; margin-bottom: 4%;">
@@ -261,13 +265,13 @@
                                 <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Nome impresso no Cartão" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome impresso no Cartão'">
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="CVV" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CVV'">
+                                <input type="text" class="form-control" id="codigoSeguranca" name="codigoSeguranca" placeholder="CVV" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CVV'">
                             </div>
                             <div class="col-md-6 form-group">
-                                <select id="grupo_def_preco" name="grupo_def_preco" >
-                                    <option value="">Selecione a Bandeira</option>
-                                    <option value="Grupo AY">Mastercard</option>
-                                    <option value="Grupo AZ">Visa</option>
+                                <select id="etipoCartao" name="etipoCartao" >
+                                    <option value="0">Selecione a Bandeira</option>
+                                    <option value="1">Visa</option>
+                                    <option value="2">Mastercard</option>
                                 </select>
                             </div>
                             <br />
@@ -322,21 +326,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3  col-md-6 col-sm-6">
-                    <div class="single-footer-widget mail-chimp">
-                        <h6 class="mb-20">Propagandas</h6>
-                        <ul class="instafeed d-flex flex-wrap">
-                            <li><img src="img/i1.jpg" alt=""></li>
-                            <li><img src="img/i2.jpg" alt=""></li>
-                            <li><img src="img/i3.jpg" alt=""></li>
-                            <li><img src="img/i4.jpg" alt=""></li>
-                            <li><img src="img/i5.jpg" alt=""></li>
-                            <li><img src="img/i6.jpg" alt=""></li>
-                            <li><img src="img/i7.jpg" alt=""></li>
-                            <li><img src="img/i8.jpg" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h6>Redes Sociais</h6>
@@ -365,118 +354,14 @@
 
     <script src="js/vendor/jquery-2.2.4.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <!--<script src="js/jquery.ajaxchimp.min.js"></script>-->
     <script src="js/jquery.nice-select.min.js"></script>
     <script src="js/jquery.sticky.js"></script>
     <script src="js/nouislider.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/registration.js"></script>
+    <!--<script src="js/main.js"></script>-->
+    <script src="js/My/registration.js"></script>
 </body>
 
 </html>
-
-<script>
-    jQuery(document).ready(function () {
-        jQuery("#btn_salvar").on("click", function (e) {
-            e.preventDefault();
-
-            var telefone = {
-                ddd: jQuery('#ddd').val(),
-                numero: jQuery('#telefone').val()
-            };
-
-            var cidadeCobranca = {
-                nome: jQuery('#enderecoCobrancaCidade').val(),
-            };
-
-            var estadoCobranca = {
-                nome: jQuery('#enderecoCobrancaEstado').val(),
-                cidade: cidadeCobranca
-            };
-
-            var paisCobranca = {
-                nome: jQuery('#enderecoCobrancaPais').val(),
-                estado: estadoCobranca
-            };
-
-            var cidadeEntrega = {
-                nome: jQuery('#enderecoEntregaCidade').val(),
-            };
-
-            var estadoEntrega = {
-                nome: jQuery('#enderecoEntregaEstado').val(),
-                cidade: cidadeEntrega
-            };
-
-            var paisEntrega = {
-                nome: jQuery('#enderecoEntregaPais').val(),
-                estado: estadoEntrega
-            };
-
-            var enderecoCobranca = {
-                enderecocobranca: jQuery('#enderecoCobranca').val(),
-                tipologradouro: jQuery('#enderecoCobrancaEtipologradouro').val(),
-                tiporesidencia: jQuery('#enderecoCobrancaEtiporesidencia').val(),
-                cep: jQuery('#enderecoCobrancaCep').val(),
-                bairro: jQuery('#enderecoCobrancaBairro').val(),
-                numero: jQuery('#enderecoCobrancaNumero').val(),
-                pais: paisCobranca
-            };
-
-            var enderecoEntrega = {
-                numero: jQuery('#enderecoEntregaNumero').val(),
-                nome: jQuery('#enderecoEntrega').val(),
-                bairro: jQuery('#enderecoEntregaBairro').val(),
-                cep: jQuery('#enderecoEntregaCep').val(),
-                pais: paisEntrega,
-                tipologradouro: jQuery('#enderecoEntregaEtipologradouro').val(),
-                tipoResidencia: jQuery('#enderecoEntregaEtiporesidencia').val()
-            };
-
-            var Object = {
-                nome: jQuery('#nome').val(),
-                cpf: jQuery('#cpf').val(),
-                email: jQuery('#email').val(),
-                senha: jQuery('#senha').val(),
-                telefone: telefone,
-                genero: jQuery('#genero').val(),
-                datanascimento: jQuery('#datanascimento').val(),
-                enderecoCobranca: enderecoCobranca,
-                enderecoEntrega: enderecoEntrega,
-                tipoUsuario: 2,
-                tipoGenero: jQuery('#genero').val()
-            };
-
-            console.log(Object);
-
-            jQuery.ajax({
-                type: "POST",
-                url: 'https://localhost:44354/Operations',
-                data: { oper: 2, mapKey: 'ClienteModel', JsonString: JSON.stringify(Object) },
-                cache: false,
-                beforeSend: function (xhr) {
-
-                },
-                complete: function (e, xhr, result) {
-                    console.log(e.readyState);
-                    console.log(e.status);
-                    if (e.readyState == 4 && e.status == 200) {
-
-                        try {
-                            var resposta_controle = JSON.parse(e.responseText);
-                            console.log(reposta_controle);
-
-                        } catch (error) {
-                            console.log(error);
-                            iziToast.error({
-                                message: "<strong>Erro na Autenticação...</strong>"
-                            });
-                        }
-                    }
-                }
-            });
-        });
-    });
-</script>

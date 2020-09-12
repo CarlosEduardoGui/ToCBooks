@@ -8,7 +8,7 @@ namespace ToCBooks.App.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<ClienteModel> builder)
         {
-
+            builder.ToTable("Cliente");
         }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using ToCBooks.App.Business.Interfaces;
 using ToCBooks.App.Business.Models;
-using ToCBooks.App.Models;
 
 namespace ToCBooks.App.Business.Validadores
 {

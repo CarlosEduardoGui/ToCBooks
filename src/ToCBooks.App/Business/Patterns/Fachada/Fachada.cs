@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using ToCBooks.App.Business.Interfaces;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Validadores;
@@ -25,18 +23,37 @@ namespace ToCBooks.Data.Business.Patterns
             mapDao.Add("ClienteModel", new ClienteDAO());
             mapDao.Add("Parametro", new ParametroDAO());
 
+            #region Validadores Livro
+            
             List<IStrategy> ValidadoresLivro = new List<IStrategy> 
             { 
                 new ValidadorLivro()
             };
+
+            #endregion
+
+            #region Validadores Cliente
+
+            List<IStrategy> ValidadoresCliente = new List<IStrategy>
+            {
+                new ValidadorCliente(),
+                //new ValidadorLogin()
+            };
+
+            #endregion
+
+            #region Validadores Paramatro
 
             List<IStrategy> ValidadoresParametro = new List<IStrategy>
             {
                 new ValidadorParametro()
             };
 
+            #endregion
+
             mapValidadores.Add("LivrosModel", ValidadoresLivro);
             mapValidadores.Add("Parametro", ValidadoresParametro);
+            mapValidadores.Add("ClienteModel", ValidadoresCliente);
 
             mapExpressoes.Add("LivrosModel", new BuscaLivros());
         }

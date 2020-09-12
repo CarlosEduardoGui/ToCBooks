@@ -8,24 +8,7 @@ namespace ToCBooks.App.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<LivrosModel> builder)
         {
-            builder.HasKey(p => p.Id);
-
-            builder.Property(c => c.Descricao)
-                .IsRequired()
-                .HasColumnType("varchar(200)");
-
-
-            builder.Property(c => c.Preco)
-                .IsRequired()
-                .HasColumnType("varchar(200)");
-
-
-            builder.Property(c => c.Titulo)
-                .IsRequired()
-                .HasColumnType("varchar(200)");
-
-
-            builder.ToTable("Livros");
+            
         }
     }
 }

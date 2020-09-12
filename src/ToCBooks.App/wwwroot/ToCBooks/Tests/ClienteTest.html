@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/vendor/jquery-2.2.4.min.js"></script>
+</head>
+<body>
+    <button class="btn btn-danger" name="TodosCampos" id="TodosCampos">Cadastro - Todos os Campos</button>
+</body>
+</html>
+<script>
+jQuery("#TodosCampos").on("click", function (e) {
+    e.preventDefault();
+
+    var login = {
+        email: "eduardocarlos@gmail.com",
+        senha: "123"
+    };
+
+    var cartaoCredito = {
+        numeroCartao: "1234 1234 1234 1234",
+        nome: "Carlos E G Souza",
+        codigoSeguranca: 123,
+        bandeira: 1,
+        principal: true
+    };
+
+    var telefone = {
+        ddd: 11,
+        numero: 973242234,
+        tipo: 2
+    };
+
+    var paisCobranca = {
+        nome: "Brasil",
+    };
+
+
+    var estadoCobranca = {
+        nome: "São Paulo",
+        pais: paisCobranca
+    };
+
+    var cidadeCobranca = {
+        nome: "Mogi das Cruzes",
+        estado: estadoCobranca
+    };
+
+    var paisEntrega = {
+        nome: "Brasil",
+    };
+
+    var estadoEntrega = {
+        nome: "São Paulo",
+        pais: paisEntrega
+    };
+
+    var cidadeEntrega = {
+        nome: "Mogi das Cruzes",
+        estado: estadoEntrega
+    };
+
+
+    var enderecoCobranca = {
+        nome: "Manoel de Oliveira Mello",
+        tipologradouro: 1,
+        tiporesidencia: 2,
+        cep: 08830110,
+        bairro: "Cesar de Souza",
+        numero: 210,
+        observacao: "Ao lado da Esquerda",
+        cidade: cidadeCobranca,
+        principal: true
+    };
+
+    var enderecoEntrega = {
+        nome: "Paulo de Oliveira Mello",
+        tipologradouro: 4,
+        tipoResidencia: 1,
+        cep: 08830220,
+        bairro: "Margarida",
+        numero: 333,
+        observacao: "Ao lado da Direita",
+        cidade: cidadeEntrega,
+        principal: true
+    };
+
+    var data = new Date()
+    var dia = data.getDate();
+    var mes = data.getMonth();
+    var ano = data.getFullYear();
+    data = dia + '/' + (mes++) + '/' + ano;
+
+    var Object = {
+        nome: "Carlos Eduardo Guimaraes de Souza",
+        cpf: 47540018852,
+        login: login,
+        telefone: telefone,
+        datanascimento: data,
+        enderecoCobranca: enderecoCobranca,
+        enderecoEntrega: enderecoEntrega,
+        tipoUsuario: 2,
+        tipoGenero: 1,
+        cartaoCredito: cartaoCredito,
+        ativo: true
+    };
+
+    console.log(Object);
+
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 2, mapKey: 'ClienteModel', JsonString: JSON.stringify(Object) },
+        cache: false,
+        beforeSend: function (xhr) {
+            console.log("Iniciando teste de cliente");
+        },
+        complete: function (e, xhr, result) {
+            console.log(e.readyState);
+            console.log(e.status);
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var resposta_controle = JSON.parse(e.responseText);
+                    console.log(reposta_controle);
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        }
+    });
+});
+</script>
