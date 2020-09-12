@@ -1,7 +1,11 @@
 ﻿var idEntidadeTemp;
+var grupoPrecificacaoTemp;
+
 
 jQuery(document).ready(function () {
     buscarLivros();
+    buscarParametros();
+
     jQuery("#btn_cad_livro").on('click', function () {
         buscarParametros();
         jQuery("#modal_cad_livro").modal("show");
@@ -58,10 +62,13 @@ jQuery(document).ready(function () {
     });
 
     jQuery(document).on('click', '.editar_livro', function () {
-        jQuery("#modal_cad_livro").modal('show');
+        var id_livro = jQuery(this).attr("id_livro");
+        
+        consultarLivro({ oper: '5', mapKey: 'LivrosModel', jsonString: JSON.stringify({ Id: id_livro }) })
     });
 
     jQuery(document).on('click', '.definir_preco', function () {
+        idEntidadeTemp = jQuery(this).attr("id_livro");
         jQuery("#modal_definir_precificacao").modal('show');
     });
 
@@ -132,7 +139,7 @@ jQuery(document).ready(function () {
 
         var objetoEnvio = { oper: '5', mapKey: 'LivrosModel', jsonString: JSON.stringify(livro) }
 
-        consultarLivro(objetoEnvio);
+        consultarLivros(objetoEnvio);
     });
 
     jQuery(document).on('click', '.ativar', function () {
@@ -147,7 +154,70 @@ jQuery(document).ready(function () {
     jQuery("#btn_atv_nao").on('click', function () {
         jQuery("#modal_confirmacao_ativacao").modal('hide');
     });
+
+    jQuery("#valor_livro_def").keyup(function () {
+
+        var grupoSelecionado = jQuery("#grupo_def_preco").val();
+
+        if (grupoSelecionado == '')
+            alert("Selecione um Grupo de Precificação");
+        else {
+            var porcentagemGrupo;
+            grupoPrecificacaoTemp.forEach(grupo => {
+                if (grupo.Id == grupoSelecionado)
+                    porcentagemGrupo = grupo.Valor;
+            });
+
+            var valorLivro = parseFloat(jQuery("#valor_livro_def").val());
+            valorLivro += (valorLivro * (porcentagemGrupo / 100));
+            jQuery("#preco_livro_definido").val(valorLivro.toFixed(2));
+        }
+    });
+
+    jQuery("#btn_salvar_precificacao").on('click', function () {
+        var preco_definido = jQuery("#preco_livro_definido").val();
+
+        if (preco_definido != '') {
+            var livro = {
+                Id: idEntidadeTemp, Preco: parseFloat(preco_definido)
+            };
+
+            cadastrarLivro({ oper: '2', mapKey: "LivrosModel", jsonString: JSON.stringify(livro) });
+        } else {
+            alert("Preço inválido...");
+        }
+    });
 });
+
+function definirPrecoParaDefinicao(ObjetoEnvio) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: {
+            oper: '1', mapKey: 'LivrosModel', JsonString: objetoEnvio.jsonString
+        },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Dados.length > 0) {
+
+                        
+                    }
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
 
 
 function consultarLivro(objetoEnvio) {
@@ -168,7 +238,25 @@ function consultarLivro(objetoEnvio) {
 
                     if (respostaControle.Dados.length > 0) {
 
+                        var livro = respostaControle.Dados[0];
 
+                        jQuery("#cad_id_livro").val(livro.Id);
+                        jQuery("#cad_titulo").val(livro.Titulo);
+                        jQuery("#cad_autor").val(livro.Autor);
+                        jQuery("#cad_editora").val(livro.Editora);
+                        jQuery("#cad_barras").val(livro.CodigoDeBarras);
+                        jQuery("#cad_ano").val(livro.Ano);
+                        jQuery("#cad_edicao").val(livro.Edicao);
+                        jQuery("#cad_paginas").val(livro.Paginas);
+                        jQuery("#cad_altura").val(livro.Altura);
+                        jQuery("#cad_largura").val(livro.Largura);
+                        jQuery("#cad_peso").val(livro.Peso);
+                        jQuery("#cad_profundidade").val(livro.Profundidade);
+                        jQuery("#cad_isbn").val(livro.ISBN);
+                        //jQuery("#cad_categoria_livro").val()
+                        jQuery("#cad_descricao").val(livro.Descricao);
+
+                        jQuery("#modal_cad_livro").modal('show');
                     }
                 } catch (error) {
                     console.log(error);
@@ -208,7 +296,7 @@ function ativarLivro(objetoEnvio) {
     });
 }
 
-function consultarLivro(objetoEnvio) {
+function consultarLivros(objetoEnvio) {
     jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
@@ -323,10 +411,15 @@ function buscarParametros() {
                             htmlSelect += '<option value="' + grupo.Id + '">' + grupo.Nome + '</option>';
                         });
 
-                        console.log(htmlSelect);
+                        grupoPrecificacaoTemp = respostaControle.Dados;
 
+                        jQuery("#grupo_def_preco").html(htmlSelect);
                         jQuery("#cad_grupo_precificacao").html(htmlSelect);
                         jQuery("#cad_grupo_precificacao").selectpicker({
+                            noneSelectedText: "Selecione..."
+                        });
+
+                        jQuery("#grupo_def_preco").selectpicker({
                             noneSelectedText: "Selecione..."
                         });
                     }
@@ -367,7 +460,8 @@ function buscarLivros() {
                                 htmlLivros += '<div class="media-body align-self-center"><a href="#"><h6 class="mb-3 text-dark font-weight-medium">';
                                 htmlLivros += Livro.Titulo;
                                 htmlLivros += '</h6></a><p class="float-md-right"><span class="text-dark mr-2">';
-                                htmlLivros += '<button type="button" class="editar_livro" id_livro="' + Livro.Id + '"><i style="font-size: 20px;" class="mdi mdi-account-edit"></i></button>';
+                                htmlLivros += '<button type="button" class="editar_livro" id_livro="' + Livro.Id + '"><i style="font-size: 20px;" class="mdi mdi-account-edit"></i></button> | ';
+                                htmlLivros += '<button type="button" id_livro="' + Livro.Id + '" class="definir_preco"><i style="font-size: 20px;" class="mdi mdi-square-inc-cash" ></i ></button > |';
                                 htmlLivros += '</span><button type="button" class="desativar" id_livro="' + Livro.Id + '"><i style="font-size: 20px;" class="mdi mdi-trash-can"></i></button></p>';
                                 htmlLivros += '<p class="d-none d-md-block">';
                                 htmlLivros += Livro.Descricao;

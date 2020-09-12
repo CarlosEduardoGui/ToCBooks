@@ -673,24 +673,21 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Grupo Precificação</label>
-                                    <select id="grupo_def_preco" name="grupo_def_preco" class="selectpicker">
-                                        <option value=""></option>
-                                        <option value="Grupo AY">Grupo AY</option>
-                                        <option value="Grupo AZ">Grupo AZ</option>
+                                    <select id="grupo_def_preco" name="grupo_def_preco">
                                     </select>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Valor do Livro</label>
-                                    <input type="text" id="valor_livro" name="valor_livro" class="form-control"
+                                    <input type="text" id="valor_livro_def" name="valor_livro_def" class="form-control"
                                         name="isbn" required />
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Preço Final</label>
-                                    <input type="text" id="preco_livro" name="precolivro" class="form-control"
+                                    <input type="text" id="preco_livro_definido" name="preco_livro_definido" class="form-control"
                                         name="isbn" required />
                                 </div>
                             </div>
@@ -728,19 +725,19 @@
                     </div>
 
                     <form id="form_cad_livro" name="form_cad_livro">
-                        <input type="hidden" id="id_livro" name="Id" />
+                        <input type="hidden" id="cad_id_livro" name="Id" />
                         <input type="hidden" id="foto" name="foto" />
                         <div class="row" style="margin-top: 5%">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Titulo</label>
-                                    <input type="text" id="titulo" class="form-control titulo" name="titulo" required />
+                                    <input type="text" id="cad_titulo" class="form-control titulo" name="titulo" required />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Autor</label>
-                                    <input type="text" id="autor" class="form-control titulo" name="autor" required />
+                                    <input type="text" id="cad_autor" class="form-control titulo" name="autor" required />
                                 </div>
                             </div>
                         </div>
@@ -748,14 +745,14 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Editora</label>
-                                    <input type="text" id="editora" class="form-control titulo" name="editora"
+                                    <input type="text" id="cad_editora" class="form-control titulo" name="editora"
                                         required />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Codigo De Barras</label>
-                                    <input type="text" id="barras" class="form-control titulo" name="barras" required />
+                                    <input type="text" id="cad_barras" class="form-control titulo" name="barras" required />
                                 </div>
                             </div>
                         </div>
@@ -763,19 +760,19 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Ano</label>
-                                    <input type="text" id="ano" class="form-control" name="ano" required />
+                                    <input type="text" id="cad_ano" class="form-control" name="ano" required />
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Edição</label>
-                                    <input type="text" id="edicao" class="form-control" name="edicao" required />
+                                    <input type="text" id="cad_edicao" class="form-control" name="edicao" required />
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Qtde Paginas</label>
-                                    <input type="text" id="paginas" class="form-control" name="paginas" required />
+                                    <input type="text" id="cad_paginas" class="form-control" name="paginas" required />
                                 </div>
                             </div>
                         </div>
@@ -783,19 +780,19 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Altura</label>
-                                    <input type="text" id="altura" class="form-control" name="altura" required />
+                                    <input type="text" id="cad_altura" class="form-control" name="altura" required />
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Largura</label>
-                                    <input type="text" id="largura" class="form-control" name="largura" required />
+                                    <input type="text" id="cad_largura" class="form-control" name="largura" required />
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Peso</label>
-                                    <input type="text" id="peso" class="form-control" name="peso" required />
+                                    <input type="text" id="cad_peso" class="form-control" name="peso" required />
                                 </div>
                             </div>
                         </div>
@@ -803,14 +800,14 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Profundidade</label>
-                                    <input type="text" id="profundidade" class="form-control" name="profundidade"
+                                    <input type="text" id="cad_profundidade" class="form-control" name="profundidade"
                                         required />
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>ISBN</label>
-                                    <input type="text" id="isbn" class="form-control" name="isbn" required />
+                                    <input type="text" id="cad_isbn" class="form-control" name="isbn" required />
                                 </div>
                             </div>
                             <div class="col-4">
@@ -846,7 +843,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Descrição</label>
-                                    <textarea rows="5" style="resize: none;" name="descricao" id="descricao"
+                                    <textarea rows="5" style="resize: none;" name="descricao" id="cad_descricao"
                                         class="form-control" required></textarea>
                                 </div>
                             </div>
