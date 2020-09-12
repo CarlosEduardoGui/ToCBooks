@@ -66,7 +66,7 @@ namespace ToCBooks.App.Data.DAOs
                 if (ObjetoPersistido != null)
                     Mensagem.Dados.Add(ObjetoPersistido);
                 else
-                    db.Parametros.Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
+                    db.Parametros.Where(x => x.StatusAtual == ETipoStatus.Ativo && x.Tipo == Parametro.TipoParametro.GrupoPrecificacao).ToList().ForEach(x => Mensagem.Dados.Add(x));
             }
 
             Mensagem.Dados.OrderBy(x => x.Id);

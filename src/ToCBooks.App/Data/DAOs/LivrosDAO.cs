@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Xml.Linq;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
@@ -81,9 +82,14 @@ namespace ToCBooks.App.Data.DAOs
             {
                 var ObjetoPersistido = db.Find<LivrosModel>(Objeto.Id);
                 if (ObjetoPersistido != null)
+                {
                     Mensagem.Dados.Add(ObjetoPersistido);
+
+                }
                 else
+                {
                     db.Livro.Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
+                }
             }
 
             Mensagem.Codigo = 0;

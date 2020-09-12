@@ -12,7 +12,7 @@ namespace ToCBooks.App.Modeladores
         {
             var Livro = (LivrosModel)Objeto;
             Expression<Func<EntidadeDominio, bool>> Busca = x => x.StatusAtual == ETipoStatus.Inativo;
-
+            
             return Busca;
         }
     }
