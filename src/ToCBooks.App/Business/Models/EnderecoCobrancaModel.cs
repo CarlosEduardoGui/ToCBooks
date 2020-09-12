@@ -21,5 +21,8 @@ namespace ToCBooks.App.Business.Models
         public string Observacao { get; set; }
 
         public bool Principal { get; set; }
+
+        ////Precisa para mapeamento do EF
+        //public ClienteModel Cliente { get; set; }
     }
 }

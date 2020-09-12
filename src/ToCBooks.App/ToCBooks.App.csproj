@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200912183726_Atualizacao01.cs" />
+    <Compile Remove="Migrations\20200912183726_Atualizacao01.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Views\Shared\IndexV02.cshtml" />
     <Content Remove="wwwroot\ToCBooks\js\registration.js" />
   </ItemGroup>

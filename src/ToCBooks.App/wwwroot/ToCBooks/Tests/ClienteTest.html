@@ -20,12 +20,19 @@ jQuery("#TodosCampos").on("click", function (e) {
         senha: "123"
     };
 
+    var data2 = new Date()
+    var dia = data2.getDate();
+    var mes = data2.getMonth();
+    var ano = data2.getFullYear();
+    data2 = dia + '/' + (mes++) + '/' + ano;
+
     var cartaoCredito = {
         numeroCartao: "1234 1234 1234 1234",
         nome: "Carlos E G Souza",
         codigoSeguranca: 123,
         bandeira: 1,
-        principal: true
+        principal: true,
+        dataVencimento: data2
     };
 
     var telefone = {
@@ -100,11 +107,11 @@ jQuery("#TodosCampos").on("click", function (e) {
         login: login,
         telefone: telefone,
         datanascimento: data,
-        enderecoCobranca: enderecoCobranca,
-        enderecoEntrega: enderecoEntrega,
+        enderecoCobranca: [enderecoCobranca],
+        enderecoEntrega: [enderecoEntrega],
         tipoUsuario: 2,
         tipoGenero: 1,
-        cartaoCredito: cartaoCredito,
+        cartaoCredito: [cartaoCredito],
         ativo: true
     };
 

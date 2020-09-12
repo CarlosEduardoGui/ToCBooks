@@ -10,8 +10,8 @@ using ToCBooks.App.Data.Context;
 namespace ToCBooks.App.Migrations
 {
     [DbContext(typeof(ToCBooksContext))]
-    [Migration("20200909000537_Atualizacao07")]
-    partial class Atualizacao07
+    [Migration("20200912193746_Atualizacao01")]
+    partial class Atualizacao01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,39 @@ namespace ToCBooks.App.Migrations
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("ToCBooks.App.Business.Models.CartaoCreditoModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Bandeira");
+
+                    b.Property<Guid?>("ClienteModelId");
+
+                    b.Property<int>("CodigoSeguranca");
+
+                    b.Property<DateTime>("DataVencimento");
+
+                    b.Property<string>("Justificativa")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<string>("NumeroCartao")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<bool>("Principal");
+
+                    b.Property<int>("StatusAtual");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteModelId");
+
+                    b.ToTable("CartaoCredito");
+                });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.Categoria", b =>
                 {
@@ -33,6 +66,8 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<string>("NomeCategoria")
                         .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<int>("StatusAtual");
 
                     b.HasKey("Id");
 
@@ -48,9 +83,13 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<Guid?>("EstadoId");
 
-                    b.Property<string>("Justificativa");
+                    b.Property<string>("Justificativa")
+                        .HasColumnType("VARCHAR(MAX)");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<int>("StatusAtual");
 
                     b.HasKey("Id");
 
@@ -64,23 +103,22 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CPF");
+                    b.Property<bool>("Ativo");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("CPF")
+                        .HasColumnType("VARCHAR(MAX)");
 
-                    b.Property<Guid?>("EnderecoCobrancaId");
+                    b.Property<DateTime>("DataNascimento");
 
-                    b.Property<Guid?>("EnderecoEntregaId");
+                    b.Property<string>("Justificativa")
+                        .HasColumnType("VARCHAR(MAX)");
 
-                    b.Property<string>("Justificativa");
+                    b.Property<string>("Nome")
+                        .HasColumnType("VARCHAR(MAX)");
 
-                    b.Property<string>("Nome");
+                    b.Property<int>("StatusAtual");
 
-                    b.Property<string>("Observacao");
-
-                    b.Property<string>("Senha");
-
-                    b.Property<int?>("TelefoneId");
+                    b.Property<Guid?>("TelefoneId");
 
                     b.Property<int>("TipoGenero");
 
@@ -88,13 +126,9 @@ namespace ToCBooks.App.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EnderecoCobrancaId");
-
-                    b.HasIndex("EnderecoEntregaId");
-
                     b.HasIndex("TelefoneId");
 
-                    b.ToTable("ClienteModel");
+                    b.ToTable("Cliente");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.EnderecoCobrancaModel", b =>
@@ -102,17 +136,29 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Bairro");
+                    b.Property<string>("Bairro")
+                        .HasColumnType("VARCHAR(MAX)");
 
                     b.Property<int>("CEP");
 
                     b.Property<Guid?>("CidadeId");
 
-                    b.Property<string>("Justificativa");
+                    b.Property<Guid?>("ClienteModelId");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Justificativa")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("VARCHAR(MAX)");
 
                     b.Property<int>("Numero");
+
+                    b.Property<string>("Observacao")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<bool>("Principal");
+
+                    b.Property<int>("StatusAtual");
 
                     b.Property<int>("TipoLogradouro");
 
@@ -122,7 +168,9 @@ namespace ToCBooks.App.Migrations
 
                     b.HasIndex("CidadeId");
 
-                    b.ToTable("EnderecoCobrancaModel");
+                    b.HasIndex("ClienteModelId");
+
+                    b.ToTable("EnderecoCobranca");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.EnderecoEntregaModel", b =>
@@ -130,25 +178,41 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Bairro");
+                    b.Property<string>("Bairro")
+                        .HasColumnType("VARCHAR(MAX)");
 
                     b.Property<int>("CEP");
 
                     b.Property<Guid?>("CidadeId");
 
-                    b.Property<string>("Justificativa");
+                    b.Property<Guid?>("ClienteModelId");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Justificativa")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("VARCHAR(MAX)");
 
                     b.Property<int>("Numero");
 
+                    b.Property<string>("Observacao")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<bool>("Principal");
+
+                    b.Property<int>("StatusAtual");
+
                     b.Property<int>("TipoLogradouro");
+
+                    b.Property<int>("TipoResidencia");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CidadeId");
 
-                    b.ToTable("EnderecoEntregaModel");
+                    b.HasIndex("ClienteModelId");
+
+                    b.ToTable("EnderecoEntrega");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.EstadoModel", b =>
@@ -156,11 +220,15 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Justificativa");
+                    b.Property<string>("Justificativa")
+                        .HasColumnType("VARCHAR(MAX)");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .HasColumnType("VARCHAR(MAX)");
 
                     b.Property<Guid?>("PaisId");
+
+                    b.Property<int>("StatusAtual");
 
                     b.HasKey("Id");
 
@@ -185,8 +253,7 @@ namespace ToCBooks.App.Migrations
                         .HasColumnType("VARCHAR(MAX)");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("VARCHAR(MAX)");
 
                     b.Property<int>("Edicao");
 
@@ -210,22 +277,48 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<Guid?>("PrecificacaoId");
 
-                    b.Property<string>("Preco")
-                        .IsRequired()
-                        .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 64)))
-                        .HasColumnType("varchar(200)");
+                    b.Property<double>("Preco");
 
                     b.Property<double>("Profundidade");
 
+                    b.Property<int>("StatusAtual");
+
                     b.Property<string>("Titulo")
-                        .IsRequired()
-                        .HasColumnType("varchar(200)");
+                        .HasColumnType("VARCHAR(MAX)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PrecificacaoId");
 
-                    b.ToTable("Livros");
+                    b.ToTable("Livro");
+                });
+
+            modelBuilder.Entity("ToCBooks.App.Business.Models.LoginModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("ClienteFK");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<string>("Justificativa")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<string>("Senha")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<int>("StatusAtual");
+
+                    b.Property<int>("TipoUsuario");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteFK")
+                        .IsUnique();
+
+                    b.ToTable("Login");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.PaisModel", b =>
@@ -233,9 +326,13 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Justificativa");
+                    b.Property<string>("Justificativa")
+                        .HasColumnType("VARCHAR(MAX)");
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<int>("StatusAtual");
 
                     b.HasKey("Id");
 
@@ -253,6 +350,8 @@ namespace ToCBooks.App.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("VARCHAR(MAX)");
 
+                    b.Property<int>("StatusAtual");
+
                     b.Property<int>("Tipo");
 
                     b.Property<double>("Valor");
@@ -264,19 +363,30 @@ namespace ToCBooks.App.Migrations
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.TelefoneModel", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("DDD");
 
+                    b.Property<string>("Justificativa")
+                        .HasColumnType("VARCHAR(MAX)");
+
                     b.Property<int>("Numero");
+
+                    b.Property<int>("StatusAtual");
 
                     b.Property<int>("Tipo");
 
                     b.HasKey("Id");
 
                     b.ToTable("TelefoneModel");
+                });
+
+            modelBuilder.Entity("ToCBooks.App.Business.Models.CartaoCreditoModel", b =>
+                {
+                    b.HasOne("ToCBooks.App.Business.Models.ClienteModel")
+                        .WithMany("CartaoCredito")
+                        .HasForeignKey("ClienteModelId");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.Categoria", b =>
@@ -295,14 +405,6 @@ namespace ToCBooks.App.Migrations
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.ClienteModel", b =>
                 {
-                    b.HasOne("ToCBooks.App.Business.Models.EnderecoCobrancaModel", "EnderecoCobranca")
-                        .WithMany()
-                        .HasForeignKey("EnderecoCobrancaId");
-
-                    b.HasOne("ToCBooks.App.Business.Models.EnderecoEntregaModel", "EnderecoEntrega")
-                        .WithMany()
-                        .HasForeignKey("EnderecoEntregaId");
-
                     b.HasOne("ToCBooks.App.Business.Models.TelefoneModel", "Telefone")
                         .WithMany()
                         .HasForeignKey("TelefoneId");
@@ -313,6 +415,10 @@ namespace ToCBooks.App.Migrations
                     b.HasOne("ToCBooks.App.Business.Models.CidadeModel", "Cidade")
                         .WithMany()
                         .HasForeignKey("CidadeId");
+
+                    b.HasOne("ToCBooks.App.Business.Models.ClienteModel")
+                        .WithMany("EnderecoCobranca")
+                        .HasForeignKey("ClienteModelId");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.EnderecoEntregaModel", b =>
@@ -320,6 +426,10 @@ namespace ToCBooks.App.Migrations
                     b.HasOne("ToCBooks.App.Business.Models.CidadeModel", "Cidade")
                         .WithMany()
                         .HasForeignKey("CidadeId");
+
+                    b.HasOne("ToCBooks.App.Business.Models.ClienteModel")
+                        .WithMany("EnderecoEntrega")
+                        .HasForeignKey("ClienteModelId");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.EstadoModel", b =>
@@ -334,6 +444,13 @@ namespace ToCBooks.App.Migrations
                     b.HasOne("ToCBooks.App.Business.Models.Parametro", "Precificacao")
                         .WithMany()
                         .HasForeignKey("PrecificacaoId");
+                });
+
+            modelBuilder.Entity("ToCBooks.App.Business.Models.LoginModel", b =>
+                {
+                    b.HasOne("ToCBooks.App.Business.Models.ClienteModel", "Cliente")
+                        .WithOne("Login")
+                        .HasForeignKey("ToCBooks.App.Business.Models.LoginModel", "ClienteFK");
                 });
 #pragma warning restore 612, 618
         }

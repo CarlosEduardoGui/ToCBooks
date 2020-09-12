@@ -85,7 +85,7 @@
                 <form class="d-flex justify-content-between">
                     <input type="text" class="form-control" id="search_input" placeholder="">
                     <button type="submit" class="btn"></button>
-                    <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+                    <span class="lnr lnr-cross" id="close_search" title="Fechar Busca"></span>
                 </form>
             </div>
         </div>
@@ -125,10 +125,10 @@
                         <h3>Login</h3>
                         <form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
+                                <input type="email" class="form-control" id="email" name="emailemail" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Senha'">
+                                <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Senha'">
                             </div>
                             <div class="col-md-12 form-group">
                                 <div class="creat_account">
@@ -137,7 +137,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 form-group">
-                                <button type="submit" value="submit" class="primary-btn">Log In</button>
+                                <button id="btn_login" class="primary-btn">Log In</button>
                                 <a href="#">Esqueceu a senha?</a>
                             </div>
                         </form>
@@ -175,21 +175,6 @@
                                 <div class="info"></div>
                             </form>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3  col-md-6 col-sm-6">
-                    <div class="single-footer-widget mail-chimp">
-                        <h6 class="mb-20">Propagandas</h6>
-                        <ul class="instafeed d-flex flex-wrap">
-                            <li><img src="img/i1.jpg" alt=""></li>
-                            <li><img src="img/i2.jpg" alt=""></li>
-                            <li><img src="img/i3.jpg" alt=""></li>
-                            <li><img src="img/i4.jpg" alt=""></li>
-                            <li><img src="img/i5.jpg" alt=""></li>
-                            <li><img src="img/i6.jpg" alt=""></li>
-                            <li><img src="img/i7.jpg" alt=""></li>
-                            <li><img src="img/i8.jpg" alt=""></li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
@@ -232,6 +217,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/My/login.js"></script>
 </body>
 
 </html>

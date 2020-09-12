@@ -8,5 +8,6 @@ namespace ToCBooks.App.Interfaces
         MensagemModel Cadastrar(EntidadeDominio Objeto);
         MensagemModel Atualizar(EntidadeDominio Objeto);
         MensagemModel Excluir(EntidadeDominio Objeto);
+        MensagemModel Login(EntidadeDominio Objeto);
     }
 }

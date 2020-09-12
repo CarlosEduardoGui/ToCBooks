@@ -25,6 +25,9 @@ namespace ToCBooks.App
             });
 
             services.ResolveDependencies();
+            services.AddHttpContextAccessor();
+            services.AddSession();
+            services.AddDistributedMemoryCache();
 
             services.AddMvcConfiguration();
         }
@@ -45,6 +48,7 @@ namespace ToCBooks.App
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

@@ -8,6 +8,8 @@ using ToCBooks.App.Patterns.Commands;
 using ToCBooks.App.Interfaces;
 using Newtonsoft.Json;
 using ToCBooks.App.Patterns.ViewHelpers;
+using Microsoft.AspNetCore.Http;
+using System.Linq;
 
 namespace ToCBooks.App.Controllers
 {
@@ -21,15 +23,17 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("4", new ExcluirCommand());
             mapCommand.Add("5", new BuscarCommand());
             mapCommand.Add("6", new AtivarCommand());
+            mapCommand.Add("7", new LoginCommand());
 
             mapVH.Add("LivrosModel", new LivroVH());
             mapVH.Add("Parametro", new ParametroVH());
             mapVH.Add("ClienteModel", new ClienteVH());
+            mapVH.Add("LoginModel", new LoginVH());
         }
 
         private Dictionary<string, IViewHelper> mapVH = new Dictionary<string, IViewHelper>();
         private Dictionary<string, ICommand> mapCommand = new Dictionary<string, ICommand>();
-        
+
         public IActionResult Index()
         {
             return View();
@@ -50,12 +54,27 @@ namespace ToCBooks.App.Controllers
         [Route("Operations")]
         public string Operations()
         {
+            var sessao = HttpContext.Session.GetString("ClienteID");
             var lVH = mapVH[HttpContext.Request.Form["mapKey"]];
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
             var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]));
 
             return JsonConvert.SerializeObject(lMensagem, Formatting.Indented);
         }
+
+        [HttpPost]
+        [Route("Login")]
+        public string Login() 
+        {
+            var lVH = mapVH[HttpContext.Request.Form["mapKey"]];
+            var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
+            var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]));
+
+            HttpContext.Session.SetString("ClienteID", lMensagem.Dados.Select(x => x.Id).FirstOrDefault().ToString());
+
+            return JsonConvert.SerializeObject("Login efetuado com sucesso!", Formatting.Indented);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

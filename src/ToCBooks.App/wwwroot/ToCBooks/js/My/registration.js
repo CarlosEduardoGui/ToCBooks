@@ -11,6 +11,7 @@ jQuery(document).ready(function () {
             numeroCartao: jQuery('#numeroCartao').val(),
             nome: jQuery('#nomeCartao').val(),
             codigoSeguranca: jQuery('#codigoSeguranca').val(),
+            dataVencimento: jQuery('#dataVencimento').val(),
             bandeira: jQuery('#etipoCartao').val()
         };
 
@@ -82,43 +83,123 @@ jQuery(document).ready(function () {
             login: login,
             telefone: telefone,
             genero: jQuery('#genero').val(),
-            datanascimento: jQuery('#datanascimento').val(),
-            enderecoCobranca: enderecoCobranca,
-            enderecoEntrega: enderecoEntrega,
+            datanascimento: jQuery('#dataNascimento').val(),
+            enderecoCobranca: [enderecoCobranca],
+            enderecoEntrega: [enderecoEntrega],
             tipoUsuario: 2,
             tipoGenero: jQuery('#genero').val(),
-            cartaoCredito: cartaoCredito,
+            cartaoCredito: [cartaoCredito],
             ativo: true
         };
 
-        console.log(Object);
+        CadastrarCliente(Object);
 
-        jQuery.ajax({
-            type: "POST",
-            url: 'https://localhost:44354/Operations',
-            data: { oper: 2, mapKey: 'ClienteModel', JsonString: JSON.stringify(Object) },
-            cache: false,
-            beforeSend: function (xhr) {
-
-            },
-            complete: function (e, xhr, result) {
-                console.log(e.readyState);
-                console.log(e.status);
-                if (e.readyState == 4 && e.status == 200) {
-
-                    try {
-                        var resposta_controle = JSON.parse(e.responseText);
-                        console.log(reposta_controle);
-
-                    } catch (error) {
-                        console.log(error);
-                    }
-                }
-            }
-        });
     });
 });
 
+function CadastrarCliente(objeto) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 2, mapKey: 'ClienteModel', JsonString: JSON.stringify(objeto) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            console.log(e.readyState);
+            console.log(e.status);
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var resposta_controle = JSON.parse(e.responseText);
+                    console.log(reposta_controle);
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        }
+    });
+}
+
+function ConsultarCliente(objeto) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 1, mapKey: 'ClienteModel', JsonString: JSON.stringify(objeto) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            console.log(e.readyState);
+            console.log(e.status);
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var resposta_controle = JSON.parse(e.responseText);
+                    console.log(reposta_controle);
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        }
+    });
+}
+
+function DesativarCliente(objeto) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 3, mapKey: 'ClienteModel', JsonString: JSON.stringify(objeto) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            console.log(e.readyState);
+            console.log(e.status);
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var resposta_controle = JSON.parse(e.responseText);
+                    console.log(reposta_controle);
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        }
+    });
+}
+
+function AtivarCliente(objeto) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 6, mapKey: 'ClienteModel', JsonString: JSON.stringify(objeto) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            console.log(e.readyState);
+            console.log(e.status);
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var resposta_controle = JSON.parse(e.responseText);
+                    console.log(reposta_controle);
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        }
+    });
+}
 
 function BuscaCEPEntrega() {
     jQuery(document).ready(function () {

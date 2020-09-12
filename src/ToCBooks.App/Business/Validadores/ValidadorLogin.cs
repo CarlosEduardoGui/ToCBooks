@@ -8,7 +8,26 @@ namespace ToCBooks.App.Business.Validadores
     {
         public MensagemModel Validar(EntidadeDominio Objeto)
         {
-            throw new NotImplementedException();
+            if (Objeto == null)
+                throw new Exception("Objeto inválido");
+
+            var Login = (LoginModel)Objeto;
+
+
+            if (Login.Email == null || Login.Email.Equals("") || Login.Email.Equals(" "))
+                throw new Exception("Email está inconsistente...");
+
+            if (Login.Senha == null || Login.Senha.Equals("") || Login.Senha.Equals(" "))
+                throw new Exception("Senha está inconsistente...");
+
+            var Mensagem = new MensagemModel
+            {
+                Codigo = 0,
+                Resposta = "Validado com sucesso",
+                Dados = null
+            };
+
+            return Mensagem;
         }
     }
 }

@@ -3,44 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ToCBooks.App.Migrations
 {
-    public partial class Atualizacao09 : Migration
+    public partial class Atualizacao01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "CartaoCredito",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    StatusAtual = table.Column<int>(nullable: false),
-                    Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
-                    NumeroCartao = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
-                    Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
-                    CodigoSeguranca = table.Column<int>(nullable: false),
-                    Bandeira = table.Column<int>(nullable: false),
-                    Principal = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CartaoCredito", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Login",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    StatusAtual = table.Column<int>(nullable: false),
-                    Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
-                    Email = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
-                    Senha = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
-                    TipoUsuario = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Login", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "PaisModel",
                 columns: table => new
@@ -144,6 +110,32 @@ namespace ToCBooks.App.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cliente",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    StatusAtual = table.Column<int>(nullable: false),
+                    Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    CPF = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    TelefoneId = table.Column<Guid>(nullable: true),
+                    DataNascimento = table.Column<DateTime>(nullable: false),
+                    TipoUsuario = table.Column<int>(nullable: false),
+                    TipoGenero = table.Column<int>(nullable: false),
+                    Ativo = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cliente", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Cliente_TelefoneModel_TelefoneId",
+                        column: x => x.TelefoneId,
+                        principalTable: "TelefoneModel",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CidadeModel",
                 columns: table => new
                 {
@@ -186,6 +178,55 @@ namespace ToCBooks.App.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CartaoCredito",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    StatusAtual = table.Column<int>(nullable: false),
+                    Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    NumeroCartao = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    CodigoSeguranca = table.Column<int>(nullable: false),
+                    Bandeira = table.Column<int>(nullable: false),
+                    DataVencimento = table.Column<DateTime>(nullable: false),
+                    Principal = table.Column<bool>(nullable: false),
+                    ClienteModelId = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartaoCredito", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CartaoCredito_Cliente_ClienteModelId",
+                        column: x => x.ClienteModelId,
+                        principalTable: "Cliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Login",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    StatusAtual = table.Column<int>(nullable: false),
+                    Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    Email = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    Senha = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    TipoUsuario = table.Column<int>(nullable: false),
+                    ClienteFK = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Login", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Login_Cliente_ClienteFK",
+                        column: x => x.ClienteFK,
+                        principalTable: "Cliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "EnderecoCobranca",
                 columns: table => new
                 {
@@ -200,7 +241,8 @@ namespace ToCBooks.App.Migrations
                     TipoLogradouro = table.Column<int>(nullable: false),
                     TipoResidencia = table.Column<int>(nullable: false),
                     Observacao = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
-                    Principal = table.Column<bool>(nullable: false)
+                    Principal = table.Column<bool>(nullable: false),
+                    ClienteModelId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -209,6 +251,12 @@ namespace ToCBooks.App.Migrations
                         name: "FK_EnderecoCobranca_CidadeModel_CidadeId",
                         column: x => x.CidadeId,
                         principalTable: "CidadeModel",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EnderecoCobranca_Cliente_ClienteModelId",
+                        column: x => x.ClienteModelId,
+                        principalTable: "Cliente",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -228,7 +276,8 @@ namespace ToCBooks.App.Migrations
                     TipoLogradouro = table.Column<int>(nullable: false),
                     TipoResidencia = table.Column<int>(nullable: false),
                     Observacao = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
-                    Principal = table.Column<bool>(nullable: false)
+                    Principal = table.Column<bool>(nullable: false),
+                    ClienteModelId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -239,61 +288,18 @@ namespace ToCBooks.App.Migrations
                         principalTable: "CidadeModel",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EnderecoEntrega_Cliente_ClienteModelId",
+                        column: x => x.ClienteModelId,
+                        principalTable: "Cliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Cliente",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    StatusAtual = table.Column<int>(nullable: false),
-                    Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
-                    Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
-                    CPF = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
-                    LoginId = table.Column<Guid>(nullable: true),
-                    TelefoneId = table.Column<Guid>(nullable: true),
-                    DataNascimento = table.Column<DateTime>(nullable: false),
-                    EnderecoCobrancaId = table.Column<Guid>(nullable: true),
-                    EnderecoEntregaId = table.Column<Guid>(nullable: true),
-                    CartaoCreditoId = table.Column<Guid>(nullable: true),
-                    TipoUsuario = table.Column<int>(nullable: false),
-                    TipoGenero = table.Column<int>(nullable: false),
-                    Ativo = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cliente", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Cliente_CartaoCredito_CartaoCreditoId",
-                        column: x => x.CartaoCreditoId,
-                        principalTable: "CartaoCredito",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Cliente_EnderecoCobranca_EnderecoCobrancaId",
-                        column: x => x.EnderecoCobrancaId,
-                        principalTable: "EnderecoCobranca",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Cliente_EnderecoEntrega_EnderecoEntregaId",
-                        column: x => x.EnderecoEntregaId,
-                        principalTable: "EnderecoEntrega",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Cliente_Login_LoginId",
-                        column: x => x.LoginId,
-                        principalTable: "Login",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Cliente_TelefoneModel_TelefoneId",
-                        column: x => x.TelefoneId,
-                        principalTable: "TelefoneModel",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
+            migrationBuilder.CreateIndex(
+                name: "IX_CartaoCredito_ClienteModelId",
+                table: "CartaoCredito",
+                column: "ClienteModelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categoria_LivrosModelId",
@@ -306,26 +312,6 @@ namespace ToCBooks.App.Migrations
                 column: "EstadoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cliente_CartaoCreditoId",
-                table: "Cliente",
-                column: "CartaoCreditoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Cliente_EnderecoCobrancaId",
-                table: "Cliente",
-                column: "EnderecoCobrancaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Cliente_EnderecoEntregaId",
-                table: "Cliente",
-                column: "EnderecoEntregaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Cliente_LoginId",
-                table: "Cliente",
-                column: "LoginId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Cliente_TelefoneId",
                 table: "Cliente",
                 column: "TelefoneId");
@@ -336,9 +322,19 @@ namespace ToCBooks.App.Migrations
                 column: "CidadeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EnderecoCobranca_ClienteModelId",
+                table: "EnderecoCobranca",
+                column: "ClienteModelId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EnderecoEntrega_CidadeId",
                 table: "EnderecoEntrega",
                 column: "CidadeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EnderecoEntrega_ClienteModelId",
+                table: "EnderecoEntrega",
+                column: "ClienteModelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EstadoModel_PaisId",
@@ -349,21 +345,21 @@ namespace ToCBooks.App.Migrations
                 name: "IX_Livro_PrecificacaoId",
                 table: "Livro",
                 column: "PrecificacaoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Login_ClienteFK",
+                table: "Login",
+                column: "ClienteFK",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Categoria");
-
-            migrationBuilder.DropTable(
-                name: "Cliente");
-
-            migrationBuilder.DropTable(
-                name: "Livro");
-
-            migrationBuilder.DropTable(
                 name: "CartaoCredito");
+
+            migrationBuilder.DropTable(
+                name: "Categoria");
 
             migrationBuilder.DropTable(
                 name: "EnderecoCobranca");
@@ -375,16 +371,22 @@ namespace ToCBooks.App.Migrations
                 name: "Login");
 
             migrationBuilder.DropTable(
-                name: "TelefoneModel");
-
-            migrationBuilder.DropTable(
-                name: "Parametro");
+                name: "Livro");
 
             migrationBuilder.DropTable(
                 name: "CidadeModel");
 
             migrationBuilder.DropTable(
+                name: "Cliente");
+
+            migrationBuilder.DropTable(
+                name: "Parametro");
+
+            migrationBuilder.DropTable(
                 name: "EstadoModel");
+
+            migrationBuilder.DropTable(
+                name: "TelefoneModel");
 
             migrationBuilder.DropTable(
                 name: "PaisModel");

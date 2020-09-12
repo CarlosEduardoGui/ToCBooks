@@ -22,6 +22,7 @@ namespace ToCBooks.App.Configurations
                 o.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(x => "Este campo precisa ser preenchido.");
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+
             return services;
         }
     }

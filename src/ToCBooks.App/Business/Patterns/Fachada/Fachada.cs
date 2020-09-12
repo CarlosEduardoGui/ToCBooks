@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ToCBooks.App.Business.Interfaces;
@@ -22,11 +24,12 @@ namespace ToCBooks.Data.Business.Patterns
             mapDao.Add("LivrosModel", new LivrosDAO());
             mapDao.Add("ClienteModel", new ClienteDAO());
             mapDao.Add("Parametro", new ParametroDAO());
+            mapDao.Add("LoginModel", new LoginDAO());
 
             #region Validadores Livro
-            
-            List<IStrategy> ValidadoresLivro = new List<IStrategy> 
-            { 
+
+            List<IStrategy> ValidadoresLivro = new List<IStrategy>
+            {
                 new ValidadorLivro()
             };
 
@@ -51,9 +54,19 @@ namespace ToCBooks.Data.Business.Patterns
 
             #endregion
 
+            #region
+
+            var ValidadoresLogin = new List<IStrategy>
+            {
+                new ValidadorLogin()
+            };
+
+            #endregion
+
             mapValidadores.Add("LivrosModel", ValidadoresLivro);
             mapValidadores.Add("Parametro", ValidadoresParametro);
             mapValidadores.Add("ClienteModel", ValidadoresCliente);
+            mapValidadores.Add("LoginModel", ValidadoresLogin);
 
             mapExpressoes.Add("LivrosModel", new BuscaLivros());
         }
@@ -145,6 +158,28 @@ namespace ToCBooks.Data.Business.Patterns
             var NomeObjeto = Objeto.GetType().Name;
 
             return mapDao[NomeObjeto].Buscar(mapExpressoes[NomeObjeto].GetExpression(Objeto));
+        }
+
+        public MensagemModel Login(EntidadeDominio Objeto)
+        {
+            var Mensagem = new MensagemModel();
+            try
+            {
+                foreach (var Validadores in mapValidadores[Objeto.GetType().Name])
+                    Validadores.Validar(Objeto);
+
+                Mensagem = mapDao[Objeto.GetType().Name].Consultar(Objeto);
+
+                return Mensagem;
+            }
+            catch (Exception Error)
+            {
+                Mensagem.Codigo = 0;
+                Mensagem.Resposta = Error.Message;
+                Mensagem.Dados = null;
+            }
+
+            return Mensagem;
         }
     }
 }
