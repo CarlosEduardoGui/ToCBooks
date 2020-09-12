@@ -15,5 +15,11 @@ namespace ToCBooks.App.Business.Models
         public CidadeModel Cidade { get; set; }
 
         public ETipoLogradouro TipoLogradouro { get; set; }
+
+        public ETipoResidencia TipoResidencia { get; set; }
+
+        public string Observacao { get; set; }
+
+        public bool Principal { get; set; }
     }
 }

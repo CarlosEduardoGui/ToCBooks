@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using ToCBooks.App.Business.Models;
-using ToCBooks.App.Models;
 
 namespace ToCBooks.App.Data.Context
 {
@@ -10,11 +9,17 @@ namespace ToCBooks.App.Data.Context
         public DbSet<LivrosModel> Livro { get; set; }
         public DbSet<Parametro> Parametros { get; set; }
         public DbSet<Parametro> Categoria { get; set; }
+        public DbSet<ClienteModel> Cliente { get; set; }
+        public DbSet<LoginModel> Login { get; set; }
+        public DbSet<EnderecoCobrancaModel> EnderecoCobranca { get; set; }
+        public DbSet<EnderecoEntregaModel> EnderecoEntrega { get; set; }
+        public DbSet<CartaoCreditoModel> CartaoCredito { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-FOC45IJ\SQLEXPRESS2017;Database=ToCBooks;User Id=sa; Password=syslg;MultipleActiveResultSets=true");
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-C46EB5G\SQLEXPRESS;Database=ToCBooks;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-FOC45IJ\SQLEXPRESS2017;Database=ToCBooks;User Id=sa; Password=syslg;MultipleActiveResultSets=true");
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-C46EB5G\SQLEXPRESS;Database=ToCBooks;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -11,6 +11,9 @@ namespace ToCBooks.App.Business.Validadores
 
         public static bool Validar(string cpf)
         {
+            if (cpf.Equals("") || cpf == null)
+                return false;
+
             var cpfNumeros = Utils.ApenasNumeros(cpf);
 
             return !TamanhoValido(cpfNumeros) ? false : !TemDigitosRepetidos(cpfNumeros) && TemDigitosValidos(cpfNumeros);

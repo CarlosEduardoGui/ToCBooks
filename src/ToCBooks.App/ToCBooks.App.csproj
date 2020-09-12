@@ -697,7 +697,7 @@
     <None Include="wwwroot\ToCBooks\img\.DS_Store" />
     <None Include="wwwroot\ToCBooks\img\organic-food\.DS_Store" />
     <None Include="wwwroot\ToCBooks\js\.DS_Store" />
-    <None Include="wwwroot\ToCBooks\js\registration.js" />
+    <None Include="wwwroot\ToCBooks\js\My\registration.js" />
     <None Include="wwwroot\ToCBooks\js\countdown.js" />
     <None Include="wwwroot\ToCBooks\js\gmaps.min.js" />
     <None Include="wwwroot\ToCBooks\js\ion.rangeSlider.js" />

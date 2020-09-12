@@ -10,6 +10,7 @@ namespace ToCBooks.App.Data.Interfaces
         MensagemModel Cadastrar(EntidadeDominio Objeto);
 
         MensagemModel Desativar(EntidadeDominio Objeto);
+
         MensagemModel Ativar(EntidadeDominio Objeto);
 
         MensagemModel Atualizar(EntidadeDominio Objeto);

@@ -1,19 +1,13 @@
-﻿using ToCBooks.App.Models.Enum;
+﻿using ToCBooks.App.Business.Models.Enum;
 
 namespace ToCBooks.App.Business.Models
 {
-    public class TelefoneModel
+    public class TelefoneModel : EntidadeDominio
     {
-        public int Id { get; set; }
         public int DDD { get; set; }
+
         public int Numero { get; set; }
-        public TipoTelefone Tipo { get; set; }
-    }
 
-
-    public enum TipoTelefone
-    {
-        Fixo,
-        Celular
+        public ETipoTelefone Tipo { get; set; }
     }
 }
