@@ -1,4 +1,5 @@
-﻿using ToCBooks.App.Models.Enum;
+﻿using System;
+using ToCBooks.App.Models.Enum;
 
 namespace ToCBooks.App.Business.Models
 {
@@ -22,7 +23,7 @@ namespace ToCBooks.App.Business.Models
 
         public bool Principal { get; set; }
 
-        ////Precisa para mapeamento do EF
-        //public ClienteModel Cliente { get; set; }
+        public Guid ClienteId { get; set; }
+        public ClienteModel Cliente { get; set; }
     }
 }

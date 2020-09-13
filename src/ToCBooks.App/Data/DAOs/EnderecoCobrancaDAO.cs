@@ -10,7 +10,7 @@ using ToCBooks.App.Data.Interfaces;
 
 namespace ToCBooks.App.Data.DAOs
 {
-    public class ParametroDAO : IDAO
+    public class EnderecoCobrancaDAO : IDAO
     {
         public MensagemModel Ativar(EntidadeDominio Objeto)
         {
@@ -19,20 +19,7 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
-            using (var db = new ToCBooksContext())
-            {
-                Parametro Parametro = (Parametro)Objeto;
-                db.Parametros.Update(Parametro);
-                db.SaveChanges();
-            }
-
-            MensagemModel Mensagem = new MensagemModel
-            {
-                Codigo = 1,
-                Dados = null
-            };
-
-            return Mensagem;
+            throw new NotImplementedException();
         }
 
         public MensagemModel Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
@@ -42,11 +29,9 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Cadastrar(EntidadeDominio Objeto)
         {
-            var Despachante = (Despachante)Objeto;
-
             using (var db = new ToCBooksContext())
             {
-                db.Add(Despachante.Entidade);
+                db.Add(Objeto);
                 db.SaveChanges();
             }
 
@@ -61,14 +46,16 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Consultar(EntidadeDominio Objeto)
         {
+            var Despachante = (Despachante)Objeto;
+
             MensagemModel Mensagem = new MensagemModel();
             using (var db = new ToCBooksContext())
             {
-                var ObjetoPersistido = db.Find<Parametro>(Objeto.Id);
+                var ObjetoPersistido = db.Find<EnderecoCobrancaModel>(Despachante.Entidade.Id);
                 if (ObjetoPersistido != null)
                     Mensagem.Dados.Add(ObjetoPersistido);
                 else
-                    db.Parametros.Where(x => x.StatusAtual == ETipoStatus.Ativo && x.Tipo == Parametro.TipoParametro.GrupoPrecificacao).ToList().ForEach(x => Mensagem.Dados.Add(x));
+                    db.EnderecoCobranca.Where(x => x.StatusAtual == ETipoStatus.Ativo && x.ClienteId == Despachante.Login.ClienteId).ToList().ForEach(x => Mensagem.Dados.Add(x));
             }
 
             Mensagem.Dados.OrderBy(x => x.Id);
@@ -96,8 +83,12 @@ namespace ToCBooks.App.Data.DAOs
         public MensagemModel Excluir(EntidadeDominio Objeto)
         {
             MensagemModel Mensagem = new MensagemModel();
+
             using (var db = new ToCBooksContext())
             {
+                if (db.EnderecoCobranca.Where(x => x.StatusAtual == ETipoStatus.Ativo).Count() == 1)
+                    throw new Exception("O Sistema não permite a deleção de todos os endereços...");
+
                 db.Remove(Objeto);
                 db.SaveChanges();
             }
@@ -107,6 +98,5 @@ namespace ToCBooks.App.Data.DAOs
 
             return Mensagem;
         }
-
     }
 }

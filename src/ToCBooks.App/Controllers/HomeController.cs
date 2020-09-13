@@ -32,6 +32,8 @@ namespace ToCBooks.App.Controllers
             mapVH.Add("ClienteModel", new ClienteVH());
             mapVH.Add("LoginModel", new LoginVH());
             mapVH.Add("CartaoCreditoModel", new CartaoCreditoVH());
+            mapVH.Add("EnderecoEntregaModel", new EnderecoEntregaVH());
+            mapVH.Add("EnderecoCobrancaModel", new EnderecoCobrancaVH());
         }
 
         private Dictionary<string, IViewHelper> mapVH = new Dictionary<string, IViewHelper>();
