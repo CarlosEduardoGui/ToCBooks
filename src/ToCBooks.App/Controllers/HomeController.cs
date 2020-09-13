@@ -10,6 +10,8 @@ using Newtonsoft.Json;
 using ToCBooks.App.Patterns.ViewHelpers;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
+using System;
+using ToCBooks.App.Business.Models;
 
 namespace ToCBooks.App.Controllers
 {
@@ -56,19 +58,30 @@ namespace ToCBooks.App.Controllers
         [Route("Operations")]
         public string Operations()
         {
-            var sessao = HttpContext.Session.GetString("ClienteID");
-
             var lVH = mapVH[HttpContext.Request.Form["mapKey"]];
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
-            var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]));
 
+            Guid ClienteID = new Guid();
+            if (HttpContext.Session.GetString("ClienteID") != null)
+                ClienteID = Guid.Parse(HttpContext.Session.GetString("ClienteID"));
+
+            var Despachante = new Despachante
+            {
+                Entidade = lVH.GetEntidade(HttpContext.Request.Form["JsonString"]),
+                Login = new LoginModel
+                {
+                    ClienteId = ClienteID
+                }
+            };
+
+            var lMensagem = lCommand.Executar(Despachante);
             return JsonConvert.SerializeObject(lMensagem, Formatting.Indented);
         }
-        
+
 
         [HttpPost]
         [Route("Login")]
-        public string Login() 
+        public string Login()
         {
             var lVH = mapVH[HttpContext.Request.Form["mapKey"]];
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];

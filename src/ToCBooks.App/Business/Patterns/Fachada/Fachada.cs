@@ -25,6 +25,7 @@ namespace ToCBooks.Data.Business.Patterns
             mapDao.Add("ClienteModel", new ClienteDAO());
             mapDao.Add("Parametro", new ParametroDAO());
             mapDao.Add("LoginModel", new LoginDAO());
+            mapDao.Add("CartaoCreditoModel", new CartaoCreditoDAO());
 
             #region Validadores Livro
 
@@ -62,10 +63,20 @@ namespace ToCBooks.Data.Business.Patterns
 
             #endregion
 
+            #region Validadores Cartão de Crédito
+
+            var ValidadoresCartaoCredito = new List<IStrategy>
+            {
+                new ValidadorCartaoCredito()
+            };
+
+            #endregion
+
             mapValidadores.Add("LivrosModel", ValidadoresLivro);
             mapValidadores.Add("Parametro", ValidadoresParametro);
             mapValidadores.Add("ClienteModel", ValidadoresCliente);
             mapValidadores.Add("LoginModel", ValidadoresLogin);
+            mapValidadores.Add("CartaoCreditoModel", ValidadoresCartaoCredito);
 
             mapExpressoes.Add("LivrosModel", new BuscaLivros());
         }
@@ -77,6 +88,9 @@ namespace ToCBooks.Data.Business.Patterns
 
         public MensagemModel Cadastrar(EntidadeDominio Objeto)
         {
+            var Despachante = (Despachante)Objeto;
+            Objeto = Despachante.Entidade;
+
             MensagemModel Mensagem = new MensagemModel();
             try
             {
@@ -106,6 +120,9 @@ namespace ToCBooks.Data.Business.Patterns
 
         public MensagemModel DesativarRegistro(EntidadeDominio Objeto)
         {
+            var Despachante = (Despachante)Objeto;
+            Objeto = Despachante.Entidade;
+
             MensagemModel Mensagem = new MensagemModel();
             try
             {
@@ -125,6 +142,9 @@ namespace ToCBooks.Data.Business.Patterns
 
         public MensagemModel AtivarRegistro(EntidadeDominio Objeto)
         {
+            var Despachante = (Despachante)Objeto;
+            Objeto = Despachante.Entidade;
+
             MensagemModel Mensagem = new MensagemModel();
             try
             {
@@ -144,7 +164,10 @@ namespace ToCBooks.Data.Business.Patterns
 
         public MensagemModel Consultar(EntidadeDominio Objeto)
         {
-            return mapDao[Objeto.GetType().Name].Consultar(Objeto);
+            var Despachante = (Despachante)Objeto;
+            Objeto = Despachante.Entidade;
+
+            return mapDao[Objeto.GetType().Name].Consultar(Despachante);
         }
 
         public MensagemModel Excluir(EntidadeDominio Objeto)
