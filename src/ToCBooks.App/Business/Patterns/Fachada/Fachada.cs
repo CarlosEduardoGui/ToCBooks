@@ -25,6 +25,7 @@ namespace ToCBooks.Data.Business.Patterns
             mapDao.Add("ClienteModel", new ClienteDAO());
             mapDao.Add("Parametro", new ParametroDAO());
             mapDao.Add("LoginModel", new LoginDAO());
+            mapDao.Add("EnderecoCobrancaModel", new EnderecoCobrancaDAO());
 
             #region Validadores Livro
 
@@ -53,6 +54,15 @@ namespace ToCBooks.Data.Business.Patterns
 
             #endregion
 
+            #region Validadores EnderecoCobranca
+
+            List<IStrategy> ValidadoresEnderecoCobranca = new List<IStrategy>
+            {
+                new ValidadorEnderecoCobranca()
+            };
+
+            #endregion
+
             #region Validadores Login
 
             var ValidadoresLogin = new List<IStrategy>
@@ -66,7 +76,7 @@ namespace ToCBooks.Data.Business.Patterns
             mapValidadores.Add("Parametro", ValidadoresParametro);
             mapValidadores.Add("ClienteModel", ValidadoresCliente);
             mapValidadores.Add("LoginModel", ValidadoresLogin);
-
+            mapValidadores.Add("EnderecoCobrancaModel", ValidadoresEnderecoCobranca);
             mapExpressoes.Add("LivrosModel", new BuscaLivros());
         }
 
@@ -77,13 +87,16 @@ namespace ToCBooks.Data.Business.Patterns
 
         public MensagemModel Cadastrar(EntidadeDominio Objeto)
         {
+            var Despachante = (Despachante)Objeto;
+            Objeto = Despachante.Entidade;
+
             MensagemModel Mensagem = new MensagemModel();
             try
             {
                 foreach (var Validador in mapValidadores[Objeto.GetType().Name])
                     Validador.Validar(Objeto);
 
-                if (Consultar(Objeto).Dados.Select(x => x.Id).Contains(Objeto.Id))
+                if (mapDao[Objeto.GetType().Name].Consultar(Despachante).Dados.Select(x => x.Id).Contains(Objeto.Id))
                     mapDao[Objeto.GetType().Name].Atualizar(Objeto);
                 else
                     mapDao[Objeto.GetType().Name].Cadastrar(Objeto);
@@ -106,6 +119,9 @@ namespace ToCBooks.Data.Business.Patterns
 
         public MensagemModel DesativarRegistro(EntidadeDominio Objeto)
         {
+            var Despachante = (Despachante)Objeto;
+            Objeto = Despachante.Entidade;
+
             MensagemModel Mensagem = new MensagemModel();
             try
             {
@@ -125,6 +141,9 @@ namespace ToCBooks.Data.Business.Patterns
 
         public MensagemModel AtivarRegistro(EntidadeDominio Objeto)
         {
+            var Despachante = (Despachante)Objeto;
+            Objeto = Despachante.Entidade;
+
             MensagemModel Mensagem = new MensagemModel();
             try
             {
@@ -144,16 +163,37 @@ namespace ToCBooks.Data.Business.Patterns
 
         public MensagemModel Consultar(EntidadeDominio Objeto)
         {
-            return mapDao[Objeto.GetType().Name].Consultar(Objeto);
+            var Despachante = (Despachante)Objeto;
+            Objeto = Despachante.Entidade;
+
+            return mapDao[Objeto.GetType().Name].Consultar(Despachante);
         }
 
         public MensagemModel Excluir(EntidadeDominio Objeto)
         {
-            return mapDao[Objeto.GetType().Name].Excluir(Objeto);
+            var Despachante = (Despachante)Objeto;
+            Objeto = Despachante.Entidade;
+
+            MensagemModel Mensagem;
+            try
+            {
+                return mapDao[Objeto.GetType().Name].Excluir(Objeto);
+            } catch(Exception error)
+            {
+                Mensagem = new MensagemModel();
+                Mensagem.Codigo = 1;
+                Mensagem.Resposta = error.Message;
+
+                return Mensagem;
+            }
+            
         }
 
         public MensagemModel Buscar(EntidadeDominio Objeto)
         {
+            var Despachante = (Despachante)Objeto;
+            Objeto = Despachante.Entidade;
+
             var NomeObjeto = Objeto.GetType().Name;
 
             return mapDao[NomeObjeto].Buscar(mapExpressoes[NomeObjeto].GetExpression(Objeto));

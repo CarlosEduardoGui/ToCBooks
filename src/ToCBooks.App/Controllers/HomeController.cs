@@ -10,6 +10,8 @@ using Newtonsoft.Json;
 using ToCBooks.App.Patterns.ViewHelpers;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
+using ToCBooks.App.Business.Models;
+using System;
 
 namespace ToCBooks.App.Controllers
 {
@@ -30,6 +32,8 @@ namespace ToCBooks.App.Controllers
             mapVH.Add("ClienteModel", new ClienteVH());
             mapVH.Add("LoginModel", new LoginVH());
             mapVH.Add("CartaoCreditoModel", new CartaoCreditoVH());
+            mapVH.Add("EnderecoEntregaModel", new EnderecoEntregaVH());
+            mapVH.Add("EnderecoCobrancaModel", new EnderecoCobrancaVH());
         }
 
         private Dictionary<string, IViewHelper> mapVH = new Dictionary<string, IViewHelper>();
@@ -60,15 +64,28 @@ namespace ToCBooks.App.Controllers
 
             var lVH = mapVH[HttpContext.Request.Form["mapKey"]];
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
-            var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]));
 
+            Guid ClienteID = new Guid();
+            if (HttpContext.Session.GetString("ClienteID") != null)
+                ClienteID = Guid.Parse(HttpContext.Session.GetString("ClienteID"));
+
+            var Despachante = new Despachante
+            {
+                Entidade = lVH.GetEntidade(HttpContext.Request.Form["JsonString"]),
+                Login = new LoginModel
+                {
+                    ClienteId = ClienteID
+                }
+            };
+
+            var lMensagem = lCommand.Executar(Despachante);
             return JsonConvert.SerializeObject(lMensagem, Formatting.Indented);
         }
-        
+
 
         [HttpPost]
         [Route("Login")]
-        public string Login() 
+        public string Login()
         {
             var lVH = mapVH[HttpContext.Request.Form["mapKey"]];
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
