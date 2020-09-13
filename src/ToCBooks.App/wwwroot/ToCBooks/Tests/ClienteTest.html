@@ -21,10 +21,10 @@ jQuery("#TodosCampos").on("click", function (e) {
     };
 
     var data2 = new Date()
-    var dia = data2.getDate();
-    var mes = data2.getMonth();
-    var ano = data2.getFullYear();
-    data2 = dia + '/' + (mes++) + '/' + ano;
+    var dia2 = data2.getDate();
+    var mes2 = data2.getMonth();
+    var ano2 = data2.getFullYear();
+    data2 = dia2 + '/' + (mes2++) + '/' + ano2;
 
     var cartaoCredito = {
         numeroCartao: "1234 1234 1234 1234",
@@ -32,7 +32,7 @@ jQuery("#TodosCampos").on("click", function (e) {
         codigoSeguranca: 123,
         bandeira: 1,
         principal: true,
-        dataVencimento: data2
+        dataVencimento: "2029-01-01"
     };
 
     var telefone = {
@@ -75,7 +75,7 @@ jQuery("#TodosCampos").on("click", function (e) {
         nome: "Manoel de Oliveira Mello",
         tipologradouro: 1,
         tiporesidencia: 2,
-        cep: 08830110,
+        cep: 18830110,
         bairro: "Cesar de Souza",
         numero: 210,
         observacao: "Ao lado da Esquerda",
@@ -106,7 +106,7 @@ jQuery("#TodosCampos").on("click", function (e) {
         cpf: 47540018852,
         login: login,
         telefone: telefone,
-        datanascimento: data,
+        datanascimento: "1999-03-03",
         enderecoCobranca: [enderecoCobranca],
         enderecoEntrega: [enderecoEntrega],
         tipoUsuario: 2,

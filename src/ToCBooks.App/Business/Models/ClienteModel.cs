@@ -28,22 +28,5 @@ namespace ToCBooks.App.Business.Models
         public ETipoGenero TipoGenero { get; set; }
 
         public bool Ativo { get; set; }
-
-
-        //private Guid _enderecoCobrancaID;
-
-        //public Guid EnderecoCobrancaID 
-        //{ 
-        //    get => _enderecoCobrancaID; 
-        //    set
-        //    {
-        //        _enderecoCobrancaID = value;
-        //    }
-        //}
-
-        //private Guid 
-
-        //public Guid EnderecoEntregaID { get; set; }
-        //public Guid CartaoCreditoID { get; set; }
     }
 }

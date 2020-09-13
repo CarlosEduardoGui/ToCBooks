@@ -40,7 +40,6 @@ namespace ToCBooks.Data.Business.Patterns
             List<IStrategy> ValidadoresCliente = new List<IStrategy>
             {
                 new ValidadorCliente(),
-                //new ValidadorLogin()
             };
 
             #endregion
@@ -54,7 +53,7 @@ namespace ToCBooks.Data.Business.Patterns
 
             #endregion
 
-            #region
+            #region Validadores Login
 
             var ValidadoresLogin = new List<IStrategy>
             {

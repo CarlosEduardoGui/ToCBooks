@@ -29,6 +29,7 @@ namespace ToCBooks.App.Controllers
             mapVH.Add("Parametro", new ParametroVH());
             mapVH.Add("ClienteModel", new ClienteVH());
             mapVH.Add("LoginModel", new LoginVH());
+            mapVH.Add("CartaoCreditoModel", new CartaoCreditoVH());
         }
 
         private Dictionary<string, IViewHelper> mapVH = new Dictionary<string, IViewHelper>();
@@ -50,17 +51,20 @@ namespace ToCBooks.App.Controllers
             return View();
         }
 
+
         [HttpPost]
         [Route("Operations")]
         public string Operations()
         {
             var sessao = HttpContext.Session.GetString("ClienteID");
+
             var lVH = mapVH[HttpContext.Request.Form["mapKey"]];
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
             var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]));
 
             return JsonConvert.SerializeObject(lMensagem, Formatting.Indented);
         }
+        
 
         [HttpPost]
         [Route("Login")]

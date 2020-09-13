@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ToCBooks.App.Migrations
 {
-    public partial class Atualizacao01 : Migration
+    public partial class AtualizacaoCartao : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -190,14 +190,14 @@ namespace ToCBooks.App.Migrations
                     Bandeira = table.Column<int>(nullable: false),
                     DataVencimento = table.Column<DateTime>(nullable: false),
                     Principal = table.Column<bool>(nullable: false),
-                    ClienteModelId = table.Column<Guid>(nullable: true)
+                    ClienteId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CartaoCredito", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CartaoCredito_Cliente_ClienteModelId",
-                        column: x => x.ClienteModelId,
+                        name: "FK_CartaoCredito_Cliente_ClienteId",
+                        column: x => x.ClienteId,
                         principalTable: "Cliente",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -213,14 +213,14 @@ namespace ToCBooks.App.Migrations
                     Email = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     Senha = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     TipoUsuario = table.Column<int>(nullable: false),
-                    ClienteFK = table.Column<Guid>(nullable: false)
+                    ClienteId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Login", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Login_Cliente_ClienteFK",
-                        column: x => x.ClienteFK,
+                        name: "FK_Login_Cliente_ClienteId",
+                        column: x => x.ClienteId,
                         principalTable: "Cliente",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -297,9 +297,9 @@ namespace ToCBooks.App.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartaoCredito_ClienteModelId",
+                name: "IX_CartaoCredito_ClienteId",
                 table: "CartaoCredito",
-                column: "ClienteModelId");
+                column: "ClienteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categoria_LivrosModelId",
@@ -347,9 +347,9 @@ namespace ToCBooks.App.Migrations
                 column: "PrecificacaoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Login_ClienteFK",
+                name: "IX_Login_ClienteId",
                 table: "Login",
-                column: "ClienteFK",
+                column: "ClienteId",
                 unique: true);
         }
 

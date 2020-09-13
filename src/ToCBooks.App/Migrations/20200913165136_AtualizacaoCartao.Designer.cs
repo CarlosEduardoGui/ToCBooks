@@ -10,8 +10,8 @@ using ToCBooks.App.Data.Context;
 namespace ToCBooks.App.Migrations
 {
     [DbContext(typeof(ToCBooksContext))]
-    [Migration("20200912193859_Atualizacao02")]
-    partial class Atualizacao02
+    [Migration("20200913165136_AtualizacaoCartao")]
+    partial class AtualizacaoCartao
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,7 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<int>("Bandeira");
 
-                    b.Property<Guid?>("ClienteModelId");
+                    b.Property<Guid>("ClienteId");
 
                     b.Property<int>("CodigoSeguranca");
 
@@ -49,7 +49,7 @@ namespace ToCBooks.App.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteModelId");
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("CartaoCredito");
                 });
@@ -384,9 +384,9 @@ namespace ToCBooks.App.Migrations
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.CartaoCreditoModel", b =>
                 {
-                    b.HasOne("ToCBooks.App.Business.Models.ClienteModel")
+                    b.HasOne("ToCBooks.App.Business.Models.ClienteModel", "Cliente")
                         .WithMany("CartaoCredito")
-                        .HasForeignKey("ClienteModelId");
+                        .HasForeignKey("ClienteId");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.Categoria", b =>

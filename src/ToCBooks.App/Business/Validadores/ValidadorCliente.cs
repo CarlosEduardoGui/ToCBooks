@@ -37,10 +37,10 @@ namespace ToCBooks.App.Business.Validadores
             if (Cliente.Telefone == null)
                 throw new Exception("Telefone inconsistente...");
 
-            if (Cliente.Telefone.DDD == 0 || Cliente.Telefone.DDD > 99)
+            if (Cliente.Telefone.DDD.ToString().Length != 2)
                 throw new Exception("DDD inconsistente...");
 
-            if (Cliente.Telefone.Numero == 0 || Cliente.Telefone.Numero > 999999999)
+            if (Cliente.Telefone.Numero.ToString().Length != 9)
                 throw new Exception("Número do Telefone está inconsistente...");
 
             if (Cliente.TipoGenero == 0)
@@ -51,13 +51,13 @@ namespace ToCBooks.App.Business.Validadores
 
             foreach (var cartaoCredito in Cliente.CartaoCredito)
             {
-                if (cartaoCredito.NumeroCartao.Equals("") || cartaoCredito.NumeroCartao == null)
+                if (cartaoCredito.NumeroCartao == null || cartaoCredito.NumeroCartao.Length != 19)
                     throw new Exception("Número do Cartão de Crédito inconsistente...");
 
                 if (cartaoCredito.Nome == null || cartaoCredito.Nome.Equals(""))
                     throw new Exception("Número do Cartão de Crédito inconsistente...");
 
-                if (cartaoCredito.CodigoSeguranca == 0 || cartaoCredito.CodigoSeguranca <= 0)
+                if (cartaoCredito.CodigoSeguranca.ToString().Length != 3)
                     throw new Exception("Código de Segurança do Cartão de Crédito inconsistente...");
 
                 if (cartaoCredito.Bandeira == 0)
@@ -68,10 +68,9 @@ namespace ToCBooks.App.Business.Validadores
             }
 
 
-
             foreach (var enderecoCobranca in Cliente.EnderecoCobranca)
             {
-                if (enderecoCobranca.CEP == 0 || enderecoCobranca.CEP > 99999999)
+                if (enderecoCobranca.CEP.ToString().Length != 8)
                     throw new Exception("CEP inconsistente...");
 
                 if (enderecoCobranca.Bairro == null || enderecoCobranca.Bairro.Equals(""))
@@ -91,10 +90,9 @@ namespace ToCBooks.App.Business.Validadores
             }
 
 
-
             foreach (var enderecoEntrega in Cliente.EnderecoCobranca)
             {
-                if (enderecoEntrega.CEP == 0 || enderecoEntrega.CEP > 99999999)
+                if (enderecoEntrega.CEP.ToString().Length != 8)
                     throw new Exception("CEP inconsistente...");
 
                 if (enderecoEntrega.Bairro == null || enderecoEntrega.Bairro.Equals(""))
