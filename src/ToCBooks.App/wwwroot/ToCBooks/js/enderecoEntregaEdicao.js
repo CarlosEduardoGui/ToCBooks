@@ -25,7 +25,6 @@ jQuery(document).ready(function () {
         e.preventDefault();
 
         jQuery("#id_endereco").val('');
-        jQuery("#id_cliente").val('');
         jQuery("#id_cidade").val('');
         jQuery("#id_pais").val('');
         jQuery("#id_estado").val('');

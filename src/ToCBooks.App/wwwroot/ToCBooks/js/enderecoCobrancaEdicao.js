@@ -25,7 +25,6 @@ jQuery(document).ready(function () {
         e.preventDefault();
 
         jQuery("#id_endereco").val('');
-        jQuery("#id_cliente").val('');
         jQuery("#id_cidade").val('');
         jQuery("#id_pais").val('');
         jQuery("#id_estado").val('');
@@ -298,7 +297,6 @@ function buscarEnderecos() {
                                 htmlLivros += '<td>' + endereco.Bairro + '</td>';
                                 htmlLivros += '<td><a style="cursor:pointer;" id_endereco="' + endereco.Id + '" class="editar"><i style="font-size: 20px;" class="far fa-edit"></i></a> | ';
                                 htmlLivros += ' <a style="cursor:pointer;" id_endereco="' + endereco.Id + '" class="excluir"><i style="font-size: 20px;" class="far fa-trash-alt"></i></td></tr>';
-
 
                                 jQuery("#id_cliente").val(endereco.ClienteId);
                             });

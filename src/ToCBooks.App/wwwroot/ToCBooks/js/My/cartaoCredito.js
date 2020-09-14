@@ -27,7 +27,6 @@ jQuery(document).ready(function () {
         e.preventDefault();
 
         jQuery("#id_cartaoCredito").val('');
-        jQuery("#id_cliente").val('');
 
         jQuery("#form_cartaoCredito")[0].reset();
         jQuery("select").niceSelect("update");
@@ -126,7 +125,7 @@ function buscarCartaoCredito(id_cartaoCredito) {
                         jQuery("#nomeCartao").val(CartaoCredito.Nome);
                         jQuery("#numeroCartao").val(CartaoCredito.NumeroCartao);
                         jQuery("#cvvCartao").val(CartaoCredito.CodigoSeguranca);
-                        jQuery("#dataVencimento").val(CartaoCredito.DataVencimento);
+                        jQuery("#dataVencimento").val(CartaoCredito.DataVencimento.split("T")[0]);
                         jQuery("#eTipoBandeira").val(CartaoCredito.Bandeira);
 
                         jQuery("select").niceSelect("update");
