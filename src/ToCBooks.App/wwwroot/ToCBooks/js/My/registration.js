@@ -37,17 +37,17 @@ jQuery(document).ready(function () {
         };
 
         var paisEntrega = {
-            nome: jQuery('#enderecoEntregaPais').val(),
-            estado: estadoEntrega
+            nome: jQuery('#enderecoEntregaPais').val()
         };
 
         var estadoEntrega = {
             nome: jQuery('#enderecoEntregaEstado').val(),
-            cidade: cidadeEntrega
+            pais: paisEntrega
         };
 
         var cidadeEntrega = {
             nome: jQuery('#enderecoEntregaCidade').val(),
+            estado: estadoEntrega
         };
 
 
@@ -58,22 +58,20 @@ jQuery(document).ready(function () {
             cep: jQuery('#enderecoCobrancaCep').val(),
             bairro: jQuery('#enderecoCobrancaBairro').val(),
             numero: jQuery('#enderecoCobrancaNumero').val(),
-            pais: paisCobranca,
             observacao: jQuery('#enderecoObservacoesCobranca').val(),
             cidade: cidadeCobranca,
             principal: true
         };
 
         var enderecoEntrega = {
-            numero: jQuery('#enderecoEntregaNumero').val(),
             nome: jQuery('#enderecoEntrega').val(),
-            bairro: jQuery('#enderecoEntregaBairro').val(),
-            cep: jQuery('#enderecoEntregaCep').val(),
-            pais: paisEntrega,
             tipologradouro: jQuery('#enderecoEntregaEtipologradouro').val(),
             tipoResidencia: jQuery('#enderecoEntregaEtiporesidencia').val(),
+            cep: jQuery('#enderecoEntregaCep').val(),
+            bairro: jQuery('#enderecoEntregaBairro').val(),
+            numero: jQuery('#enderecoEntregaNumero').val(),
             observacao: jQuery('#enderecoObservacoesEntrega').val(),
-            pais: paisEntrega,
+            cidade: cidadeEntrega,
             principal: true
         };
 
@@ -98,29 +96,38 @@ jQuery(document).ready(function () {
 });
 
 function CadastrarCliente(objeto) {
-    jQuery.ajax({
-        type: "POST",
-        url: 'https://localhost:44354/Operations',
-        data: { oper: 2, mapKey: 'ClienteModel', JsonString: JSON.stringify(objeto) },
-        cache: false,
-        beforeSend: function (xhr) {
+    if (objeto != null) {
+        jQuery.ajax({
+            type: "POST",
+            url: 'https://localhost:44354/Operations',
+            data: { oper: 2, mapKey: 'ClienteModel', JsonString: JSON.stringify(objeto) },
+            cache: false,
+            beforeSend: function (xhr) {
 
-        },
-        complete: function (e, xhr, result) {
-            console.log(e.readyState);
-            console.log(e.status);
-            if (e.readyState == 4 && e.status == 200) {
+            },
+            complete: function (e, xhr, result) {
+                console.log(e.readyState);
+                console.log(e.status);
+                if (e.readyState == 4 && e.status == 200) {
+                    try {
+                        var resposta_controle = JSON.parse(e.responseText);
+                        console.log(resposta_controle);
+                        if (resposta_controle.Code == 0) {
+                            window.location("Index.html")
+                        } else {
+                            alert("Campos errados ", resposta_controle.Mensagem);
+                        }
 
-                try {
-                    var resposta_controle = JSON.parse(e.responseText);
-                    console.log(reposta_controle);
-
-                } catch (error) {
-                    console.log(error);
+                    } catch (error) {
+                        console.log(error);
+                    }
                 }
             }
-        }
-    });
+        });
+    } else {
+        alert("Preencha o formulário.");
+    }
+    
 }
 
 function ConsultarCliente(objeto) {

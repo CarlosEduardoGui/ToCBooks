@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ToCBooks.App.Models;
-using ToCBooks.App.Commands;
-using ToCBooks.App.ViewHelpers;
-using ToCBooks.App.Patterns.Commands;
-using ToCBooks.App.Interfaces;
 using Newtonsoft.Json;
-using ToCBooks.App.Patterns.ViewHelpers;
-using Microsoft.AspNetCore.Http;
-using System.Linq;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using ToCBooks.App.Business.Models;
+using ToCBooks.App.Commands;
+using ToCBooks.App.Interfaces;
+using ToCBooks.App.Models;
+using ToCBooks.App.Patterns.Commands;
+using ToCBooks.App.Patterns.ViewHelpers;
+using ToCBooks.App.ViewHelpers;
 
 namespace ToCBooks.App.Controllers
 {
@@ -91,7 +91,7 @@ namespace ToCBooks.App.Controllers
 
             HttpContext.Session.SetString("ClienteID", lMensagem.Dados.Select(x => x.Id).FirstOrDefault().ToString());
 
-            return JsonConvert.SerializeObject("Login efetuado com sucesso!", Formatting.Indented);
+            return JsonConvert.SerializeObject(lMensagem, Formatting.Indented);
         }
 
 

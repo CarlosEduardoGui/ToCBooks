@@ -93,7 +93,7 @@ jQuery(document).ready(function () {
             nome: "Bolivia",
             tipologradouro: 1,
             tiporesidencia: 2,
-            cep: "07500000",
+            cep: "17500000",
             bairro: "Ouro Fino",
             numero: 164,
             observacao: "Testando o Cadastro",

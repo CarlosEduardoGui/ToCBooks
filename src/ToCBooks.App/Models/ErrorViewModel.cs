@@ -1,5 +1,3 @@
-using System;
-
 namespace ToCBooks.App.Models
 {
     public class ErrorViewModel

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using ToCBooks.App.Business.Interfaces;
@@ -189,16 +187,19 @@ namespace ToCBooks.Data.Business.Patterns
             MensagemModel Mensagem;
             try
             {
-                return mapDao[Objeto.GetType().Name].Excluir(Objeto);
-            } catch(Exception error)
+                return mapDao[Objeto.GetType().Name].Excluir(Despachante);
+            }
+            catch (Exception error)
             {
-                Mensagem = new MensagemModel();
-                Mensagem.Codigo = 1;
-                Mensagem.Resposta = error.Message;
+                Mensagem = new MensagemModel
+                {
+                    Codigo = 1,
+                    Resposta = error.Message
+                };
 
                 return Mensagem;
             }
-            
+
         }
 
         public MensagemModel Buscar(EntidadeDominio Objeto)

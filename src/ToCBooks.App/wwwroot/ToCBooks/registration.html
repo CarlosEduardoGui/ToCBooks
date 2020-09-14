@@ -113,40 +113,40 @@
                         <hr />
                         <form class="row login_form">
                             <div class="col-md-12 form-group">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Insira seu E-mail">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Insira seu E-mail" required>
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="password" class="form-control" id="senha1" name="senha1" placeholder="Insira sua senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira sua senha'">
+                                <input type="password" class="form-control" id="senha1" name="senha1" placeholder="Insira sua senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Insira sua senha'" required>
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="password" class="form-control" id="senha2" name="senha2" placeholder="Repita a senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Repita a senha'">
+                                <input type="password" class="form-control" id="senha2" name="senha2" placeholder="Repita a senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Repita a senha'" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome Completo'">
+                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome Completo'" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="number" class="form-control" id="cpf" name="cpf" placeholder="CPF" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF'">
+                                <input type="number" class="form-control" id="cpf" name="cpf" placeholder="CPF" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF'" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <select id="genero" name="genero">
+                                <select id="genero" name="genero" required>
                                     <option value="0">Gênero</option>
                                     <option value="1">Homem</option>
                                     <option value="2">Mulher</option>
                                 </select>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="date" class="form-control" id="dataNascimento" name="dataNascimento">
+                                <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" required>
                                 <label>Data de Nascimento</label><br />
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="text" class="form-control" id="ddd" name="ddd" placeholder="DDD" onfocus="this.placeholder = ''" onblur="this.placeholder = 'DDD'">
+                                <input type="text" class="form-control" id="ddd" name="ddd" placeholder="DDD" onfocus="this.placeholder = ''" onblur="this.placeholder = 'DDD'" required>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefone'">
+                                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefone'" required>
                             </div>
                             <div class="col-md-4 form-group">
-                                <select id="etipotelefone" name="etipotelefone" >
-                                    <option value="0">Selecione a Tipo de Telefone</option>
+                                <select id="etipotelefone" name="etipotelefone">
+                                    <option value="0" required>Selecione a Tipo de Telefone</option>
                                     <option value="1">Fixo</option>
                                     <option value="2">Celular</option>
                                 </select>
@@ -155,7 +155,7 @@
                                 <h3>Endereço de Cobrança</h3>
                             </div>
                             <div class="col-md-4 form-group">
-                                <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
+                                <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro" required>
                                     <option value="0">Tipo de Logradouro</option>
                                     <option value="1">Avenida</option>
                                     <option value="2">Rua</option>
@@ -169,32 +169,32 @@
                                 </select>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="text" class="form-control" id="enderecoCobranca" name="enderecoCobranca" placeholder="Logradouro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Logradouro'">
+                                <input type="text" class="form-control" id="enderecoCobranca" name="enderecoCobranca" placeholder="Logradouro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Logradouro'" required>
                             </div>
                             <div class="col-md-4 form-group">
-                                <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
+                                <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia" required>
                                     <option value="0">Tipo de Residência</option>
                                     <option value="1">Casa</option>
                                     <option value="2">Apartamento</option>
                                 </select>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="number" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
+                                <input type="number" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'" required>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
+                                <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'" required>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
+                                <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'" required>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
+                                <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
+                                <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
+                                <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'" required>
                             </div>
                             <div class="col-md-12 form-group">
                                 <textarea class="form-control" rows="5" id="enderecoObservacoesCobranca" name="enderecoObservacoesCobranca" placeholder="Observações"></textarea>
@@ -209,7 +209,7 @@
                             </div>
 
                             <div class="col-md-4 form-group">
-                                <select id="enderecoEntregaEtipologradouro" name="enderecoEntregaEtipologradouro">
+                                <select id="enderecoEntregaEtipologradouro" name="enderecoEntregaEtipologradouro" required>
                                     <option value="0">Tipo de Logradouro</option>
                                     <option value="1">Avenida</option>
                                     <option value="2">Rua</option>
@@ -223,32 +223,32 @@
                                 </select>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="text" class="form-control" id="enderecoEntrega" name="enderecoEntrega" placeholder="Logradouro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Logradouro'">
+                                <input type="text" class="form-control" id="enderecoEntrega" name="enderecoEntrega" placeholder="Logradouro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Logradouro'" required>
                             </div>
                             <div class="col-md-4 form-group">
-                                <select id="enderecoEntregaEtiporesidencia" name="enderecoEntregaEtiporesidencia">
+                                <select id="enderecoEntregaEtiporesidencia" name="enderecoEntregaEtiporesidencia" required>
                                     <option value="0">Tipo de Residência</option>
                                     <option value="1">Casa</option>
                                     <option value="2">Apartamento</option>
                                 </select>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="number" class="form-control" id="enderecoEntregaCep" name="enderecoEntregaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
+                                <input type="number" class="form-control" id="enderecoEntregaCep" name="enderecoEntregaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'" required>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" class="form-control" id="enderecoEntregaBairro" name="enderecoEntregaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
+                                <input type="text" class="form-control" id="enderecoEntregaBairro" name="enderecoEntregaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'" required>
                             </div>
                             <div class="col-md-4 form-group">
-                                <input type="number" class="form-control" id="enderecoEntregaNumero" name="enderecoEntregaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
+                                <input type="number" class="form-control" id="enderecoEntregaNumero" name="enderecoEntregaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'" required>
                             </div>
                             <div class="col-md-8 form-group">
-                                <input type="text" class="form-control" id="enderecoEntregaCidade" name="enderecoEntregaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
+                                <input type="text" class="form-control" id="enderecoEntregaCidade" name="enderecoEntregaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="text" class="form-control" id="enderecoEntregaEstado" name="enderecoEntregaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
+                                <input type="text" class="form-control" id="enderecoEntregaEstado" name="enderecoEntregaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="text" class="form-control" id="enderecoEntregaPais" name="enderecoEntregaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
+                                <input type="text" class="form-control" id="enderecoEntregaPais" name="enderecoEntregaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'" required>
                             </div>
                             <div class="col-md-12 form-group">
                                 <textarea class="form-control" rows="5" id="enderecoObservacoesEntrega" name="enderecoObservacoesEntrega" placeholder="Oberservações"></textarea>
@@ -259,16 +259,16 @@
                             </div>
 
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="Número do Cartão" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número do Cartão'">
+                                <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="Número do Cartão" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número do Cartão'" required>
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Nome impresso no Cartão" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome impresso no Cartão'">
+                                <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Nome impresso no Cartão" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome impresso no Cartão'" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="text" class="form-control" id="codigoSeguranca" name="codigoSeguranca" placeholder="CVV" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CVV'">
+                                <input type="text" class="form-control" id="codigoSeguranca" name="codigoSeguranca" placeholder="CVV" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CVV'" required>
                             </div>
                             <div class="col-md-6 form-group">
-                                <select id="etipoCartao" name="etipoCartao" >
+                                <select id="etipoCartao" name="etipoCartao" required>
                                     <option value="0">Selecione a Bandeira</option>
                                     <option value="1">Visa</option>
                                     <option value="2">Mastercard</option>
@@ -279,21 +279,13 @@
                             <br />
                             <br />
                             <div class="col-md-6 form-group">
-                                <input type="month" class="form-control" id="dataVencimento" name="dataVencimento">
+                                <input type="month" class="form-control" id="dataVencimento" name="dataVencimento" required>
                                 <label>Data de Vencimento do Cartão</label><br />
                             </div>
-                            <!--<div class="col-md-6 switch-wrap d-flex justify-content-between">
-                                <h4 style="font-size: 14px">Cartão Principal?</h4>
-                                <div class="confirm-switch">
-                                    <input type="checkbox" id="confirm-switch" checked="">
-                                    <label for="confirm-switch"></label>
-                                </div>
-                            </div>-->
-
-                            <div class="col-md-4 form-group">
-                                <button class="primary-btn" id="btn_salvar">Salvar</button>
-                            </div>
                         </form>
+                        <div class="col-md-4 form-group" style="">
+                            <button class="primary-btn" id="btn_salvar">Salvar</button>
+                        </div>
                     </div>
                 </div>
             </div>
