@@ -220,7 +220,7 @@ namespace ToCBooks.Data.Business.Patterns
 
             var NomeObjeto = Objeto.GetType().Name;
 
-            return mapDao[NomeObjeto].Buscar(mapExpressoes[NomeObjeto].GetExpression(Objeto));
+            return mapDao[NomeObjeto].ConsultaCustomizada(Objeto);
         }
 
         public MensagemModel Login(EntidadeDominio Objeto)

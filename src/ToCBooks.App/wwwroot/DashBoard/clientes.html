@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -10,10 +10,10 @@
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
-        rel="stylesheet" />
+          rel="stylesheet" />
     <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 
     <!-- PLUGINS CSS STYLE -->
     <link href="assets/plugins/toaster/toastr.min.css" rel="stylesheet" />
@@ -80,7 +80,7 @@
                 <div class="app-brand">
                     <a href="/index.html">
                         <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
-                            width="30" height="33" viewBox="0 0 30 33">
+                             width="30" height="33" viewBox="0 0 30 33">
                             <g fill="none" fill-rule="evenodd">
                                 <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
                                 <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
@@ -99,7 +99,7 @@
 
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                               data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
                                 <span class="nav-text">Dashboard</span> <b class="caret"></b>
                             </a>
@@ -117,7 +117,7 @@
 
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                data-target="#parametros" aria-expanded="false" aria-controls="parametros">
+                               data-target="#parametros" aria-expanded="false" aria-controls="parametros">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
                                 <span class="nav-text">Parâmetros</span> <b class="caret"></b>
                             </a>
@@ -183,8 +183,8 @@
                                 <i style="display: none;" class="mdi mdi-magnify"></i>
                             </button>
                             <input style="display: none;" type="text" name="query" id="search-input"
-                                class="form-control" placeholder="'button', 'chart' etc." autofocus
-                                autocomplete="off" />
+                                   class="form-control" placeholder="'button', 'chart' etc." autofocus
+                                   autocomplete="off" />
                         </div>
                         <div id="search-results-container">
                             <ul id="search-results"></ul>
@@ -220,23 +220,33 @@
                                 <div class="card-header justify-content-between mb-4">
                                     <h2>Clientes</h2>
                                     <div>
-                                        <button id="btn_consultar" class="text-black-50 mr-2 font-size-20"><strong><i
-                                                    class="mdi mdi-table-search"></i></strong></button>
-                                        <button class="text-black-50 mr-2 font-size-20"><strong><i
-                                                    class="mdi mdi-cached"></i></strong></button>
+                                        <button id="btn_consultar" class="text-black-50 mr-2 font-size-20">
+                                            <strong>
+                                                <i class="mdi mdi-table-search"></i>
+                                            </strong>
+                                        </button>
+                                        <button class="text-black-50 mr-2 font-size-20">
+                                            <strong>
+                                                <i class="mdi mdi-cached"></i>
+                                            </strong>
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="card-body py-0" id="tabela_livros" style="overflow-y: scroll;">
+                                <div class="card-body py-0" id="tabela_clientes" style="overflow-y: scroll;">
                                     <div class="media d-flex mb-5">
                                         <div class="media-body align-self-center">
                                             <a href="#">
                                                 <h6 class="mb-3 text-dark font-weight-medium"> Carla Perez </h6>
                                             </a>
                                             <p class="float-md-right">
-                                                <button class="text-black-50 mr-2 font-size-20 editar_livro"><strong><i
-                                                            class="mdi mdi-table-search"></i></strong></button>
+                                                <button class="text-black-50 mr-2 font-size-20 editar_livro">
+                                                    <strong>
+                                                        <i class="mdi mdi-table-search"></i>
+                                                    </strong>
+                                                </button>
                                             </p>
-                                            <p class="d-none d-md-block">carla.perez@sintonia.com
+                                            <p class="d-none d-md-block">
+                                                carla.perez@sintonia.com
                                             </p>
                                         </div>
                                     </div>
@@ -246,10 +256,14 @@
                                                 <h6 class="mb-3 text-dark font-weight-medium"> Carla Perez </h6>
                                             </a>
                                             <p class="float-md-right">
-                                                <button class="text-black-50 mr-2 font-size-20 editar_livro"><strong><i
-                                                            class="mdi mdi-table-search"></i></strong></button>
+                                                <button class="text-black-50 mr-2 font-size-20 editar_livro">
+                                                    <strong>
+                                                        <i class="mdi mdi-table-search"></i>
+                                                    </strong>
+                                                </button>
                                             </p>
-                                            <p class="d-none d-md-block">carla.perez@sintonia.com
+                                            <p class="d-none d-md-block">
+                                                carla.perez@sintonia.com
                                             </p>
                                         </div>
                                     </div>
@@ -260,10 +274,14 @@
                                                 <h6 class="mb-3 text-dark font-weight-medium"> Carla Perez </h6>
                                             </a>
                                             <p class="float-md-right">
-                                                <button class="text-black-50 mr-2 font-size-20 editar_livro"><strong><i
-                                                            class="mdi mdi-table-search"></i></strong></button>
+                                                <button class="text-black-50 mr-2 font-size-20 editar_livro">
+                                                    <strong>
+                                                        <i class="mdi mdi-table-search"></i>
+                                                    </strong>
+                                                </button>
                                             </p>
-                                            <p class="d-none d-md-block">carla.perez@sintonia.com
+                                            <p class="d-none d-md-block">
+                                                carla.perez@sintonia.com
                                             </p>
                                         </div>
                                     </div>
@@ -310,15 +328,15 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Nome</label>
-                                        <input type="text" id="titulo" class="form-control titulo" name="titulo"
-                                            required />
+                                        <input type="text" id="cons_nome" class="form-control titulo" name="cons_nome"
+                                               required />
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>CPF</label>
-                                        <input type="text" id="autor" class="form-control titulo" name="autor"
-                                            required />
+                                        <input type="text" id="cons_cpf" class="form-control titulo" name="cons_cpf"
+                                               required />
                                     </div>
                                 </div>
                             </div>
@@ -327,15 +345,15 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="text" id="editora" class="form-control titulo" name="editora"
-                                            required />
+                                        <input type="text" id="cons_email" class="form-control titulo" name="cons_email"
+                                               required />
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label>Telefone</label>
-                                        <input type="text" id="barras" class="form-control titulo" name="barras"
-                                            required />
+                                        <input type="text" id="cons_telefone" class="form-control titulo" name="cons_telefone"
+                                               required />
                                     </div>
                                 </div>
                             </div>
@@ -345,7 +363,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <a class="card-link" data-toggle="collapse" href="#collapseOne"
-                                        style="color: black; padding: 15px;">
+                                       style="color: black; padding: 15px;">
                                         <div class="row">
                                             <div class="col-6" style="text-align: left;">
                                                 Busca Avançada
@@ -363,26 +381,24 @@
                                                 <div class="form-group">
                                                     <label>Cidade</label>
                                                     <input type="text" id="ano" class="form-control" name="ano"
-                                                        required />
+                                                           required />
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label>Estado</label>
                                                     <input type="text" id="edicao" class="form-control" name="edicao"
-                                                        required />
+                                                           required />
                                                 </div>
                                             </div>
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label>País</label>
                                                     <input type="text" id="paginas" class="form-control" name="paginas"
-                                                        required />
+                                                           required />
                                                 </div>
                                             </div>
                                         </div>
-
-                                        c
                                     </div>
                                 </div>
                             </div>
@@ -392,186 +408,15 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" id="btn_consultar_livros">Buscar</button>
+                    <button type="button" class="btn btn-info" id="btn_consultar_clientes">Buscar</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="modal_confirmacao_delecao">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Deseja Inativar o Livro Selecionado ?</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form id="form_delecao" name="form_delecao">
-
-                        <div class="row" style="margin-top: 5%">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label>Justificativa</label>
-                                    <textarea rows="5" style="resize: none;" name="descricao" id="descricao"
-                                        class="form-control" required></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row" style="margin-top: 5%">
-                            <div class="col-6" style="text-align: center;">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-success" id="btn_sim">Sim</button>
-                                </div>
-                            </div>
-                            <div class="col-6" style="text-align: center;">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-danger" id="btn_sim">Não</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modal_confirmacao_ativacao">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Deseja Ativar o Livro Selecionado ?</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form id="form_delecao" name="form_delecao">
-
-                        <div class="row" style="margin-top: 5%">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label>Justificativa</label>
-                                    <textarea rows="5" style="resize: none;" name="descricao" id="descricao"
-                                        class="form-control" required></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row" style="margin-top: 5%">
-                            <div class="col-6" style="text-align: center;">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-success" id="btn_sim">Sim</button>
-                                </div>
-                            </div>
-                            <div class="col-6" style="text-align: center;">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-danger" id="btn_sim">Não</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modal_estoque">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Quantidade em Estoque</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form id="form_delecao" name="form_delecao">
-                        <div class="row" style="margin-top: 5%">
-                            <div class="col-12" style="text-align: center;">
-                                <div class="form-group">
-                                    <label>Quantidade</label>
-                                    <input type="number" id="qtde_estoque" name="qtde_estoque" class="form-control"
-                                        style="margin-left: 30%; width: 40%;;" required disabled /> <br /><br />
-                                    <button type="button" id="habilitar_edicao_estoque"
-                                        class="btn btn-warning">Habilitar Edição</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" style="display: none;"
-                        id="btn_salvar_estoque">Salvar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modal_definir_precificacao">
+    <div class="modal fade" id="modal_show_cliente">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Precificacao</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form id="form_delecao" name="form_delecao">
-                        <div class="row" style="margin-top: 5%">
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label>Grupo Precificação</label>
-                                    <select id="grupo_def_preco" name="grupo_def_preco" class="selectpicker">
-                                        <option value=""></option>
-                                        <option value="Grupo AY">Grupo AY</option>
-                                        <option value="Grupo AZ">Grupo AZ</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label>Valor do Livro</label>
-                                    <input type="text" id="valor_livro" name="valor_livro" class="form-control"
-                                        name="isbn" required />
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label>Preço Final</label>
-                                    <input type="text" id="preco_livro" name="precolivro" class="form-control"
-                                        name="isbn" required />
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="btn_salvar_precificacao">Salvar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modal_cad_livro">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">Detalhes Cliente</h4>
@@ -585,13 +430,13 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Nome</label>
-                                    <input type="text" id="titulo" class="form-control titulo" name="titulo" required />
+                                    <input type="text" id="busca_nome" class="form-control titulo" name="titulo" required />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>CPF</label>
-                                    <input type="text" id="autor" class="form-control titulo" name="autor" required />
+                                    <input type="text" id="busca_cpf" class="form-control titulo" name="autor" required />
                                 </div>
                             </div>
                         </div>
@@ -599,14 +444,14 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="text" id="editora" class="form-control titulo" name="editora"
-                                        required />
+                                    <input type="text" id="busca_email" class="form-control titulo" name="editora"
+                                           required />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Telefone</label>
-                                    <input type="text" id="barras" class="form-control titulo" name="barras" required />
+                                    <input type="text" id="busca_telefone" class="form-control titulo" name="barras" required />
                                 </div>
                             </div>
                         </div>
@@ -614,10 +459,10 @@
                         <div class="card">
                             <div class="card-header">
                                 <a class="card-link" data-toggle="collapse" href="#collapseOneTwo"
-                                    style="color: black;">
+                                   style="color: black;">
                                     <div class="row">
                                         <div class="col-12" style="text-align: left;">
-                                            Endereço selecionado
+                                            Endereço Cobrança
                                         </div>
                                     </div>
                                 </a>
@@ -628,8 +473,8 @@
                                         <form>
                                             <div class="form-row">
                                                 <div class="col-md-4 form-group">
-                                                    <select id="enderecoCobrancaEtipologradouro"
-                                                        name="enderecoCobrancaEtipologradouro">
+                                                    <select id="enderecoCobrancaEtipologradouro" class="form-control"
+                                                            name="enderecoCobrancaEtipologradouro">
                                                         <option value="0">Tipo de Logradouro</option>
                                                         <option value="1">Avenida</option>
                                                         <option value="2">Rua</option>
@@ -644,57 +489,140 @@
                                                 </div>
 
                                                 <div class="form-group col-md-4">
-                                                    <input type="text" class="form-control" id="endereco"
-                                                        placeholder="Logradouro">
+                                                    <input type="text" class="form-control" id="enderecoCobrancaNome"
+                                                           placeholder="Logradouro">
                                                 </div>
 
                                                 <div class="col-md-4 form-group">
-                                                    <select id="enderecoCobrancaEtiporesidencia"
-                                                        name="enderecoCobrancaEtiporesidencia">
+                                                    <select id="enderecoCobrancaEtiporesidencia" class="form-control"
+                                                            name="enderecoCobrancaEtiporesidencia">
                                                         <option value="0">Tipo de Residência</option>
                                                         <option value="1">Casa</option>
                                                         <option value="2">Apartamento</option>
                                                     </select>
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <input type="text" class="form-control" id="endereco"
-                                                        placeholder="Manoel de Oliveira Mello">
-                                                </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="text" class="form-control" id="enderecoCobrancaCep"
-                                                        name="enderecoCobrancaCep" placeholder="CEP"
-                                                        onfocus="this.placeholder = ''"
-                                                        onblur="this.placeholder = 'CEP'">
+                                                           name="enderecoCobrancaCep" placeholder="CEP"
+                                                           onfocus="this.placeholder = ''"
+                                                           onblur="this.placeholder = 'CEP'">
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="text" class="form-control" id="enderecoCobrancaBairro"
-                                                        name="enderecoCobrancaBairro" placeholder="Bairro"
-                                                        onfocus="this.placeholder = ''"
-                                                        onblur="this.placeholder = 'Bairro'">
+                                                           name="enderecoCobrancaBairro" placeholder="Bairro"
+                                                           onfocus="this.placeholder = ''"
+                                                           onblur="this.placeholder = 'Bairro'">
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="number" class="form-control"
-                                                        id="enderecoCobrancaNumero" name="enderecoCobrancaNumero"
-                                                        placeholder="Número" onfocus="this.placeholder = ''"
-                                                        onblur="this.placeholder = 'Número'">
+                                                           id="enderecoCobrancaNumero" name="enderecoCobrancaNumero"
+                                                           placeholder="Número" onfocus="this.placeholder = ''"
+                                                           onblur="this.placeholder = 'Número'">
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="text" class="form-control" id="enderecoCobrancaCidade"
-                                                        name="enderecoCobrancaCidade" placeholder="Cidade"
-                                                        onfocus="this.placeholder = ''"
-                                                        onblur="this.placeholder = 'Cidade'">
+                                                           name="enderecoCobrancaCidade" placeholder="Cidade"
+                                                           onfocus="this.placeholder = ''"
+                                                           onblur="this.placeholder = 'Cidade'">
                                                 </div>
                                                 <div class="col-md-6 form-group">
                                                     <input type="text" class="form-control" id="enderecoCobrancaEstado"
-                                                        name="enderecoCobrancaEstado" placeholder="Estado"
-                                                        onfocus="this.placeholder = ''"
-                                                        onblur="this.placeholder = 'Estado'">
+                                                           name="enderecoCobrancaEstado" placeholder="Estado"
+                                                           onfocus="this.placeholder = ''"
+                                                           onblur="this.placeholder = 'Estado'">
                                                 </div>
                                                 <div class="col-md-6 form-group">
                                                     <input type="text" class="form-control" id="enderecoCobrancaPais"
-                                                        name="enderecoCobrancaPais" placeholder="País"
-                                                        onfocus="this.placeholder = ''"
-                                                        onblur="this.placeholder = 'País'">
+                                                           name="enderecoCobrancaPais" placeholder="País"
+                                                           onfocus="this.placeholder = ''"
+                                                           onblur="this.placeholder = 'País'">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="card-link" data-toggle="collapse" href="#collapseOneTree"
+                                   style="color: black;">
+                                    <div class="row">
+                                        <div class="col-12" style="text-align: left;">
+                                            Endereço Entrega
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div id="accordion3">
+                                <div id="collapseOneTree" class="collapse" data-parent="#accordion3">
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col-md-4 form-group">
+                                                    <select id="enderecoEntregaEtipologradouro" class="form-control"
+                                                            name="enderecoEntregaEtipologradouro">
+                                                        <option value="0">Tipo de Logradouro</option>
+                                                        <option value="1">Avenida</option>
+                                                        <option value="2">Rua</option>
+                                                        <option value="3">Vila</option>
+                                                        <option value="4">Viela</option>
+                                                        <option value="5">Conjunto</option>
+                                                        <option value="6">Condominio</option>
+                                                        <option value="7">Fazenda</option>
+                                                        <option value="8">Jardim</option>
+                                                        <option value="9">Ladeira</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group col-md-4">
+                                                    <input type="text" class="form-control" id="enderecoEntregaNome"
+                                                           placeholder="Logradouro">
+                                                </div>
+
+                                                <div class="col-md-4 form-group">
+                                                    <select id="enderecoEntregaEtiporesidencia" class="form-control"
+                                                            name="enderecoEntregaEtiporesidencia">
+                                                        <option value="0">Tipo de Residência</option>
+                                                        <option value="1">Casa</option>
+                                                        <option value="2">Apartamento</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="text" class="form-control" id="enderecoEntregaCep"
+                                                           name="enderecoEntregaCep" placeholder="CEP"
+                                                           onfocus="this.placeholder = ''"
+                                                           onblur="this.placeholder = 'CEP'">
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="text" class="form-control" id="enderecoEntregaBairro"
+                                                           name="enderecoEntregaBairro" placeholder="Bairro"
+                                                           onfocus="this.placeholder = ''"
+                                                           onblur="this.placeholder = 'Bairro'">
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="number" class="form-control"
+                                                           id="enderecoEntregaNumero" name="enderecoEntregaNumero"
+                                                           placeholder="Número" onfocus="this.placeholder = ''"
+                                                           onblur="this.placeholder = 'Número'">
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="text" class="form-control" id="enderecoEntregaCidade"
+                                                           name="enderecoEntregaCidade" placeholder="Cidade"
+                                                           onfocus="this.placeholder = ''"
+                                                           onblur="this.placeholder = 'Cidade'">
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" id="enderecoEntregaEstado"
+                                                           name="enderecoEntregaEstado" placeholder="Estado"
+                                                           onfocus="this.placeholder = ''"
+                                                           onblur="this.placeholder = 'Estado'">
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <input type="text" class="form-control" id="enderecoEntregaPais"
+                                                           name="enderecoEntregaPais" placeholder="País"
+                                                           onfocus="this.placeholder = ''"
+                                                           onblur="this.placeholder = 'País'">
                                                 </div>
                                             </div>
                                         </form>
@@ -720,26 +648,26 @@
                                         <div class="form-row">
                                             <div class="col-md-6 form-group">
                                                 <input type="text" class="form-control" id="numeroCartao"
-                                                    name="numeroCartao" placeholder="000 000 000 000"
-                                                    onfocus="this.placeholder = ''"
-                                                    onblur="this.placeholder = '000 000 000 000'">
+                                                       name="numeroCartao" placeholder="000 000 000 000"
+                                                       onfocus="this.placeholder = ''"
+                                                       onblur="this.placeholder = '000 000 000 000'">
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <input type="text" class="form-control" id="nomeCartao"
-                                                    name="nomeCartao" placeholder="Carlos E G Souza"
-                                                    onfocus="this.placeholder = ''"
-                                                    onblur="this.placeholder = 'Carlos E G Souza'">
+                                                       name="nomeCartao" placeholder="Carlos E G Souza"
+                                                       onfocus="this.placeholder = ''"
+                                                       onblur="this.placeholder = 'Carlos E G Souza'">
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <input type="text" class="form-control" id="cvvCartao" name="cvvCartao"
-                                                    placeholder="000" onfocus="this.placeholder = ''"
-                                                    onblur="this.placeholder = '000'">
+                                                       placeholder="000" onfocus="this.placeholder = ''"
+                                                       onblur="this.placeholder = '000'">
                                             </div>
                                             <div class="col-md-6 form-group">
-                                                <select id="grupo_def_preco" name="grupo_def_preco" class="selectpicker">
-                                                    <option value=""></option>
-                                                    <option value="Grupo AY">Mastercard</option>
-                                                    <option value="Grupo AZ">Visa</option>
+                                                <select id="bandeira_Cartao" name="bandeira_Cartao" class="form-control">
+                                                    <option value="">Bandeira</option>
+                                                    <option value="0">Mastercard</option>
+                                                    <option value="1">Visa</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -760,14 +688,14 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCn8TFXGg17HAUcNpkwtxxyT9Io9B_NcM" defer></script>
     <script src="assets/plugins/jquery/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"
-        integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
-        crossorigin="anonymous"></script>
+            integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw=="
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"
-        integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg=="
-        crossorigin="anonymous"></script>
+            integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg=="
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
-        integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
-        crossorigin="anonymous"></script>
+            integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA=="
+            crossorigin="anonymous"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
     <script src="assets/plugins/toaster/toastr.min.js"></script>
@@ -787,11 +715,7 @@
     <script src="assets/js/date-range.js"></script>
     <script src="assets/js/map.js"></script>
     <script src="assets/js/custom.js"></script>
-    <script src="assets/js/Livros.js"></script>
-
-
-
-
+    <script src="assets/js/clientes.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 using ToCBooks.App.Business.Models;
@@ -78,11 +79,39 @@ namespace ToCBooks.App.Data.DAOs
                 var Despachante = (Despachante)Objeto;
                 var Cliente = (ClienteModel)Despachante.Entidade;
 
-                var ObjetoPersistido = db.Cliente.Find(Cliente.Id);
+                var ObjetoPersistido = db.Cliente
+                    .Where(x => x.Id == Objeto.Id).ToList().FirstOrDefault();
                 if (ObjetoPersistido != null)
                     mensagem.Dados.Add(ObjetoPersistido);
                 else
-                    db.Cliente.Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList().ForEach(x => mensagem.Dados.Add(x));
+                    db.Cliente
+                        .Include(x => x.Login)
+                        .Include(x => x.EnderecoCobranca)
+                        .Include(x => x.EnderecoEntrega)
+                        .Include(x => x.CartaoCredito)
+                        .Include(x => x.Telefone)
+                        .Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList().ForEach(x => { 
+                            x.Login.Cliente = null;
+                            x.EnderecoCobranca.ForEach(y => { 
+                                y.Cliente = null; 
+                                y = db.EnderecoCobranca
+                                .Include(z => z.Cidade)
+                                .Include(z => z.Cidade.Estado)
+                                .Include(z => z.Cidade.Estado.Pais)
+                                .Where(z => z.Id == y.Id).First(); 
+                            });
+                            x.EnderecoEntrega.ForEach(y => { 
+                                y.Cliente = null;
+                                y = db.EnderecoEntrega
+                                .Include(z => z.Cidade)
+                                .Include(z => z.Cidade.Estado)
+                                .Include(z => z.Cidade.Estado.Pais)
+                                .Where(z => z.Id == y.Id).First();
+                            });
+                            x.CartaoCredito.ForEach(y => y.Cliente = null);
+
+                            mensagem.Dados.Add(x); 
+                        });
 
                 mensagem.Codigo = 0;
                 mensagem.Resposta = "Cliente consultado com sucesso";
@@ -109,6 +138,29 @@ namespace ToCBooks.App.Data.DAOs
         public void Dispose()
         {
             throw new NotImplementedException();
+        }
+
+        public MensagemModel ConsultaCustomizada(EntidadeDominio Objeto)
+        {
+            var Cliente = (ClienteModel)Objeto;
+            Expression<Func<ClienteModel, bool>> Busca = x => x.Nome == Cliente.Nome 
+            && x.CPF == Cliente.CPF;
+
+            return Buscar(Busca);
+        }
+
+        public MensagemModel Buscar(Expression<Func<ClienteModel, bool>> predicate)
+        {
+            MensagemModel Mensagem = new MensagemModel();
+            using (var db = new ToCBooksContext())
+            {
+                db.Cliente.Where(predicate.Compile()).ToList().ForEach(x => Mensagem.Dados.Add(x));
+            }
+
+            Mensagem.Codigo = 0;
+            Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
+
+            return Mensagem;
         }
     }
 }

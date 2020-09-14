@@ -58,6 +58,11 @@ namespace ToCBooks.App.Data.DAOs
             return Mensagem;
         }
 
+        public MensagemModel ConsultaCustomizada(EntidadeDominio Objeto)
+        {
+            throw new NotImplementedException();
+        }
+
         public MensagemModel Consultar(EntidadeDominio Objeto)
         {
             var Despachante = (Despachante)Objeto;
