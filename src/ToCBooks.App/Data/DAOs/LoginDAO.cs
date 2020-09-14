@@ -34,6 +34,11 @@ namespace ToCBooks.App.Data.DAOs
             throw new NotImplementedException();
         }
 
+        public MensagemModel ConsultaCustomizada(EntidadeDominio Objeto)
+        {
+            throw new NotImplementedException();
+        }
+
         public MensagemModel Consultar(EntidadeDominio Objeto)
         {
             using (var db = new ToCBooksContext())

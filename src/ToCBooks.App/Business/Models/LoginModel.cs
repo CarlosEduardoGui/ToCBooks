@@ -12,6 +12,7 @@ namespace ToCBooks.App.Business.Models
         public ETipoUsuario TipoUsuario { get; set; }
 
         public Guid ClienteId { get; set; }
+
         public ClienteModel Cliente { get; set; }
     }
 }
