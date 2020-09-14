@@ -20,13 +20,17 @@ jQuery(document).ready(function () {
         console.log(formData.get('id_cliente'));
 
         var telefone = {
+            Id: jQuery("#id_telefone").val(),
             ddd: formData.get('ddd'),
             numero: formData.get('telefone'),
             tipo: formData.get('eTipoTelefone')
         };
 
         var login = {
-            email: formData.get('email'),
+            Id: jQuery("#id_login").val(),
+            Senha: jQuery("#senha").val(),
+            ClienteID: jQuery("#id_cliente").val(),
+            email: formData.get('email')
         }
 
         var cliente = {
@@ -61,10 +65,7 @@ jQuery(document).ready(function () {
         cadastrarCartaoCredito(cartao);
 
     });
-
-    jQuery(document).on("click", '.editar', function () {
-        buscarCartaoCredito(jQuery(this).attr("id_cartaocredito"));
-    });
+        
 });
 
 
@@ -88,13 +89,16 @@ function buscarCliente() {
 
                         jQuery("#id_cliente").val(Cliente.Id);
                         jQuery("#email").val(Cliente.Login.Email);
+                        jQuery("#id_login").val(Cliente.Login.Id);
+                        jQuery("#senha").val(Cliente.Login.Senha);
                         jQuery("#nome").val(Cliente.Nome);
                         jQuery("#CPF").val(Cliente.CPF);
                         jQuery("#eTipoGenero").val(Cliente.TipoGenero);
-                        jQuery("#dataNascimento").val(Cliente.DataNascimento);
+                        jQuery("#dataNascimento").val(Cliente.DataNascimento.split("T")[0]);
                         jQuery("#ddd").val(Cliente.Telefone.DDD);
                         jQuery("#telefone").val(Cliente.Telefone.Numero);
                         jQuery("#eTipoTelefone").val(Cliente.Telefone.Tipo);
+                        jQuery("#id_telefone").val(Cliente.Telefone.Id);
 
                         jQuery("select").niceSelect("update");
 
@@ -128,9 +132,7 @@ function atualizarCliente(objeto) {
                     var resposta_controle = JSON.parse(e.responseText);
 
                     if (resposta_controle.Codigo == 0) {
-                        buscarCartoesCredito();
-
-                        jQuery("#modal_add_cartaoCredito").modal("hide");
+                        alert("Dados Atualizados");
                     } else {
                         alert(resposta_controle.Resposta);
                     }
