@@ -115,17 +115,21 @@
                 <div class="col-lg-6">
                     <div class="login_form_inner">
                         <h3>Alterar senha</h3>
-                        <form class="row login_form">
+                        <form class="row login_form" id="form_login">
+                            <input type="hidden" id="id_cliente" />
+                            <input type="hidden" id="id_login" />
+                            <input type="hidden" id="email" />
+                            <input type="hidden" id="eTipoUsuario" />
                             <div class="col-md-12 form-group">
                                 <input type="password" class="form-control" id="senha1" name="senha1" placeholder="Nova senha">
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="senha2" name="senha2" placeholder="Confirmar Senha">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <button class="primary-btn">Confirmar alteração</button>
+                                <input type="password" class="form-control" id="senha2" name="senha2" placeholder="Confirmar Senha">
                             </div>
                         </form>
+                        <div class="col-md-12 form-group">
+                            <button class="primary-btn" id="btn_alterar">Confirmar alteração</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -160,21 +164,6 @@
                                 <div class="info"></div>
                             </form>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3  col-md-6 col-sm-6">
-                    <div class="single-footer-widget mail-chimp">
-                        <h6 class="mb-20">Propagandas</h6>
-                        <ul class="instafeed d-flex flex-wrap">
-                            <li><img src="img/i1.jpg" alt=""></li>
-                            <li><img src="img/i2.jpg" alt=""></li>
-                            <li><img src="img/i3.jpg" alt=""></li>
-                            <li><img src="img/i4.jpg" alt=""></li>
-                            <li><img src="img/i5.jpg" alt=""></li>
-                            <li><img src="img/i6.jpg" alt=""></li>
-                            <li><img src="img/i7.jpg" alt=""></li>
-                            <li><img src="img/i8.jpg" alt=""></li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
@@ -216,6 +205,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+    <script src="js/My/resetSenha.js"></script>
 </body>
 
 </html>

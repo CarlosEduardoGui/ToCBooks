@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
 using ToCBooks.App.Business.Models;
+using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
 
@@ -10,6 +12,7 @@ namespace ToCBooks.App.Data.DAOs
     public class LoginDAO : IDAO
     {
         private MensagemModel mensagem = new MensagemModel();
+        private int result;
 
         public MensagemModel Ativar(EntidadeDominio Objeto)
         {
@@ -18,7 +21,25 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
-            throw new NotImplementedException();
+            using (var db = new ToCBooksContext())
+            {
+                var Login = (LoginModel)Objeto;
+
+                db.Login.Update(Login);
+                result = db.SaveChanges();
+
+                if(result == 1)
+                {
+                    mensagem.Codigo = 0;
+                    mensagem.Resposta = "Senha alterada";
+                    return mensagem;
+                }
+
+                mensagem.Codigo = 1;
+                mensagem.Resposta = "Erro ao alterar Login";
+
+                return mensagem;
+            }
         }
 
         public MensagemModel Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
@@ -40,7 +61,17 @@ namespace ToCBooks.App.Data.DAOs
         {
             using (var db = new ToCBooksContext())
             {
-                var Login = (LoginModel)Objeto;
+                LoginModel Login;
+                if (Objeto.GetType().Name.Contains("LoginModel"))
+                {
+                    Login = (LoginModel)Objeto;
+                }
+                else
+                {
+                    var Entidade = (Despachante)Objeto;
+                    Login = (LoginModel)Entidade.Entidade;
+                }
+                    
 
                 var idCliente = db.Login.Where(x => x.Email == Login.Email && x.Senha == Login.Senha).Select(x => x.ClienteId).FirstOrDefault();
                 if (idCliente == default(Guid))
@@ -51,7 +82,13 @@ namespace ToCBooks.App.Data.DAOs
                     return mensagem;
                 }
 
-                mensagem.Dados.Add(db.Cliente.Where(x => x.Id == idCliente).FirstOrDefault());
+                db.Cliente
+                    .Include(x => x.Login)
+                    .Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList()
+                    .ForEach(x => {
+                        x.Login.Cliente = null;
+                        mensagem.Dados.Add(x);
+                    });
 
                 mensagem.Codigo = 0;
                 mensagem.Resposta = "Usuário encontrado com sucesso";

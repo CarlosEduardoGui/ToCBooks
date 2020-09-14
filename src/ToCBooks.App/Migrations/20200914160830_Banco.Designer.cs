@@ -10,8 +10,8 @@ using ToCBooks.App.Data.Context;
 namespace ToCBooks.App.Migrations
 {
     [DbContext(typeof(ToCBooksContext))]
-    [Migration("20200914020353_a")]
-    partial class a
+    [Migration("20200914160830_Banco")]
+    partial class Banco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

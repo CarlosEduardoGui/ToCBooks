@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ToCBooks.App.Migrations
 {
-    public partial class a : Migration
+    public partial class Banco : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
