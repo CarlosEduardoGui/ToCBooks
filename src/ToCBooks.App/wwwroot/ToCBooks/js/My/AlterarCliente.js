@@ -46,7 +46,6 @@ jQuery(document).ready(function () {
 
 
         atualizarCliente(cliente);
-
     });
 
     jQuery("#btn_testar").on('click', function () {

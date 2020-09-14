@@ -90,17 +90,20 @@ namespace ToCBooks.App.Data.DAOs
                         .Include(x => x.EnderecoEntrega)
                         .Include(x => x.CartaoCredito)
                         .Include(x => x.Telefone)
-                        .Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList().ForEach(x => { 
+                        .Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList().ForEach(x =>
+                        {
                             x.Login.Cliente = null;
-                            x.EnderecoCobranca.ForEach(y => { 
-                                y.Cliente = null; 
+                            x.EnderecoCobranca.ForEach(y =>
+                            {
+                                y.Cliente = null;
                                 y = db.EnderecoCobranca
                                 .Include(z => z.Cidade)
                                 .Include(z => z.Cidade.Estado)
                                 .Include(z => z.Cidade.Estado.Pais)
-                                .Where(z => z.Id == y.Id).First(); 
+                                .Where(z => z.Id == y.Id).First();
                             });
-                            x.EnderecoEntrega.ForEach(y => { 
+                            x.EnderecoEntrega.ForEach(y =>
+                            {
                                 y.Cliente = null;
                                 y = db.EnderecoEntrega
                                 .Include(z => z.Cidade)
@@ -110,7 +113,7 @@ namespace ToCBooks.App.Data.DAOs
                             });
                             x.CartaoCredito.ForEach(y => y.Cliente = null);
 
-                            mensagem.Dados.Add(x); 
+                            mensagem.Dados.Add(x);
                         });
 
                 mensagem.Codigo = 0;
@@ -122,7 +125,19 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Desativar(EntidadeDominio Objeto)
         {
-            throw new NotImplementedException();
+            MensagemModel Mensagem = new MensagemModel();
+            using (var db = new ToCBooksContext())
+            {
+                ClienteModel Livro = db.Find<ClienteModel>(Objeto.Id);
+                Livro.StatusAtual = ETipoStatus.Inativo;
+                Livro.Justificativa = Objeto.Justificativa;
+                db.SaveChanges();
+            }
+
+            Mensagem.Codigo = 0;
+            Mensagem.Resposta = "Cliente Desativado...";
+
+            return Mensagem;
         }
 
         public MensagemModel Editar(EntidadeDominio Objeto)
@@ -143,8 +158,9 @@ namespace ToCBooks.App.Data.DAOs
         public MensagemModel ConsultaCustomizada(EntidadeDominio Objeto)
         {
             var Cliente = (ClienteModel)Objeto;
-            Expression<Func<ClienteModel, bool>> Busca = x => x.Nome == Cliente.Nome 
-            && x.CPF == Cliente.CPF;
+            Expression<Func<ClienteModel, bool>> Busca = x => x.Nome == Cliente.Nome
+            && x.CPF == Cliente.CPF && x.Telefone.Numero == Cliente.Telefone.Numero
+            && x.Login.Email == Cliente.Login.Email;
 
             return Buscar(Busca);
         }
@@ -154,7 +170,15 @@ namespace ToCBooks.App.Data.DAOs
             MensagemModel Mensagem = new MensagemModel();
             using (var db = new ToCBooksContext())
             {
-                db.Cliente.Where(predicate.Compile()).ToList().ForEach(x => Mensagem.Dados.Add(x));
+                db.Cliente
+                    .Include(x => x.Telefone)
+                    .Include(x => x.Login)
+                    .Where(predicate.Compile()).ToList().ForEach(x =>
+                    {
+                        x.Login.Cliente = null;
+                        Mensagem.Dados.Add(x);
+                    });
+
             }
 
             Mensagem.Codigo = 0;
