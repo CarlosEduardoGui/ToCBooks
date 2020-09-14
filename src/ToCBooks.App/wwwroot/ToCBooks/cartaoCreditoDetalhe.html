@@ -109,38 +109,43 @@
     <!--================Cartão de Crédito Area =================-->
     <section class="order_details section_gap">
         <div class="container">
-            <button id="" data-toggle="modal" data-target="#cartaoCreditoModal" class="btn btn-success">Adicionar novo Cartão de Crédito</button><br /><br /><br />
-            <div id="accordion">
-                <div class="card">
-                    <div class="card-header">
-                        <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                            Cartão de Crédito #1
-                        </a>
-                        <div class="card-switch">
+            <button id="" data-toggle="modal" data-target="#cartaoCreditoModal" class="btn btn-success">Adicionar novo Cartão de Crédito</button><br /><br />
+            <div id="tabelaCartaoCredito">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                                Cartão de Crédito #1
+                            </a>
                             <div class="card-switch">
-                                <div>
+                                <div class="card-switch">
+                                    <div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                        <div class="card-body">
-                            <div class="form-row">
-                                <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="000 000 000 000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000 000 000 000'">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Carlos E G Souza" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Carlos E G Souza'">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000'">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <select id="grupo_def_preco" name="grupo_def_preco">
-                                        <option value="0">Selecione a Bandeira</option>
-                                        <option value="1">Visa</option>
-                                        <option value="2">Mastercard</option>
-                                    </select>
+                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="000 000 000 000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000 000 000 000'">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Carlos E G Souza" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Carlos E G Souza'">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000'">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="month" class="form-control" id="cvvCartao" name="dataVencimento" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data de Vencimento'">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <select id="grupo_def_preco" name="grupo_def_preco">
+                                            <option value="0">Selecione a Bandeira</option>
+                                            <option value="1">Visa</option>
+                                            <option value="2">Mastercard</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +155,7 @@
             <br /><br />
             <button class="btn btn-info">Voltar</button>
 
-            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="cartaoCreditoModal" aria-hidden="true">
+            <div class="modal fade" id="cartaoCreditoModal" tabindex="-1" role="dialog" aria-labelledby="cartaoCreditoModal" aria-hidden="true">
                 <!--class="modal fade"-->
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -272,6 +277,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/My/cartaoCredito.js"></script>
 </body>
 
 </html>

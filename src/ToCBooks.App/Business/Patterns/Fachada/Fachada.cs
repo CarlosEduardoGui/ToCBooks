@@ -25,6 +25,7 @@ namespace ToCBooks.Data.Business.Patterns
             mapDao.Add("ClienteModel", new ClienteDAO());
             mapDao.Add("Parametro", new ParametroDAO());
             mapDao.Add("LoginModel", new LoginDAO());
+            mapDao.Add("CartaoCreditoModel", new CartaoCreditoDAO());
             mapDao.Add("EnderecoCobrancaModel", new EnderecoCobrancaDAO());
             mapDao.Add("EnderecoEntregaModel", new EnderecoEntregaDAO());
 
@@ -82,10 +83,21 @@ namespace ToCBooks.Data.Business.Patterns
 
             #endregion
 
+            #region Validadores Cartão de Crédito
+
+            var ValidadoresCartaoCredito = new List<IStrategy>
+            {
+                new ValidadorCartaoCredito()
+            };
+
+            #endregion
+
             mapValidadores.Add("LivrosModel", ValidadoresLivro);
             mapValidadores.Add("Parametro", ValidadoresParametro);
             mapValidadores.Add("ClienteModel", ValidadoresCliente);
             mapValidadores.Add("LoginModel", ValidadoresLogin);
+            mapValidadores.Add("CartaoCreditoModel", ValidadoresCartaoCredito);
+
             mapValidadores.Add("EnderecoCobrancaModel", ValidadoresEnderecoCobranca);
             mapValidadores.Add("EnderecoEntregaModel", ValidadoresEnderecoEntrega);
             mapExpressoes.Add("LivrosModel", new BuscaLivros());

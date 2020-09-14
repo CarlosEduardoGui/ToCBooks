@@ -10,8 +10,8 @@ using Newtonsoft.Json;
 using ToCBooks.App.Patterns.ViewHelpers;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
-using ToCBooks.App.Business.Models;
 using System;
+using ToCBooks.App.Business.Models;
 
 namespace ToCBooks.App.Controllers
 {
@@ -60,8 +60,6 @@ namespace ToCBooks.App.Controllers
         [Route("Operations")]
         public string Operations()
         {
-            var sessao = HttpContext.Session.GetString("ClienteID");
-
             var lVH = mapVH[HttpContext.Request.Form["mapKey"]];
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
 

@@ -51,64 +51,19 @@ namespace ToCBooks.App.Business.Validadores
 
             foreach (var cartaoCredito in Cliente.CartaoCredito)
             {
-                if (cartaoCredito.NumeroCartao == null || cartaoCredito.NumeroCartao.Length != 19)
-                    throw new Exception("Número do Cartão de Crédito inconsistente...");
-
-                if (cartaoCredito.Nome == null || cartaoCredito.Nome.Equals(""))
-                    throw new Exception("Número do Cartão de Crédito inconsistente...");
-
-                if (cartaoCredito.CodigoSeguranca.ToString().Length != 3)
-                    throw new Exception("Código de Segurança do Cartão de Crédito inconsistente...");
-
-                if (cartaoCredito.Bandeira == 0)
-                    throw new Exception("Bandeira do Cartão de Crédito inconsistente...");
-
-                if (cartaoCredito.DataVencimento == default)
-                    throw new Exception("Data de Vencimento do Cartão de Crédito inconsistente...");
+                new ValidadorCartaoCredito().Validar(cartaoCredito);
             }
 
 
             foreach (var enderecoCobranca in Cliente.EnderecoCobranca)
             {
-                if (enderecoCobranca.CEP.ToString().Length != 8)
-                    throw new Exception("CEP inconsistente...");
-
-                if (enderecoCobranca.Bairro == null || enderecoCobranca.Bairro.Equals(""))
-                    throw new Exception("Bairro do Endereço Cobrança inconsistente...");
-
-                if (enderecoCobranca.Nome == null || enderecoCobranca.Nome.Equals(""))
-                    throw new Exception("Logradouro do Endereço Cobrança inconsistente...");
-
-                if (enderecoCobranca.Numero == 0)
-                    throw new Exception("Número do Endereço Cobrança inconsistente...");
-
-                if (enderecoCobranca.TipoLogradouro == 0)
-                    throw new Exception("Tipo de Logradouro do Endereço Cobrança inconsistente...");
-
-                if (enderecoCobranca.TipoResidencia == 0)
-                    throw new Exception("Tipo de Residência do Endereço Cobrança inconsistente...");
+                new ValidadorEnderecoCobranca().Validar(enderecoCobranca);
             }
 
 
-            foreach (var enderecoEntrega in Cliente.EnderecoCobranca)
+            foreach (var enderecoEntrega in Cliente.EnderecoEntrega)
             {
-                if (enderecoEntrega.CEP.ToString().Length != 8)
-                    throw new Exception("CEP inconsistente...");
-
-                if (enderecoEntrega.Bairro == null || enderecoEntrega.Bairro.Equals(""))
-                    throw new Exception("Bairro do Endereço Cobrança inconsistente...");
-
-                if (enderecoEntrega.Nome == null || enderecoEntrega.Nome.Equals(""))
-                    throw new Exception("Logradouro do Endereço Cobrança inconsistente...");
-
-                if (enderecoEntrega.Numero == 0)
-                    throw new Exception("Número do Endereço Cobrança inconsistente...");
-
-                if (enderecoEntrega.TipoLogradouro == 0)
-                    throw new Exception("Tipo de Logradouro do Endereço Cobrança inconsistente...");
-
-                if (enderecoEntrega.TipoResidencia == 0)
-                    throw new Exception("Tipo de Residência do Endereço Cobrança inconsistente...");
+                new ValidadorEnderecoEntrega().Validar(enderecoEntrega);
             }
 
 
