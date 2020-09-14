@@ -1,0 +1,352 @@
+{
+  "id": "e723cfb3-641b-446e-a669-ec2aec079e52",
+  "version": "2.0",
+  "name": "ToCBooks",
+  "url": "https://localhost:44354/TocBooks/login.html",
+  "tests": [{
+    "id": "a38d215c-74e6-453b-926f-f0e2a247a4e5",
+    "name": "Cadastrar Endereço Cobrança",
+    "commands": [{
+      "id": "09274398-be4d-408d-ad55-7d4ace4c298a",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44354/TocBooks/login.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "254b08a6-b07f-4fd7-8e27-3e8108d2ffc0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1382x744",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6b611445-7f9b-4b9b-9b0a-a7d671af4e99",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=emailemail", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='contactForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d9aeb3a4-d8cd-438d-b0d6-c55762f75c28",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=emailemail", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='contactForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "pedrogomes980@gmail.com"
+    }, {
+      "id": "6ee9a32c-00ce-45cc-af60-6ca664caf9a0",
+      "comment": "",
+      "command": "type",
+      "target": "id=senha",
+      "targets": [
+        ["id=senha", "id"],
+        ["name=senha", "name"],
+        ["css=#senha", "css:finder"],
+        ["xpath=//input[@id='senha']", "xpath:attributes"],
+        ["xpath=//form[@id='contactForm']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "123"
+    }, {
+      "id": "373c3027-6b52-4521-9493-d2e846c83852",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_login",
+      "targets": [
+        ["id=btn_login", "id"],
+        ["css=#btn_login", "css:finder"],
+        ["xpath=//button[@id='btn_login']", "xpath:attributes"],
+        ["xpath=//form[@id='contactForm']/div[4]/button", "xpath:idRelative"],
+        ["xpath=//div[4]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a451bd5f-9305-4d3b-902b-b3bff42ed169",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(6) .genric-btn",
+      "targets": [
+        ["css=.row:nth-child(6) .genric-btn", "css:finder"],
+        ["xpath=(//a[contains(text(),'Detalhes')])[4]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'enderecoCobrancaEdicao.html')]", "xpath:href"],
+        ["xpath=//div[3]/div[4]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "89e985aa-9a9a-4452-a5f6-c892c19940bb",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_add_endereco",
+      "targets": [
+        ["id=btn_add_endereco", "id"],
+        ["css=#btn_add_endereco", "css:finder"],
+        ["xpath=//button[@id='btn_add_endereco']", "xpath:attributes"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Adicionar Novo Endereço')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6c272d98-e3b7-422a-ad28-ed5e06a62722",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=btn_add_endereco",
+      "targets": [
+        ["id=btn_add_endereco", "id"],
+        ["css=#btn_add_endereco", "css:finder"],
+        ["xpath=//button[@id='btn_add_endereco']", "xpath:attributes"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Adicionar Novo Endereço')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9f4b6991-c0a8-4af4-b571-7aa7543b2a1d",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=btn_add_endereco",
+      "targets": [
+        ["id=btn_add_endereco", "id"],
+        ["css=#btn_add_endereco", "css:finder"],
+        ["xpath=//button[@id='btn_add_endereco']", "xpath:attributes"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Adicionar Novo Endereço')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b0f3292-33f8-495f-a947-0a74c391f4fc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-4:nth-child(1) .nice-select",
+      "targets": [
+        ["css=.col-4:nth-child(1) .nice-select", "css:finder"],
+        ["xpath=//form[@id='form_endereco']/div/div/div/div", "xpath:idRelative"],
+        ["xpath=//form/div/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5346b4a6-975c-4e93-8040-3063fd4c41e5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.open .option:nth-child(3)",
+      "targets": [
+        ["css=.open .option:nth-child(3)", "css:finder"],
+        ["xpath=//form[@id='form_endereco']/div/div/div/div/ul/li[3]", "xpath:idRelative"],
+        ["xpath=//div/div/div/ul/li[3]", "xpath:position"],
+        ["xpath=//li[contains(.,'Rua')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b817518-79fe-421e-9f6e-c88c938b9cdb",
+      "comment": "",
+      "command": "click",
+      "target": "id=enderecoCobranca",
+      "targets": [
+        ["id=enderecoCobranca", "id"],
+        ["name=enderecoCobranca", "name"],
+        ["css=#enderecoCobranca", "css:finder"],
+        ["xpath=//input[@id='enderecoCobranca']", "xpath:attributes"],
+        ["xpath=//form[@id='form_endereco']/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d0c463c-34e0-44a1-b4ab-c28036cb10c9",
+      "comment": "",
+      "command": "type",
+      "target": "id=enderecoCobranca",
+      "targets": [
+        ["id=enderecoCobranca", "id"],
+        ["name=enderecoCobranca", "name"],
+        ["css=#enderecoCobranca", "css:finder"],
+        ["xpath=//input[@id='enderecoCobranca']", "xpath:attributes"],
+        ["xpath=//form[@id='form_endereco']/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "Rua Teste"
+    }, {
+      "id": "f3503e15-2bd9-4f15-8601-db0c13019adf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.modal-lg .modal-header",
+      "targets": [
+        ["css=.modal-lg .modal-header", "css:finder"],
+        ["xpath=//div[@id='modal_add_endereco']/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a31fe26f-9294-4f29-a73f-65c2e0a49496",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-4:nth-child(3) .nice-select",
+      "targets": [
+        ["css=.col-4:nth-child(3) .nice-select", "css:finder"],
+        ["xpath=//form[@id='form_endereco']/div/div[3]/div/div", "xpath:idRelative"],
+        ["xpath=//form/div/div[3]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f661bc4f-3278-4b3a-9994-295bbfb9fe64",
+      "comment": "",
+      "command": "click",
+      "target": "css=.open .option:nth-child(2)",
+      "targets": [
+        ["css=.open .option:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='form_endereco']/div/div[3]/div/div/ul/li[2]", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/ul/li[2]", "xpath:position"],
+        ["xpath=//li[contains(.,'Casa')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a796064a-d048-4685-a937-35d6f5537803",
+      "comment": "",
+      "command": "click",
+      "target": "id=enderecoCobrancaCep",
+      "targets": [
+        ["id=enderecoCobrancaCep", "id"],
+        ["name=enderecoCobrancaCep", "name"],
+        ["css=#enderecoCobrancaCep", "css:finder"],
+        ["xpath=//input[@id='enderecoCobrancaCep']", "xpath:attributes"],
+        ["xpath=//form[@id='form_endereco']/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f7e813b3-9bf7-4b56-a7e9-2276422314ba",
+      "comment": "",
+      "command": "type",
+      "target": "id=enderecoCobrancaCep",
+      "targets": [
+        ["id=enderecoCobrancaCep", "id"],
+        ["name=enderecoCobrancaCep", "name"],
+        ["css=#enderecoCobrancaCep", "css:finder"],
+        ["xpath=//input[@id='enderecoCobrancaCep']", "xpath:attributes"],
+        ["xpath=//form[@id='form_endereco']/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "07500000"
+    }, {
+      "id": "ef6ca0b1-8ca9-4a64-8b1e-a8cf65d72276",
+      "comment": "",
+      "command": "type",
+      "target": "id=enderecoCobrancaBairro",
+      "targets": [
+        ["id=enderecoCobrancaBairro", "id"],
+        ["name=enderecoCobrancaBairro", "name"],
+        ["css=#enderecoCobrancaBairro", "css:finder"],
+        ["xpath=//input[@id='enderecoCobrancaBairro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_endereco']/div[2]/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "Bairro Teste"
+    }, {
+      "id": "73fa07e5-d9d2-4b1c-a228-6b6c27ebf027",
+      "comment": "",
+      "command": "type",
+      "target": "id=enderecoCobrancaNumero",
+      "targets": [
+        ["id=enderecoCobrancaNumero", "id"],
+        ["name=enderecoCobrancaNumero", "name"],
+        ["css=#enderecoCobrancaNumero", "css:finder"],
+        ["xpath=//input[@id='enderecoCobrancaNumero']", "xpath:attributes"],
+        ["xpath=//form[@id='form_endereco']/div[2]/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/input", "xpath:position"]
+      ],
+      "value": "427"
+    }, {
+      "id": "735fb341-9290-4ea3-880e-db6fd2d6018e",
+      "comment": "",
+      "command": "type",
+      "target": "id=enderecoCobrancaCidade",
+      "targets": [
+        ["id=enderecoCobrancaCidade", "id"],
+        ["name=enderecoCobrancaCidade", "name"],
+        ["css=#enderecoCobrancaCidade", "css:finder"],
+        ["xpath=//input[@id='enderecoCobrancaCidade']", "xpath:attributes"],
+        ["xpath=//form[@id='form_endereco']/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/input", "xpath:position"]
+      ],
+      "value": "Mogi das Cruzes"
+    }, {
+      "id": "2c4f35c0-1b80-409a-b8ba-a2bda67525d9",
+      "comment": "",
+      "command": "type",
+      "target": "id=enderecoCobrancaEstado",
+      "targets": [
+        ["id=enderecoCobrancaEstado", "id"],
+        ["name=enderecoCobrancaEstado", "name"],
+        ["css=#enderecoCobrancaEstado", "css:finder"],
+        ["xpath=//input[@id='enderecoCobrancaEstado']", "xpath:attributes"],
+        ["xpath=//form[@id='form_endereco']/div[3]/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "São Paulo"
+    }, {
+      "id": "308904f1-bc31-4c6c-81c4-29d073f2a3ac",
+      "comment": "",
+      "command": "type",
+      "target": "id=enderecoCobrancaPais",
+      "targets": [
+        ["id=enderecoCobrancaPais", "id"],
+        ["name=enderecoCobrancaPais", "name"],
+        ["css=#enderecoCobrancaPais", "css:finder"],
+        ["xpath=//input[@id='enderecoCobrancaPais']", "xpath:attributes"],
+        ["xpath=//form[@id='form_endereco']/div[3]/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "Brasil"
+    }, {
+      "id": "a6b8cd26-32df-4680-bd5c-8b55e636b07d",
+      "comment": "",
+      "command": "type",
+      "target": "id=enderecoObservacoesCobranca",
+      "targets": [
+        ["id=enderecoObservacoesCobranca", "id"],
+        ["name=enderecoObservacoesCobranca", "name"],
+        ["css=#enderecoObservacoesCobranca", "css:finder"],
+        ["xpath=//textarea[@id='enderecoObservacoesCobranca']", "xpath:attributes"],
+        ["xpath=//form[@id='form_endereco']/div[4]/div/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Sem observações"
+    }, {
+      "id": "594eec76-f030-4407-b7a8-c6e92b69bc55",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_salvar_endereco",
+      "targets": [
+        ["id=btn_salvar_endereco", "id"],
+        ["css=#btn_salvar_endereco", "css:finder"],
+        ["xpath=//button[@id='btn_salvar_endereco']", "xpath:attributes"],
+        ["xpath=//div[@id='modal_add_endereco']/div/div/div[3]/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Salvar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "25ce6354-8915-411b-883b-8cb581304b71",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["https://localhost:44354/TocBooks/login.html"],
+  "plugins": []
+}

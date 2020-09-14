@@ -22,7 +22,40 @@ jQuery(document).ready(function () {
 
         consultarCliente(ObjetoConsulta);
     });
+
+    jQuery(document).on('click', '.inativar', function () {
+        desativarCliente({ Id: jQuery(this).attr("id_cliente") });
+    });
 });
+
+function desativarCliente(objetoEnvio) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "3", mapKey: "ClienteModel", JsonString: JSON.stringify(objetoEnvio) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Codigo == 1)
+                        alert("Erro ao Desativar Livro...");
+                    else {
+                        buscarClientes();
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
 
 function consultarCliente(objetoEnvio) {
     jQuery.ajax({
@@ -39,14 +72,35 @@ function consultarCliente(objetoEnvio) {
                 try {
                     var respostaControle = JSON.parse(e.responseText);
 
-                    if (respostaControle.Dados.length > 0) {
+                    if (respostaControle.Codigo == 1)
+                        alert("Erro ao Buscar Livros...");
+                    else {
+                        var htmlTabela = '';
 
-                        
-                    } else {
-                        
+                        respostaControle.Dados.forEach(Cliente => {
+                            htmlTabela += '<div class="media d-flex mb-5">';
+                            htmlTabela += '<div class="media-body align-self-center">';
+                            htmlTabela += '<a href="#"><h6 class="mb-3 text-dark font-weight-medium">';
+                            htmlTabela += Cliente.Nome + '</h6></a><p class="float-md-right">';
+                            htmlTabela += '<button id_cliente="' + Cliente.Id + '" class="text-black-50 mr-2 font-size-20 editar_livro">';
+                            htmlTabela += '<strong><i class="mdi mdi-table-search"></i></strong></button> | '; 
+                            htmlTabela += '<a style="cursor: pointer" id_cliente="' + Cliente.Id + '" class="inativar"><i class="mdi mdi-trash-can"></i></a>';
+                            htmlTabela += '</p><p class="d-none d-md-block">' + Cliente.Login.Email;
+                            htmlTabela += '</p></div></div>';
+                        });
+
+                        if (htmlTabela == '') {
+                            htmlTabela += '<div class="media d-flex mb-5">';
+                            htmlTabela += '<div class="media-body align-self-center">';
+                            htmlTabela += 'Nenhum Registro Encontrado<a href="#"><h6 class="mb-3 text-dark font-weight-medium">';
+                            htmlTabela += '</h6></a><p class="float-md-right">';
+                            htmlTabela += '<strong><i class="mdi mdi-table-search"></i></strong></button >';
+                            htmlTabela += '</p><p class="d-none d-md-block">';
+                            htmlTabela += '</p></div></div>';
+                        }
                     }
-
-                    
+                    jQuery("#modal_busca").modal("hide");
+                    jQuery("#tabela_clientes").html(htmlTabela);
                 } catch (error) {
                     console.log(error);
                     alert("Erro na Comunicação com o Servidor...");
@@ -145,7 +199,8 @@ function buscarClientes() {
                             htmlTabela += '<a href="#"><h6 class="mb-3 text-dark font-weight-medium">';
                             htmlTabela += Cliente.Nome + '</h6></a><p class="float-md-right">';
                             htmlTabela += '<button id_cliente="' + Cliente.Id + '" class="text-black-50 mr-2 font-size-20 editar_livro">';
-                            htmlTabela += '<strong><i class="mdi mdi-table-search"></i></strong></button >';
+                            htmlTabela += '<strong><i class="mdi mdi-table-search"></i></strong></button> | '
+                            htmlTabela += '<a style="cursor: pointer" id_cliente="' + Cliente.Id + '" class="inativar"><i class="mdi mdi-trash-can"></i></a>';
                             htmlTabela += '</p><p class="d-none d-md-block">' + Cliente.Login.Email;
                             htmlTabela += '</p></div></div>';
                         });
@@ -155,7 +210,6 @@ function buscarClientes() {
                             htmlTabela += '<div class="media-body align-self-center">';
                             htmlTabela += 'Nenhum Registro Encontrado<a href="#"><h6 class="mb-3 text-dark font-weight-medium">';
                             htmlTabela += '</h6></a><p class="float-md-right">';
-                            htmlTabela += '<strong><i class="mdi mdi-table-search"></i></strong></button >';
                             htmlTabela += '</p><p class="d-none d-md-block">';
                             htmlTabela += '</p></div></div>';
                         }
