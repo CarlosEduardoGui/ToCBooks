@@ -26,6 +26,7 @@ namespace ToCBooks.Data.Business.Patterns
             mapDao.Add("Parametro", new ParametroDAO());
             mapDao.Add("LoginModel", new LoginDAO());
             mapDao.Add("EnderecoCobrancaModel", new EnderecoCobrancaDAO());
+            mapDao.Add("EnderecoEntregaModel", new EnderecoEntregaDAO());
 
             #region Validadores Livro
 
@@ -63,6 +64,15 @@ namespace ToCBooks.Data.Business.Patterns
 
             #endregion
 
+            #region Validadores EnderecoCobranca
+
+            List<IStrategy> ValidadoresEnderecoEntrega = new List<IStrategy>
+            {
+                new ValidadorEnderecoEntrega()
+            };
+
+            #endregion
+
             #region Validadores Login
 
             var ValidadoresLogin = new List<IStrategy>
@@ -77,6 +87,7 @@ namespace ToCBooks.Data.Business.Patterns
             mapValidadores.Add("ClienteModel", ValidadoresCliente);
             mapValidadores.Add("LoginModel", ValidadoresLogin);
             mapValidadores.Add("EnderecoCobrancaModel", ValidadoresEnderecoCobranca);
+            mapValidadores.Add("EnderecoEntregaModel", ValidadoresEnderecoEntrega);
             mapExpressoes.Add("LivrosModel", new BuscaLivros());
         }
 
@@ -94,7 +105,7 @@ namespace ToCBooks.Data.Business.Patterns
             try
             {
                 foreach (var Validador in mapValidadores[Objeto.GetType().Name])
-                    Validador.Validar(Objeto);
+                    Validador.Validar(Despachante.Entidade);
 
                 if (mapDao[Objeto.GetType().Name].Consultar(Despachante).Dados.Select(x => x.Id).Contains(Objeto.Id))
                     mapDao[Objeto.GetType().Name].Atualizar(Objeto);

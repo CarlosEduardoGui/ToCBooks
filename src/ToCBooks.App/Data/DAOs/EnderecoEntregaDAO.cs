@@ -11,7 +11,7 @@ using ToCBooks.App.Data.Interfaces;
 
 namespace ToCBooks.App.Data.DAOs
 {
-    public class EnderecoCobrancaDAO : IDAO
+    public class EnderecoEntregaDAO : IDAO
     {
         public MensagemModel Ativar(EntidadeDominio Objeto)
         {
@@ -22,8 +22,8 @@ namespace ToCBooks.App.Data.DAOs
         {
             using (var db = new ToCBooksContext())
             {
-                var Endereco = (EnderecoCobrancaModel)Objeto;
-                db.EnderecoCobranca.Update(Endereco);
+                var Endereco = (EnderecoEntregaModel)Objeto;
+                db.EnderecoEntrega.Update(Endereco);
                 db.SaveChanges();
             }
 
@@ -65,7 +65,7 @@ namespace ToCBooks.App.Data.DAOs
             MensagemModel Mensagem = new MensagemModel();
             using (var db = new ToCBooksContext())
             {
-                var ObjetoPersistido = db.EnderecoCobranca
+                var ObjetoPersistido = db.EnderecoEntrega
                     .Include(x => x.Cidade)
                     .Include(x => x.Cidade.Estado)
                     .Include(x => x.Cidade.Estado.Pais)
@@ -73,7 +73,7 @@ namespace ToCBooks.App.Data.DAOs
                 if (ObjetoPersistido != null)
                     Mensagem.Dados.Add(ObjetoPersistido);
                 else
-                    db.EnderecoCobranca
+                    db.EnderecoEntrega
                         .Include(x => x.Cidade)
                         .Include(x => x.Cidade.Estado)
                         .Include(x => x.Cidade.Estado.Pais)
@@ -108,10 +108,10 @@ namespace ToCBooks.App.Data.DAOs
 
             using (var db = new ToCBooksContext())
             {
-                if (db.EnderecoCobranca.Where(x => x.StatusAtual == ETipoStatus.Ativo).Count() == 1)
+                if (db.EnderecoEntrega.Where(x => x.StatusAtual == ETipoStatus.Ativo).Count() == 1)
                     throw new Exception("O Sistema não permite a deleção de todos os endereços...");
 
-                db.EnderecoCobranca.Remove((EnderecoCobrancaModel)Objeto);
+                db.EnderecoEntrega.Remove((EnderecoEntregaModel)Objeto);
                 db.SaveChanges();
             }
 
