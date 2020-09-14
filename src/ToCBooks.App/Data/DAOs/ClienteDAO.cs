@@ -56,7 +56,7 @@ namespace ToCBooks.App.Data.DAOs
                 db.Cliente.Add(Cliente);
                 result = db.SaveChanges();
 
-                if (result == 1)
+                if (result == 12)
                 {
                     mensagem.Codigo = 1;
                     mensagem.Resposta = "Cliente foi cadastrado com sucesso";

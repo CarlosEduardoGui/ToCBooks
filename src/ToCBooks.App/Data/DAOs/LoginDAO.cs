@@ -37,8 +37,8 @@ namespace ToCBooks.App.Data.DAOs
             {
                 var Login = (LoginModel)Objeto;
 
-                var idCliente = db.Login.Where(x => x.Email == Login.Email || x.Senha == Login.Senha).Select(x => x.ClienteId).FirstOrDefault();
-                if (idCliente == null)
+                var idCliente = db.Login.Where(x => x.Email == Login.Email && x.Senha == Login.Senha).Select(x => x.ClienteId).FirstOrDefault();
+                if (idCliente == default(Guid))
                 {
                     mensagem.Codigo = 1;
                     mensagem.Resposta = "Usuário nao encontrado";

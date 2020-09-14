@@ -20,7 +20,25 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
-            throw new NotImplementedException();
+            using (var db = new ToCBooksContext())
+            {
+                var CartaoCreditoModel = (CartaoCreditoModel)Objeto;
+
+                db.CartaoCredito.Update(CartaoCreditoModel);
+                result = db.SaveChanges();
+                if (result == 1)
+                {
+                    mensagem.Resposta = "Cartão alterado com sucesso";
+                    mensagem.Codigo = 1;
+
+                    return mensagem;
+                }
+
+                mensagem.Resposta = "Problema ao alterar Cartão";
+                mensagem.Codigo = 0;
+
+                return mensagem;
+            }
         }
 
         public MensagemModel Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
@@ -93,14 +111,12 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Excluir(EntidadeDominio Objeto)
         {
-            var Despachante = (Despachante)Objeto;
-
             using (var db = new ToCBooksContext())
             {
-                if (db.CartaoCredito.Where(x => x.StatusAtual == ETipoStatus.Ativo && x.ClienteId == Despachante.Login.ClienteId).Count() == 1)
-                    throw new Exception("O Sistema não permite a deleção de todos os cartões de crédito...");
+                if (db.CartaoCredito.Where(x => x.StatusAtual == ETipoStatus.Ativo).Count() == 1)
+                    throw new Exception("O Sistema não permite deletar todos os cartões de crédito...");
 
-                db.Remove(Objeto);
+                db.CartaoCredito.Remove((CartaoCreditoModel)Objeto);
                 db.SaveChanges();
             }
 

@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ToCBooks.App.Migrations
 {
-    public partial class AtualizacaoCartao : Migration
+    public partial class a : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -242,7 +242,7 @@ namespace ToCBooks.App.Migrations
                     TipoResidencia = table.Column<int>(nullable: false),
                     Observacao = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     Principal = table.Column<bool>(nullable: false),
-                    ClienteModelId = table.Column<Guid>(nullable: true)
+                    ClienteId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -254,8 +254,8 @@ namespace ToCBooks.App.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_EnderecoCobranca_Cliente_ClienteModelId",
-                        column: x => x.ClienteModelId,
+                        name: "FK_EnderecoCobranca_Cliente_ClienteId",
+                        column: x => x.ClienteId,
                         principalTable: "Cliente",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -277,7 +277,7 @@ namespace ToCBooks.App.Migrations
                     TipoResidencia = table.Column<int>(nullable: false),
                     Observacao = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     Principal = table.Column<bool>(nullable: false),
-                    ClienteModelId = table.Column<Guid>(nullable: true)
+                    ClienteId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -289,8 +289,8 @@ namespace ToCBooks.App.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_EnderecoEntrega_Cliente_ClienteModelId",
-                        column: x => x.ClienteModelId,
+                        name: "FK_EnderecoEntrega_Cliente_ClienteId",
+                        column: x => x.ClienteId,
                         principalTable: "Cliente",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -322,9 +322,9 @@ namespace ToCBooks.App.Migrations
                 column: "CidadeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EnderecoCobranca_ClienteModelId",
+                name: "IX_EnderecoCobranca_ClienteId",
                 table: "EnderecoCobranca",
-                column: "ClienteModelId");
+                column: "ClienteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EnderecoEntrega_CidadeId",
@@ -332,9 +332,9 @@ namespace ToCBooks.App.Migrations
                 column: "CidadeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EnderecoEntrega_ClienteModelId",
+                name: "IX_EnderecoEntrega_ClienteId",
                 table: "EnderecoEntrega",
-                column: "ClienteModelId");
+                column: "ClienteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EstadoModel_PaisId",

@@ -10,8 +10,8 @@ using ToCBooks.App.Data.Context;
 namespace ToCBooks.App.Migrations
 {
     [DbContext(typeof(ToCBooksContext))]
-    [Migration("20200913165136_AtualizacaoCartao")]
-    partial class AtualizacaoCartao
+    [Migration("20200914020353_a")]
+    partial class a
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -143,7 +143,7 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<Guid?>("CidadeId");
 
-                    b.Property<Guid?>("ClienteModelId");
+                    b.Property<Guid>("ClienteId");
 
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
@@ -168,7 +168,7 @@ namespace ToCBooks.App.Migrations
 
                     b.HasIndex("CidadeId");
 
-                    b.HasIndex("ClienteModelId");
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("EnderecoCobranca");
                 });
@@ -185,7 +185,7 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<Guid?>("CidadeId");
 
-                    b.Property<Guid?>("ClienteModelId");
+                    b.Property<Guid>("ClienteId");
 
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
@@ -210,7 +210,7 @@ namespace ToCBooks.App.Migrations
 
                     b.HasIndex("CidadeId");
 
-                    b.HasIndex("ClienteModelId");
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("EnderecoEntrega");
                 });
@@ -416,9 +416,9 @@ namespace ToCBooks.App.Migrations
                         .WithMany()
                         .HasForeignKey("CidadeId");
 
-                    b.HasOne("ToCBooks.App.Business.Models.ClienteModel")
+                    b.HasOne("ToCBooks.App.Business.Models.ClienteModel", "Cliente")
                         .WithMany("EnderecoCobranca")
-                        .HasForeignKey("ClienteModelId");
+                        .HasForeignKey("ClienteId");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.EnderecoEntregaModel", b =>
@@ -427,9 +427,9 @@ namespace ToCBooks.App.Migrations
                         .WithMany()
                         .HasForeignKey("CidadeId");
 
-                    b.HasOne("ToCBooks.App.Business.Models.ClienteModel")
+                    b.HasOne("ToCBooks.App.Business.Models.ClienteModel", "Cliente")
                         .WithMany("EnderecoEntrega")
-                        .HasForeignKey("ClienteModelId");
+                        .HasForeignKey("ClienteId");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.EstadoModel", b =>

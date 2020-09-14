@@ -31,7 +31,9 @@ function FazerLogin(objeto) {
                     var resposta_controle = JSON.parse(e.responseText);
                     console.log(resposta_controle);
                     if (resposta_controle.Codigo == 0) {
-                        //window.location = "perfil.html";
+                        window.location = "perfil.html";
+                    } else {
+                        alert("Usuário não Cadastrado");
                     }
 
                 } catch (error) {

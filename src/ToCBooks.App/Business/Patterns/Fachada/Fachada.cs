@@ -130,7 +130,7 @@ namespace ToCBooks.Data.Business.Patterns
             }
             catch (Exception Error)
             {
-                Mensagem.Codigo = 0;
+                Mensagem.Codigo = 1;
                 Mensagem.Resposta = Error.Message;
                 Mensagem.Dados = null;
             }
@@ -152,7 +152,7 @@ namespace ToCBooks.Data.Business.Patterns
             }
             catch (Exception Error)
             {
-                Mensagem.Codigo = 0;
+                Mensagem.Codigo = 1;
                 Mensagem.Resposta = Error.Message;
                 Mensagem.Dados = null;
             }
@@ -174,7 +174,7 @@ namespace ToCBooks.Data.Business.Patterns
             }
             catch (Exception Error)
             {
-                Mensagem.Codigo = 0;
+                Mensagem.Codigo = 1;
                 Mensagem.Resposta = Error.Message;
                 Mensagem.Dados = null;
             }
@@ -198,7 +198,7 @@ namespace ToCBooks.Data.Business.Patterns
             MensagemModel Mensagem;
             try
             {
-                return mapDao[Objeto.GetType().Name].Excluir(Despachante);
+                return mapDao[Objeto.GetType().Name].Excluir(Objeto);
             }
             catch (Exception error)
             {
@@ -237,7 +237,7 @@ namespace ToCBooks.Data.Business.Patterns
             }
             catch (Exception Error)
             {
-                Mensagem.Codigo = 0;
+                Mensagem.Codigo = 1;
                 Mensagem.Resposta = Error.Message;
                 Mensagem.Dados = null;
             }
