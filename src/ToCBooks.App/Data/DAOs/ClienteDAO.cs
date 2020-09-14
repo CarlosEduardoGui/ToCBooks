@@ -52,6 +52,7 @@ namespace ToCBooks.App.Data.DAOs
             using (var db = new ToCBooksContext())
             {
                 var Cliente = (ClienteModel)Objeto;
+
                 db.Cliente.Add(Cliente);
                 result = db.SaveChanges();
 
@@ -74,7 +75,8 @@ namespace ToCBooks.App.Data.DAOs
         {
             using (var db = new ToCBooksContext())
             {
-                var Cliente = (ClienteModel)Objeto;
+                var Despachante = (Despachante)Objeto;
+                var Cliente = (ClienteModel)Despachante.Entidade;
 
                 var ObjetoPersistido = db.Cliente.Find(Cliente.Id);
                 if (ObjetoPersistido != null)

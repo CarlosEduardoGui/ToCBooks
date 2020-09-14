@@ -139,7 +139,7 @@ jQuery(document).ready(function () {
             nome: "Bolivia",
             tipologradouro: 1,
             tiporesidencia: 2,
-            cep: "17500000",
+            cep: "07500000",
             bairro: "Ouro Fino",
             numero: 164,
             observacao: "Testando o Cadastro",
@@ -162,7 +162,7 @@ function buscarEndereco(id_endereco) {
     jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
-        data: { oper: "1", mapKey: "EnderecoCobrancaModel", JsonString: JSON.stringify({ Id: id_endereco }) },
+        data: { oper: "1", mapKey: "EnderecoEntregaModel", JsonString: JSON.stringify({ Id: id_endereco }) },
         cache: false,
         beforeSend: function (xhr) {
 
@@ -213,7 +213,7 @@ function cadastrarEndereco(objeto) {
     jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
-        data: { oper: 2, mapKey: 'EnderecoCobrancaModel', JsonString: JSON.stringify(objeto) },
+        data: { oper: 2, mapKey: 'EnderecoEntregaModel', JsonString: JSON.stringify(objeto) },
         cache: false,
         beforeSend: function (xhr) {
 
@@ -229,7 +229,7 @@ function cadastrarEndereco(objeto) {
                     if (resposta_controle.Codigo == 0)
                         buscarEnderecos();
 
-                    
+
                     jQuery("#modal_add_endereco").modal("hide");
                 } catch (error) {
                     console.log(error);
@@ -243,7 +243,7 @@ function excluirEndereco(id_endereco) {
     jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
-        data: { oper: "4", mapKey: "EnderecoCobrancaModel", JsonString: JSON.stringify({ Id: id_endereco }) },
+        data: { oper: "4", mapKey: "EnderecoEntregaModel", JsonString: JSON.stringify({ Id: id_endereco }) },
         cache: false,
         beforeSend: function (xhr) {
 
@@ -275,7 +275,7 @@ function buscarEnderecos() {
     jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
-        data: { oper: "1", mapKey: "EnderecoCobrancaModel", JsonString: JSON.stringify({})},
+        data: { oper: "1", mapKey: "EnderecoEntregaModel", JsonString: JSON.stringify({}) },
         cache: false,
         beforeSend: function (xhr) {
 
