@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="css/nouislider.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 
 <body>
@@ -109,38 +110,102 @@
     <!--================Cartão de Crédito Area =================-->
     <section class="order_details section_gap">
         <div class="container">
-            <button id="" data-toggle="modal" data-target="#cartaoCreditoModal" class="btn btn-success">Adicionar novo Cartão de Crédito</button><br /><br />
-            <div id="tabelaCartaoCredito">
-                <div id="accordion">
-                    <div class="card">
-                        <div class="card-header">
-                            <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                Cartão de Crédito #1
-                            </a>
-                            <div class="card-switch">
-                                <div class="card-switch">
-                                    <div>
-                                    </div>
+            <div class="row">
+                <div class="col-6" style="text-align: left;">
+                    <h1>Cartãoes de Crédito:</h1>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 5%;">
+                <div class="col-12" style="text-align: right;">
+                    <button type="button" id="btn_add_cartaoCredito" class="btn btn-info">Adicionar Novo Cartão de Crédito</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Número do Cartão</th>
+                                <th>Data de Validade</th>
+                                <th>Nome do Cartão</th>
+                                <th>Bandeira</th>
+                                <th>Código de Segurança</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody_table_cartaoCredito">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="modal_confirmacao_delecao">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Deseja Apagar o Cartão de Crédito Selecionado?</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="form_delecao" name="form_delecao">
+
+                        <div class="row" style="margin-top: 5%">
+                            <div class="col-6" style="text-align: center;">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-success" id="btn_sim">Sim</button>
+                                </div>
+                            </div>
+                            <div class="col-6" style="text-align: center;">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-danger" id="btn_nao">Não</button>
                                 </div>
                             </div>
                         </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal_add_cartaoCredito">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Formulário de Cartão de Crédito</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="form_cartaoCredito" name="form_cartaoCredito">
+                        <input type="hidden" name="id_endereco" id="id_cartaoCredito" />
+                        <input type="hidden" name="id_cliente" id="id_cliente" />
                         <div id="collapseOne" class="collapse show" data-parent="#accordion">
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="000 000 000 000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000 000 000 000'">
+                                        <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="000 000 000 000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000 000 000 000'" required>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Carlos E G Souza" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Carlos E G Souza'">
+                                        <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Carlos E G Souza" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Carlos E G Souza'" required>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000'">
+                                        <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000'" required>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <input type="month" class="form-control" id="cvvCartao" name="dataVencimento" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data de Vencimento'">
+                                        <input type="month" class="form-control" id="dataVencimento" name="dataVencimento" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data de Vencimento'" required>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <select id="grupo_def_preco" name="grupo_def_preco">
+                                        <select id="eTipoBandeira" name="eTipoBandeira" required>
                                             <option value="0">Selecione a Bandeira</option>
                                             <option value="1">Visa</option>
                                             <option value="2">Mastercard</option>
@@ -149,61 +214,66 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="text-align: right;">
+                    <button type="button" class="btn btn-success" id="btn_salvar_cartaoCredito">Salvar</button>
+                    <button type="button" class="btn btn-info" id="btn_testar">Testar</button>
                 </div>
             </div>
-            <br /><br />
-            <button class="btn btn-info">Voltar</button>
+        </div>
+    </div>
 
-            <div class="modal fade" id="cartaoCreditoModal" tabindex="-1" role="dialog" aria-labelledby="cartaoCreditoModal" aria-hidden="true">
-                <!--class="modal fade"-->
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="cartaoCreditoModal">Novo Cartão</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div id="accordion">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="form-row">
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="000 000 000 000" max="15" min="15" required onfocus="this.placeholder = ''" onblur="this.placeholder = '000 000 000 000'">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Carlos E G Souza" required onfocus="this.placeholder = ''" onblur="this.placeholder = 'Carlos E G Souza'">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="000" max="3" min="3" required onfocus="this.placeholder = ''" onblur="this.placeholder = '000'">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <select id="eTipoBandeira" name="eTipoBandeira">
-                                                    <option value="0">Selecione a Bandeira</option>
-                                                    <option value="1">Visa</option>
-                                                    <option value="2">Mastercard</option>
-                                                </select>
-                                            </div>
-                                        </div>
+    <div class="modal fade" id="modal_edit_cartaoCredito">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Formulário de Cartão de Crédito</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form id="form_cartaoCredito" name="form_cartaoCredito">
+                        <input type="hidden" name="id_endereco" id="id_cartaoCredito" />
+                        <input type="hidden" name="id_cliente" id="id_cliente" />
+                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                            <div class="card-body" id="body-cartaoCredito">
+                                <div class="form-row">
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="000 000 000 000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000 000 000 000'" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Carlos E G Souza" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Carlos E G Souza'" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000'" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="month" class="form-control" id="dataVencimento" name="dataVencimento" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Data de Vencimento'" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <select id="eTipoBandeira" name="eTipoBandeira" required>
+                                            <option value="0">Selecione a Bandeira</option>
+                                            <option value="1">Visa</option>
+                                            <option value="2">Mastercard</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <button type="button" id="btn_salvar" class="btn btn-secondary" data-dismiss="modal">Salvar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="text-align: right;">
+                    <button type="button" class="btn btn-success" id="btn_salvar_cartaoCredito">Salvar</button>
+                    <button type="button" class="btn btn-info" id="btn_testar">Testar</button>
                 </div>
             </div>
-
         </div>
-    </section>
+    </div>
+
     <!--================End Tracking Box Area =================-->
     <!-- start footer Area -->
     <footer class="footer-area section_gap">
@@ -277,6 +347,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
     <script src="js/My/cartaoCredito.js"></script>
 </body>
 

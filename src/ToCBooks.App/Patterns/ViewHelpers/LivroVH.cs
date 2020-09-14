@@ -1,7 +1,6 @@
-﻿using ToCBooks.App.Models;
-using Newtonsoft.Json;
-using ToCBooks.App.Interfaces;
+﻿using Newtonsoft.Json;
 using ToCBooks.App.Business.Models;
+using ToCBooks.App.Interfaces;
 
 namespace ToCBooks.App.ViewHelpers
 {

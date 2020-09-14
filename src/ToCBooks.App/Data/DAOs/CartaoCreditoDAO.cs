@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
@@ -66,7 +64,7 @@ namespace ToCBooks.App.Data.DAOs
 
             using (var db = new ToCBooksContext())
             {
-                var ObjetoPersistido = db.CartaoCredito.Find(Objeto.Id);
+                var ObjetoPersistido = db.CartaoCredito.Find(Despachante.Entidade.Id);
                 if (ObjetoPersistido != null)
                 {
                     mensagem.Dados.Add(ObjetoPersistido);
@@ -100,7 +98,21 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Excluir(EntidadeDominio Objeto)
         {
-            throw new NotImplementedException();
+            var Despachante = (Despachante)Objeto;
+
+            using (var db = new ToCBooksContext())
+            {
+                if (db.CartaoCredito.Where(x => x.StatusAtual == ETipoStatus.Ativo && x.ClienteId == Despachante.Login.ClienteId).Count() == 1)
+                    throw new Exception("O Sistema não permite a deleção de todos os cartões de crédito...");
+
+                db.Remove(Objeto);
+                db.SaveChanges();
+            }
+
+            mensagem.Codigo = 0;
+            mensagem.Resposta = "Dados Excluidos Com Sucesso ...";
+
+            return mensagem;
         }
     }
 }

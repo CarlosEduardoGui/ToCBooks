@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using ToCBooks.App.Business.Models;
+﻿using ToCBooks.App.Business.Models;
 
 namespace ToCBooks.App.Interfaces
 {

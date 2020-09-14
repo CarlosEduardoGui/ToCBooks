@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
@@ -42,11 +40,9 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Cadastrar(EntidadeDominio Objeto)
         {
-            var Despachante = (Despachante)Objeto;
-
             using (var db = new ToCBooksContext())
             {
-                db.Add(Despachante.Entidade);
+                db.Add(Objeto);
                 db.SaveChanges();
             }
 

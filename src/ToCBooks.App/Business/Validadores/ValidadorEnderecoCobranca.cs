@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ToCBooks.App.Business.Interfaces;
 using ToCBooks.App.Business.Models;
 
@@ -17,7 +14,7 @@ namespace ToCBooks.App.Business.Validadores
 
             var enderecoCobranca = (EnderecoCobrancaModel)Objeto;
 
-            if (enderecoCobranca.CEP == null)
+            if (enderecoCobranca.CEP.ToString().Length != 8)
                 throw new Exception("CEP inconsistente...");
 
             if (enderecoCobranca.Bairro == null || enderecoCobranca.Bairro.Equals(""))

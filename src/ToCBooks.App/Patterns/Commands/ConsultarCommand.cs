@@ -1,8 +1,6 @@
-﻿using ToCBooks.App.Interfaces;
+﻿using ToCBooks.App.Business.Models;
+using ToCBooks.App.Interfaces;
 using ToCBooks.Data.Business.Patterns;
-using ToCBooks.App.Business.Models;
-using System.Threading.Tasks;
-using System;
 
 namespace ToCBooks.App.Commands
 {

@@ -29,7 +29,10 @@ function FazerLogin(objeto) {
 
                 try {
                     var resposta_controle = JSON.parse(e.responseText);
-                    console.log(reposta_controle);
+                    console.log(resposta_controle);
+                    if (resposta_controle.Codigo == 0) {
+                        //window.location = "perfil.html";
+                    }
 
                 } catch (error) {
                     console.log(error);
