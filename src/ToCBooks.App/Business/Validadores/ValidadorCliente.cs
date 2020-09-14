@@ -31,7 +31,8 @@ namespace ToCBooks.App.Business.Validadores
             if (Cliente.Nome.Equals("") || Cliente.Nome == null)
                 throw new Exception("Nome inconsistente...");
 
-            if (Cliente.Login.Senha.Equals("") || Cliente.Login.Senha == null)
+            //Gambiarra
+            if (Cliente.Login.Senha != null) //Cliente.Login.Senha.Equals("") || 
                 throw new Exception("Nome inconsistente...");
 
             if (Cliente.Telefone == null)
@@ -49,22 +50,29 @@ namespace ToCBooks.App.Business.Validadores
             if (Cliente.TipoUsuario == 0)
                 throw new Exception("Tipo Usuário inconsistente...");
 
-            foreach (var cartaoCredito in Cliente.CartaoCredito)
+            //Gambiarra
+            if (Cliente.CartaoCredito != null)
             {
-                new ValidadorCartaoCredito().Validar(cartaoCredito);
+                foreach (var cartaoCredito in Cliente.CartaoCredito)
+                    new ValidadorCartaoCredito().Validar(cartaoCredito);
+
             }
 
 
-            foreach (var enderecoCobranca in Cliente.EnderecoCobranca)
+            if (Cliente.EnderecoCobranca != null)
             {
-                new ValidadorEnderecoCobranca().Validar(enderecoCobranca);
+                foreach (var enderecoCobranca in Cliente.EnderecoCobranca)
+                    new ValidadorEnderecoCobranca().Validar(enderecoCobranca);
+
             }
 
 
-            foreach (var enderecoEntrega in Cliente.EnderecoEntrega)
+            if (Cliente.EnderecoEntrega != null)
             {
-                new ValidadorEnderecoEntrega().Validar(enderecoEntrega);
+                foreach (var enderecoEntrega in Cliente.EnderecoEntrega)
+                    new ValidadorEnderecoEntrega().Validar(enderecoEntrega);
             }
+
 
 
             MensagemModel Mensagem = new MensagemModel

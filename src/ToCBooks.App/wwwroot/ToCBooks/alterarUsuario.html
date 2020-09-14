@@ -111,7 +111,8 @@
                     <div>
                         <h3>Dados</h3>
                         <hr />
-                        <form class="row login_form">
+                        <form class="row login_form" id="form_cliente">
+                            <input type="hidden" id="id_cliente" />
                             <div class="col-md-12 form-group">
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Insira seu E-mail">
                             </div>
@@ -119,10 +120,10 @@
                                 <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome Completo'">
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="number" class="form-control" id="cpf" name="cpf" placeholder="CPF" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF'">
+                                <input type="number" class="form-control" id="CPF" name="CPF" placeholder="CPF" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CPF'">
                             </div>
                             <div class="col-md-6 form-group">
-                                <select id="genero" name="genero">
+                                <select id="eTipoGenero" name="eTipoGenero">
                                     <option value="0">Gênero</option>
                                     <option value="1">Homem</option>
                                     <option value="2">Mulher</option>
@@ -139,10 +140,10 @@
                                 <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Telefone'">
                             </div>
                             <div class="col-md-4 form-group">
-                                <select id="grupo_def_preco" name="grupo_def_preco" >
-                                    <option value="">Selecione a Tipo de Telefone</option>
-                                    <option value="Grupo AY">Fixo</option>
-                                    <option value="Grupo AZ">Celular</option>
+                                <select id="eTipoTelefone" name="eTipoTelefone">
+                                    <option value="0">Tipo de Telefone</option>
+                                    <option value="1">Fixo</option>
+                                    <option value="2">Celular</option>
                                 </select>
                             </div>
 
@@ -190,21 +191,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3  col-md-6 col-sm-6">
-                    <div class="single-footer-widget mail-chimp">
-                        <h6 class="mb-20">Propagandas</h6>
-                        <ul class="instafeed d-flex flex-wrap">
-                            <li><img src="img/i1.jpg" alt=""></li>
-                            <li><img src="img/i2.jpg" alt=""></li>
-                            <li><img src="img/i3.jpg" alt=""></li>
-                            <li><img src="img/i4.jpg" alt=""></li>
-                            <li><img src="img/i5.jpg" alt=""></li>
-                            <li><img src="img/i6.jpg" alt=""></li>
-                            <li><img src="img/i7.jpg" alt=""></li>
-                            <li><img src="img/i8.jpg" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h6>Redes Sociais</h6>
@@ -240,111 +226,8 @@
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/registration.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+    <script src="js/My/AlterarCliente.js"></script>
 </body>
 
 </html>
-
-<script>
-    jQuery(document).ready(function () {
-        jQuery("#btn_salvar").on("click", function (e) {
-            e.preventDefault();
-
-            var telefone = {
-                ddd: jQuery('#ddd').val(),
-                numero: jQuery('#telefone').val()
-            };
-
-            var cidadeCobranca = {
-                nome: jQuery('#enderecoCobrancaCidade').val(),
-            };
-
-            var estadoCobranca = {
-                nome: jQuery('#enderecoCobrancaEstado').val(),
-                cidade: cidadeCobranca
-            };
-
-            var paisCobranca = {
-                nome: jQuery('#enderecoCobrancaPais').val(),
-                estado: estadoCobranca
-            };
-
-            var cidadeEntrega = {
-                nome: jQuery('#enderecoEntregaCidade').val(),
-            };
-
-            var estadoEntrega = {
-                nome: jQuery('#enderecoEntregaEstado').val(),
-                cidade: cidadeEntrega
-            };
-
-            var paisEntrega = {
-                nome: jQuery('#enderecoEntregaPais').val(),
-                estado: estadoEntrega
-            };
-
-            var enderecoCobranca = {
-                enderecocobranca: jQuery('#enderecoCobranca').val(),
-                tipologradouro: jQuery('#enderecoCobrancaEtipologradouro').val(),
-                tiporesidencia: jQuery('#enderecoCobrancaEtiporesidencia').val(),
-                cep: jQuery('#enderecoCobrancaCep').val(),
-                bairro: jQuery('#enderecoCobrancaBairro').val(),
-                numero: jQuery('#enderecoCobrancaNumero').val(),
-                pais: paisCobranca
-            };
-
-            var enderecoEntrega = {
-                numero: jQuery('#enderecoEntregaNumero').val(),
-                nome: jQuery('#enderecoEntrega').val(),
-                bairro: jQuery('#enderecoEntregaBairro').val(),
-                cep: jQuery('#enderecoEntregaCep').val(),
-                pais: paisEntrega,
-                tipologradouro: jQuery('#enderecoEntregaEtipologradouro').val(),
-                tipoResidencia: jQuery('#enderecoEntregaEtiporesidencia').val()
-            };
-
-            var Object = {
-                nome: jQuery('#nome').val(),
-                cpf: jQuery('#cpf').val(),
-                email: jQuery('#email').val(),
-                senha: jQuery('#senha').val(),
-                telefone: telefone,
-                genero: jQuery('#genero').val(),
-                datanascimento: jQuery('#datanascimento').val(),
-                enderecoCobranca: enderecoCobranca,
-                enderecoEntrega: enderecoEntrega,
-                tipoUsuario: 2,
-                tipoGenero: jQuery('#genero').val()
-            };
-
-            console.log(Object);
-
-            jQuery.ajax({
-                type: "POST",
-                url: 'https://localhost:44354/Operations',
-                data: { oper: 2, mapKey: 'ClienteModel', JsonString: JSON.stringify(Object) },
-                cache: false,
-                beforeSend: function (xhr) {
-
-                },
-                complete: function (e, xhr, result) {
-                    console.log(e.readyState);
-                    console.log(e.status);
-                    if (e.readyState == 4 && e.status == 200) {
-
-                        try {
-                            var resposta_controle = JSON.parse(e.responseText);
-                            console.log(reposta_controle);
-
-                        } catch (error) {
-                            console.log(error);
-                            iziToast.error({
-                                message: "<strong>Erro na Autenticação...</strong>"
-                            });
-                        }
-                    }
-                }
-            });
-        });
-    });
-</script>

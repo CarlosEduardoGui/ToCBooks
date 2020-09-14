@@ -112,8 +112,8 @@ function CadastrarCliente(objeto) {
                     try {
                         var resposta_controle = JSON.parse(e.responseText);
                         console.log(resposta_controle);
-                        if (resposta_controle.Code == 0) {
-                            window.location("Index.html")
+                        if (resposta_controle.Codigo == 0) {
+                            alert("Cliente Cadastrado!");
                         } else {
                             alert("Campos errados ", resposta_controle.Mensagem);
                         }
