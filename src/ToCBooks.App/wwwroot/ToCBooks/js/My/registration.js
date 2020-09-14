@@ -115,7 +115,7 @@ function CadastrarCliente(objeto) {
                         if (resposta_controle.Codigo == 0) {
                             alert("Cliente Cadastrado!");
                         } else {
-                            alert("Campos errados ", resposta_controle.Mensagem);
+                            alert(resposta_controle.Resposta);
                         }
 
                     } catch (error) {
