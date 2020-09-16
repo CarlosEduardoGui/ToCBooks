@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
@@ -29,13 +31,24 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
+            MensagemModel Mensagem = new MensagemModel();
+
             using (var db = new ToCBooksContext())
             {
-                db.Find<EntidadeDominio>(Objeto.Id);
+                var Livro = (LivrosModel)Objeto;
+                LivrosModel LivroAtual = db.Livro
+                    .Include(x => x.Precificacao)
+                    .Where(x => x.Id == Objeto.Id).First();
+
+                LivroAtual.Preco = Livro.Preco;
+                db.Livro.Update(LivroAtual);
+                db.SaveChanges();
             }
 
+            Mensagem.Codigo = 0;
+            Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
 
-            throw new NotImplementedException();
+            return Mensagem;
         }
 
         public MensagemModel Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
@@ -82,15 +95,19 @@ namespace ToCBooks.App.Data.DAOs
             MensagemModel Mensagem = new MensagemModel();
             using (var db = new ToCBooksContext())
             {
-                var ObjetoPersistido = db.Find<LivrosModel>(Objeto.Id);
+                var ObjetoPersistido = db.
+                    Find<LivrosModel>(Objeto.Id);
                 if (ObjetoPersistido != null)
                 {
-                    Mensagem.Dados.Add(ObjetoPersistido);
+                    Mensagem.Dados.Add(db.Livro.Include(x => x.Precificacao).Include(x => x.Categorias).Where(x => x.Id == Objeto.Id).First());
 
                 }
                 else
                 {
-                    db.Livro.Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
+                    db.Livro
+                        .Include(x => x.Precificacao)
+                        .Include(x => x.Categorias)
+                        .Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
                 }
             }
 
@@ -113,6 +130,28 @@ namespace ToCBooks.App.Data.DAOs
 
             Mensagem.Codigo = 0;
             Mensagem.Resposta = "Livro Desativado...";
+
+            return Mensagem;
+        }
+
+        public MensagemModel AtualizarPreco(EntidadeDominio Objeto)
+        {
+            MensagemModel Mensagem = new MensagemModel();
+            using(var db = new ToCBooksContext())
+            {
+                var Livro = (LivrosModel)Objeto;
+                var LivroAtual = db.Livro
+                    .Include(x => x.Precificacao)
+                    .Include(x => x.Categorias)
+                    .Where(x => x.Id == Objeto.Id).First();
+
+                LivroAtual.Preco = Livro.Preco;
+                db.Livro.Update(LivroAtual);
+                db.SaveChanges();
+            }
+
+            Mensagem.Codigo = 0;
+            Mensagem.Resposta = "Preço Atualizado Com Sucesso ...";
 
             return Mensagem;
         }

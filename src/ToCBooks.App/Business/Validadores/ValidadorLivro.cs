@@ -9,7 +9,23 @@ namespace ToCBooks.App.Business.Validadores
     {
         public MensagemModel Validar(EntidadeDominio Objeto)
         {
+            MensagemModel Mensagem;
             var Livro = (LivrosModel)Objeto;
+
+            if (Livro.Preco > 0.00)
+            {
+                if (Livro.Preco < 0.00)
+                    throw new Exception("O Preço do livro está inconsistente...");
+
+                Mensagem = new MensagemModel
+                {
+                    Codigo = 0,
+                    Resposta = "Dados Validados Com Sucesso !!!",
+                    Dados = null
+                };
+
+                return Mensagem;
+            }
 
             if (Livro.Titulo.Equals("") || Livro.Titulo == null)
                 throw new Exception("O Titulo do Livro está inconsistente...");
@@ -56,7 +72,7 @@ namespace ToCBooks.App.Business.Validadores
             if (Livro.CodigoDeBarras.Equals("") || Livro.CodigoDeBarras == null)
                 throw new Exception("O Codigo De Barras do Livro está inconsistente...");
 
-            MensagemModel Mensagem = new MensagemModel
+            Mensagem = new MensagemModel
             {
                 Codigo = 0,
                 Resposta = "Dados Validados Com Sucesso !!!",

@@ -8,6 +8,11 @@ jQuery(document).ready(function () {
 
     jQuery("#btn_cad_livro").on('click', function () {
         buscarParametros();
+
+        jQuery("#form_cad_livro")[0].reset();
+        jQuery("#cad_id_livro").val('');
+        jQuery("#foto").val('');
+        //jQuery("#preview_imagem_livro").attr("src", 'assets/img/no-image.png"');
         jQuery("#modal_cad_livro").modal("show");
     });
 
@@ -63,12 +68,13 @@ jQuery(document).ready(function () {
 
     jQuery(document).on('click', '.editar_livro', function () {
         var id_livro = jQuery(this).attr("id_livro");
-        
+        jQuery("#modal_cad_livro").modal('show');
         consultarLivro({ oper: '5', mapKey: 'LivrosModel', jsonString: JSON.stringify({ Id: id_livro }) })
     });
 
     jQuery(document).on('click', '.definir_preco', function () {
         idEntidadeTemp = jQuery(this).attr("id_livro");
+        consultarLivro({ oper: '5', mapKey: 'LivrosModel', jsonString: JSON.stringify({ Id: idEntidadeTemp }) })
         jQuery("#modal_definir_precificacao").modal('show');
     });
 
@@ -182,23 +188,22 @@ jQuery(document).ready(function () {
                 Id: idEntidadeTemp, Preco: parseFloat(preco_definido)
             };
 
-            cadastrarLivro({ oper: '2', mapKey: "LivrosModel", jsonString: JSON.stringify(livro) });
+            definirPreco(livro);
         } else {
             alert("Preço inválido...");
         }
     });
 });
 
-function definirPrecoParaDefinicao(ObjetoEnvio) {
+function definirPreco(ObjetoEnvio) {
     jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
         data: {
-            oper: '1', mapKey: 'LivrosModel', JsonString: objetoEnvio.jsonString
+            oper: '8', mapKey: 'LivrosModel', JsonString: JSON.stringify(ObjetoEnvio)
         },
         cache: false,
         beforeSend: function (xhr) {
-
         },
         complete: function (e, xhr, result) {
             if (e.readyState == 4 && e.status == 200) {
@@ -206,9 +211,11 @@ function definirPrecoParaDefinicao(ObjetoEnvio) {
                 try {
                     var respostaControle = JSON.parse(e.responseText);
 
-                    if (respostaControle.Dados.length > 0) {
-
-                        
+                    if (respostaControle.Codigo == 0) {
+                        jQuery("#modal_definir_precificacao").modal('hide');
+                        buscarLivros();
+                    } else {
+                        alert("Erro ao definir Preço...");
                     }
                 } catch (error) {
                     console.log(error);
@@ -253,10 +260,14 @@ function consultarLivro(objetoEnvio) {
                         jQuery("#cad_peso").val(livro.Peso);
                         jQuery("#cad_profundidade").val(livro.Profundidade);
                         jQuery("#cad_isbn").val(livro.ISBN);
-                        //jQuery("#cad_categoria_livro").val()
+                        jQuery("#cad_categoria_livro").val(livro.Categorias);
+                        jQuery("#cad_categoria_livro").selectpicker('refresh');
                         jQuery("#cad_descricao").val(livro.Descricao);
 
-                        jQuery("#modal_cad_livro").modal('show');
+                        jQuery("#grupo_def_preco").val(livro.Precificacao.Id);
+                        jQuery("#cad_grupo_precificacao").val(livro.Precificacao.id);
+                        jQuery("#grupo_def_preco").selectpicker('refresh');
+                        jQuery("#cad_grupo_precificacao").selectpicker('refresh');
                     }
                 } catch (error) {
                     console.log(error);
@@ -467,7 +478,9 @@ function buscarLivros() {
                                 htmlLivros += Livro.Descricao;
                                 htmlLivros += '</p><p class="mb-0" >';
                                 htmlLivros += 'R$' + Livro.Preco;
-                                htmlLivros += '</p></div></div>';
+                                htmlLivros += '</p><br />';
+                                htmlLivros += '<span class="mb-2 mr-2 badge badge-success">Ativo</span>';
+                                htmlLivros += '</div></div>';
                             });
                         } else {
                             htmlLivros += '<div class="media d-flex mb-5"><div class="media-image align-self-center mr-3 rounded"><a href="#">';

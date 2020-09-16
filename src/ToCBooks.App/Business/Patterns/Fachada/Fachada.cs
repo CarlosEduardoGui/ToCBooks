@@ -244,5 +244,11 @@ namespace ToCBooks.Data.Business.Patterns
 
             return Mensagem;
         }
+
+        public MensagemModel AtualizarPreco(EntidadeDominio Objeto)
+        {
+            var Despachante = (Despachante)Objeto;
+            return new LivrosDAO().AtualizarPreco(Despachante.Entidade);
+        }
     }
 }
