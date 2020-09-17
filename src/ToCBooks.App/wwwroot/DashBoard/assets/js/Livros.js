@@ -102,7 +102,8 @@ jQuery(document).ready(function () {
 
     jQuery("#habilitar_edicao_estoque").on("click", function () {
         jQuery("#qtde_estoque").removeAttr("disabled");
-        jQuery("#btn_salvar_estoque").fadeIn("300");
+        jQuery("#habilitar_edicao_estoque").fadeOut(300);
+        setTimeout(function () { jQuery("#btn_salvar_estoque").fadeIn("300"); }, 300);
     });
 
     jQuery('.selectpicker').selectpicker({
@@ -193,7 +194,98 @@ jQuery(document).ready(function () {
             alert("Preço inválido...");
         }
     });
+
+
+    jQuery(document).on("click", '.definir_estoque' , function () {
+        jQuery("#habilitar_edicao_estoque").show();
+        jQuery("#qtde_estoque").val('');
+        jQuery("#qtde_estoque").attr('disabled', 'disabled');
+        jQuery("#btn_salvar_estoque").hide();
+
+        idEntidadeTemp = jQuery(this).attr('id_livro');
+
+        var Livro = { Id: idEntidadeTemp };
+
+        buscarEstoque({Livro: Livro, Qtde: 0});
+    });
+
+    jQuery("#btn_salvar_estoque").on("click", function () {
+        var Qtde = jQuery("#qtde_estoque").val();
+        if (Qtde > 0) {
+            var Livro = { Id: idEntidadeTemp };
+
+            atualizarEstoque({ Livro: Livro, Qtde: Qtde });
+        } else {
+            alert("Número Inválido Digitado...");
+        }
+    });
 });
+
+function atualizarEstoque(ObjetoEnvio) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: '2', mapKey: "ItemEstoque", JsonString: JSON.stringify(ObjetoEnvio) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Codigo == 0) {
+                        jQuery("#modal_estoque").modal("hide");
+                        alert("Estoque Atualizado...");
+                    }
+                    else
+                        alert("Erro ao atualizar Estoque...");
+
+                    jQuery("#modal_cad_livro").modal('hide');
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+
+function buscarEstoque(ObjetoEnvio) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: {
+            oper: '1', mapKey: 'ItemEstoque', JsonString: JSON.stringify(ObjetoEnvio)
+        },
+        cache: false,
+        beforeSend: function (xhr) {
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Codigo == 0) {
+                        if (respostaControle.Dados[0] != null)
+                            jQuery("#qtde_estoque").val(respostaControle.Dados[0].Qtde);
+
+                        jQuery("#modal_estoque").modal('show');
+                    } else {
+                        alert("Erro ao definir Preço...");
+                    }
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
 
 function definirPreco(ObjetoEnvio) {
     jQuery.ajax({
@@ -471,6 +563,7 @@ function buscarLivros() {
                                 htmlLivros += '<div class="media-body align-self-center"><a href="#"><h6 class="mb-3 text-dark font-weight-medium">';
                                 htmlLivros += Livro.Titulo;
                                 htmlLivros += '</h6></a><p class="float-md-right"><span class="text-dark mr-2">';
+                                htmlLivros += '<button type="button" id_livro="' + Livro.Id + '" class="definir_estoque"><i style="font-size: 20px;" class="mdi mdi-settings" ></i ></button > |';
                                 htmlLivros += '<button type="button" class="editar_livro" id_livro="' + Livro.Id + '"><i style="font-size: 20px;" class="mdi mdi-account-edit"></i></button> | ';
                                 htmlLivros += '<button type="button" id_livro="' + Livro.Id + '" class="definir_preco"><i style="font-size: 20px;" class="mdi mdi-square-inc-cash" ></i ></button > |';
                                 htmlLivros += '</span><button type="button" class="desativar" id_livro="' + Livro.Id + '"><i style="font-size: 20px;" class="mdi mdi-trash-can"></i></button></p>';

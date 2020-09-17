@@ -35,6 +35,7 @@ namespace ToCBooks.App.Controllers
             mapVH.Add("CartaoCreditoModel", new CartaoCreditoVH());
             mapVH.Add("EnderecoEntregaModel", new EnderecoEntregaVH());
             mapVH.Add("EnderecoCobrancaModel", new EnderecoCobrancaVH());
+            mapVH.Add("ItemEstoque", new ItemEstoqueVH());
         }
 
         private Dictionary<string, IViewHelper> mapVH = new Dictionary<string, IViewHelper>();

@@ -26,6 +26,7 @@ namespace ToCBooks.Data.Business.Patterns
             mapDao.Add("CartaoCreditoModel", new CartaoCreditoDAO());
             mapDao.Add("EnderecoCobrancaModel", new EnderecoCobrancaDAO());
             mapDao.Add("EnderecoEntregaModel", new EnderecoEntregaDAO());
+            mapDao.Add("ItemEstoque", new EstoqueDAO());
 
             #region Validadores Livro
 
@@ -90,6 +91,15 @@ namespace ToCBooks.Data.Business.Patterns
 
             #endregion
 
+            #region Validadores de Estoque
+
+            var ValidadoresEstoque = new List<IStrategy>
+            {
+                new ValidadorEstoque()
+            };
+
+            #endregion
+
             mapValidadores.Add("LivrosModel", ValidadoresLivro);
             mapValidadores.Add("Parametro", ValidadoresParametro);
             mapValidadores.Add("ClienteModel", ValidadoresCliente);
@@ -98,6 +108,7 @@ namespace ToCBooks.Data.Business.Patterns
 
             mapValidadores.Add("EnderecoCobrancaModel", ValidadoresEnderecoCobranca);
             mapValidadores.Add("EnderecoEntregaModel", ValidadoresEnderecoEntrega);
+            mapValidadores.Add("ItemEstoque", ValidadoresEstoque);
             mapExpressoes.Add("LivrosModel", new BuscaLivros());
         }
 

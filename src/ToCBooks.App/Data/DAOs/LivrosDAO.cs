@@ -95,8 +95,18 @@ namespace ToCBooks.App.Data.DAOs
             MensagemModel Mensagem = new MensagemModel();
             using (var db = new ToCBooksContext())
             {
+                LivrosModel Livro;
+                if (Objeto.GetType().Name == "Despachante")
+                {
+                    var Despachante = (Despachante)Objeto;
+                    Livro = (LivrosModel)Despachante.Entidade;
+                }
+                else
+                    Livro = (LivrosModel)Objeto;
+
+
                 var ObjetoPersistido = db.
-                    Find<LivrosModel>(Objeto.Id);
+                    Find<LivrosModel>(Livro.Id);
                 if (ObjetoPersistido != null)
                 {
                     Mensagem.Dados.Add(db.Livro.Include(x => x.Precificacao).Include(x => x.Categorias).Where(x => x.Id == Objeto.Id).First());
