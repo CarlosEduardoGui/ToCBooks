@@ -15,7 +15,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Karma Shop</title>
+	<title>ToCBooks</title>
 	<!--
 			CSS
 			============================================= -->
@@ -113,15 +113,10 @@
 	<!--================Single Product Area =================-->
 	<div class="product_image_area" style="margin-bottom: 10%;">
 		<div class="container">
-			<div class="row s_product_inner">
+			<div class="row s_product_inner" id="produto">
 				<div class="col-lg-6">
-					<div class="s_Product_carousel">
-						<div class="single-prd-item">
-							<img class="img-fluid" src="img/it.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="img/it.jpg" alt="">
-						</div>
+					<input type="hidden" id="id_livro"/>
+					<div>
 						<div class="single-prd-item">
 							<img class="img-fluid" src="img/it.jpg" alt="">
 						</div>
@@ -137,7 +132,7 @@
 						</ul>
 						<p>Um palhaço muito sapeca demoniaco atrás de doces crianças</p>
 						<div class="product_count">
-							<label for="qty">Quantity:</label>
+							<label for="qty">Quantidade:</label>
 							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantidade:" class="input-text qty">
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
 							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
@@ -183,21 +178,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3  col-md-6 col-sm-6">
-					<div class="single-footer-widget mail-chimp">
-						<h6 class="mb-20">Propagandas</h6>
-						<ul class="instafeed d-flex flex-wrap">
-							<li><img src="img/i1.jpg" alt=""></li>
-							<li><img src="img/i2.jpg" alt=""></li>
-							<li><img src="img/i3.jpg" alt=""></li>
-							<li><img src="img/i4.jpg" alt=""></li>
-							<li><img src="img/i5.jpg" alt=""></li>
-							<li><img src="img/i6.jpg" alt=""></li>
-							<li><img src="img/i7.jpg" alt=""></li>
-							<li><img src="img/i8.jpg" alt=""></li>
-						</ul>
-					</div>
-				</div>
 				<div class="col-lg-2 col-md-6 col-sm-6">
 					<div class="single-footer-widget">
 						<h6>Redes Sociais</h6>
@@ -236,6 +216,7 @@
 	<!--gmaps Js-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="js/gmaps.min.js"></script>
+	<script src="js/My/single-product.js"></script>
 	<script src="js/main.js"></script>
 
 </body>

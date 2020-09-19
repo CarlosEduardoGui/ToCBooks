@@ -619,7 +619,8 @@ function cadastrarLivro(objetoEnvio) {
                         buscarLivros();
                     }
                     else
-                        alert("Erro ao cadastrar Livro");
+                        alert(respostaControle.Resposta);
+
 
                     jQuery("#modal_cad_livro").modal('hide');
 

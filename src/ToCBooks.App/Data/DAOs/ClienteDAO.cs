@@ -30,13 +30,13 @@ namespace ToCBooks.App.Data.DAOs
 
                 if (result == 1)
                 {
-                    mensagem.Codigo = 0;
+                    mensagem.Codigo = ETipoCodigo.Correto;
                     mensagem.Resposta = "Cliente atualizado!";
 
                     return mensagem;
                 }
 
-                mensagem.Codigo = 1;
+                mensagem.Codigo = ETipoCodigo.Errado;
                 mensagem.Resposta = "Erro ao atualizar Cliente";
 
                 return mensagem;
@@ -59,13 +59,13 @@ namespace ToCBooks.App.Data.DAOs
 
                 if (result == 12)
                 {
-                    mensagem.Codigo = 1;
+                    mensagem.Codigo = ETipoCodigo.Correto;
                     mensagem.Resposta = "Cliente foi cadastrado com sucesso";
 
                     return mensagem;
                 }
 
-                mensagem.Codigo = 2;
+                mensagem.Codigo = ETipoCodigo.Errado;
                 mensagem.Resposta = "Erro ao cadastrar Cliente";
 
                 return mensagem;
@@ -116,7 +116,7 @@ namespace ToCBooks.App.Data.DAOs
                             mensagem.Dados.Add(x);
                         });
 
-                mensagem.Codigo = 0;
+                mensagem.Codigo = ETipoCodigo.Correto;
                 mensagem.Resposta = "Cliente consultado com sucesso";
 
                 return mensagem;
@@ -134,7 +134,7 @@ namespace ToCBooks.App.Data.DAOs
                 db.SaveChanges();
             }
 
-            Mensagem.Codigo = 0;
+            Mensagem.Codigo = ETipoCodigo.Correto;
             Mensagem.Resposta = "Cliente Desativado...";
 
             return Mensagem;
@@ -181,7 +181,7 @@ namespace ToCBooks.App.Data.DAOs
 
             }
 
-            Mensagem.Codigo = 0;
+            Mensagem.Codigo = ETipoCodigo.Correto;
             Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
 
             return Mensagem;

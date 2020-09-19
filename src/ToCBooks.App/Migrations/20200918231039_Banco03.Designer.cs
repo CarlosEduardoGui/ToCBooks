@@ -10,8 +10,8 @@ using ToCBooks.App.Data.Context;
 namespace ToCBooks.App.Migrations
 {
     [DbContext(typeof(ToCBooksContext))]
-    [Migration("20200914160830_Banco")]
-    partial class Banco
+    [Migration("20200918231039_Banco03")]
+    partial class Banco03
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,8 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid>("ClienteId");
 
                     b.Property<int>("CodigoSeguranca");
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<DateTime>("DataVencimento");
 
@@ -59,6 +61,8 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
 
@@ -80,6 +84,8 @@ namespace ToCBooks.App.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<Guid?>("EstadoId");
 
@@ -107,6 +113,8 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<string>("CPF")
                         .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<DateTime>("DataNascimento");
 
@@ -144,6 +152,8 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid?>("CidadeId");
 
                     b.Property<Guid>("ClienteId");
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
@@ -187,6 +197,8 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<Guid>("ClienteId");
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
 
@@ -220,6 +232,8 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
 
@@ -237,6 +251,29 @@ namespace ToCBooks.App.Migrations
                     b.ToTable("EstadoModel");
                 });
 
+            modelBuilder.Entity("ToCBooks.App.Business.Models.ItemEstoque", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
+
+                    b.Property<string>("Justificativa")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<Guid?>("LivroId");
+
+                    b.Property<int>("Qtde");
+
+                    b.Property<int>("StatusAtual");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LivroId");
+
+                    b.ToTable("Estoque");
+                });
+
             modelBuilder.Entity("ToCBooks.App.Business.Models.LivrosModel", b =>
                 {
                     b.Property<Guid>("Id")
@@ -251,6 +288,8 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<string>("CodigoDeBarras")
                         .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Descricao")
                         .HasColumnType("VARCHAR(MAX)");
@@ -300,6 +339,8 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<Guid>("ClienteId");
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<string>("Email")
                         .HasColumnType("VARCHAR(MAX)");
 
@@ -326,6 +367,8 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
 
@@ -343,6 +386,8 @@ namespace ToCBooks.App.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
@@ -367,6 +412,8 @@ namespace ToCBooks.App.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("DDD");
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
@@ -437,6 +484,13 @@ namespace ToCBooks.App.Migrations
                     b.HasOne("ToCBooks.App.Business.Models.PaisModel", "Pais")
                         .WithMany()
                         .HasForeignKey("PaisId");
+                });
+
+            modelBuilder.Entity("ToCBooks.App.Business.Models.ItemEstoque", b =>
+                {
+                    b.HasOne("ToCBooks.App.Business.Models.LivrosModel", "Livro")
+                        .WithMany()
+                        .HasForeignKey("LivroId");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.LivrosModel", b =>

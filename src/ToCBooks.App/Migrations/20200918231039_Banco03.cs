@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ToCBooks.App.Migrations
 {
-    public partial class Banco : Migration
+    public partial class Banco03 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,6 +14,7 @@ namespace ToCBooks.App.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     StatusAtual = table.Column<int>(nullable: false),
                     Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true)
                 },
                 constraints: table =>
@@ -28,6 +29,7 @@ namespace ToCBooks.App.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     StatusAtual = table.Column<int>(nullable: false),
                     Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     Valor = table.Column<double>(nullable: false),
                     Tipo = table.Column<int>(nullable: false)
@@ -44,6 +46,7 @@ namespace ToCBooks.App.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     StatusAtual = table.Column<int>(nullable: false),
                     Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     DDD = table.Column<int>(nullable: false),
                     Numero = table.Column<int>(nullable: false),
                     Tipo = table.Column<int>(nullable: false)
@@ -60,6 +63,7 @@ namespace ToCBooks.App.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     StatusAtual = table.Column<int>(nullable: false),
                     Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     PaisId = table.Column<Guid>(nullable: true)
                 },
@@ -81,6 +85,7 @@ namespace ToCBooks.App.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     StatusAtual = table.Column<int>(nullable: false),
                     Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     Titulo = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     Preco = table.Column<double>(nullable: false),
                     Foto = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
@@ -116,6 +121,7 @@ namespace ToCBooks.App.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     StatusAtual = table.Column<int>(nullable: false),
                     Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     CPF = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     TelefoneId = table.Column<Guid>(nullable: true),
@@ -142,6 +148,7 @@ namespace ToCBooks.App.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     StatusAtual = table.Column<int>(nullable: false),
                     Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     EstadoId = table.Column<Guid>(nullable: true)
                 },
@@ -163,6 +170,7 @@ namespace ToCBooks.App.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     StatusAtual = table.Column<int>(nullable: false),
                     Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     NomeCategoria = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     LivrosModelId = table.Column<Guid>(nullable: true)
                 },
@@ -178,12 +186,35 @@ namespace ToCBooks.App.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Estoque",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    StatusAtual = table.Column<int>(nullable: false),
+                    Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
+                    LivroId = table.Column<Guid>(nullable: true),
+                    Qtde = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Estoque", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Estoque_Livro_LivroId",
+                        column: x => x.LivroId,
+                        principalTable: "Livro",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CartaoCredito",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     StatusAtual = table.Column<int>(nullable: false),
                     Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     NumeroCartao = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     CodigoSeguranca = table.Column<int>(nullable: false),
@@ -210,6 +241,7 @@ namespace ToCBooks.App.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     StatusAtual = table.Column<int>(nullable: false),
                     Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     Email = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     Senha = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     TipoUsuario = table.Column<int>(nullable: false),
@@ -233,6 +265,7 @@ namespace ToCBooks.App.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     StatusAtual = table.Column<int>(nullable: false),
                     Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     Numero = table.Column<int>(nullable: false),
                     Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     Bairro = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
@@ -268,6 +301,7 @@ namespace ToCBooks.App.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     StatusAtual = table.Column<int>(nullable: false),
                     Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
                     Numero = table.Column<int>(nullable: false),
                     Bairro = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
                     Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
@@ -342,6 +376,11 @@ namespace ToCBooks.App.Migrations
                 column: "PaisId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Estoque_LivroId",
+                table: "Estoque",
+                column: "LivroId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Livro_PrecificacaoId",
                 table: "Livro",
                 column: "PrecificacaoId");
@@ -368,22 +407,25 @@ namespace ToCBooks.App.Migrations
                 name: "EnderecoEntrega");
 
             migrationBuilder.DropTable(
-                name: "Login");
+                name: "Estoque");
 
             migrationBuilder.DropTable(
-                name: "Livro");
+                name: "Login");
 
             migrationBuilder.DropTable(
                 name: "CidadeModel");
 
             migrationBuilder.DropTable(
+                name: "Livro");
+
+            migrationBuilder.DropTable(
                 name: "Cliente");
 
             migrationBuilder.DropTable(
-                name: "Parametro");
+                name: "EstadoModel");
 
             migrationBuilder.DropTable(
-                name: "EstadoModel");
+                name: "Parametro");
 
             migrationBuilder.DropTable(
                 name: "TelefoneModel");

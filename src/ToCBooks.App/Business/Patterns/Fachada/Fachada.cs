@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ToCBooks.App.Business.Interfaces;
 using ToCBooks.App.Business.Models;
+using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Business.Validadores;
 using ToCBooks.App.Data.DAOs;
 using ToCBooks.App.Data.Interfaces;
@@ -141,7 +142,7 @@ namespace ToCBooks.Data.Business.Patterns
             }
             catch (Exception Error)
             {
-                Mensagem.Codigo = 1;
+                Mensagem.Codigo = ETipoCodigo.Errado;
                 Mensagem.Resposta = Error.Message;
                 Mensagem.Dados = null;
             }
@@ -163,7 +164,7 @@ namespace ToCBooks.Data.Business.Patterns
             }
             catch (Exception Error)
             {
-                Mensagem.Codigo = 1;
+                Mensagem.Codigo = ETipoCodigo.Errado;
                 Mensagem.Resposta = Error.Message;
                 Mensagem.Dados = null;
             }
@@ -185,7 +186,7 @@ namespace ToCBooks.Data.Business.Patterns
             }
             catch (Exception Error)
             {
-                Mensagem.Codigo = 1;
+                Mensagem.Codigo = ETipoCodigo.Errado;
                 Mensagem.Resposta = Error.Message;
                 Mensagem.Dados = null;
             }
@@ -215,7 +216,7 @@ namespace ToCBooks.Data.Business.Patterns
             {
                 Mensagem = new MensagemModel
                 {
-                    Codigo = 1,
+                    Codigo = ETipoCodigo.Errado,
                     Resposta = error.Message
                 };
 
@@ -248,7 +249,7 @@ namespace ToCBooks.Data.Business.Patterns
             }
             catch (Exception Error)
             {
-                Mensagem.Codigo = 1;
+                Mensagem.Codigo = ETipoCodigo.Errado;
                 Mensagem.Resposta = Error.Message;
                 Mensagem.Dados = null;
             }

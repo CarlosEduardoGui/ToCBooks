@@ -3328,14 +3328,840 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "d521d9ff-c6e2-4dae-b5de-f8dea2129615",
+    "name": "Cadastro de Parametro",
+    "commands": [{
+      "id": "fc600825-82b4-4d85-b342-454f360b8b5b",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a23bdde2-7bde-449e-8d3f-61bfaef2994d",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44354/DashBoard/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5d6c399e-3f10-4b34-b65a-e6d1960af913",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1162x1400",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "23626edf-f036-460d-b1e4-62da255a1124",
+      "comment": "",
+      "command": "click",
+      "target": "css=.has-sub:nth-child(2) > .sidenav-item-link > .nav-text",
+      "targets": [
+        ["css=.has-sub:nth-child(2) > .sidenav-item-link > .nav-text", "css:finder"],
+        ["xpath=//ul[@id='sidebar-menu']/li[2]/a/span", "xpath:idRelative"],
+        ["xpath=//li[2]/a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "04b7606f-0989-4cce-9073-1cd45e5369a7",
+      "comment": "",
+      "command": "click",
+      "target": "css=#parametros li:nth-child(1) .nav-text",
+      "targets": [
+        ["css=#parametros li:nth-child(1) .nav-text", "css:finder"],
+        ["xpath=//ul[@id='parametros']/div/li/a/span", "xpath:idRelative"],
+        ["xpath=//li[2]/ul/div/li/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Precificação')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b2f2a62-a911-48bb-be47-649a8a3d6a95",
+      "comment": "",
+      "command": "click",
+      "target": "id=sidebar-toggler",
+      "targets": [
+        ["id=sidebar-toggler", "id"],
+        ["css=#sidebar-toggler", "css:finder"],
+        ["xpath=//button[@id='sidebar-toggler']", "xpath:attributes"],
+        ["xpath=//header[@id='header']/nav/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Toggle navigation')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "83bcb204-8008-4d95-b0cf-2012911982d9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mdi-open-in-new",
+      "targets": [
+        ["css=.mdi-open-in-new", "css:finder"],
+        ["xpath=//button[@id='btn_cad_grupo']/strong/i", "xpath:idRelative"],
+        ["xpath=//strong/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f8e22297-e9fe-4d2b-93cc-a69301661454",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.mdi-open-in-new",
+      "targets": [
+        ["css=.mdi-open-in-new", "css:finder"],
+        ["xpath=//button[@id='btn_cad_grupo']/strong/i", "xpath:idRelative"],
+        ["xpath=//strong/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98a2fa1d-1fdd-489e-9b2c-bdf8c23a004f",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.mdi-open-in-new",
+      "targets": [
+        ["css=.mdi-open-in-new", "css:finder"],
+        ["xpath=//button[@id='btn_cad_grupo']/strong/i", "xpath:idRelative"],
+        ["xpath=//strong/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4cfe8344-e6ff-48de-8edd-1fa3c710429f",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_grupo']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "626c6f12-d93a-4076-bc07-dce2b97ddb4a",
+      "comment": "",
+      "command": "type",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_grupo']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div/div/div/input", "xpath:position"]
+      ],
+      "value": "Margem 25"
+    }, {
+      "id": "05126e94-1d16-4176-99c1-3924e74971c9",
+      "comment": "",
+      "command": "type",
+      "target": "id=valor",
+      "targets": [
+        ["id=valor", "id"],
+        ["name=valor", "name"],
+        ["css=#valor", "css:finder"],
+        ["xpath=//input[@id='valor']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_grupo']/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "25"
+    }, {
+      "id": "1855951d-610b-4e5e-a590-06ab3a19325d",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_salvar_cad_grupo",
+      "targets": [
+        ["id=btn_salvar_cad_grupo", "id"],
+        ["css=#btn_salvar_cad_grupo", "css:finder"],
+        ["xpath=//button[@id='btn_salvar_cad_grupo']", "xpath:attributes"],
+        ["xpath=//div[@id='modal_cad_grupo']/div/div/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Salvar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "08e5f8e9-caab-4fc7-94e5-9846b970117a",
+    "name": "Cadastro de Livro",
+    "commands": [{
+      "id": "2985fdd6-03e4-4776-9691-35559346095c",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44354/DashBoard/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "49369c58-6a5d-4f71-9a45-8748a4fab6d6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "2576x1416",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0bcfc450-8a8f-400f-a03c-0096c01fb130",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(3) > .sidenav-item-link",
+      "targets": [
+        ["css=li:nth-child(3) > .sidenav-item-link", "css:finder"],
+        ["xpath=//ul[@id='sidebar-menu']/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'Livros.html')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "83c1d86c-2990-4751-8556-b029da208e21",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mdi-open-in-new",
+      "targets": [
+        ["css=.mdi-open-in-new", "css:finder"],
+        ["xpath=//button[@id='btn_cad_livro']/strong/i", "xpath:idRelative"],
+        ["xpath=//button[3]/strong/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "328ba22d-78d6-400b-9b7c-25ad0fc3a5d8",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_add_imagem",
+      "targets": [
+        ["id=btn_add_imagem", "id"],
+        ["css=#btn_add_imagem", "css:finder"],
+        ["xpath=//button[@id='btn_add_imagem']", "xpath:attributes"],
+        ["xpath=//div[@id='modal_cad_livro']/div/div/div[2]/div/div/button", "xpath:idRelative"],
+        ["xpath=//div/div[2]/div/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Adicionar Imagem')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0227ee48-ce6e-4cb4-9b14-84b794b37761",
+      "comment": "",
+      "command": "click",
+      "target": "id=cad_titulo",
+      "targets": [
+        ["id=cad_titulo", "id"],
+        ["css=#cad_titulo", "css:finder"],
+        ["xpath=//input[@id='cad_titulo']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div/div/div[2]/form/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cbcec9e5-62fb-4a1e-bb9e-8b0bbf2908cd",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_titulo",
+      "targets": [
+        ["id=cad_titulo", "id"],
+        ["css=#cad_titulo", "css:finder"],
+        ["xpath=//input[@id='cad_titulo']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div/div/div[2]/form/div/div/div/input", "xpath:position"]
+      ],
+      "value": "Rick e Martinho"
+    }, {
+      "id": "c95218ec-0279-446f-9069-3639c57bb881",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_autor",
+      "targets": [
+        ["id=cad_autor", "id"],
+        ["css=#cad_autor", "css:finder"],
+        ["xpath=//input[@id='cad_autor']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[8]/div/div/div[2]/form/div/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "R.M"
+    }, {
+      "id": "851de018-b845-4583-b415-8bb51027be0d",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_editora",
+      "targets": [
+        ["id=cad_editora", "id"],
+        ["css=#cad_editora", "css:finder"],
+        ["xpath=//input[@id='cad_editora']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "FATEC"
+    }, {
+      "id": "996058ec-379a-4638-92a1-7435c02234a9",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_barras",
+      "targets": [
+        ["id=cad_barras", "id"],
+        ["css=#cad_barras", "css:finder"],
+        ["xpath=//input[@id='cad_barras']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[2]/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//form/div[2]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "00000000000"
+    }, {
+      "id": "d095971f-b483-459f-9246-805cf32a3c19",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_ano",
+      "targets": [
+        ["id=cad_ano", "id"],
+        ["css=#cad_ano", "css:finder"],
+        ["xpath=//input[@id='cad_ano']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[3]/div/div/input", "xpath:idRelative"],
+        ["xpath=//form/div[3]/div/div/input", "xpath:position"]
+      ],
+      "value": "2020"
+    }, {
+      "id": "b738785a-b73b-4f95-846c-94a8c49ad836",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_edicao",
+      "targets": [
+        ["id=cad_edicao", "id"],
+        ["css=#cad_edicao", "css:finder"],
+        ["xpath=//input[@id='cad_edicao']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[3]/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//form/div[3]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "103af7f1-99a0-43b4-b6d1-b6413752f1ac",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_paginas",
+      "targets": [
+        ["id=cad_paginas", "id"],
+        ["css=#cad_paginas", "css:finder"],
+        ["xpath=//input[@id='cad_paginas']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[3]/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "300"
+    }, {
+      "id": "d502f3e0-7ea5-4f12-84c0-79b037fb8571",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_altura",
+      "targets": [
+        ["id=cad_altura", "id"],
+        ["css=#cad_altura", "css:finder"],
+        ["xpath=//input[@id='cad_altura']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[4]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/input", "xpath:position"]
+      ],
+      "value": "30"
+    }, {
+      "id": "28714535-10f8-4074-be2e-4a97590dbb30",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_largura",
+      "targets": [
+        ["id=cad_largura", "id"],
+        ["css=#cad_largura", "css:finder"],
+        ["xpath=//input[@id='cad_largura']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[4]/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "20"
+    }, {
+      "id": "c28e851f-94e1-4b80-aacf-aa07fd4efbdb",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_peso",
+      "targets": [
+        ["id=cad_peso", "id"],
+        ["css=#cad_peso", "css:finder"],
+        ["xpath=//input[@id='cad_peso']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[4]/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[3]/div/input", "xpath:position"]
+      ],
+      "value": "190"
+    }, {
+      "id": "4b238a1b-cbfa-4673-8e9d-212941d7393e",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_profundidade",
+      "targets": [
+        ["id=cad_profundidade", "id"],
+        ["css=#cad_profundidade", "css:finder"],
+        ["xpath=//input[@id='cad_profundidade']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div/div/input", "xpath:position"]
+      ],
+      "value": "43"
+    }, {
+      "id": "bc5bc47e-bf4e-456c-99f1-bc409319871a",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_isbn",
+      "targets": [
+        ["id=cad_isbn", "id"],
+        ["css=#cad_isbn", "css:finder"],
+        ["xpath=//input[@id='cad_isbn']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "000000000000"
+    }, {
+      "id": "17f177b8-a16f-4248-98c5-d818303e7385",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(7) .filter-option",
+      "targets": [
+        ["css=.row:nth-child(7) .filter-option", "css:finder"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/button/div", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/button/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2522e2d9-19c8-4497-be07-e7257fa49228",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.row:nth-child(7) .filter-option",
+      "targets": [
+        ["css=.row:nth-child(7) .filter-option", "css:finder"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/button/div", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/button/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b4ba4dc8-1ea3-412d-b8ef-a5ad3f572b1f",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.dropup .filter-option",
+      "targets": [
+        ["css=.dropup .filter-option", "css:finder"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/button/div", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/button/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d91a3479-17b9-4f6e-8557-376d65f36109",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Aventura",
+      "targets": [
+        ["linkText=Aventura", "linkText"],
+        ["css=li:nth-child(3) > .dropdown-item", "css:finder"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/div/div[2]/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//div[2]/ul/li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Aventura')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e1609311-527a-437d-a52f-bfc4238131e5",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "id=cad_categoria_livro",
+      "targets": [
+        ["id=cad_categoria_livro", "id"],
+        ["css=#cad_categoria_livro", "css:finder"],
+        ["xpath=//select[@id='cad_categoria_livro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/select", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/select", "xpath:position"]
+      ],
+      "value": "label="
+    }, {
+      "id": "8e21f273-f373-4401-b53d-a6efbc580a77",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "id=cad_categoria_livro",
+      "targets": [
+        ["id=cad_categoria_livro", "id"],
+        ["css=#cad_categoria_livro", "css:finder"],
+        ["xpath=//select[@id='cad_categoria_livro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/select", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/select", "xpath:position"]
+      ],
+      "value": "label=Terror"
+    }, {
+      "id": "70d3a63d-e741-4af3-81ae-246cf467f9dc",
+      "comment": "",
+      "command": "addSelection",
+      "target": "id=cad_categoria_livro",
+      "targets": [
+        ["id=cad_categoria_livro", "id"],
+        ["css=#cad_categoria_livro", "css:finder"],
+        ["xpath=//select[@id='cad_categoria_livro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/select", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/select", "xpath:position"]
+      ],
+      "value": "label=Aventura"
+    }, {
+      "id": "a392665e-1ef8-4b42-bc59-cb23258e58f4",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "id=cad_categoria_livro",
+      "targets": [
+        ["id=cad_categoria_livro", "id"],
+        ["css=#cad_categoria_livro", "css:finder"],
+        ["xpath=//select[@id='cad_categoria_livro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/select", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/select", "xpath:position"]
+      ],
+      "value": "label=Romance"
+    }, {
+      "id": "dbf9dbef-e3b1-447f-8cc9-4a229962fad1",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "id=cad_categoria_livro",
+      "targets": [
+        ["id=cad_categoria_livro", "id"],
+        ["css=#cad_categoria_livro", "css:finder"],
+        ["xpath=//select[@id='cad_categoria_livro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/select", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/select", "xpath:position"]
+      ],
+      "value": "label=Filosofia"
+    }, {
+      "id": "7a1de720-8a57-4b44-b089-9292dd6d612c",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "id=cad_categoria_livro",
+      "targets": [
+        ["id=cad_categoria_livro", "id"],
+        ["css=#cad_categoria_livro", "css:finder"],
+        ["xpath=//select[@id='cad_categoria_livro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/select", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/select", "xpath:position"]
+      ],
+      "value": "label=Sociologia"
+    }, {
+      "id": "2f4c6403-5cda-4501-8880-1829987206f7",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "id=cad_categoria_livro",
+      "targets": [
+        ["id=cad_categoria_livro", "id"],
+        ["css=#cad_categoria_livro", "css:finder"],
+        ["xpath=//select[@id='cad_categoria_livro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/select", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/select", "xpath:position"]
+      ],
+      "value": "label=História"
+    }, {
+      "id": "0bd14e2d-da1a-4729-ad42-1741911ea3c2",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "id=cad_categoria_livro",
+      "targets": [
+        ["id=cad_categoria_livro", "id"],
+        ["css=#cad_categoria_livro", "css:finder"],
+        ["xpath=//select[@id='cad_categoria_livro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/select", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/select", "xpath:position"]
+      ],
+      "value": "label=Ciência"
+    }, {
+      "id": "19b6e0f7-c151-4e92-b5e1-6e51db53fc4c",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "id=cad_categoria_livro",
+      "targets": [
+        ["id=cad_categoria_livro", "id"],
+        ["css=#cad_categoria_livro", "css:finder"],
+        ["xpath=//select[@id='cad_categoria_livro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/select", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/select", "xpath:position"]
+      ],
+      "value": "label=Matemática"
+    }, {
+      "id": "6ff2c629-9506-472f-bc68-d36ba158cf75",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "id=cad_categoria_livro",
+      "targets": [
+        ["id=cad_categoria_livro", "id"],
+        ["css=#cad_categoria_livro", "css:finder"],
+        ["xpath=//select[@id='cad_categoria_livro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/select", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/select", "xpath:position"]
+      ],
+      "value": "label=Biologia"
+    }, {
+      "id": "976c4968-923b-43b5-9a8a-df1898d25b47",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "id=cad_categoria_livro",
+      "targets": [
+        ["id=cad_categoria_livro", "id"],
+        ["css=#cad_categoria_livro", "css:finder"],
+        ["xpath=//select[@id='cad_categoria_livro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/select", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/select", "xpath:position"]
+      ],
+      "value": "label=Medicina"
+    }, {
+      "id": "f43fff58-1578-4708-b96c-041055dddb3b",
+      "comment": "",
+      "command": "removeSelection",
+      "target": "id=cad_categoria_livro",
+      "targets": [
+        ["id=cad_categoria_livro", "id"],
+        ["css=#cad_categoria_livro", "css:finder"],
+        ["xpath=//select[@id='cad_categoria_livro']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[5]/div[3]/div/div/select", "xpath:idRelative"],
+        ["xpath=//div[5]/div[3]/div/div/select", "xpath:position"]
+      ],
+      "value": "label=Física"
+    }, {
+      "id": "89cf27c1-545b-414c-b630-7a3ffa692e41",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(8) .filter-option-inner-inner",
+      "targets": [
+        ["css=.row:nth-child(8) .filter-option-inner-inner", "css:finder"],
+        ["xpath=//form[@id='form_cad_livro']/div[6]/div/div/div/button/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[6]/div/div/div/button/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ef22d53c-92c6-45ec-a40d-d42810421af0",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.row:nth-child(8) .filter-option-inner-inner",
+      "targets": [
+        ["css=.row:nth-child(8) .filter-option-inner-inner", "css:finder"],
+        ["xpath=//form[@id='form_cad_livro']/div[6]/div/div/div/button/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[6]/div/div/div/button/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eb2aed9f-f6ae-4ef5-8745-1e3df3a6f4d1",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.show > .btn .filter-option-inner-inner",
+      "targets": [
+        ["css=.show > .btn .filter-option-inner-inner", "css:finder"],
+        ["xpath=//form[@id='form_cad_livro']/div[6]/div/div/div/button/div/div/div", "xpath:idRelative"],
+        ["xpath=//div[6]/div/div/div/button/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "78cb88de-7e3e-4aff-81ce-e938d5a5df58",
+      "comment": "",
+      "command": "click",
+      "target": "css=.inner:nth-child(1) > .dropdown-menu > li:nth-child(2) .text",
+      "targets": [
+        ["css=.inner:nth-child(1) > .dropdown-menu > li:nth-child(2) .text", "css:finder"],
+        ["xpath=//form[@id='form_cad_livro']/div[6]/div/div/div/div/div/ul/li[2]/a/span[2]", "xpath:idRelative"],
+        ["xpath=//div[6]/div/div/div/div/div/ul/li[2]/a/span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Margem 25')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d9b260ac-d543-4534-8133-cfcdd868ae5e",
+      "comment": "",
+      "command": "select",
+      "target": "id=cad_grupo_precificacao",
+      "targets": [],
+      "value": "label=Margem 25"
+    }, {
+      "id": "c7ab0a62-1592-4591-9c36-7df348d4bf06",
+      "comment": "",
+      "command": "click",
+      "target": "id=cad_descricao",
+      "targets": [
+        ["id=cad_descricao", "id"],
+        ["css=#cad_descricao", "css:finder"],
+        ["xpath=//textarea[@id='cad_descricao']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[7]/div/div/textarea", "xpath:idRelative"],
+        ["xpath=//div[7]/div/div/textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7485cf00-a843-4941-a54b-7fcf2fd65ee4",
+      "comment": "",
+      "command": "type",
+      "target": "id=cad_descricao",
+      "targets": [
+        ["id=cad_descricao", "id"],
+        ["css=#cad_descricao", "css:finder"],
+        ["xpath=//textarea[@id='cad_descricao']", "xpath:attributes"],
+        ["xpath=//form[@id='form_cad_livro']/div[7]/div/div/textarea", "xpath:idRelative"],
+        ["xpath=//div[7]/div/div/textarea", "xpath:position"]
+      ],
+      "value": "Teste de cadastro"
+    }, {
+      "id": "37e99a8a-15d8-4d51-9020-3fd7f0ba8a45",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_salvar_cad_livro",
+      "targets": [
+        ["id=btn_salvar_cad_livro", "id"],
+        ["css=#btn_salvar_cad_livro", "css:finder"],
+        ["xpath=//button[@id='btn_salvar_cad_livro']", "xpath:attributes"],
+        ["xpath=//div[@id='modal_cad_livro']/div/div/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[8]/div/div/div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "25f8e170-0f88-4145-bbc9-2052f7548c40",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=btn_salvar_cad_livro",
+      "targets": [
+        ["id=btn_salvar_cad_livro", "id"],
+        ["css=#btn_salvar_cad_livro", "css:finder"],
+        ["xpath=//button[@id='btn_salvar_cad_livro']", "xpath:attributes"],
+        ["xpath=//div[@id='modal_cad_livro']/div/div/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[8]/div/div/div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "da49c23d-92f7-4d04-b27e-afeb1c2af5d4",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=btn_salvar_cad_livro",
+      "targets": [
+        ["id=btn_salvar_cad_livro", "id"],
+        ["css=#btn_salvar_cad_livro", "css:finder"],
+        ["xpath=//button[@id='btn_salvar_cad_livro']", "xpath:attributes"],
+        ["xpath=//div[@id='modal_cad_livro']/div/div/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[8]/div/div/div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "9f4dcd45-f177-472c-9cd2-a55e2d0ddd27",
+    "name": "Cadastrar Preço Livro",
+    "commands": [{
+      "id": "10a6699a-534c-44e7-9dd7-f8763c5ffbc4",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44354/DashBoard/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0392f41a-65c3-492b-857f-6ab73b9f19a7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1266x1380",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "92555a8b-2513-4c2e-816b-9c147819374e",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(3) > .sidenav-item-link",
+      "targets": [
+        ["css=li:nth-child(3) > .sidenav-item-link", "css:finder"],
+        ["xpath=//ul[@id='sidebar-menu']/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'Livros.html')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b6ec27b3-f916-4099-8e5b-c8821ee3b759",
+      "comment": "",
+      "command": "click",
+      "target": "css=.media:nth-child(1) .definir_preco > .mdi",
+      "targets": [
+        ["css=.media:nth-child(1) .definir_preco > .mdi", "css:finder"],
+        ["xpath=//div[@id='tabela_livros']/div/div[2]/p/span/button[3]/i", "xpath:idRelative"],
+        ["xpath=//button[3]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b0d463ea-fb96-4df1-921d-325241231a19",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.media:nth-child(1) .definir_preco > .mdi",
+      "targets": [
+        ["css=.media:nth-child(1) .definir_preco > .mdi", "css:finder"],
+        ["xpath=//div[@id='tabela_livros']/div/div[2]/p/span/button[3]/i", "xpath:idRelative"],
+        ["xpath=//button[3]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "05b3bc98-6a17-4c45-aa51-623d18aeba44",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.media:nth-child(1) .definir_preco > .mdi",
+      "targets": [
+        ["css=.media:nth-child(1) .definir_preco > .mdi", "css:finder"],
+        ["xpath=//div[@id='tabela_livros']/div/div[2]/p/span/button[3]/i", "xpath:idRelative"],
+        ["xpath=//button[3]/i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8fd86523-668e-42de-aac7-290460adbd45",
+      "comment": "",
+      "command": "click",
+      "target": "id=valor_livro_def",
+      "targets": [
+        ["id=valor_livro_def", "id"],
+        ["name=valor_livro_def", "name"],
+        ["css=#valor_livro_def", "css:finder"],
+        ["xpath=//input[@id='valor_livro_def']", "xpath:attributes"],
+        ["xpath=//form[@id='form_delecao']/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5958e7f5-74b6-48c3-bad1-57bceaf55dd6",
+      "comment": "",
+      "command": "type",
+      "target": "id=valor_livro_def",
+      "targets": [
+        ["id=valor_livro_def", "id"],
+        ["name=valor_livro_def", "name"],
+        ["css=#valor_livro_def", "css:finder"],
+        ["xpath=//input[@id='valor_livro_def']", "xpath:attributes"],
+        ["xpath=//form[@id='form_delecao']/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//form/div/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "50"
+    }, {
+      "id": "64ad2ce3-9166-4e98-bbe3-d49e92127fc7",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_salvar_precificacao",
+      "targets": [
+        ["id=btn_salvar_precificacao", "id"],
+        ["css=#btn_salvar_precificacao", "css:finder"],
+        ["xpath=//button[@id='btn_salvar_precificacao']", "xpath:attributes"],
+        ["xpath=//div[@id='modal_definir_precificacao']/div/div/div[3]/button", "xpath:idRelative"],
+        ["xpath=//div[7]/div/div/div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "25ce6354-8915-411b-883b-8cb581304b71",
-    "name": "Default Suite",
+    "name": "Cadastrar Cliente Geral",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": []
+    "tests": ["542413c0-6510-42dc-a8d7-7dedf1a609ed", "86ef6d89-f684-41ad-bfe8-51dc61db8c4a", "7c15d022-1cb1-4f28-a54d-7fee83b8f531", "28e2bd7d-6629-4b3f-8129-c1ecb8016b99"]
+  }, {
+    "id": "60784fa3-cb2c-46c6-8749-dcc8aa0d1ca8",
+    "name": "Editar Cliente Geral",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["008fe1f4-199c-43b2-9005-429aad0c0930", "2c985668-84b5-481e-b981-3537aeffb13a", "04698518-b51e-4239-8253-2e80167c35e2"]
+  }, {
+    "id": "5144910e-69ff-43da-a43b-86b428efefd4",
+    "name": "Excluir Cliente Geral",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["1611eb55-5283-4a13-94b2-2ddd888a4289", "21f34e3a-21db-4323-b8b0-403d06e368cf", "ee8e979c-151b-4fba-9682-6cbaaaddb6ef", "6b7c778e-0635-40cc-9273-94170921c00f"]
+  }, {
+    "id": "99d6371e-ba86-41f9-8374-c5367b69f049",
+    "name": "Cliente pelo Admin",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["4ce4f8d8-ddab-4b70-927f-fbfebe88ae5a", "8ce1f340-b912-4764-a781-e9333aefc6b9"]
+  }, {
+    "id": "7e990a43-ccb3-47ab-b551-eb5e452efac3",
+    "name": "Cadastrar Livro Geral",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d521d9ff-c6e2-4dae-b5de-f8dea2129615", "08e5f8e9-caab-4fc7-94e5-9846b970117a", "9f4dcd45-f177-472c-9cd2-a55e2d0ddd27"]
   }],
   "urls": ["https://localhost:44354/TocBooks/login.html"],
   "plugins": []

@@ -29,13 +29,13 @@ namespace ToCBooks.App.Data.DAOs
                 if (result == 1)
                 {
                     mensagem.Resposta = "Cartão alterado com sucesso";
-                    mensagem.Codigo = 1;
+                    mensagem.Codigo = ETipoCodigo.Errado;
 
                     return mensagem;
                 }
 
                 mensagem.Resposta = "Problema ao alterar Cartão";
-                mensagem.Codigo = 0;
+                mensagem.Codigo = ETipoCodigo.Correto;
 
                 return mensagem;
             }
@@ -57,14 +57,14 @@ namespace ToCBooks.App.Data.DAOs
 
                 if (result == 1)
                 {
-                    mensagem.Codigo = 0;
+                    mensagem.Codigo = ETipoCodigo.Correto;
                     mensagem.Dados = null;
                     mensagem.Resposta = "Cartão de Crédito cadastrado com sucesso!";
 
                     return mensagem;
                 }
 
-                mensagem.Codigo = 1;
+                mensagem.Codigo = ETipoCodigo.Errado;
                 mensagem.Resposta = "Erro ao cadastrar Cartão de Crédito";
 
                 return mensagem;
@@ -93,7 +93,7 @@ namespace ToCBooks.App.Data.DAOs
                 }
             }
 
-            mensagem.Codigo = 0;
+            mensagem.Codigo = ETipoCodigo.Correto;
             mensagem.Resposta = "Dados encontrados";
 
             return mensagem;
@@ -125,7 +125,7 @@ namespace ToCBooks.App.Data.DAOs
                 db.SaveChanges();
             }
 
-            mensagem.Codigo = 0;
+            mensagem.Codigo = ETipoCodigo.Correto;
             mensagem.Resposta = "Dados Excluidos Com Sucesso ...";
 
             return mensagem;

@@ -1,4 +1,6 @@
 ﻿jQuery(document).ready(function () {
+    BuscarUltimosProdutosCadastrados();
+
     jQuery("#btn_login").on("click", function (e) {
         e.preventDefault();
 
@@ -13,11 +15,11 @@
 });
 
 
-function FazerLogin(objeto) {
+function BuscarUltimosProdutosCadastrados() {
     jQuery.ajax({
         type: "POST",
-        url: 'https://localhost:44354/Login',
-        data: { oper: 7, mapKey: 'LoginModel', JsonString: JSON.stringify(objeto) },
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 1, mapKey: 'LivrosModel', JsonString: JSON.stringify() },
         cache: false,
         beforeSend: function (xhr) {
 
