@@ -78,7 +78,7 @@ namespace ToCBooks.App.Controllers
                 }
             };
 
-            var lMensagem = lCommand.Executar(Despachante);
+            var lMensagem = lCommand.Executar(Despachante, HttpContext);
             return JsonConvert.SerializeObject(lMensagem, Formatting.Indented);
         }
 
@@ -89,7 +89,7 @@ namespace ToCBooks.App.Controllers
         {
             var lVH = mapVH[HttpContext.Request.Form["mapKey"]];
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
-            var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]));
+            var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]), HttpContext);
             if(lMensagem.Dados.Count() > 0)
                 HttpContext.Session.SetString("ClienteID", lMensagem.Dados.Select(x => x.Id).FirstOrDefault().ToString());
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ToCBooks.App.Business.Interfaces;
@@ -13,6 +14,7 @@ namespace ToCBooks.Data.Business.Patterns
 {
     public class Fachada : IFachada
     {
+        private HttpContext SessionLink { get; set; }
         private Dictionary<string, IDAO> mapDao = new Dictionary<string, IDAO>();
         private Dictionary<string, List<IStrategy>> mapValidadores = new Dictionary<string, List<IStrategy>>();
         private Dictionary<string, IBusca> mapExpressoes = new Dictionary<string, IBusca>();

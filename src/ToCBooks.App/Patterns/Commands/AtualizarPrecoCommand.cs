@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace ToCBooks.App.Patterns.Commands
             Fachada = new Fachada();
         }
 
-        public MensagemModel Executar(EntidadeDominio Objeto)
+        public MensagemModel Executar(EntidadeDominio Objeto, HttpContext SessionLink)
         {
             return Fachada.AtualizarPreco(Objeto);
         }
