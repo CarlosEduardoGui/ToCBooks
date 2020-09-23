@@ -29,7 +29,7 @@ namespace ToCBooks.App.Data.DAOs
 
             MensagemModel Mensagem = new MensagemModel
             {
-                Codigo = 1,
+                Codigo = ETipoCodigo.Errado,
                 Dados = null
             };
 
@@ -51,7 +51,7 @@ namespace ToCBooks.App.Data.DAOs
 
             MensagemModel Mensagem = new MensagemModel
             {
-                Codigo = 1,
+                Codigo = ETipoCodigo.Errado,
                 Dados = null
             };
 
@@ -86,7 +86,7 @@ namespace ToCBooks.App.Data.DAOs
             }
 
             Mensagem.Dados.OrderBy(x => x.Id);
-            Mensagem.Codigo = 0;
+            Mensagem.Codigo = ETipoCodigo.Correto;
             Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
 
             return Mensagem;
@@ -120,7 +120,7 @@ namespace ToCBooks.App.Data.DAOs
                 db.SaveChanges();
             }
 
-            Mensagem.Codigo = 0;
+            Mensagem.Codigo = ETipoCodigo.Correto;
             Mensagem.Resposta = "Dados Excluidos Com Sucesso ...";
 
             return Mensagem;

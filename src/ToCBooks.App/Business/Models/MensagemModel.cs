@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ToCBooks.App.Business.Models.Enum;
 
 namespace ToCBooks.App.Business.Models
 {
@@ -9,7 +10,7 @@ namespace ToCBooks.App.Business.Models
             Dados = new List<EntidadeDominio>();
         }
 
-        public int Codigo { get; set; }
+        public ETipoCodigo Codigo { get; set; }
         public string Resposta { get; set; }
         public List<EntidadeDominio> Dados { get; set; }
     }

@@ -15,7 +15,7 @@ namespace ToCBooks.App.Business.Validadores
 
             var cpfNumeros = Utils.ApenasNumeros(cpf);
 
-            return !TamanhoValido(cpfNumeros) ? false : !TemDigitosRepetidos(cpfNumeros) && TemDigitosValidos(cpfNumeros);
+            return TamanhoValido(cpfNumeros) && !TemDigitosRepetidos(cpfNumeros) && TemDigitosValidos(cpfNumeros);
         }
 
         private static bool TamanhoValido(string valor)
@@ -63,7 +63,7 @@ namespace ToCBooks.App.Business.Validadores
         {
             var cnpjNumeros = Utils.ApenasNumeros(cpnj);
 
-            return !TemTamanhoValido(cnpjNumeros) ? false : !TemDigitosRepetidos(cnpjNumeros) && TemDigitosValidos(cnpjNumeros);
+            return TemTamanhoValido(cnpjNumeros) && !TemDigitosRepetidos(cnpjNumeros) && TemDigitosValidos(cnpjNumeros);
         }
 
         private static bool TemTamanhoValido(string valor)

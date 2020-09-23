@@ -2,7 +2,6 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Security.Cryptography.X509Certificates;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
@@ -105,11 +104,14 @@ namespace ToCBooks.App.Data.DAOs
                     Livro = (LivrosModel)Objeto;
 
 
-                var ObjetoPersistido = db.
-                    Find<LivrosModel>(Livro.Id);
+                var ObjetoPersistido = db.Livro.Find(Livro.Id);
                 if (ObjetoPersistido != null)
                 {
-                    Mensagem.Dados.Add(db.Livro.Include(x => x.Precificacao).Include(x => x.Categorias).Where(x => x.Id == Objeto.Id).First());
+                    db.Livro.Include(x => x.Precificacao)
+                        .Include(x => x.Categorias)
+                        .Where(x => x.Id == Livro.Id)
+                        .OrderByDescending(x => x.DataCadastro).ToList()
+                        .ForEach(x => Mensagem.Dados.Add(x));
 
                 }
                 else
@@ -117,11 +119,13 @@ namespace ToCBooks.App.Data.DAOs
                     db.Livro
                         .Include(x => x.Precificacao)
                         .Include(x => x.Categorias)
-                        .Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList().ForEach(x => Mensagem.Dados.Add(x));
+                        .Where(x => x.StatusAtual == ETipoStatus.Ativo)
+                        .OrderByDescending(x => x.DataCadastro).ToList()
+                        .ForEach(x => Mensagem.Dados.Add(x));
                 }
             }
 
-            Mensagem.Codigo = 0;
+            Mensagem.Codigo = ETipoCodigo.Correto;
             Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
 
             return Mensagem;
@@ -132,7 +136,7 @@ namespace ToCBooks.App.Data.DAOs
             MensagemModel Mensagem = new MensagemModel();
             using (var db = new ToCBooksContext())
             {
-                LivrosModel Livro = db.Find<LivrosModel>(Objeto.Id);
+                LivrosModel Livro = db.Livro.Find(Objeto.Id);
                 Livro.StatusAtual = ETipoStatus.Inativo;
                 Livro.Justificativa = Objeto.Justificativa;
                 db.SaveChanges();
@@ -147,7 +151,7 @@ namespace ToCBooks.App.Data.DAOs
         public MensagemModel AtualizarPreco(EntidadeDominio Objeto)
         {
             MensagemModel Mensagem = new MensagemModel();
-            using(var db = new ToCBooksContext())
+            using (var db = new ToCBooksContext())
             {
                 var Livro = (LivrosModel)Objeto;
                 var LivroAtual = db.Livro

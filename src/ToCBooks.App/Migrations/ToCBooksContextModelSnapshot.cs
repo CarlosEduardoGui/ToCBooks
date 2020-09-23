@@ -30,6 +30,8 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<int>("CodigoSeguranca");
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<DateTime>("DataVencimento");
 
                     b.Property<string>("Justificativa")
@@ -57,6 +59,8 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
 
@@ -78,6 +82,8 @@ namespace ToCBooks.App.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<Guid?>("EstadoId");
 
@@ -105,6 +111,8 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<string>("CPF")
                         .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<DateTime>("DataNascimento");
 
@@ -142,6 +150,8 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid?>("CidadeId");
 
                     b.Property<Guid>("ClienteId");
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
@@ -185,6 +195,8 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<Guid>("ClienteId");
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
 
@@ -218,6 +230,8 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
 
@@ -239,6 +253,8 @@ namespace ToCBooks.App.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
@@ -270,6 +286,8 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<string>("CodigoDeBarras")
                         .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Descricao")
                         .HasColumnType("VARCHAR(MAX)");
@@ -319,6 +337,8 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<Guid>("ClienteId");
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<string>("Email")
                         .HasColumnType("VARCHAR(MAX)");
 
@@ -345,6 +365,8 @@ namespace ToCBooks.App.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DataCadastro");
+
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
 
@@ -362,6 +384,8 @@ namespace ToCBooks.App.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");
@@ -386,6 +410,8 @@ namespace ToCBooks.App.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("DDD");
+
+                    b.Property<DateTime>("DataCadastro");
 
                     b.Property<string>("Justificativa")
                         .HasColumnType("VARCHAR(MAX)");

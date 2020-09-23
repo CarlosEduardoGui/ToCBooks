@@ -511,8 +511,10 @@ mark {
 }
 
 .img-fluid {
-    max-width: 100%;
-    height: auto
+    /*max-width: 100%;*/
+    height: auto;
+    width: 75%;
+    padding-top: 20%;
 }
 
 .img-thumbnail {

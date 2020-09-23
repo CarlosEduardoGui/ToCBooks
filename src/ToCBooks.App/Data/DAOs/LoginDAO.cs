@@ -30,12 +30,12 @@ namespace ToCBooks.App.Data.DAOs
 
                 if(result == 1)
                 {
-                    mensagem.Codigo = 0;
+                    mensagem.Codigo = ETipoCodigo.Correto;
                     mensagem.Resposta = "Senha alterada";
                     return mensagem;
                 }
 
-                mensagem.Codigo = 1;
+                mensagem.Codigo = ETipoCodigo.Errado;
                 mensagem.Resposta = "Erro ao alterar Login";
 
                 return mensagem;
@@ -74,9 +74,9 @@ namespace ToCBooks.App.Data.DAOs
                     
 
                 var idCliente = db.Login.Where(x => x.Email == Login.Email && x.Senha == Login.Senha).Select(x => x.ClienteId).FirstOrDefault();
-                if (idCliente == default(Guid))
+                if (idCliente == default)
                 {
-                    mensagem.Codigo = 1;
+                    mensagem.Codigo = ETipoCodigo.Errado;
                     mensagem.Resposta = "Usuário nao encontrado";
 
                     return mensagem;
@@ -90,7 +90,7 @@ namespace ToCBooks.App.Data.DAOs
                         mensagem.Dados.Add(x);
                     });
 
-                mensagem.Codigo = 0;
+                mensagem.Codigo = ETipoCodigo.Correto;
                 mensagem.Resposta = "Usuário encontrado com sucesso";
 
                 return mensagem;

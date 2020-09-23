@@ -29,19 +29,21 @@ namespace ToCBooks.App.Business.Models
 
         public EnderecoCobrancaModel Clonar()
         {
-            EnderecoCobrancaModel Clone = new EnderecoCobrancaModel();
-            Clone.Id = this.Id;
-            Clone.Numero = this.Numero;
-            Clone.Nome = this.Nome;
-            Clone.Bairro = this.Bairro;
-            Clone.CEP = this.CEP;
-            Clone.Cidade = this.Cidade;
-            Clone.TipoLogradouro = this.TipoLogradouro;
-            Clone.TipoResidencia = this.TipoResidencia;
-            Clone.Observacao = this.Observacao;
-            Clone.Principal = this.Principal;
-            Clone.ClienteId = this.ClienteId;
-            Clone.Cliente = this.Cliente;
+            EnderecoCobrancaModel Clone = new EnderecoCobrancaModel
+            {
+                Id = this.Id,
+                Numero = this.Numero,
+                Nome = this.Nome,
+                Bairro = this.Bairro,
+                CEP = this.CEP,
+                Cidade = this.Cidade,
+                TipoLogradouro = this.TipoLogradouro,
+                TipoResidencia = this.TipoResidencia,
+                Observacao = this.Observacao,
+                Principal = this.Principal,
+                ClienteId = this.ClienteId,
+                Cliente = this.Cliente
+            };
 
             return Clone;
         }

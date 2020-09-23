@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using ToCBooks.App.Business.Models;
+using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
 
@@ -29,7 +30,7 @@ namespace ToCBooks.App.Data.DAOs
                 db.SaveChanges();
             }
 
-            Mensagem.Codigo = 0;
+            Mensagem.Codigo = ETipoCodigo.Correto;
             Mensagem.Resposta = "Item Atualizado Com Suscesso...";
 
             return Mensagem;
@@ -59,7 +60,7 @@ namespace ToCBooks.App.Data.DAOs
                 db.SaveChanges();
             }
 
-            Mensagem.Codigo = 0;
+            Mensagem.Codigo = ETipoCodigo.Correto;
             Mensagem.Resposta = "Item Cadastrado Com Suscesso...";
 
             return Mensagem;
@@ -84,7 +85,7 @@ namespace ToCBooks.App.Data.DAOs
                     db.Estoque.Where(x => x.Livro.Id == ItemEstoque.Livro.Id).ToList().ForEach(x => Mensagem.Dados.Add(x));
             }
 
-            Mensagem.Codigo = 0;
+            Mensagem.Codigo = ETipoCodigo.Correto;
             Mensagem.Resposta = "Dados Encontrados Com Sucesso...";
 
             return Mensagem;
