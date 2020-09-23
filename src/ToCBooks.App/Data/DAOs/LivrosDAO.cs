@@ -109,7 +109,8 @@ namespace ToCBooks.App.Data.DAOs
                 {
                     db.Livro.Include(x => x.Precificacao)
                         .Include(x => x.Categorias)
-                        .Where(x => x.Id == Livro.Id).ToList()
+                        .Where(x => x.Id == Livro.Id)
+                        .OrderByDescending(x => x.DataCadastro).ToList()
                         .ForEach(x => Mensagem.Dados.Add(x));
 
                 }
@@ -118,13 +119,13 @@ namespace ToCBooks.App.Data.DAOs
                     db.Livro
                         .Include(x => x.Precificacao)
                         .Include(x => x.Categorias)
-                        .Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList()
+                        .Where(x => x.StatusAtual == ETipoStatus.Ativo)
+                        .OrderByDescending(x => x.DataCadastro).ToList()
                         .ForEach(x => Mensagem.Dados.Add(x));
                 }
             }
 
-            Mensagem.Codigo = 0;
-            Mensagem.Dados.OrderByDescending(x => x.DataCadastro);
+            Mensagem.Codigo = ETipoCodigo.Correto;
             Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
 
             return Mensagem;

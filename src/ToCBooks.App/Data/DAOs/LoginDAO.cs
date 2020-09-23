@@ -74,7 +74,7 @@ namespace ToCBooks.App.Data.DAOs
                     
 
                 var idCliente = db.Login.Where(x => x.Email == Login.Email && x.Senha == Login.Senha).Select(x => x.ClienteId).FirstOrDefault();
-                if (idCliente == default(Guid))
+                if (idCliente == default)
                 {
                     mensagem.Codigo = ETipoCodigo.Errado;
                     mensagem.Resposta = "Usuário nao encontrado";

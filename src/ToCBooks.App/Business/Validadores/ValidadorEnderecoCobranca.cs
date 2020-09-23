@@ -14,7 +14,7 @@ namespace ToCBooks.App.Business.Validadores
 
             var enderecoCobranca = (EnderecoCobrancaModel)Objeto;
 
-            if (enderecoCobranca.CEP == null)
+            if (enderecoCobranca.CEP == 0)
                 throw new Exception("CEP inconsistente...");
 
             if (enderecoCobranca.Bairro == null || enderecoCobranca.Bairro.Equals(""))

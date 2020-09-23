@@ -45,56 +45,60 @@ $(document).ready(function(){
 		============================*/
 			$(".sticky-header").sticky();
 
+    //RETIREI OWL CAROUSEL
     /*=================================
     Javascript for banner area carousel
     ==================================*/
-    $(".active-banner-slider").owlCarousel({
-        items:1,
-        autoplay:false,
-        autoplayTimeout: 5000,
-        loop:true,
-        nav:true,
-        navText:["<img src='img/banner/prev.png'>","<img src='img/banner/next.png'>"],
-        dots:false
-    });
+    //$(".active-banner-slider").owlCarousel({
+    //    items:1,
+    //    autoplay:false,
+    //    autoplayTimeout: 5000,
+    //    loop:true,
+    //    nav:true,
+    //    navText:["<img src='img/banner/prev.png'>","<img src='img/banner/next.png'>"],
+    //    dots:false
+    //});
 
+    //RETIREI OWL CAROUSEL
     /*=================================
     Javascript for product area carousel
     ==================================*/
-    $(".active-product-area").owlCarousel({
-        items:1,
-        autoplay:false,
-        autoplayTimeout: 5000,
-        loop:true,
-        nav:true,
-        navText:["<img src='img/product/prev.png'>","<img src='img/product/next.png'>"],
-        dots:false
-    });
+    //$(".active-product-area").owlCarousel({
+    //    items:1,
+    //    autoplay:false,
+    //    autoplayTimeout: 5000,
+    //    loop:true,
+    //    nav:true,
+    //    navText:["<img src='img/product/prev.png'>","<img src='img/product/next.png'>"],
+    //    dots:false
+    //});
 
-    /*=================================
-    Javascript for single product area carousel
-    ==================================*/
-    $(".s_Product_carousel").owlCarousel({
-      items:1,
-      autoplay:false,
-      autoplayTimeout: 5000,
-      loop:true,
-      nav:false,
-      dots:true
-    });
-    
+    //RETIREI OWL CAROUSEL
+    ///*=================================
+    //Javascript for single product area carousel
+    //==================================*/
+    //$(".s_Product_carousel").owlCarousel({
+    //  items:1,
+    //  autoplay:false,
+    //  autoplayTimeout: 5000,
+    //  loop:true,
+    //  nav:false,
+    //  dots:true
+    //});
+
+    //RETIREI OWL CAROUSEL
     /*=================================
     Javascript for exclusive area carousel
     ==================================*/
-    $(".active-exclusive-product-slider").owlCarousel({
-        items:1,
-        autoplay:false,
-        autoplayTimeout: 5000,
-        loop:true,
-        nav:true,
-        navText:["<img src='img/product/prev.png'>","<img src='img/product/next.png'>"],
-        dots:false
-    });
+    //$(".active-exclusive-product-slider").owlCarousel({
+    //    items:1,
+    //    autoplay:false,
+    //    autoplayTimeout: 5000,
+    //    loop:true,
+    //    nav:true,
+    //    navText:["<img src='img/product/prev.png'>","<img src='img/product/next.png'>"],
+    //    dots:false
+    //});
 
     //--------- Accordion Icon Change ---------//
 
@@ -233,12 +237,12 @@ $(document).ready(function(){
   };
 
 
-
-      $('.quick-view-carousel-details').owlCarousel({
-          loop: true,
-          dots: true,
-          items: 1,
-      })
+      //RETIREI OWL CAROUSEL
+      //$('.quick-view-carousel-details').owlCarousel({
+      //    loop: true,
+      //    dots: true,
+      //    items: 1,
+      //})
 
 
 

@@ -13,7 +13,7 @@ namespace ToCBooks.App.Business.Validadores
 
             var enderecoEntrega = (EnderecoEntregaModel)Objeto;
 
-            if (enderecoEntrega.CEP == null)
+            if (enderecoEntrega.CEP == 0)
                 throw new Exception("CEP inconsistente...");
 
             if (enderecoEntrega.Bairro == null || enderecoEntrega.Bairro.Equals(""))
