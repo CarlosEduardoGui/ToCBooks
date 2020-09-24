@@ -3982,45 +3982,6 @@
         ["xpath=//div[7]/div/div/textarea", "xpath:position"]
       ],
       "value": "Teste de cadastro"
-    }, {
-      "id": "37e99a8a-15d8-4d51-9020-3fd7f0ba8a45",
-      "comment": "",
-      "command": "click",
-      "target": "id=btn_salvar_cad_livro",
-      "targets": [
-        ["id=btn_salvar_cad_livro", "id"],
-        ["css=#btn_salvar_cad_livro", "css:finder"],
-        ["xpath=//button[@id='btn_salvar_cad_livro']", "xpath:attributes"],
-        ["xpath=//div[@id='modal_cad_livro']/div/div/div[3]/button", "xpath:idRelative"],
-        ["xpath=//div[8]/div/div/div[3]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "25f8e170-0f88-4145-bbc9-2052f7548c40",
-      "comment": "",
-      "command": "mouseOver",
-      "target": "id=btn_salvar_cad_livro",
-      "targets": [
-        ["id=btn_salvar_cad_livro", "id"],
-        ["css=#btn_salvar_cad_livro", "css:finder"],
-        ["xpath=//button[@id='btn_salvar_cad_livro']", "xpath:attributes"],
-        ["xpath=//div[@id='modal_cad_livro']/div/div/div[3]/button", "xpath:idRelative"],
-        ["xpath=//div[8]/div/div/div[3]/button", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "da49c23d-92f7-4d04-b27e-afeb1c2af5d4",
-      "comment": "",
-      "command": "mouseOut",
-      "target": "id=btn_salvar_cad_livro",
-      "targets": [
-        ["id=btn_salvar_cad_livro", "id"],
-        ["css=#btn_salvar_cad_livro", "css:finder"],
-        ["xpath=//button[@id='btn_salvar_cad_livro']", "xpath:attributes"],
-        ["xpath=//div[@id='modal_cad_livro']/div/div/div[3]/button", "xpath:idRelative"],
-        ["xpath=//div[8]/div/div/div[3]/button", "xpath:position"]
-      ],
-      "value": ""
     }]
   }, {
     "id": "9f4dcd45-f177-472c-9cd2-a55e2d0ddd27",
