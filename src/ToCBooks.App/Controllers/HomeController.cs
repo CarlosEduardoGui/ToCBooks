@@ -27,6 +27,7 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("6", new AtivarCommand());
             mapCommand.Add("7", new LoginCommand());
             mapCommand.Add("8", new AtualizarPrecoCommand());
+            mapCommand.Add("9", new AdicionarItemCarrinhoCommand());
 
             mapVH.Add("LivrosModel", new LivroVH());
             mapVH.Add("Parametro", new ParametroVH());

@@ -6,22 +6,56 @@
         Id: id_livro,
     }
 
+    jQuery(document).on("click", '#btn_add_carrinho', function () {
+        var IdLivro = jQuery(this).attr('id_livro');
+
+        var QtdeLivro = jQuery("#qtdItem").val();
+        if (QtdeLivro <= 0) {
+            alert("Escolha uma quantidade Valida !!!");
+            return;
+        }
+
+        var Livro = { Id: IdLivro };
+
+        AdicionarItemCarrinho({ Livro: Livro, Qtde: QtdeLivro });
+
+    });
+
     BuscarProduto(livro);
 
-
-    jQuery("#btn_login").on("click", function (e) {
-        e.preventDefault();
-
-    });
 });
 
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-        vars[key] = value;
+
+function AdicionarItemCarrinho(ObjetoEnvio) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 9, mapKey: 'ItemEstoque', JsonString: JSON.stringify(ObjetoEnvio) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            console.log(e.readyState);
+            console.log(e.status);
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var resposta_controle = JSON.parse(e.responseText);
+                    if (resposta_controle.Codigo == 0) {
+                        
+                    } else {
+                        alert(resposta_controle.Resposta);
+                    }
+
+                } catch (error) {
+                    alert(error);
+                }
+            }
+        }
     });
-    return vars;
 }
+
 
 function BuscarProduto(objeto) {
     jQuery.ajax({
@@ -62,10 +96,10 @@ function BuscarProduto(objeto) {
                             htmlItem += '<p>'+ livro.Descricao +'</p>';
                             htmlItem += '<div class="product_count">';
                             htmlItem += '<label for="qty">Quantidade:</label>';
-                            htmlItem += '<input type="number" id="qtdItem"/></button>';
+                            htmlItem += '<input type="number" id="qtdItem" value="1"/></button>';
                             htmlItem += '</div>';
                             htmlItem += '<div class="card_area d-flex align-items-center">';
-                            htmlItem += '<a class="primary-btn" href="#">Comprar</a>';
+                            htmlItem += '<a class="primary-btn" style="cursor: pointer;" id="btn_add_carrinho" id_livro="' + livro.Id + '">Comprar</a>';
                             htmlItem += '</div>';
                             htmlItem += '</div>';
                             htmlItem += '</div>';
@@ -73,10 +107,7 @@ function BuscarProduto(objeto) {
                             jQuery("#id_livro").val(livro.Id);
                         });
 
-
                         jQuery("#produto").html(htmlItem);
-
-
                     } else {
                         alert(resposta_controle.Resposta);
                     }
@@ -87,4 +118,14 @@ function BuscarProduto(objeto) {
             }
         }
     });
+}
+
+
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+    });
+    return vars;
 }

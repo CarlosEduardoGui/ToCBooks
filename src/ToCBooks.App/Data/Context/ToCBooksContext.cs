@@ -19,8 +19,8 @@ namespace ToCBooks.App.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-FOC45IJ\SQLEXPRESS2017;Database=ToCBooks;User Id=sa; Password=syslg;MultipleActiveResultSets=true");
-            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-C46EB5G\SQLEXPRESS;Database=ToCBooks;Trusted_Connection=True;");
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-FOC45IJ\SQLEXPRESS2017;Database=ToCBooks;User Id=sa; Password=syslg;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-C46EB5G\SQLEXPRESS;Database=ToCBooks;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
