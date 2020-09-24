@@ -27,6 +27,7 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("6", new AtivarCommand());
             mapCommand.Add("7", new LoginCommand());
             mapCommand.Add("8", new AtualizarPrecoCommand());
+            mapCommand.Add("9", new AdicionarItemCarrinhoCommand());
 
             mapVH.Add("LivrosModel", new LivroVH());
             mapVH.Add("Parametro", new ParametroVH());
@@ -78,7 +79,7 @@ namespace ToCBooks.App.Controllers
                 }
             };
 
-            var lMensagem = lCommand.Executar(Despachante);
+            var lMensagem = lCommand.Executar(Despachante, HttpContext);
             return JsonConvert.SerializeObject(lMensagem, Formatting.Indented);
         }
 
@@ -89,7 +90,7 @@ namespace ToCBooks.App.Controllers
         {
             var lVH = mapVH[HttpContext.Request.Form["mapKey"]];
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
-            var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]));
+            var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]), HttpContext);
             if(lMensagem.Dados.Count() > 0)
                 HttpContext.Session.SetString("ClienteID", lMensagem.Dados.Select(x => x.Id).FirstOrDefault().ToString());
 

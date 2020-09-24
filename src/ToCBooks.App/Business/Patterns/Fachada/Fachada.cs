@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using ToCBooks.App.Business.Interfaces;
@@ -14,6 +15,7 @@ namespace ToCBooks.Data.Business.Patterns
 {
     public class Fachada : IFachada
     {
+        public HttpContext SessionLink { get; set; }
         private Dictionary<string, IDAO> mapDao = new Dictionary<string, IDAO>();
         private Dictionary<string, List<IStrategy>> mapValidadores = new Dictionary<string, List<IStrategy>>();
         private Dictionary<string, IBusca> mapExpressoes = new Dictionary<string, IBusca>();
@@ -261,6 +263,15 @@ namespace ToCBooks.Data.Business.Patterns
         {
             var Despachante = (Despachante)Objeto;
             return new LivrosDAO().AtualizarPreco(Despachante.Entidade);
+        }
+
+        public MensagemModel AdicionarItemCarrinho(EntidadeDominio Objeto)
+        {
+            MensagemModel Mensagem = new MensagemModel();
+            Mensagem.Codigo = 0;
+            Mensagem.Resposta = SessionLink.Session.GetString("ClienteID");
+
+            return Mensagem;
         }
     }
 }
