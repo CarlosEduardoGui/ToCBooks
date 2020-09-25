@@ -112,23 +112,20 @@
             <div class="billing_details">
                 <div class="row">
                     <div class="col-lg-8">
-                        <div id="accordion">
-
-                            <div class="card">
+                        <div id="enderecoEntrega">
+                            <!--<div class="card">
                                 <div class="card-header">
                                     <a class="card-link" data-toggle="collapse" href="#collapseOne">
                                         Endereço de Cobrança #1
                                     </a>
-
                                     <div class="card-switch">
                                         <div>
                                             <input type="radio" name="exampleCheck1" class="form-check-input" id="exampleCheck1">
                                             <label class="form-check-label" for="exampleCheck1">Usar este</label>
                                         </div>
                                     </div>
-
                                 </div>
-                                <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                <div id="collapseOne" class="collapse show" data-parent="#enderecoEntrega">
                                     <div class="card-body">
                                         <form>
                                             <h3>Deseja usar outro Endereço?</h3>
@@ -179,147 +176,16 @@
                                         </form>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <a class="card-link" data-toggle="collapse" href="#collapseTwo">
-                                        Endereço de Cobrança #2
-                                    </a>
-                                    <div class="card-switch">
-                                        <div>
-                                            <input type="radio" name="exampleCheck1"  class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">Usar este</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <form>
-                                            <h3>Deseja usar outro Endereço?</h3>
-                                            <div class="form-row">
-                                                <div class="col-md-3 form-group">
-                                                    <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
-                                                        <option value="0">Tipo de Logradouro</option>
-                                                        <option value="1">Avenida</option>
-                                                        <option value="2">Rua</option>
-                                                        <option value="3">Vila</option>
-                                                        <option value="4">Viela</option>
-                                                        <option value="5">Conjunto</option>
-                                                        <option value="6">Condominio</option>
-                                                        <option value="7">Fazenda</option>
-                                                        <option value="8">Jardim</option>
-                                                        <option value="9">Ladeira</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-3 form-group">
-                                                    <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
-                                                        <option value="0">Tipo de Residência</option>
-                                                        <option value="1">Casa</option>
-                                                        <option value="2">Apartamento</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <input type="text" class="form-control" id="endereco" placeholder="Manoel de Oliveira Mello">
-                                                </div>
-                                                <div class="col-md-4 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
-                                                </div>
-                                                <div class="col-md-8 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
-                                                </div>
-                                                <div class="col-md-4 form-group">
-                                                    <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
-                                                </div>
-                                                <div class="col-md-8 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
-                                                </div>
-                                                <div class="col-md-6 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
-                                                </div>
-                                                <div class="col-md-6 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <a class="card-link" data-toggle="collapse" href="#collapseThree">
-                                        Endereço de Cobrança #3
-                                    </a>
-                                    <div class="card-switch">
-                                        <div class="card-switch">
-                                            <div>
-                                                <input type="radio" name="exampleCheck1"  class="form-check-input" id="exampleCheck1">
-                                                <label class="form-check-label" for="exampleCheck1">Usar este</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="collapseThree" class="collapse" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <form>
-                                            <h3>Deseja usar outro Endereço?</h3>
-                                            <div class="form-row">
-                                                <div class="col-md-3 form-group">
-                                                    <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
-                                                        <option value="0">Tipo de Logradouro</option>
-                                                        <option value="1">Avenida</option>
-                                                        <option value="2">Rua</option>
-                                                        <option value="3">Vila</option>
-                                                        <option value="4">Viela</option>
-                                                        <option value="5">Conjunto</option>
-                                                        <option value="6">Condominio</option>
-                                                        <option value="7">Fazenda</option>
-                                                        <option value="8">Jardim</option>
-                                                        <option value="9">Ladeira</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-3 form-group">
-                                                    <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
-                                                        <option value="0">Tipo de Residência</option>
-                                                        <option value="1">Casa</option>
-                                                        <option value="2">Apartamento</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <input type="text" class="form-control" id="endereco" placeholder="Manoel de Oliveira Mello">
-                                                </div>
-                                                <div class="col-md-4 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
-                                                </div>
-                                                <div class="col-md-8 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
-                                                </div>
-                                                <div class="col-md-4 form-group">
-                                                    <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
-                                                </div>
-                                                <div class="col-md-8 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
-                                                </div>
-                                                <div class="col-md-6 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
-                                                </div>
-                                                <div class="col-md-6 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>-->
                         </div>
+
                         <br />
                         <hr />
-                        <form>
+                        <form id="form_endereco">
                             <h3>Deseja usar outro Endereço?</h3>
                             <div class="form-row">
                                 <div class="col-md-3 form-group">
-                                    <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
+                                    <select id="enderecoEntregaEtipologradouro" name="enderecoEntregaEtipologradouro">
                                         <option value="0">Tipo de Logradouro</option>
                                         <option value="1">Avenida</option>
                                         <option value="2">Rua</option>
@@ -333,34 +199,35 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
+                                    <select id="enderecoEntregaEtiporesidencia" name="enderecoEntregaEtiporesidencia">
                                         <option value="0">Tipo de Residência</option>
                                         <option value="1">Casa</option>
                                         <option value="2">Apartamento</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" id="endereco" placeholder="Manoel de Oliveira Mello">
+                                    <input type="text" class="form-control" id="enderecoEntrega" name="enderecoEntrega" placeholder="Endereço">
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
+                                    <input type="text" class="form-control" id="enderecoEntregaCep" name="enderecoEntregaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
                                 </div>
                                 <div class="col-md-8 form-group">
-                                    <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
+                                    <input type="text" class="form-control" id="enderecoEntregaBairro" name="enderecoEntregaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
+                                    <input type="number" class="form-control" id="enderecoEntregaNumero" name="enderecoEntregaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
                                 </div>
                                 <div class="col-md-8 form-group">
-                                    <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
+                                    <input type="text" class="form-control" id="enderecoEntregaCidade" name="enderecoEntregaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
+                                    <input type="text" class="form-control" id="enderecoEntregaEstado" name="enderecoEntregaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
+                                    <input type="text" class="form-control" id="enderecoEntregaPais" name="enderecoEntregaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
                                 </div>
                             </div>
+                            <button type="button" class="btn btn-success" id="btn_salvar_endereco">Salvar</button>
                         </form>
                         <br />
                         <hr />
@@ -495,21 +362,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3  col-md-6 col-sm-6">
-                    <div class="single-footer-widget mail-chimp">
-                        <h6 class="mb-20">Propagandas</h6>
-                        <ul class="instafeed d-flex flex-wrap">
-                            <li><img src="img/i1.jpg" alt=""></li>
-                            <li><img src="img/i2.jpg" alt=""></li>
-                            <li><img src="img/i3.jpg" alt=""></li>
-                            <li><img src="img/i4.jpg" alt=""></li>
-                            <li><img src="img/i5.jpg" alt=""></li>
-                            <li><img src="img/i6.jpg" alt=""></li>
-                            <li><img src="img/i7.jpg" alt=""></li>
-                            <li><img src="img/i8.jpg" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h6>Redes Sociais</h6>
@@ -550,6 +402,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+    <script src="js/My/checkout.js"></script>
 </body>
 
 </html>

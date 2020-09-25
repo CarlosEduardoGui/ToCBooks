@@ -55,59 +55,59 @@ jQuery(document).ready(function () {
         if (formData.get("id_endereco") != '') {
             pais = {
                 Id: formData.get("id_pais"),
-                nome: formData.get('enderecoCobrancaPais'),
+                nome: formData.get('enderecoEntregaPais'),
             };
 
 
             estado = {
                 Id: formData.get("id_estado"),
-                nome: formData.get('enderecoCobrancaEstado'),
+                nome: formData.get('enderecoEntregaEstado'),
                 pais: pais
             };
 
             cidade = {
                 Id: formData.get("id_cidade"),
-                nome: formData.get('enderecoCobrancaCidade'),
+                nome: formData.get('enderecoEntregaCidade'),
                 estado: estado
             };
 
             enderecoCobranca = {
                 Id: formData.get('id_endereco'),
-                nome: formData.get('enderecoCobranca'),
-                tipologradouro: formData.get('enderecoCobrancaEtipologradouro'),
-                tiporesidencia: formData.get('enderecoCobrancaEtiporesidencia'),
-                cep: formData.get('enderecoCobrancaCep'),
-                bairro: formData.get('enderecoCobrancaBairro'),
-                numero: formData.get('enderecoCobrancaNumero'),
-                observacao: formData.get('enderecoObservacoesCobranca'),
+                nome: formData.get('enderecoEntrega'),
+                tipologradouro: formData.get('enderecoEntregaEtipologradouro'),
+                tiporesidencia: formData.get('enderecoEntregaEtiporesidencia'),
+                cep: formData.get('enderecoEntregaCep'),
+                bairro: formData.get('enderecoEntregaBairro'),
+                numero: formData.get('enderecoEntregaNumero'),
+                observacao: formData.get('enderecoObservacoesEntrega'),
                 ClienteId: jQuery("#id_cliente").val(),
                 cidade: cidade,
                 principal: true
             };
         } else {
             pais = {
-                nome: formData.get('enderecoCobrancaPais'),
+                nome: formData.get('enderecoEntregaPais'),
             };
 
 
             estado = {
-                nome: formData.get('enderecoCobrancaEstado'),
+                nome: formData.get('enderecoEntregaEstado'),
                 pais: pais
             };
 
             cidade = {
-                nome: formData.get('enderecoCobrancaCidade'),
+                nome: formData.get('enderecoEntregaCidade'),
                 estado: estado
             };
 
             enderecoCobranca = {
-                nome: formData.get('enderecoCobranca'),
-                tipologradouro: formData.get('enderecoCobrancaEtipologradouro'),
-                tiporesidencia: formData.get('enderecoCobrancaEtiporesidencia'),
-                cep: formData.get('enderecoCobrancaCep'),
-                bairro: formData.get('enderecoCobrancaBairro'),
-                numero: formData.get('enderecoCobrancaNumero'),
-                observacao: formData.get('enderecoObservacoesCobranca'),
+                nome: formData.get('enderecoEntrega'),
+                tipologradouro: formData.get('enderecoEntregaEtipologradouro'),
+                tiporesidencia: formData.get('enderecoEntregaEtiporesidencia'),
+                cep: formData.get('enderecoEntregaCep'),
+                bairro: formData.get('enderecoEntregaBairro'),
+                numero: formData.get('enderecoEntregaNumero'),
+                observacao: formData.get('enderecoObservacoesEntrega'),
                 ClienteId: jQuery("#id_cliente").val(),
                 cidade: cidade,
                 principal: true
@@ -177,19 +177,19 @@ function buscarEndereco(id_endereco) {
 
                         jQuery("#id_cliente").val(Endereco.ClienteId);
                         jQuery("#id_endereco").val(Endereco.Id);
-                        jQuery("#enderecoCobrancaEtipologradouro").val(Endereco.TipoLogradouro);
-                        jQuery("#enderecoCobranca").val(Endereco.Nome);
-                        jQuery("#enderecoCobrancaEtiporesidencia").val(Endereco.TipoResidencia);
-                        jQuery("#enderecoCobrancaCep").val(Endereco.CEP);
-                        jQuery("#enderecoCobrancaBairro").val(Endereco.Bairro);
-                        jQuery("#enderecoCobrancaNumero").val(Endereco.Numero);
+                        jQuery("#enderecoEntregaEtipologradouro").val(Endereco.TipoLogradouro);
+                        jQuery("#enderecoEntrega").val(Endereco.Nome);
+                        jQuery("#enderecoEntregaEtiporesidencia").val(Endereco.TipoResidencia);
+                        jQuery("#enderecoEntregaCep").val(Endereco.CEP);
+                        jQuery("#enderecoEntregaBairro").val(Endereco.Bairro);
+                        jQuery("#enderecoEntregaNumero").val(Endereco.Numero);
                         jQuery("#id_cidade").val(Endereco.Cidade.Id);
-                        jQuery("#enderecoCobrancaCidade").val(Endereco.Cidade.Nome);
+                        jQuery("#enderecoEntregaCidade").val(Endereco.Cidade.Nome);
                         jQuery("#id_estado").val(Endereco.Cidade.Estado.Id);
-                        jQuery("#enderecoCobrancaEstado").val(Endereco.Cidade.Estado.Nome);
+                        jQuery("#enderecoEntregaEstado").val(Endereco.Cidade.Estado.Nome);
                         jQuery("#id_pais").val(Endereco.Cidade.Estado.Pais.Id);
-                        jQuery("#enderecoCobrancaPais").val(Endereco.Cidade.Estado.Pais.Nome);
-                        jQuery("#enderecoObservacoesCobranca").val(Endereco.Observacao);
+                        jQuery("#enderecoEntregaPais").val(Endereco.Cidade.Estado.Pais.Nome);
+                        jQuery("#enderecoObservacoesEntrega").val(Endereco.Observacao);
 
                         jQuery("select").niceSelect("update");
 

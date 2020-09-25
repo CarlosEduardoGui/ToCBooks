@@ -28,7 +28,7 @@ namespace ToCBooks.App.Data.DAOs
                 db.Login.Update(Login);
                 result = db.SaveChanges();
 
-                if(result == 1)
+                if (result == 1)
                 {
                     mensagem.Codigo = ETipoCodigo.Correto;
                     mensagem.Resposta = "Senha alterada";
@@ -71,7 +71,7 @@ namespace ToCBooks.App.Data.DAOs
                     var Entidade = (Despachante)Objeto;
                     Login = (LoginModel)Entidade.Entidade;
                 }
-                    
+
 
                 var idCliente = db.Login.Where(x => x.Email == Login.Email && x.Senha == Login.Senha).Select(x => x.ClienteId).FirstOrDefault();
                 if (idCliente == default)
@@ -84,8 +84,10 @@ namespace ToCBooks.App.Data.DAOs
 
                 db.Cliente
                     .Include(x => x.Login)
-                    .Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList()
-                    .ForEach(x => {
+                    .Where(x => x.StatusAtual == ETipoStatus.Ativo
+                         && x.Login.Email == Login.Email && x.Login.Senha == Login.Senha).ToList()
+                    .ForEach(x =>
+                    {
                         x.Login.Cliente = null;
                         mensagem.Dados.Add(x);
                     });

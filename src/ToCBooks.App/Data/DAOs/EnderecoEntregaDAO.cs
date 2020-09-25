@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,6 +75,7 @@ namespace ToCBooks.App.Data.DAOs
                     .Include(x => x.Cidade)
                     .Include(x => x.Cidade.Estado)
                     .Include(x => x.Cidade.Estado.Pais)
+                    .OrderBy(x => x.DataCadastro)
                     .Where(x => x.Id == Despachante.Entidade.Id).ToList().FirstOrDefault();
                 if (ObjetoPersistido != null)
                     Mensagem.Dados.Add(ObjetoPersistido);
@@ -82,6 +84,7 @@ namespace ToCBooks.App.Data.DAOs
                         .Include(x => x.Cidade)
                         .Include(x => x.Cidade.Estado)
                         .Include(x => x.Cidade.Estado.Pais)
+                        .OrderBy(x => x.DataCadastro)
                         .Where(x => x.StatusAtual == ETipoStatus.Ativo && x.ClienteId == Despachante.Login.ClienteId).ToList().ForEach(x => Mensagem.Dados.Add(x));
             }
 
