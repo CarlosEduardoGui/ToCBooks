@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -268,8 +269,81 @@ namespace ToCBooks.Data.Business.Patterns
         public MensagemModel AdicionarItemCarrinho(EntidadeDominio Objeto)
         {
             MensagemModel Mensagem = new MensagemModel();
-            Mensagem.Codigo = 0;
-            Mensagem.Resposta = SessionLink.Session.GetString("ClienteID");
+            try
+            {
+                var Despachante = (Despachante)Objeto;
+
+                new ValidadorEntradaCarrinho().Validar(Despachante);
+
+                var ItemEstoque = (ItemEstoque)Despachante.Entidade;
+                ItemEstoque.DataCadastro = DateTime.Now;
+                ItemEstoque.Livro = (LivrosModel)new LivrosDAO().Consultar(ItemEstoque.Livro).Dados.First();
+
+                bool FlagItemExistente = false;
+                Carrinho Carrinho = new Carrinho();
+                if (SessionLink.Session.GetString("Carrinho") != null)
+                {
+                    Carrinho = JsonConvert.DeserializeObject<Carrinho>(SessionLink.Session.GetString("Carrinho"));
+
+                    foreach (var Item in Carrinho.Itens)
+                        if (Item.Livro.Id == ItemEstoque.Livro.Id)
+                        {
+                            Item.Qtde += ItemEstoque.Qtde;
+                            FlagItemExistente = true;
+                        }
+                }
+
+                if (!FlagItemExistente)
+                    Carrinho.Itens.Add((ItemEstoque)Despachante.Entidade);
+
+                SessionLink.Session.SetString("Carrinho", JsonConvert.SerializeObject(Carrinho));
+
+                Mensagem.Codigo = ETipoCodigo.Correto;
+                Mensagem.Resposta = "Item Adicionado Com sucesso !!!";
+            }
+            catch (Exception error)
+            {
+                Mensagem.Codigo = ETipoCodigo.Errado;
+                Mensagem.Resposta = error.Message;
+            }
+
+            return Mensagem;
+        }
+
+        public MensagemModel ConsultarCarrinho()
+        {
+            MensagemModel Mensagem = new MensagemModel();
+
+            if (SessionLink.Session.GetString("Carrinho") == null)
+            {
+                Mensagem.Codigo = ETipoCodigo.Errado;
+                Mensagem.Resposta = "Carrinho não Encotrado para o Usuário Atual...";
+            }
+            else
+            {
+                Mensagem.Codigo = ETipoCodigo.Correto;
+                Mensagem.Resposta = "Carrinho Encontrado...";
+                Mensagem.Dados.Add(JsonConvert.DeserializeObject<Carrinho>(SessionLink.Session.GetString("Carrinho")));
+            }
+
+            return Mensagem;
+        }
+
+        public MensagemModel ExcluirItemCarrinho(EntidadeDominio Objeto)
+        {
+            MensagemModel Mensagem = new MensagemModel();
+            var Despachante = (Despachante)Objeto;
+            var ItemEstoque = Despachante.Entidade;
+            var Carrinho = JsonConvert.DeserializeObject<Carrinho>(SessionLink.Session.GetString("Carrinho"));
+
+            for (var i = 0; i < Carrinho.Itens.Count; i++)
+                if (Carrinho.Itens[i].Id == ItemEstoque.Id)
+                    Carrinho.Itens[i] = null;
+
+            SessionLink.Session.SetString("Carrinho", JsonConvert.SerializeObject(Carrinho));
+
+            Mensagem.Codigo = ETipoCodigo.Correto;
+            Mensagem.Resposta = "Item Excluido com Sucesso !!!";
 
             return Mensagem;
         }

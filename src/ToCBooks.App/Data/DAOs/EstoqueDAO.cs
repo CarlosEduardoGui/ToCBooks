@@ -10,7 +10,7 @@ using ToCBooks.App.Data.Interfaces;
 
 namespace ToCBooks.App.Data.DAOs
 {
-    public class EstoqueDAO : IDAO 
+    public class EstoqueDAO : IDAO
     {
         public MensagemModel Ativar(EntidadeDominio Objeto)
         {
@@ -49,7 +49,7 @@ namespace ToCBooks.App.Data.DAOs
 
             using (var db = new ToCBooksContext())
             {
-                if(db.Estoque.Where(x => x.Livro.Id == ItemEstoque.Livro.Id && x.Qtde > 0).Count() > 0)
+                if (db.Estoque.Where(x => x.Livro.Id == ItemEstoque.Livro.Id && x.Qtde > 0).Count() > 0)
                 {
                     ItemEstoque.Id = db.Estoque.Where(x => x.Livro.Id == ItemEstoque.Livro.Id && x.Qtde > 0).Select(x => x.Id).FirstOrDefault();
                     return Atualizar(ItemEstoque);
@@ -84,6 +84,21 @@ namespace ToCBooks.App.Data.DAOs
                 else
                     db.Estoque.Where(x => x.Livro.Id == ItemEstoque.Livro.Id).ToList().ForEach(x => Mensagem.Dados.Add(x));
             }
+
+            Mensagem.Codigo = ETipoCodigo.Correto;
+            Mensagem.Resposta = "Dados Encontrados Com Sucesso...";
+
+            return Mensagem;
+        }
+
+        public MensagemModel ConsultarQuantidade(EntidadeDominio Objeto)
+        {
+            MensagemModel Mensagem = new MensagemModel();
+            var Despachante = (Despachante)Objeto;
+            var ItemEstoque = (ItemEstoque)Despachante.Entidade;
+
+            using (var db = new ToCBooksContext())
+                db.Estoque.Where(x => x.Livro.Id == ItemEstoque.Livro.Id).ToList().ForEach(x => Mensagem.Dados.Add(x));
 
             Mensagem.Codigo = ETipoCodigo.Correto;
             Mensagem.Resposta = "Dados Encontrados Com Sucesso...";
