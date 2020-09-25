@@ -28,6 +28,8 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("7", new LoginCommand());
             mapCommand.Add("8", new AtualizarPrecoCommand());
             mapCommand.Add("9", new AdicionarItemCarrinhoCommand());
+            mapCommand.Add("10", new ConsultarCarrinhoCommand());
+            mapCommand.Add("11", new ExcluirItemCarrinho());
 
             mapVH.Add("LivrosModel", new LivroVH());
             mapVH.Add("Parametro", new ParametroVH());
@@ -37,6 +39,7 @@ namespace ToCBooks.App.Controllers
             mapVH.Add("EnderecoEntregaModel", new EnderecoEntregaVH());
             mapVH.Add("EnderecoCobrancaModel", new EnderecoCobrancaVH());
             mapVH.Add("ItemEstoque", new ItemEstoqueVH());
+            mapVH.Add("Carrinho", new CarrinhoVH());
         }
 
         private Dictionary<string, IViewHelper> mapVH = new Dictionary<string, IViewHelper>();

@@ -43,7 +43,7 @@ function AdicionarItemCarrinho(ObjetoEnvio) {
                 try {
                     var resposta_controle = JSON.parse(e.responseText);
                     if (resposta_controle.Codigo == 0) {
-                        
+                        window.location.href = 'cart.html';
                     } else {
                         alert(resposta_controle.Resposta);
                     }
