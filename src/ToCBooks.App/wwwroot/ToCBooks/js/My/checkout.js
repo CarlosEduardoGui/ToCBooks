@@ -1,5 +1,6 @@
 ﻿jQuery(document).ready(function () {
     buscarEnderecos();
+    buscarCartoesCredito();
 
     jQuery("#btn_salvar_endereco").on('click', function (e) {
         e.preventDefault();
@@ -48,91 +49,38 @@
 
     });
 
-    jQuery("#btn_testar").on('click', function () {
-        var pais = {
-            nome: "Brasil"
-        };
+
+    jQuery("#btn_salvar_cartaoCredito").on('click', function (e) {
+        e.preventDefault();
+
+        if (jQuery("#form_cartaoCredito").valid())
+            jQuery("#form_cartaoCredito").submit();
+        else
+            alert("Preencha o formulário corretamente...");
+    });
+
+    jQuery("#form_cartaoCredito").on("submit", function (e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+        var cartaoCredito;
 
 
-        var estado = {
-            nome: "São Paulo",
-            pais: pais
-        };
-
-        var cidade = {
-            nome: "Santa Isabel",
-            estado: estado
-        };
-
-        var enderecoEntrega = {
-            nome: "Bolivia",
-            tipologradouro: 1,
-            tiporesidencia: 2,
-            cep: "07500000",
-            bairro: "Ouro Fino",
-            numero: 164,
-            observacao: "Testando o Cadastro",
-            ClienteId: jQuery("#id_cliente_endereco").val(),
-            cidade: cidade,
+        cartaoCredito = {
+            numeroCartao: formData.get('numeroCartao'),
+            nome: formData.get('nomeCartao'),
+            CodigoSeguranca: formData.get('cvvCartao'),
+            Bandeira: formData.get('bandeiraCartao'),
+            ClienteId: jQuery("#id_cliente_cartaoCredito").val(),
+            DataVencimento: formData.get('dataVencimento'),
             principal: true
         };
 
-
-        cadastrarEndereco(enderecoEntrega);
+        cadastrarCartaoCredito(cartaoCredito);
 
     });
 });
 
-function buscarEndereco(id_endereco) {
-    jQuery.ajax({
-        type: "POST",
-        url: 'https://localhost:44354/Operations',
-        data: { oper: "1", mapKey: "EnderecoEntregaModel", JsonString: JSON.stringify({ Id: id_endereco }) },
-        cache: false,
-        beforeSend: function (xhr) {
-
-        },
-        complete: function (e, xhr, result) {
-            if (e.readyState == 4 && e.status == 200) {
-
-                try {
-                    var respostaControle = JSON.parse(e.responseText);
-
-                    if (respostaControle.Codigo == 0) {
-                        var Endereco = respostaControle.Dados[0];
-
-                        jQuery("#id_cliente").val(Endereco.ClienteId);
-                        jQuery("#id_endereco").val(Endereco.Id);
-                        jQuery("#enderecoCobrancaEtipologradouro").val(Endereco.TipoLogradouro);
-                        jQuery("#enderecoCobranca").val(Endereco.Nome);
-                        jQuery("#enderecoCobrancaEtiporesidencia").val(Endereco.TipoResidencia);
-                        jQuery("#enderecoCobrancaCep").val(Endereco.CEP);
-                        jQuery("#enderecoCobrancaBairro").val(Endereco.Bairro);
-                        jQuery("#enderecoCobrancaNumero").val(Endereco.Numero);
-                        jQuery("#id_cidade").val(Endereco.Cidade.Id);
-                        jQuery("#enderecoCobrancaCidade").val(Endereco.Cidade.Nome);
-                        jQuery("#id_estado").val(Endereco.Cidade.Estado.Id);
-                        jQuery("#enderecoCobrancaEstado").val(Endereco.Cidade.Estado.Nome);
-                        jQuery("#id_pais").val(Endereco.Cidade.Estado.Pais.Id);
-                        jQuery("#enderecoCobrancaPais").val(Endereco.Cidade.Estado.Pais.Nome);
-                        jQuery("#enderecoObservacoesCobranca").val(Endereco.Observacao);
-
-                        jQuery("select").niceSelect("update");
-
-
-                        jQuery("#modal_add_endereco").modal("show");
-                    }
-                    else
-                        alert("Erro ao Buscar Livros...");
-
-                } catch (error) {
-                    console.log(error);
-                    alert("Erro na Comunicação com o Servidor...");
-                }
-            }
-        }
-    });
-}
 
 function cadastrarEndereco(objeto) {
 
@@ -154,8 +102,12 @@ function cadastrarEndereco(objeto) {
                 try {
                     var resposta_controle = JSON.parse(e.responseText);
 
-                    if (resposta_controle.Codigo == 0)
+                    if (resposta_controle.Codigo == 0) {
                         buscarEnderecos();
+                    } else {
+                        alert(resposta_controle.Resposta);
+                    }
+
 
                 } catch (error) {
                     console.log(error);
@@ -191,13 +143,14 @@ function buscarEnderecos() {
                         if (respostaControle.Dados.length > 0) {
                             respostaControle.Dados.forEach(endereco => {
                                 htmlEndereco += '<input type="hidden" id="id_cliente_endereco" value="' + endereco.ClienteId + '"/>';
+                                htmlEndereco += '<input type="hidden" id="id_endereco" value="' + endereco.Id + '"/>';
                                 htmlEndereco += '<div class="card">';
                                 htmlEndereco += '<div class="card-header">';
                                 htmlEndereco += '<a class="card-link" data-toggle="collapse" href="#collapse' + i + '">Endereço de Entrega #' + j + ' </a>';
                                 htmlEndereco += '<div class="card-switch">';
                                 htmlEndereco += '<div>';
-                                htmlEndereco += '<input type="radio" name="checkBox" class="form-check-input" id="checkBox"/>';
-                                htmlEndereco += '<label class="form-check-label" for="checkBox">Usar este </label>';
+                                htmlEndereco += '<input type="radio" name="checkBox" class="form-check-input" id="checkBoxEndereco"/>';
+                                htmlEndereco += '<label class="form-check-label" for="checkBoxEndereco">Usar este </label>';
                                 htmlEndereco += '</div>';
                                 htmlEndereco += '</div>';
                                 htmlEndereco += '</div>';
@@ -247,6 +200,129 @@ function buscarEnderecos() {
                         }
 
                         jQuery("#enderecoEntrega").html(htmlEndereco);
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+
+
+function cadastrarCartaoCredito(objeto) {
+
+    console.log(objeto);
+
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 2, mapKey: 'CartaoCreditoModel', JsonString: JSON.stringify(objeto) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            console.log(e.readyState);
+            console.log(e.status);
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var resposta_controle = JSON.parse(e.responseText);
+
+                    if (resposta_controle.Codigo == 0) {
+                        buscarCartoesCredito();
+                    } else {
+                        alert(resposta_controle.Resposta);
+                    }
+
+
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        }
+    });
+}
+
+
+function buscarCartoesCredito() {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "1", mapKey: "CartaoCreditoModel", JsonString: JSON.stringify({}) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Codigo == 1) {
+                        alert("Erro ao Buscar Cartões de Crédito...");
+
+                    } else {
+                        var htmlCartaoCredito = '';
+                        var i = 1;
+                        var j = 1;
+
+                        if (respostaControle.Dados.length > 0) {
+                            respostaControle.Dados.forEach(cartaoCredito => {
+                                htmlCartaoCredito += '<input type="hidden" id="id_cliente_cartaoCredito" value="' + cartaoCredito.ClienteId + '"/>';
+                                htmlCartaoCredito += '<input type="hidden" id="id_cartaoCredito" value="' + cartaoCredito.Id + '"/>';
+                                htmlCartaoCredito += '<div class="card">';
+                                htmlCartaoCredito += '<div class="card-header">';
+                                htmlCartaoCredito += '<a class="card-link" data-toggle="collapse" href="#collapse' + i + '">Cartão de Crédito #' + j + ' </a>';
+                                htmlCartaoCredito += '<div class="card-switch">';
+                                htmlCartaoCredito += '<div>';
+                                htmlCartaoCredito += '<input type="checkbox" name="checkBox" class="form-check-input" id="checkBoxCartao"/>';
+                                htmlCartaoCredito += '<label class="form-check-label" for="checkBoxCartao">Usar este </label>';
+                                htmlCartaoCredito += '</div>';
+                                htmlCartaoCredito += '</div>';
+                                htmlCartaoCredito += '</div>';
+                                htmlCartaoCredito += '<div id="collapse' + i + '" class="collapse" data-parent="#cartaoCredito">';
+                                htmlCartaoCredito += '<div class="card-body">';
+                                htmlCartaoCredito += '<form>';
+                                htmlCartaoCredito += '<div class="form-row">';
+                                htmlCartaoCredito += '<div class="col-md-6 form-group">';
+                                htmlCartaoCredito += '<input type="text" class="form-control" readonly="true" id="numeroCartao" name="numeroCartao" value="' + cartaoCredito.NumeroCartao + '" />';
+                                htmlCartaoCredito += '</div>';
+                                htmlCartaoCredito += '<div class="col-md-6 form-group">';
+                                htmlCartaoCredito += '<input type="text" class="form-control" readonly="true" id="numeroCartao" name="numeroCartao" value="' + cartaoCredito.Nome + '" />';
+                                htmlCartaoCredito += '</div>';
+                                htmlCartaoCredito += '<div class="col-md-6 form-group">';
+                                htmlCartaoCredito += '<input type="text" class="form-control" readonly="true" id="numeroCartao" name="numeroCartao" value="' + cartaoCredito.CodigoSeguranca + '" />';
+                                htmlCartaoCredito += '</div>';
+                                if (cartaoCredito.Bandeira == 1) {
+                                    htmlCartaoCredito += '<div class="col-md-6 form-group">';
+                                    htmlCartaoCredito += '<input type="text" class="form-control" readonly="true" id="numeroCartao" name="numeroCartao" placeholder="Visa" value="1" />';
+                                    htmlCartaoCredito += '</div>';
+                                } else {
+                                    htmlCartaoCredito += '<div class="col-md-6 form-group">';
+                                    htmlCartaoCredito += '<input type="text" class="form-control" readonly="true" id="numeroCartao" name="numeroCartao" placeholder="Mastercard" value="2" />';
+                                    htmlCartaoCredito += '</div>';
+                                }
+                                htmlCartaoCredito += '</div>';
+                                htmlCartaoCredito += '</div>';
+                                htmlCartaoCredito += '</form>';
+                                htmlCartaoCredito += '</div>';
+                                htmlCartaoCredito += '</div>';
+                                htmlCartaoCredito += '</div>';
+
+
+                                i++;
+                                j++;
+                            });
+                        } else {
+                            htmlCartaoCredito += '<tr><td>Nenhum Registro Encontrado</td></tr>';
+                        }
+
+                        jQuery("#cartaoCredito").html(htmlCartaoCredito);
                     }
 
                 } catch (error) {

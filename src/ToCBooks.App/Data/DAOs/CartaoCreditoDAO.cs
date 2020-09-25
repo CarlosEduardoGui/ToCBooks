@@ -89,7 +89,10 @@ namespace ToCBooks.App.Data.DAOs
                 }
                 else
                 {
-                    db.CartaoCredito.Where(x => x.StatusAtual == ETipoStatus.Ativo && x.ClienteId == Despachante.Login.ClienteId).ToList().ForEach(x => mensagem.Dados.Add(x));
+                    db.CartaoCredito
+                        .Where(x => x.StatusAtual == ETipoStatus.Ativo && x.ClienteId == Despachante.Login.ClienteId)
+                        .OrderBy(x => x.DataCadastro).ToList()
+                        .ForEach(x => mensagem.Dados.Add(x));
                 }
             }
 

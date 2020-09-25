@@ -185,7 +185,7 @@
                             <h3>Deseja usar outro Endereço?</h3>
                             <div class="form-row">
                                 <div class="col-md-3 form-group">
-                                    <select id="enderecoEntregaEtipologradouro" name="enderecoEntregaEtipologradouro">
+                                    <select id="enderecoEntregaEtipologradouro" required name="enderecoEntregaEtipologradouro">
                                         <option value="0">Tipo de Logradouro</option>
                                         <option value="1">Avenida</option>
                                         <option value="2">Rua</option>
@@ -199,90 +199,102 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <select id="enderecoEntregaEtiporesidencia" name="enderecoEntregaEtiporesidencia">
+                                    <select id="enderecoEntregaEtiporesidencia" required name="enderecoEntregaEtiporesidencia">
                                         <option value="0">Tipo de Residência</option>
                                         <option value="1">Casa</option>
                                         <option value="2">Apartamento</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" id="enderecoEntrega" name="enderecoEntrega" placeholder="Endereço">
+                                    <input type="text" class="form-control" required id="enderecoEntrega" name="enderecoEntrega" placeholder="Endereço">
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <input type="text" class="form-control" id="enderecoEntregaCep" name="enderecoEntregaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
+                                    <input type="text" class="form-control" required id="enderecoEntregaCep" name="enderecoEntregaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
                                 </div>
                                 <div class="col-md-8 form-group">
-                                    <input type="text" class="form-control" id="enderecoEntregaBairro" name="enderecoEntregaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
+                                    <input type="text" class="form-control" required id="enderecoEntregaBairro" name="enderecoEntregaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <input type="number" class="form-control" id="enderecoEntregaNumero" name="enderecoEntregaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
+                                    <input type="number" class="form-control" required id="enderecoEntregaNumero" name="enderecoEntregaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
                                 </div>
                                 <div class="col-md-8 form-group">
-                                    <input type="text" class="form-control" id="enderecoEntregaCidade" name="enderecoEntregaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
+                                    <input type="text" class="form-control" required id="enderecoEntregaCidade" name="enderecoEntregaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="enderecoEntregaEstado" name="enderecoEntregaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
+                                    <input type="text" class="form-control" required id="enderecoEntregaEstado" name="enderecoEntregaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="enderecoEntregaPais" name="enderecoEntregaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
+                                    <input type="text" class="form-control" required id="enderecoEntregaPais" name="enderecoEntregaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
                                 </div>
                             </div>
                             <button type="button" class="btn btn-success" id="btn_salvar_endereco">Salvar</button>
                         </form>
                         <br />
                         <hr />
-                        <div class="card">
-                            <div class="card-header">
-                                <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                    Cartão de Crédito #1
-                                </a>
-                                <div class="card-switch">
+                        <div id="cartaoCredito">
+                            <!--<div class="card">
+                                <div class="card-header">
+                                    <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                                        Cartão de Crédito #1
+                                    </a>
                                     <div class="card-switch">
-                                        <div>
-                                            <input type="checkbox" name="cardExemple1" class="form-check-input" id="cardExemple1">
-                                            <label class="form-check-label" for="exampleCheck1">Usar este</label>
+                                        <div class="card-switch">
+                                            <div>
+                                                <input type="checkbox" name="cardExemple1" class="form-check-input" id="cardExemple1">
+                                                <label class="form-check-label" for="exampleCheck1">Usar este</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                                <div class="card-body">
-                                    <div class="form-row">
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="000 000 000 000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000 000 000 000'">
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Carlos E G Souza" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Carlos E G Souza'">
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000'">
-                                        </div>
-                                        <div class="col-md-6 form-group">
-                                            <input type="text" class="form-control" id="bandeiraCartao" name="bandeiraCartao" placeholder="Master Card" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Master Card'">
+                                <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <div class="form-row">
+                                            <div class="col-md-6 form-group">
+                                                <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="000 000 000 000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000 000 000 000'">
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Carlos E G Souza" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Carlos E G Souza'">
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000'">
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <input type="text" class="form-control" id="bandeiraCartao" name="bandeiraCartao" placeholder="Master Card" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Master Card'">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                         <br />
                         <hr />
-                        <form>
-                            <h3>Deseja adicionar outro cartão?</h3>
-                            <div class="row">
-                                <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="Número do Cartão" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número do Cartão'">
+                        <div>
+                            <form id="form_cartaoCredito">
+                                <h3>Deseja adicionar outro cartão?</h3>
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" required id="numeroCartao" name="numeroCartao" placeholder="Número do Cartão" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número do Cartão'">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" required id="nomeCartao" name="nomeCartao" placeholder="Nome impresso no Cartão" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome impresso no Cartão'">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="text" class="form-control" required id="cvvCartao" name="cvvCartao" placeholder="CVV" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CVV'">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <select id="bandeiraCartao" required name="bandeiraCartao">
+                                            <option value="0">Bandeira</option>
+                                            <option value="1">Visa</option>
+                                            <option value="2">Mastercard</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input type="month" class="form-control" required id="dataVencimento" name="dataVencimento">
+                                    </div>
                                 </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Nome impresso no Cartão" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nome impresso no Cartão'">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="CVV" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CVV'">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" id="bandeiraCartao" name="bandeiraCartao" placeholder="Bandeira" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bandeira'">
-                                </div>
-                            </div>
-                        </form>
+                                <button type="button" class="btn btn-success" id="btn_salvar_cartaoCredito">Salvar</button>
+                            </form>
+                        </div>
                     </div>
 
 
