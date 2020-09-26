@@ -1,10 +1,23 @@
 ﻿jQuery(document).ready(function () {
-    jQuery("#btn_login").on("click", function (e) {
+
+    jQuery("#btn_login").on('click', function (e) {
         e.preventDefault();
 
+        if (jQuery("#form_login").valid())
+            jQuery("#form_login").submit();
+        else
+            alert("Preencha o formulário corretamente...");
+    });
+
+    jQuery("#form_login").on("submit", function (e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+        var Object;
+
         var Object = {
-            email: jQuery('#email').val(),
-            senha: jQuery('#senha').val()
+            email: formData.get('email'),
+            senha: formData.get('senha')
         };
 
         FazerLogin(Object);

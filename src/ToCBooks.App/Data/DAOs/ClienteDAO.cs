@@ -80,9 +80,23 @@ namespace ToCBooks.App.Data.DAOs
                 var Cliente = (ClienteModel)Despachante.Entidade;
 
                 var ObjetoPersistido = db.Cliente
-                    .Where(x => x.Id == Objeto.Id).ToList().FirstOrDefault();
+                        .Include(x => x.Login)
+                        .Include(x => x.EnderecoCobranca)
+                        .Include(x => x.EnderecoEntrega)
+                        .Include(x => x.CartaoCredito)
+                        .Include(x => x.Telefone)
+                        .Where(x => x.Id == Despachante.Login.ClienteId).ToList().FirstOrDefault();
+
                 if (ObjetoPersistido != null)
+                {
+                    ObjetoPersistido.Login.Cliente = null;
+                    ObjetoPersistido.EnderecoCobranca.ForEach(x => x.Cliente = null);
+                    ObjetoPersistido.EnderecoEntrega.ForEach(x => x.Cliente = null);
+                    ObjetoPersistido.CartaoCredito.ForEach(x => x.Cliente = null);
+
                     mensagem.Dados.Add(ObjetoPersistido);
+                }
+
                 else
                     db.Cliente
                         .Include(x => x.Login)
