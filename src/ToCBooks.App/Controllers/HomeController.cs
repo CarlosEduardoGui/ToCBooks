@@ -40,6 +40,7 @@ namespace ToCBooks.App.Controllers
             mapVH.Add("EnderecoCobrancaModel", new EnderecoCobrancaVH());
             mapVH.Add("ItemEstoque", new ItemEstoqueVH());
             mapVH.Add("Carrinho", new CarrinhoVH());
+            mapVH.Add("CupomModel", new CupomVH());
         }
 
         private Dictionary<string, IViewHelper> mapVH = new Dictionary<string, IViewHelper>();
@@ -94,7 +95,7 @@ namespace ToCBooks.App.Controllers
             var lVH = mapVH[HttpContext.Request.Form["mapKey"]];
             var lCommand = mapCommand[HttpContext.Request.Form["oper"]];
             var lMensagem = lCommand.Executar(lVH.GetEntidade(HttpContext.Request.Form["JsonString"]), HttpContext);
-            if(lMensagem.Dados.Count() > 0)
+            if (lMensagem.Dados.Count() > 0)
                 HttpContext.Session.SetString("ClienteID", lMensagem.Dados.Select(x => x.Id).FirstOrDefault().ToString());
 
 

@@ -13,9 +13,9 @@ namespace ToCBooks.App.Business.Models
         }
 
         public Guid Id { get; set; }
-        
+
         public ETipoStatus StatusAtual { get; set; }
-        
+
         public string Justificativa { get; set; }
 
         public DateTime DataCadastro { get; set; }

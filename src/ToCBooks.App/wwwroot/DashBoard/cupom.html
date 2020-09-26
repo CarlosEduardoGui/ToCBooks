@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Sleek - Admin Dashboard Template</title>
+    <title>ToCBooks</title>
 
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500"
-        rel="stylesheet" />
+          rel="stylesheet" />
     <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
 
     <!-- PLUGINS CSS STYLE -->
@@ -63,7 +63,7 @@
                 <div class="app-brand">
                     <a href="/index.html">
                         <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
-                            width="30" height="33" viewBox="0 0 30 33">
+                             width="30" height="33" viewBox="0 0 30 33">
                             <g fill="none" fill-rule="evenodd">
                                 <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
                                 <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
@@ -77,12 +77,9 @@
 
                     <!-- sidebar menu -->
                     <ul class="nav sidebar-inner" id="sidebar-menu">
-
-
-
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                               data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
                                 <span class="nav-text">Dashboard</span> <b class="caret"></b>
                             </a>
@@ -100,7 +97,7 @@
 
                         <li class="has-sub">
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                                data-target="#parametros" aria-expanded="false" aria-controls="parametros">
+                               data-target="#parametros" aria-expanded="false" aria-controls="parametros">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
                                 <span class="nav-text">Parâmetros</span> <b class="caret"></b>
                             </a>
@@ -166,8 +163,8 @@
                                 <i style="display: none;" class="mdi mdi-magnify"></i>
                             </button>
                             <input style="display: none;" type="text" name="query" id="search-input"
-                                class="form-control" placeholder="'button', 'chart' etc." autofocus
-                                autocomplete="off" />
+                                   class="form-control" placeholder="'button', 'chart' etc." autofocus
+                                   autocomplete="off" />
                         </div>
                         <div id="search-results-container">
                             <ul id="search-results"></ul>
@@ -203,21 +200,20 @@
                                     <h2>Cadastre um Cupom</h2>
                                 </div>
                                 <div class="card-body">
-                                    <form class="form-pill">
+                                    <form id="form_cupom" class="form-pill">
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput3">Nome do Cupom</label>
-                                            <input type="text" class="form-control" id="exampleFormControlInput3"
-                                                placeholder="DESCON20">
+                                            <label>Nome do Cupom</label>
+                                            <input  type="text" class="form-control" id="nome" name="nome" placeholder="DESCON20" required >
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlSelect3">Quantos poderão existir?</label>
-                                            <input type="number" class="form-control" />
+                                            <label>Quantos % de desconto?</label>
+                                            <input  type="number" id="desconto" name="desconto" class="form-control" placeholder="20" required >
                                         </div>
-                                        <button class="mb-1 btn btn-outline-success" type="button">
-                                            <i class="mdi mdi-checkbox-marked-outline mr-1"></i>
-                                            Salvar
-                                        </button>
                                     </form>
+                                    <button id="btn_salvar_cupom" class="mb-1 btn btn-outline-success" type="button">
+                                        <i class="mdi mdi-checkbox-marked-outline mr-1"></i>
+                                        Salvar
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -263,10 +259,8 @@
     <script src="assets/js/date-range.js"></script>
     <script src="assets/js/map.js"></script>
     <script src="assets/js/custom.js"></script>
-
-
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+    <script src="assets/js/Cupom.js"></script>
 </body>
 
 </html>

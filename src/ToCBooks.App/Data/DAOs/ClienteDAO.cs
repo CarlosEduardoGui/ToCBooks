@@ -128,9 +128,9 @@ namespace ToCBooks.App.Data.DAOs
             MensagemModel Mensagem = new MensagemModel();
             using (var db = new ToCBooksContext())
             {
-                ClienteModel Livro = db.Find<ClienteModel>(Objeto.Id);
-                Livro.StatusAtual = ETipoStatus.Inativo;
-                Livro.Justificativa = Objeto.Justificativa;
+                ClienteModel Cliente = db.Find<ClienteModel>(Objeto.Id);
+                Cliente.StatusAtual = ETipoStatus.Inativo;
+                Cliente.Justificativa = Objeto.Justificativa;
                 db.SaveChanges();
             }
 

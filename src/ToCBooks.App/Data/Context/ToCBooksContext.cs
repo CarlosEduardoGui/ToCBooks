@@ -15,6 +15,7 @@ namespace ToCBooks.App.Data.Context
         public DbSet<EnderecoEntregaModel> EnderecoEntrega { get; set; }
         public DbSet<CartaoCreditoModel> CartaoCredito { get; set; }
         public DbSet<ItemEstoque> Estoque { get; set; }
+        public DbSet<CupomModel> Cupom { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
