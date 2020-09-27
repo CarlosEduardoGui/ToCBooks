@@ -62,7 +62,7 @@ namespace ToCBooks.App.Data.DAOs
                 var cupom = (CupomModel)Despachante.Entidade;
 
                 var ObjetoPersistido = db.Cupom
-                    .Where(x => x.Id == Objeto.Id).ToList().FirstOrDefault();
+                    .Where(x => x.Nome == cupom.Nome).ToList().FirstOrDefault();
 
                 if (ObjetoPersistido != null)
                     mensagem.Dados.Add(ObjetoPersistido);

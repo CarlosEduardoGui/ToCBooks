@@ -71,7 +71,7 @@
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="nav-item"><a href="/ToCBooks/single-product.html" class="cart"><span class="ti-bag"></span></a></li>
+                            <li class="nav-item"><a href="/ToCBooks/cart.html" class="cart"><span class="ti-bag"></span></a></li>
                             <li class="nav-item">
                                 <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
                             </li>
@@ -113,70 +113,6 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div id="enderecoEntrega">
-                            <!--<div class="card">
-                                <div class="card-header">
-                                    <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                        Endereço de Cobrança #1
-                                    </a>
-                                    <div class="card-switch">
-                                        <div>
-                                            <input type="radio" name="exampleCheck1" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">Usar este</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="collapseOne" class="collapse show" data-parent="#enderecoEntrega">
-                                    <div class="card-body">
-                                        <form>
-                                            <h3>Deseja usar outro Endereço?</h3>
-                                            <div class="form-row">
-                                                <div class="col-md-3 form-group">
-                                                    <select id="enderecoCobrancaEtipologradouro" name="enderecoCobrancaEtipologradouro">
-                                                        <option value="0">Tipo de Logradouro</option>
-                                                        <option value="1">Avenida</option>
-                                                        <option value="2">Rua</option>
-                                                        <option value="3">Vila</option>
-                                                        <option value="4">Viela</option>
-                                                        <option value="5">Conjunto</option>
-                                                        <option value="6">Condominio</option>
-                                                        <option value="7">Fazenda</option>
-                                                        <option value="8">Jardim</option>
-                                                        <option value="9">Ladeira</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-3 form-group">
-                                                    <select id="enderecoCobrancaEtiporesidencia" name="enderecoCobrancaEtiporesidencia">
-                                                        <option value="0">Tipo de Residência</option>
-                                                        <option value="1">Casa</option>
-                                                        <option value="2">Apartamento</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <input type="text" class="form-control" id="endereco" placeholder="Manoel de Oliveira Mello">
-                                                </div>
-                                                <div class="col-md-4 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaCep" name="enderecoCobrancaCep" placeholder="CEP" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CEP'">
-                                                </div>
-                                                <div class="col-md-8 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaBairro" name="enderecoCobrancaBairro" placeholder="Bairro" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Bairro'">
-                                                </div>
-                                                <div class="col-md-4 form-group">
-                                                    <input type="number" class="form-control" id="enderecoCobrancaNumero" name="enderecoCobrancaNumero" placeholder="Número" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Número'">
-                                                </div>
-                                                <div class="col-md-8 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaCidade" name="enderecoCobrancaCidade" placeholder="Cidade" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cidade'">
-                                                </div>
-                                                <div class="col-md-6 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaEstado" name="enderecoCobrancaEstado" placeholder="Estado" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Estado'">
-                                                </div>
-                                                <div class="col-md-6 form-group">
-                                                    <input type="text" class="form-control" id="enderecoCobrancaPais" name="enderecoCobrancaPais" placeholder="País" onfocus="this.placeholder = ''" onblur="this.placeholder = 'País'">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>-->
                         </div>
 
                         <br />
@@ -232,39 +168,6 @@
                         <br />
                         <hr />
                         <div id="cartaoCredito">
-                            <!--<div class="card">
-                                <div class="card-header">
-                                    <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                                        Cartão de Crédito #1
-                                    </a>
-                                    <div class="card-switch">
-                                        <div class="card-switch">
-                                            <div>
-                                                <input type="checkbox" name="cardExemple1" class="form-check-input" id="cardExemple1">
-                                                <label class="form-check-label" for="exampleCheck1">Usar este</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                                    <div class="card-body">
-                                        <div class="form-row">
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="numeroCartao" name="numeroCartao" placeholder="000 000 000 000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000 000 000 000'">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="nomeCartao" name="nomeCartao" placeholder="Carlos E G Souza" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Carlos E G Souza'">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="cvvCartao" name="cvvCartao" placeholder="000" onfocus="this.placeholder = ''" onblur="this.placeholder = '000'">
-                                            </div>
-                                            <div class="col-md-6 form-group">
-                                                <input type="text" class="form-control" id="bandeiraCartao" name="bandeiraCartao" placeholder="Master Card" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Master Card'">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>-->
                         </div>
                         <br />
                         <hr />
@@ -301,25 +204,24 @@
                     <div class="col-lg-4">
                         <div class="order_box">
                             <h2>Sua Compra</h2>
-                            <ul class="list">
+                            <ul class="list" id="lista_produtos">
                                 <li><a href="#">Produto <span>Total</span></a></li>
                                 <li><a href="#">Harry Potter<span class="middle">x 02</span> <span class="last">R$720.00</span></a></li>
                                 <li><a href="#">Mecânica Quântica<span class="middle">x 02</span> <span class="last">R$720.00</span></a></li>
                                 <li><a href="#">Cálculo básico<span class="middle">x 02</span> <span class="last">R$720.00</span></a></li>
                             </ul>
                             <ul class="list list_2">
-                                <li><a href="#">Subtotal <span>R$2160.00</span></a></li>
-                                <li><a href="#">Total <span>R$2160.00</span></a></li>
+                                <li><a>Total <span id="span_total_compra">R$2160.00</span></a></li>
                             </ul>
                             <br />
                             <br />
                             <ul class="list" style="text-align: center;">
                                 <li>
-                                    <input style="text-align:center" type="text" placeholder="Insira um Cupom">
+                                    <input style="text-align:center" type="text" placeholder="Insira um Cupom" id="input_cupom">
                                 </li>
                                 <li>
                                     <br />
-                                    <a style="text-align:center" class="tp_btn" href="#">Aplique o cupom</a>
+                                    <a style="text-align:center;" class="tp_btn" id="btn_aplicar_cupom">Aplique o cupom</a>
                                 </li>
                             </ul>
                             <br />
@@ -330,7 +232,7 @@
                                 <label for="f-option4">Li e aceito os</label>
                                 <a href="#">termos e condições</a>
                             </div>
-                            <a class="primary-btn" href="#">Pagar</a>
+                            <a class="primary-btn" style="color: white;" id="btn_confirmar_compra">Pagar</a>
                         </div>
                     </div>
                 </div>

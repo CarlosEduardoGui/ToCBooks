@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ToCBooks.App.Data.Context;
 
 namespace ToCBooks.App.Migrations
 {
     [DbContext(typeof(ToCBooksContext))]
-    partial class ToCBooksContextModelSnapshot : ModelSnapshot
+    [Migration("20200927174522_Pedido3")]
+    partial class Pedido3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -301,6 +303,8 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<Guid?>("LivroId");
 
+                    b.Property<Guid?>("PedidoModelId");
+
                     b.Property<int>("Qtde");
 
                     b.Property<int>("StatusAtual");
@@ -308,35 +312,10 @@ namespace ToCBooks.App.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("LivroId");
+
+                    b.HasIndex("PedidoModelId");
 
                     b.ToTable("Estoque");
-                });
-
-            modelBuilder.Entity("ToCBooks.App.Business.Models.ItemPedido", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DataCadastro");
-
-                    b.Property<string>("Justificativa")
-                        .HasColumnType("VARCHAR(MAX)");
-
-                    b.Property<Guid?>("LivroId");
-
-                    b.Property<Guid?>("PedidoId");
-
-                    b.Property<int>("Qtde");
-
-                    b.Property<int>("StatusAtual");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LivroId");
-
-                    b.HasIndex("PedidoId");
-
-                    b.ToTable("ItensPedidos");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.LivrosModel", b =>
@@ -598,17 +577,10 @@ namespace ToCBooks.App.Migrations
                     b.HasOne("ToCBooks.App.Business.Models.LivrosModel", "Livro")
                         .WithMany()
                         .HasForeignKey("LivroId");
-                });
 
-            modelBuilder.Entity("ToCBooks.App.Business.Models.ItemPedido", b =>
-                {
-                    b.HasOne("ToCBooks.App.Business.Models.LivrosModel", "Livro")
-                        .WithMany()
-                        .HasForeignKey("LivroId");
-
-                    b.HasOne("ToCBooks.App.Business.Models.PedidoModel", "Pedido")
-                        .WithMany("ItensPedido")
-                        .HasForeignKey("PedidoId");
+                    b.HasOne("ToCBooks.App.Business.Models.PedidoModel")
+                        .WithMany("Itens")
+                        .HasForeignKey("PedidoModelId");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.LivrosModel", b =>

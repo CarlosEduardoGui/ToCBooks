@@ -1,4 +1,6 @@
-﻿namespace ToCBooks.App.Business.Models
+﻿using System;
+
+namespace ToCBooks.App.Business.Models
 {
     public class ItemEstoque : EntidadeDominio
     {

@@ -357,5 +357,120 @@ namespace ToCBooks.Data.Business.Patterns
 
             return Mensagem;
         }
+
+        public MensagemModel AtualizarCarrinho(Despachante Objeto)
+        {
+            MensagemModel Mensagem = new MensagemModel();
+            try
+            {
+                var CarrinhoRecebido = (Carrinho)Objeto.Entidade;
+
+                if (SessionLink.Session.GetString("Carrinho") == null)
+                    throw new Exception("Carrinho Não Encontrado...");
+
+                var CarrinhoAtual = JsonConvert.DeserializeObject<Carrinho>(SessionLink.Session.GetString("Carrinho"));
+
+                if (CarrinhoAtual.Itens.Count <= 0)
+                    throw new Exception("Nenhum Item no Carrinho...");
+
+                foreach (var Item in CarrinhoAtual.Itens)
+                {
+                    var ItemRecebido = CarrinhoRecebido.Itens.Find(x => x.Id == Item.Id);
+
+                    if (ItemRecebido.Qtde != Item.Qtde)
+                        Item.Qtde = ItemRecebido.Qtde;
+
+                    Despachante Despachante = new Despachante();
+                    Despachante.Entidade = Item;
+
+                    new ValidadorEntradaCarrinho().Validar(Despachante);
+                }
+
+                if (SessionLink.Session.GetString("ClienteID") == null)
+                    throw new Exception("Necessário fazer Login para Continuar...");
+
+            }
+            catch (Exception Error)
+            {
+                Mensagem.Codigo = ETipoCodigo.Errado;
+                Mensagem.Resposta = Error.Message;
+
+                return Mensagem;
+            }
+
+
+            Mensagem.Codigo = ETipoCodigo.Correto;
+            Mensagem.Resposta = "Carrinho Atualizado com Sucesso !!!";
+
+            return Mensagem;
+        }
+
+        public MensagemModel ConfirmarCompra(Despachante Despachante)
+        {
+            MensagemModel Mensagem = new MensagemModel();
+
+            try
+            {
+                var Pedido = (PedidoModel)Despachante.Entidade;
+                var CarrinhoAtual = JsonConvert.DeserializeObject<Carrinho>(SessionLink.Session.GetString("Carrinho"));
+                CarrinhoAtual.Itens.ForEach(x =>
+                {
+                    var ItemPedido = new ItemPedido
+                    {
+                        Livro = x.Livro,
+                        Qtde = x.Qtde,
+                        Pedido = Pedido
+                    };
+
+                    Pedido.ItensPedido.Add(ItemPedido);
+                });
+                var ClienteTemp = new ClienteModel
+                {
+                    Id = Guid.Parse(SessionLink.Session.GetString("ClienteID"))
+                };
+                Despachante.Entidade = ClienteTemp;
+                Pedido.Cliente = (ClienteModel)new ClienteDAO().Consultar(Despachante).Dados.FirstOrDefault();
+                Pedido.EnderecoEntrega = Pedido.Cliente.EnderecoEntrega.Find(x => x.Id == Pedido.EnderecoEntrega.Id);
+
+                for (var i = 0; i < Pedido.CartoesCredito.Count; i++)
+                    Pedido.ItensPedido[i].Livro.Precificacao = null;
+
+                for (var i = 0; i < Pedido.CartoesCredito.Count; i++)
+                    Pedido.CartoesCredito[i] = Pedido.Cliente.CartaoCredito.Find(x => x.Id == Pedido.CartoesCredito[i].Id);
+
+                Pedido.ItensPedido.ForEach(x => Pedido.TotalPedido += (x.Livro.Preco * x.Qtde));
+
+                if (Pedido.CupomDesconto != null)
+                    Pedido.TotalPedido = (Pedido.TotalPedido - (Pedido.TotalPedido * (Pedido.CupomDesconto.Desconto / 100)));
+
+                if ((Pedido.TotalPedido / Pedido.CartoesCredito.Count) <= 10)
+                    throw new Exception("O Valor da Compra dividido entre os cartões é menor do que R$10...");
+
+                Pedido.StatusAtual = ETipoStatus.Aprovada;
+
+                Pedido.CartoesCredito.ForEach(x =>
+                {
+                    var RelCartaoPedido = new CartaoCreditoPedido
+                    {
+                        CartaoCreditoID = x.Id,
+                        PedidoId = Pedido.Id
+                    };
+
+                    Pedido.CartaoCreditoPedido.Add(RelCartaoPedido);
+                });
+
+                CarrinhoAtual.Itens.Clear();
+                SessionLink.Session.SetString("Carrinho", JsonConvert.SerializeObject(CarrinhoAtual));
+
+                Mensagem = new PedidoDAO().Cadastrar(Pedido);
+
+            } catch (Exception Error)
+            {
+                Mensagem.Codigo = ETipoCodigo.Errado;
+                Mensagem.Resposta = Error.Message;
+            }
+
+            return Mensagem;
+        }
     }
 }

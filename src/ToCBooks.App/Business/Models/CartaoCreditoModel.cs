@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ToCBooks.App.Business.Models.Enum;
 
 namespace ToCBooks.App.Business.Models
@@ -20,5 +21,6 @@ namespace ToCBooks.App.Business.Models
         public Guid ClienteId { get; set; }
         public ClienteModel Cliente { get; set; }
 
+        public List<CartaoCreditoPedido> CartaoCreditoPedido { get; set; }
     }
 }

@@ -30,7 +30,10 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("9", new AdicionarItemCarrinhoCommand());
             mapCommand.Add("10", new ConsultarCarrinhoCommand());
             mapCommand.Add("11", new ExcluirItemCarrinho());
+            mapCommand.Add("12", new AtualizarCarrinhoCommand());
+            mapCommand.Add("13", new ConfirmarPedidoCommand());
 
+            mapVH.Add("PedidoModel", new PedidoVH());
             mapVH.Add("LivrosModel", new LivroVH());
             mapVH.Add("Parametro", new ParametroVH());
             mapVH.Add("ClienteModel", new ClienteVH());

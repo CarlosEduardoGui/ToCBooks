@@ -15,13 +15,16 @@ namespace ToCBooks.App.Data.Context
         public DbSet<EnderecoEntregaModel> EnderecoEntrega { get; set; }
         public DbSet<CartaoCreditoModel> CartaoCredito { get; set; }
         public DbSet<ItemEstoque> Estoque { get; set; }
+        public DbSet<ItemPedido> ItensPedidos { get; set; }
         public DbSet<CupomModel> Cupom { get; set; }
+        public DbSet<PedidoModel> Pedido { get; set; }
+        public DbSet<CartaoCreditoPedido> CartaoCreditoPedido { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-FOC45IJ\SQLEXPRESS2017;Database=ToCBooks;User Id=sa; Password=syslg;MultipleActiveResultSets=true");
-            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-C46EB5G\SQLEXPRESS;Database=ToCBooks;Trusted_Connection=True;");
+            //optionsBuilder.UseSqlServer(@"Server=DESKTOP-FOC45IJ\SQLEXPRESS2017;Database=ToCBooks;User Id=sa; Password=syslg;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-C46EB5G\SQLEXPRESS;Database=ToCBooks;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

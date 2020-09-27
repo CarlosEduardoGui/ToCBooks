@@ -40,7 +40,7 @@ function BuscarUltimosProdutosCadastrados() {
                         htmlDestaque += '</div>';
                         htmlDestaque += '<div class="col-lg-7">';
                         htmlDestaque += '<div class="banner-img">';
-                        htmlDestaque += '<img class="img-fluid" src="' + livro.Foto + '" style="max-width:1000px; max-height:1000px;" />';
+                        htmlDestaque += '<img src="' + livro.Foto + '" style="max-width:1000px; max-height:1000px; border-radius: 20px;" />';
                         htmlDestaque += '</div>';
                         htmlDestaque += '</div>';
                         htmlDestaque += '</div>';
@@ -64,7 +64,7 @@ function BuscarUltimosProdutosCadastrados() {
                             if (typeof (ultimoLivro) != "undefined") {
                                 htmlUltimosLancamentos += '<div class="col-lg-3 col-md-6">';
                                 htmlUltimosLancamentos += '<div class="single-product">';
-                                htmlUltimosLancamentos += '<img class="img-fluid" src="' + ultimoLivro.Foto + '" style="max-width:1000px; max-height:1000px;" />';
+                                htmlUltimosLancamentos += '<img src="' + ultimoLivro.Foto + '" style="width: 250px; height:300px; border-radius: 20px;" />';
                                 htmlUltimosLancamentos += '<div class="product-details">';
                                 htmlUltimosLancamentos += '<h6>' + ultimoLivro.Titulo + '</h6>';
                                 htmlUltimosLancamentos += '<div class="price">';

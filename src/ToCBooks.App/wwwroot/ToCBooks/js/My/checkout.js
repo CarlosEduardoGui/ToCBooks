@@ -1,6 +1,12 @@
-﻿jQuery(document).ready(function () {
+﻿
+var CupomTemp = null;
+
+
+
+jQuery(document).ready(function () {
     buscarEnderecos();
     buscarCartoesCredito();
+    BuscarCarrinho();
 
     jQuery("#btn_salvar_endereco").on('click', function (e) {
         e.preventDefault();
@@ -79,7 +85,124 @@
         cadastrarCartaoCredito(cartaoCredito);
 
     });
+
+    jQuery("#btn_aplicar_cupom").on('click', function () {
+        CupomTemp = { Nome: jQuery("#input_cupom").val() };
+
+        if (CupomTemp.Nome == '') {
+            alert("Cupom Inválido");
+            return;
+        }
+
+        alert("Cupom Aplicado");
+    });
+
+    jQuery("#btn_confirmar_compra").on('click', function () {
+
+        var Endereco;
+        jQuery(".endereco_check").each(function () {
+            if (jQuery(this).is(":checked")) 
+                Endereco = { Id: jQuery(this).attr('id_endereco') };
+        });
+
+        var CartoesCredito = new Array();
+        jQuery(".cartao_credito_check").each(function () {
+            if (jQuery(this).is(":checked")) {
+                var CartaoCredito = { Id: jQuery(this).attr('id_cartao') };
+                CartoesCredito.push(CartaoCredito);
+            }
+        });
+
+        if (Endereco == null) {
+            alert("Selecione ao menos um Endereço de Entrega...");
+            return;
+        }
+
+        if (CartoesCredito.length <= 0) {
+            alert("Selecione ao menos um Cartão de Crédito...");
+            return;
+        }
+
+        var Pedido;
+        if (CupomTemp != null)
+            Pedido = { EnderecoEntrega: Endereco, CartoesCredito: CartoesCredito, Cupom: CupomTemp };
+        else
+            Pedido = { EnderecoEntrega: Endereco, CartoesCredito: CartoesCredito };
+
+        
+        ConfimarPedido(Pedido);
+    });
 });
+
+function ConfimarPedido(ObjetoEnvio) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 13, mapKey: 'PedidoModel', JsonString: JSON.stringify(ObjetoEnvio) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            console.log(e.readyState);
+            console.log(e.status);
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var resposta_controle = JSON.parse(e.responseText);
+                    if (resposta_controle.Codigo == 0) {
+                        window.location.href = "/ToCBooks/confirmation.html";
+                    } else {
+                        alert(resposta_controle.Resposta);
+                    }
+
+                } catch (error) {
+                    alert(error);
+                }
+            }
+        }
+    });
+}
+
+function BuscarCarrinho() {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 10, mapKey: 'Carrinho', JsonString: JSON.stringify({}) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            console.log(e.readyState);
+            console.log(e.status);
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var resposta_controle = JSON.parse(e.responseText);
+                    if (resposta_controle.Codigo == 0) {
+                        var Carrinho = resposta_controle.Dados[0];
+
+                        var TotalCompra = 0;
+                        var htmlLista = '<li><a>Produto <span>Total</span><a></li>';
+                        Carrinho.Itens.forEach(Item => {
+                            htmlLista += '<li><a>' + Item.Livro.Titulo + '<span class="middle">x ' + Item.Qtde + '</span> <span class="last">R$' + (Item.Qtde * Item.Livro.Preco).toFixed(2) + '</span></a></li>';
+                            TotalCompra += (Item.Qtde * Item.Livro.Preco);
+                        });
+
+                        jQuery("#lista_produtos").html(htmlLista);
+                        jQuery("#span_total_compra").html("R$" + TotalCompra);
+                    } else {
+                        alert(resposta_controle.Resposta);
+                    }
+
+                } catch (error) {
+                    alert(error);
+                }
+            }
+        }
+    });
+}
 
 
 function cadastrarEndereco(objeto) {
@@ -149,20 +272,20 @@ function buscarEnderecos() {
                                 htmlEndereco += '<a class="card-link" data-toggle="collapse" href="#collapse' + i + '">Endereço de Entrega #' + j + ' </a>';
                                 htmlEndereco += '<div class="card-switch">';
                                 htmlEndereco += '<div>';
-                                htmlEndereco += '<input type="radio" name="checkBox" class="form-check-input" id="checkBoxEndereco"/>';
+                                htmlEndereco += '<input type="radio" id_endereco="' + endereco.Id + '" name="checkBox" class="form-check-input endereco_check"/>';
                                 htmlEndereco += '<label class="form-check-label" for="checkBoxEndereco">Usar este </label>';
                                 htmlEndereco += '</div>';
                                 htmlEndereco += '</div>';
                                 htmlEndereco += '</div>';
                                 htmlEndereco += '<div id="collapse' + i + '" class="collapse" data-parent="#enderecoEntrega">';
                                 htmlEndereco += '<div class="card-body">';
-                                htmlEndereco += '<form>';
+                                htmlEndereco += '<input type="hidden" value="' + endereco.Id + '" />';
                                 htmlEndereco += '<div class="form-row">';
                                 htmlEndereco += '<div class="col-md-3 form-group">';
-                                htmlEndereco += '<select ><option>' + endereco.TipoLogradouro + '</option></select>';
+                                htmlEndereco += '<select class="form-control" ><option>' + endereco.TipoLogradouro + '</option></select>';
                                 htmlEndereco += '</div>';
                                 htmlEndereco += '<div class="col-md-3 form-group">';
-                                htmlEndereco += '<select ><option>' + endereco.TipoResidencia + '</option></select>';
+                                htmlEndereco += '<select class="form-control"><option>' + endereco.TipoResidencia + '</option></select>';
                                 htmlEndereco += '</div>';
                                 htmlEndereco += '<div class="form-group col-md-6">';
                                 htmlEndereco += '<input type="text" class="form-control" value="' + endereco.Nome + '" readonly="true"/>';
@@ -280,7 +403,7 @@ function buscarCartoesCredito() {
                                 htmlCartaoCredito += '<a class="card-link" data-toggle="collapse" href="#collapse' + i + '">Cartão de Crédito #' + j + ' </a>';
                                 htmlCartaoCredito += '<div class="card-switch">';
                                 htmlCartaoCredito += '<div>';
-                                htmlCartaoCredito += '<input type="checkbox" name="checkBox" class="form-check-input" id="checkBoxCartao"/>';
+                                htmlCartaoCredito += '<input type="checkbox" name="checkBox" id_cartao="' + cartaoCredito.Id + '" class="form-check-input cartao_credito_check" />';
                                 htmlCartaoCredito += '<label class="form-check-label" for="checkBoxCartao">Usar este </label>';
                                 htmlCartaoCredito += '</div>';
                                 htmlCartaoCredito += '</div>';
