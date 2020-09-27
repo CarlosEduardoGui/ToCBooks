@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
@@ -13,6 +11,8 @@ namespace ToCBooks.App.Data.DAOs
 {
     public class PedidoDAO : IDAO
     {
+        private MensagemModel mensagem = new MensagemModel();
+
         public MensagemModel Ativar(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
@@ -41,13 +41,11 @@ namespace ToCBooks.App.Data.DAOs
                 db.SaveChanges();
             }
 
-            MensagemModel Mensagem = new MensagemModel
-            {
-                Codigo = ETipoCodigo.Correto,
-                Resposta = "Venda Registrada...",
-            };
+            mensagem.Codigo = ETipoCodigo.Correto;
+            mensagem.Resposta = "Venda Registrada...";
 
-            return Mensagem;
+
+            return mensagem;
         }
 
         public MensagemModel ConsultaCustomizada(EntidadeDominio Objeto)
@@ -57,7 +55,35 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Consultar(EntidadeDominio Objeto)
         {
-            throw new NotImplementedException();
+            using (var db = new ToCBooksContext())
+            {
+                var Despachante = (Despachante)Objeto;
+                var Pedido = (PedidoModel)Despachante.Entidade;
+
+                db.Pedido
+                .Include(x => x.Cliente)
+                .Include(x => x.EnderecoEntrega)
+                .Where(x => x.StatusAtual == ETipoStatus.EmProcessamento).ToList()
+                .ForEach(x =>
+                {
+                    x.Cliente.EnderecoEntrega.ForEach(y =>
+                    {
+                        y.Cliente = null;
+                        y = db.EnderecoEntrega
+                        .Include(z => z.Cidade)
+                        .Include(z => z.Cidade.Estado)
+                        .Include(z => z.Cidade.Estado.Pais)
+                        .Where(z => z.Id == y.Id).First();
+                    });
+
+                    mensagem.Dados.Add(x);
+                });
+            }
+
+            mensagem.Codigo = ETipoCodigo.Correto;
+            mensagem.Resposta = "Venda Consultada...";
+
+            return mensagem;
         }
 
         public MensagemModel Desativar(EntidadeDominio Objeto)

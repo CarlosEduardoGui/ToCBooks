@@ -3,10 +3,26 @@ using System;
 
 namespace ToCBooks.App.Migrations
 {
-    public partial class Banco03 : Migration
+    public partial class Geral : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Cupom",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    StatusAtual = table.Column<int>(nullable: false),
+                    Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
+                    Nome = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    Desconto = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cupom", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "PaisModel",
                 columns: table => new
@@ -330,10 +346,110 @@ namespace ToCBooks.App.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Pedido",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    StatusAtual = table.Column<int>(nullable: false),
+                    Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
+                    EnderecoEntregaId = table.Column<Guid>(nullable: true),
+                    ClienteId = table.Column<Guid>(nullable: true),
+                    CupomDescontoId = table.Column<Guid>(nullable: true),
+                    TotalPedido = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pedido", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Pedido_Cliente_ClienteId",
+                        column: x => x.ClienteId,
+                        principalTable: "Cliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Pedido_Cupom_CupomDescontoId",
+                        column: x => x.CupomDescontoId,
+                        principalTable: "Cupom",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Pedido_EnderecoEntrega_EnderecoEntregaId",
+                        column: x => x.EnderecoEntregaId,
+                        principalTable: "EnderecoEntrega",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CartaoCreditoPedido",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    CartaoCreditoID = table.Column<Guid>(nullable: false),
+                    PedidoId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartaoCreditoPedido", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CartaoCreditoPedido_CartaoCredito_CartaoCreditoID",
+                        column: x => x.CartaoCreditoID,
+                        principalTable: "CartaoCredito",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CartaoCreditoPedido_Pedido_PedidoId",
+                        column: x => x.PedidoId,
+                        principalTable: "Pedido",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ItensPedidos",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    StatusAtual = table.Column<int>(nullable: false),
+                    Justificativa = table.Column<string>(type: "VARCHAR(MAX)", nullable: true),
+                    DataCadastro = table.Column<DateTime>(nullable: false),
+                    Qtde = table.Column<int>(nullable: false),
+                    LivroId = table.Column<Guid>(nullable: true),
+                    PedidoId = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItensPedidos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ItensPedidos_Livro_LivroId",
+                        column: x => x.LivroId,
+                        principalTable: "Livro",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ItensPedidos_Pedido_PedidoId",
+                        column: x => x.PedidoId,
+                        principalTable: "Pedido",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_CartaoCredito_ClienteId",
                 table: "CartaoCredito",
                 column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartaoCreditoPedido_CartaoCreditoID",
+                table: "CartaoCreditoPedido",
+                column: "CartaoCreditoID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartaoCreditoPedido_PedidoId",
+                table: "CartaoCreditoPedido",
+                column: "PedidoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categoria_LivrosModelId",
@@ -381,6 +497,16 @@ namespace ToCBooks.App.Migrations
                 column: "LivroId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ItensPedidos_LivroId",
+                table: "ItensPedidos",
+                column: "LivroId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItensPedidos_PedidoId",
+                table: "ItensPedidos",
+                column: "PedidoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Livro_PrecificacaoId",
                 table: "Livro",
                 column: "PrecificacaoId");
@@ -390,12 +516,27 @@ namespace ToCBooks.App.Migrations
                 table: "Login",
                 column: "ClienteId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pedido_ClienteId",
+                table: "Pedido",
+                column: "ClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pedido_CupomDescontoId",
+                table: "Pedido",
+                column: "CupomDescontoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pedido_EnderecoEntregaId",
+                table: "Pedido",
+                column: "EnderecoEntregaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CartaoCredito");
+                name: "CartaoCreditoPedido");
 
             migrationBuilder.DropTable(
                 name: "Categoria");
@@ -404,28 +545,40 @@ namespace ToCBooks.App.Migrations
                 name: "EnderecoCobranca");
 
             migrationBuilder.DropTable(
-                name: "EnderecoEntrega");
+                name: "Estoque");
 
             migrationBuilder.DropTable(
-                name: "Estoque");
+                name: "ItensPedidos");
 
             migrationBuilder.DropTable(
                 name: "Login");
 
             migrationBuilder.DropTable(
-                name: "CidadeModel");
+                name: "CartaoCredito");
 
             migrationBuilder.DropTable(
                 name: "Livro");
+
+            migrationBuilder.DropTable(
+                name: "Pedido");
+
+            migrationBuilder.DropTable(
+                name: "Parametro");
+
+            migrationBuilder.DropTable(
+                name: "Cupom");
+
+            migrationBuilder.DropTable(
+                name: "EnderecoEntrega");
+
+            migrationBuilder.DropTable(
+                name: "CidadeModel");
 
             migrationBuilder.DropTable(
                 name: "Cliente");
 
             migrationBuilder.DropTable(
                 name: "EstadoModel");
-
-            migrationBuilder.DropTable(
-                name: "Parametro");
 
             migrationBuilder.DropTable(
                 name: "TelefoneModel");

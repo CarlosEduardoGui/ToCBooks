@@ -9,7 +9,7 @@ namespace ToCBooks.App.Business.Models
         {
             Id = Guid.NewGuid();
             StatusAtual = ETipoStatus.Ativo;
-            DataCadastro = DateTime.UtcNow;
+            DataCadastro = DateTime.Now;
         }
 
         public Guid Id { get; set; }

@@ -32,6 +32,7 @@ namespace ToCBooks.Data.Business.Patterns
             mapDao.Add("EnderecoEntregaModel", new EnderecoEntregaDAO());
             mapDao.Add("ItemEstoque", new EstoqueDAO());
             mapDao.Add("CupomModel", new CupomDAO());
+            mapDao.Add("PedidoModel", new PedidoDAO());
 
             #region Validadores Livro
 
@@ -296,10 +297,13 @@ namespace ToCBooks.Data.Business.Patterns
                     Carrinho = JsonConvert.DeserializeObject<Carrinho>(SessionLink.Session.GetString("Carrinho"));
 
                     foreach (var Item in Carrinho.Itens)
-                        if (Item.Livro.Id == ItemEstoque.Livro.Id)
+                        if (Item != null)
                         {
-                            Item.Qtde += ItemEstoque.Qtde;
-                            FlagItemExistente = true;
+                            if (Item.Livro.Id == ItemEstoque.Livro.Id)
+                            {
+                                Item.Qtde += ItemEstoque.Qtde;
+                                FlagItemExistente = true;
+                            }
                         }
                 }
 
@@ -375,15 +379,20 @@ namespace ToCBooks.Data.Business.Patterns
 
                 foreach (var Item in CarrinhoAtual.Itens)
                 {
-                    var ItemRecebido = CarrinhoRecebido.Itens.Find(x => x.Id == Item.Id);
+                    if (Item != null)
+                    {
+                        var ItemRecebido = CarrinhoRecebido.Itens.Find(x => x.Id == Item.Id);
 
-                    if (ItemRecebido.Qtde != Item.Qtde)
-                        Item.Qtde = ItemRecebido.Qtde;
+                        if (ItemRecebido.Qtde != Item.Qtde)
+                            Item.Qtde = ItemRecebido.Qtde;
 
-                    Despachante Despachante = new Despachante();
-                    Despachante.Entidade = Item;
+                        Despachante Despachante = new Despachante
+                        {
+                            Entidade = Item
+                        };
 
-                    new ValidadorEntradaCarrinho().Validar(Despachante);
+                        new ValidadorEntradaCarrinho().Validar(Despachante);
+                    }
                 }
 
                 if (SessionLink.Session.GetString("ClienteID") == null)
@@ -446,7 +455,7 @@ namespace ToCBooks.Data.Business.Patterns
                 if ((Pedido.TotalPedido / Pedido.CartoesCredito.Count) <= 10)
                     throw new Exception("O Valor da Compra dividido entre os cartões é menor do que R$10...");
 
-                Pedido.StatusAtual = ETipoStatus.Aprovada;
+                Pedido.StatusAtual = ETipoStatus.EmProcessamento;
 
                 Pedido.CartoesCredito.ForEach(x =>
                 {
@@ -464,7 +473,8 @@ namespace ToCBooks.Data.Business.Patterns
 
                 Mensagem = new PedidoDAO().Cadastrar(Pedido);
 
-            } catch (Exception Error)
+            }
+            catch (Exception Error)
             {
                 Mensagem.Codigo = ETipoCodigo.Errado;
                 Mensagem.Resposta = Error.Message;

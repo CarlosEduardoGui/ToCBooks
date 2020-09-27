@@ -139,7 +139,6 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Desativar(EntidadeDominio Objeto)
         {
-            MensagemModel Mensagem = new MensagemModel();
             using (var db = new ToCBooksContext())
             {
                 ClienteModel Cliente = db.Find<ClienteModel>(Objeto.Id);
@@ -148,10 +147,10 @@ namespace ToCBooks.App.Data.DAOs
                 db.SaveChanges();
             }
 
-            Mensagem.Codigo = ETipoCodigo.Correto;
-            Mensagem.Resposta = "Cliente Desativado...";
+            mensagem.Codigo = ETipoCodigo.Correto;
+            mensagem.Resposta = "Cliente Desativado...";
 
-            return Mensagem;
+            return mensagem;
         }
 
         public MensagemModel Editar(EntidadeDominio Objeto)
@@ -181,7 +180,6 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Buscar(Expression<Func<ClienteModel, bool>> predicate)
         {
-            MensagemModel Mensagem = new MensagemModel();
             using (var db = new ToCBooksContext())
             {
                 db.Cliente
@@ -190,15 +188,27 @@ namespace ToCBooks.App.Data.DAOs
                     .Where(predicate.Compile()).ToList().ForEach(x =>
                     {
                         x.Login.Cliente = null;
-                        Mensagem.Dados.Add(x);
+                        mensagem.Dados.Add(x);
                     });
 
             }
 
-            Mensagem.Codigo = ETipoCodigo.Correto;
-            Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
+            mensagem.Codigo = ETipoCodigo.Correto;
+            mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
 
-            return Mensagem;
+            return mensagem;
+        }
+
+        public bool ClienteExiste(ClienteModel model)
+        {
+            using (var db = new ToCBooksContext())
+            {
+                var resultado = db.Cliente
+                    .Include(x => x.Login)
+                    .Where(x => x.Login.Email == model.Login.Email).Any();
+
+                return resultado;
+            }
         }
     }
 }

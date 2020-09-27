@@ -1,6 +1,7 @@
 ﻿using System;
 using ToCBooks.App.Business.Interfaces;
 using ToCBooks.App.Business.Models;
+using ToCBooks.App.Data.DAOs;
 
 namespace ToCBooks.App.Business.Validadores
 {
@@ -27,6 +28,10 @@ namespace ToCBooks.App.Business.Validadores
 
             if (Cliente.Login.Email.Equals("") || Cliente.Login.Email == null)
                 throw new Exception("Email inconsistente...");
+
+            var clienteDAO = new ClienteDAO();
+            if (clienteDAO.ClienteExiste(Cliente))
+                throw new Exception("Cliente já está cadastrado no sistema...");
 
             if (Cliente.Nome.Equals("") || Cliente.Nome == null)
                 throw new Exception("Nome inconsistente...");

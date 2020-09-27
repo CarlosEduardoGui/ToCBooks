@@ -182,16 +182,20 @@ function BuscarCarrinho() {
                     var resposta_controle = JSON.parse(e.responseText);
                     if (resposta_controle.Codigo == 0) {
                         var Carrinho = resposta_controle.Dados[0];
-
+                        
                         var TotalCompra = 0;
                         var htmlLista = '<li><a>Produto <span>Total</span><a></li>';
                         Carrinho.Itens.forEach(Item => {
-                            htmlLista += '<li><a>' + Item.Livro.Titulo + '<span class="middle">x ' + Item.Qtde + '</span> <span class="last">R$' + (Item.Qtde * Item.Livro.Preco).toFixed(2) + '</span></a></li>';
-                            TotalCompra += (Item.Qtde * Item.Livro.Preco);
+                            if (Item != null) {
+                                htmlLista += '<li><a>' + Item.Livro.Titulo + '<span class="middle">x ' + Item.Qtde + '</span> <span class="last">R$' + (Item.Qtde * Item.Livro.Preco).toFixed(2) + '</span></a></li>';
+                                TotalCompra += (Item.Qtde * Item.Livro.Preco);
+                            }
                         });
 
                         jQuery("#lista_produtos").html(htmlLista);
                         jQuery("#span_total_compra").html("R$" + TotalCompra);
+                        
+
                     } else {
                         alert(resposta_controle.Resposta);
                     }

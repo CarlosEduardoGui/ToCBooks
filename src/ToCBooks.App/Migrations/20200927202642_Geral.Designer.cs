@@ -10,8 +10,8 @@ using ToCBooks.App.Data.Context;
 namespace ToCBooks.App.Migrations
 {
     [DbContext(typeof(ToCBooksContext))]
-    [Migration("20200927174522_Pedido3")]
-    partial class Pedido3
+    [Migration("20200927202642_Geral")]
+    partial class Geral
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -303,7 +303,30 @@ namespace ToCBooks.App.Migrations
 
                     b.Property<Guid?>("LivroId");
 
-                    b.Property<Guid?>("PedidoModelId");
+                    b.Property<int>("Qtde");
+
+                    b.Property<int>("StatusAtual");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LivroId");
+
+                    b.ToTable("Estoque");
+                });
+
+            modelBuilder.Entity("ToCBooks.App.Business.Models.ItemPedido", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DataCadastro");
+
+                    b.Property<string>("Justificativa")
+                        .HasColumnType("VARCHAR(MAX)");
+
+                    b.Property<Guid?>("LivroId");
+
+                    b.Property<Guid?>("PedidoId");
 
                     b.Property<int>("Qtde");
 
@@ -313,9 +336,9 @@ namespace ToCBooks.App.Migrations
 
                     b.HasIndex("LivroId");
 
-                    b.HasIndex("PedidoModelId");
+                    b.HasIndex("PedidoId");
 
-                    b.ToTable("Estoque");
+                    b.ToTable("ItensPedidos");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.LivrosModel", b =>
@@ -577,10 +600,17 @@ namespace ToCBooks.App.Migrations
                     b.HasOne("ToCBooks.App.Business.Models.LivrosModel", "Livro")
                         .WithMany()
                         .HasForeignKey("LivroId");
+                });
 
-                    b.HasOne("ToCBooks.App.Business.Models.PedidoModel")
-                        .WithMany("Itens")
-                        .HasForeignKey("PedidoModelId");
+            modelBuilder.Entity("ToCBooks.App.Business.Models.ItemPedido", b =>
+                {
+                    b.HasOne("ToCBooks.App.Business.Models.LivrosModel", "Livro")
+                        .WithMany()
+                        .HasForeignKey("LivroId");
+
+                    b.HasOne("ToCBooks.App.Business.Models.PedidoModel", "Pedido")
+                        .WithMany("ItensPedido")
+                        .HasForeignKey("PedidoId");
                 });
 
             modelBuilder.Entity("ToCBooks.App.Business.Models.LivrosModel", b =>
