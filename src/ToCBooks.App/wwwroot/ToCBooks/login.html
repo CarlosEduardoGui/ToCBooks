@@ -123,23 +123,17 @@
                 <div class="col-lg-6">
                     <div class="login_form_inner">
                         <h3>Login</h3>
-                        <form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="row login_form" id="form_login" novalidate="novalidate">
                             <div class="col-md-12 form-group">
-                                <input type="email" class="form-control" id="email" name="emailemail" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" required>
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Senha'">
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <div class="creat_account">
-                                    <input type="checkbox" id="f-option2" name="selector">
-                                    <label for="f-option2">Me mantenha conectado</label>
-                                </div>
-                            </div>
-                            <div class="col-md-12 form-group">
-                                <button id="btn_login" class="primary-btn">Log In</button>
+                                <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Senha'" required>
                             </div>
                         </form>
+                        <div class="col-md-12 form-group">
+                            <button id="btn_login" class="primary-btn">Log In</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -216,6 +210,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
     <script src="js/My/login.js"></script>
 </body>
 
