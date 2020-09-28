@@ -62,17 +62,10 @@ namespace ToCBooks.App.Data.DAOs
                 var cupom = (CupomModel)Despachante.Entidade;
 
                 var ObjetoPersistido = db.Cupom
-                    .Where(x => x.Nome == cupom.Nome).ToList().FirstOrDefault();
+                    .Where(x => x.Nome == cupom.Nome && x.StatusAtual == ETipoStatus.Ativo).ToList().FirstOrDefault();
 
                 if (ObjetoPersistido != null)
                     mensagem.Dados.Add(ObjetoPersistido);
-                else
-                    db.Cupom
-                        .Where(x => x.StatusAtual == ETipoStatus.Ativo).ToList()
-                        .ForEach(x =>
-                        {
-                            mensagem.Dados.Add(x);
-                        });
 
                 mensagem.Codigo = ETipoCodigo.Correto;
                 mensagem.Resposta = "Cupom consultado com sucesso";

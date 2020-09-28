@@ -349,10 +349,10 @@ namespace ToCBooks.Data.Business.Patterns
             var Despachante = (Despachante)Objeto;
             var ItemEstoque = Despachante.Entidade;
             var Carrinho = JsonConvert.DeserializeObject<Carrinho>(SessionLink.Session.GetString("Carrinho"));
-
-            for (var i = 0; i < Carrinho.Itens.Count; i++)
-                if (Carrinho.Itens[i].Id == ItemEstoque.Id)
-                    Carrinho.Itens[i] = null;
+            for (var i = 0; i < Carrinho.Itens.Count; i++) 
+                if (Carrinho.Itens[i] != null)
+                    if (Carrinho.Itens[i].Id == ItemEstoque.Id)
+                        Carrinho.Itens[i] = null;
 
             SessionLink.Session.SetString("Carrinho", JsonConvert.SerializeObject(Carrinho));
 
@@ -381,7 +381,7 @@ namespace ToCBooks.Data.Business.Patterns
                 {
                     if (Item != null)
                     {
-                        var ItemRecebido = CarrinhoRecebido.Itens.Find(x => x.Id == Item.Id);
+                        var ItemRecebido = CarrinhoRecebido.Itens.Find(x => x.Livro.Id == Item.Livro.Id);
 
                         if (ItemRecebido.Qtde != Item.Qtde)
                             Item.Qtde = ItemRecebido.Qtde;
@@ -394,6 +394,8 @@ namespace ToCBooks.Data.Business.Patterns
                         new ValidadorEntradaCarrinho().Validar(Despachante);
                     }
                 }
+
+                SessionLink.Session.SetString("Carrinho", JsonConvert.SerializeObject(CarrinhoAtual));
 
                 if (SessionLink.Session.GetString("ClienteID") == null)
                     throw new Exception("Necessário fazer Login para Continuar...");
@@ -424,14 +426,17 @@ namespace ToCBooks.Data.Business.Patterns
                 var CarrinhoAtual = JsonConvert.DeserializeObject<Carrinho>(SessionLink.Session.GetString("Carrinho"));
                 CarrinhoAtual.Itens.ForEach(x =>
                 {
-                    var ItemPedido = new ItemPedido
+                    if (x != null)
                     {
-                        Livro = x.Livro,
-                        Qtde = x.Qtde,
-                        Pedido = Pedido
-                    };
+                        var ItemPedido = new ItemPedido
+                        {
+                            Livro = x.Livro,
+                            Qtde = x.Qtde,
+                            Pedido = Pedido
+                        };
 
-                    Pedido.ItensPedido.Add(ItemPedido);
+                        Pedido.ItensPedido.Add(ItemPedido);
+                    }
                 });
                 var ClienteTemp = new ClienteModel
                 {
@@ -441,7 +446,7 @@ namespace ToCBooks.Data.Business.Patterns
                 Pedido.Cliente = (ClienteModel)new ClienteDAO().Consultar(Despachante).Dados.FirstOrDefault();
                 Pedido.EnderecoEntrega = Pedido.Cliente.EnderecoEntrega.Find(x => x.Id == Pedido.EnderecoEntrega.Id);
 
-                for (var i = 0; i < Pedido.CartoesCredito.Count; i++)
+                for (var i = 0; i < Pedido.ItensPedido.Count; i++)
                     Pedido.ItensPedido[i].Livro.Precificacao = null;
 
                 for (var i = 0; i < Pedido.CartoesCredito.Count; i++)
@@ -450,7 +455,11 @@ namespace ToCBooks.Data.Business.Patterns
                 Pedido.ItensPedido.ForEach(x => Pedido.TotalPedido += (x.Livro.Preco * x.Qtde));
 
                 if (Pedido.CupomDesconto != null)
+                {
                     Pedido.TotalPedido = (Pedido.TotalPedido - (Pedido.TotalPedido * (Pedido.CupomDesconto.Desconto / 100)));
+                    Pedido.CupomDesconto.StatusAtual = ETipoStatus.Inativo;
+                }
+
 
                 if ((Pedido.TotalPedido / Pedido.CartoesCredito.Count) <= 10)
                     throw new Exception("O Valor da Compra dividido entre os cartões é menor do que R$10...");
@@ -472,7 +481,6 @@ namespace ToCBooks.Data.Business.Patterns
                 SessionLink.Session.SetString("Carrinho", JsonConvert.SerializeObject(CarrinhoAtual));
 
                 Mensagem = new PedidoDAO().Cadastrar(Pedido);
-
             }
             catch (Exception Error)
             {

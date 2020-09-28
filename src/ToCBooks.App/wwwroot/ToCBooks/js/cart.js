@@ -19,7 +19,9 @@ jQuery(document).ready(function () {
         var Itens = new Array()
 
         jQuery('.qty').each(function () {
-            var ItemEstoque = { Id: jQuery(this).attr('id_item'), Qtde: jQuery(this).val() };
+            var ItemEstoque = {
+                Id: jQuery(this).attr('id_item'), Qtde: jQuery(this).val(), Livro: { Id: jQuery(this).attr('id_livro') }
+            };
             Itens.push(ItemEstoque);
         });
 
@@ -118,7 +120,7 @@ function BuscarCarrinho() {
                                 htmlTabela += '</div></div></td><td>';
                                 htmlTabela += '<h5>R$ ' + ItemCarrinho.Livro.Preco + '</h5>';
                                 htmlTabela += '</td><td><div class="product_count">';
-                                htmlTabela += '<input type="number" name="qty" id="sst" maxlength="12" id_item="' + ItemCarrinho.Id + '" value="' + ItemCarrinho.Qtde + '" title="Quantity:" class="input-text qty" ></td>';
+                                htmlTabela += '<input type="number" name="qty" id="sst" maxlength="12" id_livro="' + ItemCarrinho.Livro.Id + '" id_item="' + ItemCarrinho.Id + '" value="' + ItemCarrinho.Qtde + '" title="Quantity:" class="input-text qty" ></td>';
                                 htmlTabela += '<td><h5>R$ ' + (ItemCarrinho.Qtde * ItemCarrinho.Livro.Preco).toFixed(2) + '</h5></td>';
                                 htmlTabela += '<td><h5>' + FormatarHora(ItemCarrinho.DataCadastro) + '</h5></td>';
                                 htmlTabela += '<td><button id_item="' + ItemCarrinho.Id + '" class="btn btn-warning excluir_item"><i class="fa fa-trash-o"></i></button></td></tr>';

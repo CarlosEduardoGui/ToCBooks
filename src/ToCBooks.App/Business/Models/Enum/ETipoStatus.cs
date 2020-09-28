@@ -6,6 +6,6 @@
         Inativo = 1,
         Aprovada = 2,
         Reprovada = 3,
-        EmProcessamento = 4
+        EmProcessamento = 4,
     }
 }

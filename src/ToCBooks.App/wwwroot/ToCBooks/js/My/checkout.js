@@ -94,7 +94,7 @@ jQuery(document).ready(function () {
             return;
         }
 
-        alert("Cupom Aplicado");
+        ValidarCupom(CupomTemp);
     });
 
     jQuery("#btn_confirmar_compra").on('click', function () {
@@ -125,7 +125,7 @@ jQuery(document).ready(function () {
 
         var Pedido;
         if (CupomTemp != null)
-            Pedido = { EnderecoEntrega: Endereco, CartoesCredito: CartoesCredito, Cupom: CupomTemp };
+            Pedido = { EnderecoEntrega: Endereco, CartoesCredito: CartoesCredito, CupomDesconto: CupomTemp };
         else
             Pedido = { EnderecoEntrega: Endereco, CartoesCredito: CartoesCredito };
 
@@ -133,6 +133,41 @@ jQuery(document).ready(function () {
         ConfimarPedido(Pedido);
     });
 });
+
+function ValidarCupom(ObjetoEnvio) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 1, mapKey: 'CupomModel', JsonString: JSON.stringify(ObjetoEnvio) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            console.log(e.readyState);
+            console.log(e.status);
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var resposta_controle = JSON.parse(e.responseText);
+                    if (resposta_controle.Codigo == 0) {
+                        if (resposta_controle.Dados.length > 0) {
+                            CupomTemp = resposta_controle.Dados[0];
+                            alert("Cupom Aplicado com sucesso !!!");
+                        }
+                        else
+                            alert("Cupom Não Encontrado !!!");
+                    } else {
+                        alert(resposta_controle.Resposta);
+                    }
+
+                } catch (error) {
+                    alert(error);
+                }
+            }
+        }
+    });
+}
 
 function ConfimarPedido(ObjetoEnvio) {
     jQuery.ajax({

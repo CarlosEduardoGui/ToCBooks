@@ -37,6 +37,10 @@ namespace ToCBooks.App.Data.DAOs
                 db.Cliente.Attach(Pedido.Cliente);
                 db.EnderecoEntrega.Attach(Pedido.EnderecoEntrega);
                 Pedido.CartoesCredito.ForEach(x => db.CartaoCredito.Attach(x));
+
+                if(Pedido.CupomDesconto != null)
+                    db.Cupom.Update(Pedido.CupomDesconto);
+
                 db.Pedido.Add(Pedido);
                 db.SaveChanges();
             }
