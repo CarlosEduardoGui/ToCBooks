@@ -186,6 +186,7 @@ function ConfimarPedido(ObjetoEnvio) {
                 try {
                     var resposta_controle = JSON.parse(e.responseText);
                     if (resposta_controle.Codigo == 0) {
+                        localStorage.setItem("Ulltimo Pedido", JSON.stringify(resposta_controle.Dados[0]));
                         window.location.href = "/ToCBooks/confirmation.html";
                     } else {
                         alert(resposta_controle.Resposta);
@@ -228,7 +229,7 @@ function BuscarCarrinho() {
                         });
 
                         jQuery("#lista_produtos").html(htmlLista);
-                        jQuery("#span_total_compra").html("R$" + TotalCompra);
+                        jQuery("#span_total_compra").html("R$" + TotalCompra.toFixed(2));
                         
 
                     } else {
