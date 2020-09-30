@@ -3,9 +3,15 @@
     public enum ETipoStatus
     {
         Ativo = 0,
-        Inativo = 1,
-        Aprovada = 2,
-        Reprovada = 3,
-        EmProcessamento = 4,
+        Inativo,
+        Aprovada,
+        Reprovada,
+        EmProcessamento,
+        Entregue,
+        EmTransito,
+        TrocaAutorizada,
+        EmTroca,
+        Trocado,
+        ForaMercado,
     }
 }
