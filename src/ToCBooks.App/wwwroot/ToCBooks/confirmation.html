@@ -110,41 +110,24 @@
     <section class="order_details section_gap">
         <div class="container">
             <h3 class="title_confirmation">Muito obrigado. Sua compra foi efetuada com sucesso!</h3>
-            <!--<div class="row order_d_inner">
-                <div class="col-lg-4">
-                    <div class="details_item">
-                        <h4>Info. do Pedido</h4>
-                        <ul class="list">
-                            <li><a href="#"><span>Número da Ordem</span> : 60235</a></li>
-                            <li><a href="#"><span>Data</span> : 03/03/2020</a></li>
-                            <li><a href="#"><span>Total</span> : 360</a></li>
-                            <li><a href="#"><span>Método de Pagamento</span> : Cartão de Débito</a></li>
-                        </ul>
-                    </div>
+            <div class="row order_d_inner" style="margin-top: 15%;">
+                <div class="col-lg-6">
+                    <h4>Info. do Pedido</h4>
+                    <ul class="list" >
+                        <li><a style="cursor: pointer; color: black;"><span id="pedido"></span></a></li>
+                        <li><a style="cursor: pointer; color: black;"><span id="data_compra"></span></a></li>
+                        <li><a style="cursor: pointer; color: black;"><span id="total_compra"></span></a></li>
+                    </ul>
                 </div>
-                <div class="col-lg-4">
-                    <div class="details_item">
-                        <h4>Endereço de Cobrança</h4>
-                        <ul class="list">
-                            <li><a href="#"><span>Rua</span> : Rua Manoel dos Corn</a></li>
-                            <li><a href="#"><span>Cidade</span> : Mogi das Cruzes</a></li>
-                            <li><a href="#"><span>Estado</span> : São Paulo</a></li>
-                            <li><a href="#"><span>País</span> : Brasil</a></li>
-                            <li><a href="#"><span>CEP </span> : 08830110</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="details_item">
-                        <h4>Endereço de Entrega</h4>
-                        <ul class="list">
-                            <li><a href="#"><span>Rua</span> : Rua Manoel dos Corn</a></li>
-                            <li><a href="#"><span>Cidade</span> : Mogi das Cruzes</a></li>
-                            <li><a href="#"><span>Estado</span> : São Paulo</a></li>
-                            <li><a href="#"><span>País</span> : Brasil</a></li>
-                            <li><a href="#"><span>CEP </span> : 08830110</a></li>
-                        </ul>
-                    </div>
+                <div class="col-lg-6" style="text-align: center;">
+                    <h4>Endereço de Entrega</h4>
+                    <ul class="list" style="text-align: left !important; margin-left: 33%; color: black;">
+                        <li><a><span id="Rua"></span></a></li>
+                        <li><a><span id="Cidade"></span></a></li>
+                        <li><a><span id="Estado"></span></a></li>
+                        <li><a><span id="Pais"></span></a></li>
+                        <li><a><span id="CEP"></span></a></li>
+                    </ul>
                 </div>
             </div>
             <div class="order_details_table">
@@ -158,44 +141,11 @@
                                 <th scope="col">Total</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <p>Harry Potter: Prisioneiro de Azkaban</p>
-                                </td>
-                                <td>
-                                    <h5>x 02</h5>
-                                </td>
-                                <td>
-                                    <p>R$ 60.00</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Box As Crônicas de Gelo e Foto</p>
-                                </td>
-                                <td>
-                                    <h5>x 01</h5>
-                                </td>
-                                <td>
-                                    <p>R$ 300.00</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h4>Total</h4>
-                                </td>
-                                <td>
-                                    <h5></h5>
-                                </td>
-                                <td>
-                                    <p>R$ 360.00</p>
-                                </td>
-                            </tr>
+                        <tbody id="tbody_itens_pedidos">
                         </tbody>
                     </table>
                 </div>
-            </div>-->
+            </div>
         </div>
     </section>
     <!--================End Order Details Area =================-->
@@ -283,6 +233,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/confirmation.js"></script>
 </body>
 
 </html>

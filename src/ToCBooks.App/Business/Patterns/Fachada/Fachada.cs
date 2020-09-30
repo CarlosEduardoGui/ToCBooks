@@ -481,6 +481,14 @@ namespace ToCBooks.Data.Business.Patterns
                 SessionLink.Session.SetString("Carrinho", JsonConvert.SerializeObject(CarrinhoAtual));
 
                 Mensagem = new PedidoDAO().Cadastrar(Pedido);
+                Pedido.Cliente = null;
+                Pedido.CartoesCredito = null;
+                Pedido.CartaoCreditoPedido = null;
+                Pedido.CupomDesconto = null;
+                Pedido.EnderecoEntrega = null;
+                Pedido.ItensPedido = null;
+
+                Mensagem.Dados.Add(Pedido);
             }
             catch (Exception Error)
             {

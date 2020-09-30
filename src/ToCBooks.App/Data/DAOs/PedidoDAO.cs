@@ -38,7 +38,7 @@ namespace ToCBooks.App.Data.DAOs
                 db.EnderecoEntrega.Attach(Pedido.EnderecoEntrega);
                 Pedido.CartoesCredito.ForEach(x => db.CartaoCredito.Attach(x));
 
-                if(Pedido.CupomDesconto != null)
+                if (Pedido.CupomDesconto != null)
                     db.Cupom.Update(Pedido.CupomDesconto);
 
                 db.Pedido.Add(Pedido);
@@ -63,6 +63,57 @@ namespace ToCBooks.App.Data.DAOs
             {
                 var Despachante = (Despachante)Objeto;
                 var Pedido = (PedidoModel)Despachante.Entidade;
+
+
+                if (db.Pedido.Where(x => x.Id == Pedido.Id).Count() > 0)
+                {
+                    db.Pedido
+                    .Include(x => x.Cliente)
+                    .Include(x => x.EnderecoEntrega)
+                    .Include(x => x.ItensPedido)
+                    .Include(x => x.CartaoCreditoPedido)
+                    .Where(x => x.StatusAtual == ETipoStatus.EmProcessamento && x.Id == Pedido.Id).ToList()
+                    .ForEach(x =>
+                    {
+                        x.Cliente.EnderecoEntrega.ForEach(y =>
+                        {
+                            y.Cliente = null;
+                            y = db.EnderecoEntrega
+                            .Include(z => z.Cidade)
+                            .Include(z => z.Cidade.Estado)
+                            .Include(z => z.Cidade.Estado.Pais)
+                            .Where(z => z.Id == y.Id).First();
+                        });
+
+                        x.ItensPedido.ForEach(z =>
+                        {
+                            z.Pedido = null;
+                            z = db.ItensPedidos
+                            .Include(a => a.Pedido)
+                            .Include(a => a.Livro)
+                            .Where(a => a.Id == z.Id).First();
+                        });
+
+                        x.CartaoCreditoPedido.ForEach(a =>
+                        {
+                            a.Pedido = null;
+                            a = db.CartaoCreditoPedido
+                            .Include(b => b.CartaoCredito)
+                            .Include(b => b.Pedido)
+                            .Where(b => b.Id == a.Id).First();
+                        });
+
+                        x.Cliente.CartaoCredito = null;
+                        x.CartaoCreditoPedido.ForEach(c => c.CartaoCredito.CartaoCreditoPedido = null);
+
+                        mensagem.Dados.Add(x);
+                    });
+
+                    mensagem.Codigo = ETipoCodigo.Correto;
+                    mensagem.Resposta = "Venda Consultada...";
+
+                    return mensagem;
+                }
 
                 db.Pedido
                 .Include(x => x.Cliente)
