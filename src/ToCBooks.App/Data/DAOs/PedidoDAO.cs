@@ -67,6 +67,8 @@ namespace ToCBooks.App.Data.DAOs
                 db.Pedido
                 .Include(x => x.Cliente)
                 .Include(x => x.EnderecoEntrega)
+                .Include(x => x.ItensPedido)
+                .Include(x => x.CartaoCreditoPedido)
                 .Where(x => x.StatusAtual == ETipoStatus.EmProcessamento).ToList()
                 .ForEach(x =>
                 {
@@ -79,6 +81,27 @@ namespace ToCBooks.App.Data.DAOs
                         .Include(z => z.Cidade.Estado.Pais)
                         .Where(z => z.Id == y.Id).First();
                     });
+
+                    x.ItensPedido.ForEach(z =>
+                    {
+                        z.Pedido = null;
+                        z = db.ItensPedidos
+                        .Include(a => a.Pedido)
+                        .Include(a => a.Livro)
+                        .Where(a => a.Id == z.Id).First();
+                    });
+
+                    x.CartaoCreditoPedido.ForEach(a =>
+                    {
+                        a.Pedido = null;
+                        a = db.CartaoCreditoPedido
+                        .Include(b => b.CartaoCredito)
+                        .Include(b => b.Pedido)
+                        .Where(b => b.Id == a.Id).First();
+                    });
+
+                    x.Cliente.CartaoCredito = null;
+                    x.CartaoCreditoPedido.ForEach(c => c.CartaoCredito.CartaoCreditoPedido = null);
 
                     mensagem.Dados.Add(x);
                 });
