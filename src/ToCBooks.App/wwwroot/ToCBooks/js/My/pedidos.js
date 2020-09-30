@@ -1,4 +1,18 @@
 ﻿var idEntidadeTemp;
+var statusMap = new Map();
+
+statusMap.set(0, 'Ativo');
+statusMap.set(1, 'Inativo');
+statusMap.set(2, 'Aprovada');
+statusMap.set(3, 'Reprovada');
+statusMap.set(4, 'Em Processamento');
+statusMap.set(5, 'Entregue');
+statusMap.set(6, 'Em Trânsito');
+statusMap.set(7, 'Troca Autorizada');
+statusMap.set(8, 'Em Troca');
+statusMap.set(9, 'Trocado');
+statusMap.set(10, 'Fora de Mercado');
+
 
 jQuery(document).ready(function () {
     buscarPedidos();
@@ -31,27 +45,30 @@ function buscarPedidos() {
                     var htmlPedido = '';
 
                     htmlPedido += '<div class="order_details_table">';
-                    htmlPedido += '<input type="hidden" value="' + pedido.Id + '" id="' + pedido.ClienteId + '"/>';
                     htmlPedido += '<h2>Pedidos</h2>';
+
+                    console.log(respostaControle.Dados);
 
                     if (respostaControle.Dados.length > 0) {
                         respostaControle.Dados.forEach(pedido => {
-                            pedido.ItensPedido.forEach(item => {
-                                htmlPedido += '<div class="row">';
-                                htmlPedido += '<div class="col-md-5">';
-                                htmlPedido += '<h5>Livro - ' + item.Livro.Titulo + '</h5>';
-                                htmlPedido += '</div>';
-                                htmlPedido += '<div class="col">';
-                                htmlPedido += '<label>' + pedido.StatusAtual + ' </label>';
-                                htmlPedido += '</div>';
-                                htmlPedido += '<div class="col">';
-                                htmlPedido += '<label>R$: ' + pedido.TotalPedido + ' </label>';
-                                htmlPedido += '</div>';
-                                htmlPedido += '<div class="col">';
-                                htmlPedido += '<a href="#" class="genric-btn info circle arrow" data-toggle="modal" data-target="#exampleModal">Detalhes<span class="lnr lnr-arrow-right"></span></a>';
-                                htmlPedido += '</div>';
-                                htmlPedido += '</div>';
-                            });
+                            htmlPedido += '<hr />';
+                            htmlPedido += '<div class="row">';
+                            htmlPedido += '<div class="col-md-5">';
+                            htmlPedido += '<h5>Pedido: ' + pedido.Id + '</h5>';
+                            htmlPedido += '</div>';
+                            htmlPedido += '<div class="col">';
+                            htmlPedido += '<label>Status: ' + statusMap.get(pedido.StatusAtual) + ' </label>';
+                            htmlPedido += '</div>';
+                            htmlPedido += '<div class="col">';
+                            htmlPedido += '<label class="dinheiro">R$ ' + pedido.TotalPedido + ' </label>';
+                            htmlPedido += '</div>';
+                            htmlPedido += '<div class="col">';
+                            htmlPedido += '<a href="#" class="genric-btn info circle arrow" data-toggle="modal" data-target="#exampleModal">Detalhes<span class="lnr lnr-arrow-right"></span></a>';
+                            htmlPedido += '</div>';
+                            htmlPedido += '</div>';
+                            //pedido.ItensPedido.forEach(item => {
+                                
+                            //});
                         });
 
                         htmlPedido += '</div>';
