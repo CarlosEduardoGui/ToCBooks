@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using ToCBooks.App.Business.Models;
@@ -20,7 +21,19 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
-            throw new NotImplementedException();
+            MensagemModel Mensagem = new MensagemModel();
+            var Pedido = (PedidoModel)Objeto;
+
+            using (var db = new ToCBooksContext())
+            {
+                db.Pedido.Update(Pedido);
+                db.SaveChanges();
+            }
+
+            Mensagem.Codigo = ETipoCodigo.Correto;
+            Mensagem.Resposta = "Item Atualizado Com Suscesso...";
+
+            return Mensagem;
         }
 
         public MensagemModel Buscar(Expression<Func<EntidadeDominio, bool>> predicate)
@@ -55,6 +68,65 @@ namespace ToCBooks.App.Data.DAOs
         public MensagemModel ConsultaCustomizada(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
+        }
+
+        public MensagemModel ConsultarPedidosPendentes()
+        {
+            MensagemModel Mensagem = new MensagemModel();
+
+            using (var db = new ToCBooksContext())
+            {
+                db.Pedido
+                .Include(x => x.Cliente)
+                .Include(x => x.EnderecoEntrega)
+                .Include(x => x.ItensPedido)
+                .Include(x => x.CartaoCreditoPedido)
+                .Where(x => x.StatusAtual == ETipoStatus.EmProcessamento).ToList()
+                .ForEach(x =>
+                {
+                    x.CartoesCredito = new List<CartaoCreditoModel>();
+                    x.CartaoCreditoPedido.ForEach(y => x.CartoesCredito.Add(db.CartaoCredito.Where(z => z.Id == y.CartaoCreditoID).FirstOrDefault()));
+
+                    x.Cliente.EnderecoEntrega.ForEach(y =>
+                    {
+                        y.Cliente = null;
+                        y = db.EnderecoEntrega
+                        .Include(z => z.Cidade)
+                        .Include(z => z.Cidade.Estado)
+                        .Include(z => z.Cidade.Estado.Pais)
+                        .Where(z => z.Id == y.Id).First();
+                    });
+
+                    x.ItensPedido.ForEach(z =>
+                    {
+                        z.Pedido = null;
+                        z = db.ItensPedidos
+                        .Include(a => a.Pedido)
+                        .Include(a => a.Livro)
+                        .Where(a => a.Id == z.Id).First();
+                    });
+
+                    x.CartaoCreditoPedido.ForEach(a =>
+                    {
+                        a.Pedido = null;
+                        a = db.CartaoCreditoPedido
+                        .Include(b => b.CartaoCredito)
+                        .Include(b => b.Pedido)
+                        .Where(b => b.Id == a.Id).First();
+                    });
+
+                    x.Cliente.CartaoCredito = null;
+                    x.CartaoCreditoPedido.ForEach(c => c.CartaoCredito.CartaoCreditoPedido = null);
+
+                    Mensagem.Dados.Add(x);
+                });
+
+                Mensagem.Codigo = ETipoCodigo.Correto;
+                Mensagem.Resposta = "Pedidos Encontrados...";
+
+
+                return Mensagem;
+            }
         }
 
         public MensagemModel Consultar(EntidadeDominio Objeto)
@@ -120,7 +192,7 @@ namespace ToCBooks.App.Data.DAOs
                 .Include(x => x.EnderecoEntrega)
                 .Include(x => x.ItensPedido)
                 .Include(x => x.CartaoCreditoPedido)
-                .Where(x => x.StatusAtual == ETipoStatus.EmProcessamento).ToList()
+                .ToList()
                 .ForEach(x =>
                 {
                     x.Cliente.EnderecoEntrega.ForEach(y =>
