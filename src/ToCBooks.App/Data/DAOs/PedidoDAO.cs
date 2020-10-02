@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
@@ -64,12 +65,39 @@ namespace ToCBooks.App.Data.DAOs
                 var Despachante = (Despachante)Objeto;
                 var Pedido = (PedidoModel)Despachante.Entidade;
 
+                
+                 db.Pedido
+                .Include(x => x.ItensPedido)
+                .Where(x => x.Id == Pedido.Id)
+                .ToList()
+                .ForEach(x =>
+                {
+                    x.ItensPedido.ForEach(z =>
+                    {
+                        z.Pedido = null;
+                        z = db.ItensPedidos
+                        .Include(a => a.Livro)
+                        .Where(a => a.Id == z.Id).First();
+                    });
+
+                    mensagem.Dados.Add(x);
+                });
+
+                if (mensagem.Dados.Count() != 0)
+                {
+                    mensagem.Codigo = ETipoCodigo.Correto;
+                    mensagem.Resposta = "Pedido Consultada...";
+
+                    return mensagem;
+                }
+
                 db.Pedido
                 .Include(x => x.Cliente)
                 .Include(x => x.EnderecoEntrega)
                 .Include(x => x.ItensPedido)
                 .Include(x => x.CartaoCreditoPedido)
-                .Where(x => x.StatusAtual == ETipoStatus.EmProcessamento).ToList()
+                .Where(x => x.Cliente.Id == Despachante.Login.ClienteId)
+                .ToList()
                 .ForEach(x =>
                 {
                     x.Cliente.EnderecoEntrega.ForEach(y =>
@@ -108,7 +136,7 @@ namespace ToCBooks.App.Data.DAOs
             }
 
             mensagem.Codigo = ETipoCodigo.Correto;
-            mensagem.Resposta = "Venda Consultada...";
+            mensagem.Resposta = "Pedido Consultada...";
 
             return mensagem;
         }
