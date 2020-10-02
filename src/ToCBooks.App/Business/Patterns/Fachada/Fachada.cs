@@ -349,7 +349,7 @@ namespace ToCBooks.Data.Business.Patterns
             var Despachante = (Despachante)Objeto;
             var ItemEstoque = Despachante.Entidade;
             var Carrinho = JsonConvert.DeserializeObject<Carrinho>(SessionLink.Session.GetString("Carrinho"));
-            for (var i = 0; i < Carrinho.Itens.Count; i++) 
+            for (var i = 0; i < Carrinho.Itens.Count; i++)
                 if (Carrinho.Itens[i] != null)
                     if (Carrinho.Itens[i].Id == ItemEstoque.Id)
                         Carrinho.Itens[i] = null;
@@ -481,12 +481,69 @@ namespace ToCBooks.Data.Business.Patterns
                 SessionLink.Session.SetString("Carrinho", JsonConvert.SerializeObject(CarrinhoAtual));
 
                 Mensagem = new PedidoDAO().Cadastrar(Pedido);
+                Pedido.Cliente = null;
+                Pedido.CartoesCredito = null;
+                Pedido.CartaoCreditoPedido = null;
+                Pedido.CupomDesconto = null;
+                Pedido.EnderecoEntrega = null;
+                Pedido.ItensPedido = null;
+
+                Mensagem.Dados.Add(Pedido);
             }
             catch (Exception Error)
             {
                 Mensagem.Codigo = ETipoCodigo.Errado;
                 Mensagem.Resposta = Error.Message;
             }
+
+            return Mensagem;
+        }
+
+        public MensagemModel ProcessarPagamentos()
+        {
+            var ListaPedidos = new PedidoDAO().ConsultarPedidosPendentes().Dados;
+            ValidadorPedidosPendentes Validador = new ValidadorPedidosPendentes();
+            PedidoDAO PedidoDAO = new PedidoDAO();
+            EstoqueDAO EstoqueDAO = new EstoqueDAO();
+
+            ListaPedidos.ForEach(x =>
+            {
+                try
+                {
+                    var Pedido = (PedidoModel)x;
+
+                    Validador.Validar(Pedido);
+                    Pedido.StatusAtual = ETipoStatus.Aprovada;
+
+                    Pedido.ItensPedido.ForEach(y =>
+                    {
+                        ItemEstoque Item = new ItemEstoque
+                        {
+                            Livro = y.Livro,
+                            Qtde = 0
+                        };
+
+                        var Despachante = new Despachante();
+                        Despachante.Entidade = Item;
+                        ItemEstoque ItemAtual = (ItemEstoque)EstoqueDAO.Consultar(Despachante).Dados.FirstOrDefault();
+                        ItemAtual.Qtde -= y.Qtde;
+                        ItemAtual.Livro = Item.Livro;
+
+                        EstoqueDAO.Atualizar(ItemAtual);
+                    });
+
+                    PedidoDAO.Atualizar(Pedido);
+                }
+                catch (Exception Error)
+                {
+                    x.StatusAtual = ETipoStatus.Reprovada;
+                    PedidoDAO.Atualizar(x);
+                }
+            });
+
+            MensagemModel Mensagem = new MensagemModel();
+            Mensagem.Codigo = ETipoCodigo.Correto;
+            Mensagem.Resposta = "Pedidos Processados com sucesso !!!";
 
             return Mensagem;
         }

@@ -1,5 +1,12 @@
-﻿jQuery(document).ready(function () {
-    buscarVendas();
+﻿
+var statusMap = new Map();
+statusMap.set(4, '<span class="badge badge-info">Em Processamento</span>');
+statusMap.set(2, '<span class="badge badge-success">Aprovada</span>');
+statusMap.set(3, '<span class="badge badge-danger">Reprovada</span>');
+
+
+jQuery(document).ready(function () {
+    ProcessarPedidosPendentes();
 
     jQuery(document).on('click', '.ver_pedidos_retornados', function () {
         jQuery("#modal_produtos_troca").modal("show");
@@ -7,6 +14,36 @@
 
 });
 
+
+function ProcessarPedidosPendentes() {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "14", mapKey: "PedidoModel", JsonString: JSON.stringify({}) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Codigo == 1)
+                        alert("Erro ao Buscar Vendas...");
+                    else {
+                        buscarVendas()
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
 
 function buscarVendas() {
     jQuery.ajax({
@@ -48,9 +85,9 @@ function buscarVendas() {
                             htmlVendas += '<td>';
                             htmlVendas += '<a class="text-dark" href="">' + vendas.Cliente.Nome + '</a>';
                             htmlVendas += '</td>';
-                            htmlVendas += '<td class="d-none d-md-table-cell">' + FormatarHora(vendas.DataCadastro) +'</td>';
+                            htmlVendas += '<td class="d-none d-md-table-cell">' + FormatarHora(vendas.DataCadastro) + '</td>';
                             htmlVendas += '<td class="d-none d-md-table-cell">' + vendas.TotalPedido + '</td>';
-                            htmlVendas += '<td><span class="badge badge-info">Em Processamento</span></td>';
+                            htmlVendas += '<td>' + statusMap.get(vendas.StatusAtual) + '</td>';
                             htmlVendas += '<td class="text-right">';
                             htmlVendas += '<div class="dropdown show d-inline-block widget-dropdown">';
                             htmlVendas += '<a class="dropdown-toggle icon-burger-mini" href="" role = "button" id = "dropdown-recent-order1" data - toggle="dropdown" aria - haspopup="true" aria - expanded="false" data - display="static" ></a >';
@@ -67,7 +104,7 @@ function buscarVendas() {
                         htmlVendas += '</tbody>';
 
                         if (htmlVendas == '') {
-                            
+
                         }
 
                         jQuery("#tvendas").html(htmlVendas);
