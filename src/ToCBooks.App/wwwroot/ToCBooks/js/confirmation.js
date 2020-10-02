@@ -26,9 +26,11 @@ function CarregarDetalhes() {
                     if (resposta_controle.Codigo == 0) {
                         var EnderecoEntrega = resposta_controle.Dados[0].EnderecoEntrega;
 
-                        jQuery("#pedido").html("Número da Ordem: " + resposta_controle.Dados[0].Id);
+                        console.log(resposta_controle.Dados[0]);
+
+                        jQuery("#pedido").html("Número da Ordem: <strong>" + resposta_controle.Dados[0].Id + '<strong>');
                         jQuery("#data_compra").html("Data: " + FormataData(resposta_controle.Dados[0].DataCadastro));
-                        jQuery("#total_compra").html("Total: " + resposta_controle.Dados[0].TotalPedido);
+                        jQuery("#total_compra").html("Total (R$): <strong>" + resposta_controle.Dados[0].TotalPedido.toFixed(2) + '</strong>');
 
                         jQuery("#Rua").html("Rua: " + EnderecoEntrega.Nome);
                         jQuery("#Cidade").html("Cidade: " + EnderecoEntrega.Cidade.Nome);
@@ -42,7 +44,7 @@ function CarregarDetalhes() {
                         ItensPedido.forEach(Item => {
                             htmlPedidos += '<tr><td><p>' + Item.Livro.Titulo + '</p></td>';
                             htmlPedidos += '<td><h5>x ' + Item.Qtde + '</h5></td>';
-                            htmlPedidos += '<td><p>R$' + (Item.Livro.Preco * Item.Qtde).toFixed(2) + '</p></td></tr>';
+                            htmlPedidos += '<td><p>R$ ' + (Item.Livro.Preco * Item.Qtde).toFixed(2) + '</p></td></tr>';
                         });
 
                         jQuery("#tbody_itens_pedidos").html(htmlPedidos);
@@ -60,5 +62,6 @@ function CarregarDetalhes() {
 }
 
 function FormataData(Data) {
-    return Data.split('T')[0].split('-')[2] + '/' + Data.split('T')[0].split('-')[2] + '/' + Data.split('T')[0].split('-')[0];;
+    var data = Data.split('T')[0].split('-')[2] + '/' + Data.split('T')[0].split('-')[2] + '/' + Data.split('T')[0].split('-')[0];;
+    return data;
 }

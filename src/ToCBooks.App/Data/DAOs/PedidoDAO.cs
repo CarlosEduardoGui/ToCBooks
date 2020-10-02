@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Security.Cryptography.X509Certificates;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
+using ToCBooks.App.Models.Enum;
 
 namespace ToCBooks.App.Data.DAOs
 {
@@ -145,7 +145,7 @@ namespace ToCBooks.App.Data.DAOs
                     .Include(x => x.EnderecoEntrega)
                     .Include(x => x.ItensPedido)
                     .Include(x => x.CartaoCreditoPedido)
-                    .Where(x => x.StatusAtual == ETipoStatus.EmProcessamento && x.Id == Pedido.Id).ToList()
+                    .Where(x => x.Id == Pedido.Id && x.Cliente.Id == Despachante.Login.ClienteId).ToList()
                     .ForEach(x =>
                     {
                         x.Cliente.EnderecoEntrega.ForEach(y =>
@@ -183,57 +183,105 @@ namespace ToCBooks.App.Data.DAOs
                     });
 
                     mensagem.Codigo = ETipoCodigo.Correto;
-                    mensagem.Resposta = "Venda Consultada...";
+                    mensagem.Resposta = "Pedido Consultado...";
 
                     return mensagem;
                 }
 
-                db.Pedido
-                .Include(x => x.Cliente)
-                .Include(x => x.EnderecoEntrega)
-                .Include(x => x.ItensPedido)
-                .Include(x => x.CartaoCreditoPedido)
-                .Where(x => x.Cliente.Id == Despachante.Login.ClienteId)
-                .ToList()
-                .ForEach(x =>
+                if (new LoginDAO().ConsultarPorId(Despachante.Login.ClienteId).Dados.Count() != 0)
                 {
-                    x.Cliente.EnderecoEntrega.ForEach(y =>
+                    db.Pedido
+                    .Include(x => x.Cliente)
+                    .Include(x => x.EnderecoEntrega)
+                    .Include(x => x.ItensPedido)
+                    .Include(x => x.CartaoCreditoPedido)
+                    .ToList()
+                    .ForEach(x =>
                     {
-                        y.Cliente = null;
-                        y = db.EnderecoEntrega
-                        .Include(z => z.Cidade)
-                        .Include(z => z.Cidade.Estado)
-                        .Include(z => z.Cidade.Estado.Pais)
-                        .Where(z => z.Id == y.Id).First();
-                    });
+                        x.Cliente.EnderecoEntrega.ForEach(y =>
+                        {
+                            y.Cliente = null;
+                            y = db.EnderecoEntrega
+                            .Include(z => z.Cidade)
+                            .Include(z => z.Cidade.Estado)
+                            .Include(z => z.Cidade.Estado.Pais)
+                            .Where(z => z.Id == y.Id).First();
+                        });
 
-                    x.ItensPedido.ForEach(z =>
+                        x.ItensPedido.ForEach(z =>
+                        {
+                            z.Pedido = null;
+                            z = db.ItensPedidos
+                            .Include(a => a.Pedido)
+                            .Include(a => a.Livro)
+                            .Where(a => a.Id == z.Id).First();
+                        });
+
+                        x.CartaoCreditoPedido.ForEach(a =>
+                        {
+                            a.Pedido = null;
+                            a = db.CartaoCreditoPedido
+                            .Include(b => b.CartaoCredito)
+                            .Include(b => b.Pedido)
+                            .Where(b => b.Id == a.Id).First();
+                        });
+
+                        x.Cliente.CartaoCredito = null;
+                        x.CartaoCreditoPedido.ForEach(c => c.CartaoCredito.CartaoCreditoPedido = null);
+
+                        mensagem.Dados.Add(x);
+                    });
+                }
+                else
+                {
+                    db.Pedido
+                    .Include(x => x.Cliente)
+                    .Include(x => x.EnderecoEntrega)
+                    .Include(x => x.ItensPedido)
+                    .Include(x => x.CartaoCreditoPedido)
+                    .Where(x => x.Cliente.Id == Despachante.Login.ClienteId)
+                    .ToList()
+                    .ForEach(x =>
                     {
-                        z.Pedido = null;
-                        z = db.ItensPedidos
-                        .Include(a => a.Pedido)
-                        .Include(a => a.Livro)
-                        .Where(a => a.Id == z.Id).First();
+                        x.Cliente.EnderecoEntrega.ForEach(y =>
+                        {
+                            y.Cliente = null;
+                            y = db.EnderecoEntrega
+                            .Include(z => z.Cidade)
+                            .Include(z => z.Cidade.Estado)
+                            .Include(z => z.Cidade.Estado.Pais)
+                            .Where(z => z.Id == y.Id).First();
+                        });
+
+                        x.ItensPedido.ForEach(z =>
+                        {
+                            z.Pedido = null;
+                            z = db.ItensPedidos
+                            .Include(a => a.Pedido)
+                            .Include(a => a.Livro)
+                            .Where(a => a.Id == z.Id).First();
+                        });
+
+                        x.CartaoCreditoPedido.ForEach(a =>
+                        {
+                            a.Pedido = null;
+                            a = db.CartaoCreditoPedido
+                            .Include(b => b.CartaoCredito)
+                            .Include(b => b.Pedido)
+                            .Where(b => b.Id == a.Id).First();
+                        });
+
+                        x.Cliente.CartaoCredito = null;
+                        x.CartaoCreditoPedido.ForEach(c => c.CartaoCredito.CartaoCreditoPedido = null);
+
+                        mensagem.Dados.Add(x);
                     });
-
-                    x.CartaoCreditoPedido.ForEach(a =>
-                    {
-                        a.Pedido = null;
-                        a = db.CartaoCreditoPedido
-                        .Include(b => b.CartaoCredito)
-                        .Include(b => b.Pedido)
-                        .Where(b => b.Id == a.Id).First();
-                    });
-
-                    x.Cliente.CartaoCredito = null;
-                    x.CartaoCreditoPedido.ForEach(c => c.CartaoCredito.CartaoCreditoPedido = null);
-
-                    mensagem.Dados.Add(x);
-                });
+                }
             }
 
+
             mensagem.Codigo = ETipoCodigo.Correto;
-            mensagem.Resposta = "Pedido Consultada...";
+            mensagem.Resposta = "Venda Consultada...";
 
             return mensagem;
         }

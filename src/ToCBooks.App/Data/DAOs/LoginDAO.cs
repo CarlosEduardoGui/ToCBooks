@@ -6,6 +6,7 @@ using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
+using ToCBooks.App.Models.Enum;
 
 namespace ToCBooks.App.Data.DAOs
 {
@@ -73,7 +74,10 @@ namespace ToCBooks.App.Data.DAOs
                 }
 
 
-                var idCliente = db.Login.Where(x => x.Email == Login.Email && x.Senha == Login.Senha).Select(x => x.ClienteId).FirstOrDefault();
+                var idCliente =
+                    db.Login
+                    .Where(x => x.Email == Login.Email && x.Senha == Login.Senha)
+                    .Select(x => x.ClienteId).FirstOrDefault();
                 if (idCliente == default)
                 {
                     mensagem.Codigo = ETipoCodigo.Errado;
@@ -117,6 +121,24 @@ namespace ToCBooks.App.Data.DAOs
         public MensagemModel Excluir(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
+        }
+
+        public MensagemModel ConsultarPorId(Guid clienteId)
+        {
+            using (var db = new ToCBooksContext())
+            {
+                db.Cliente
+                    .Include(x => x.Login)
+                     .Where(x => x.StatusAtual == ETipoStatus.Ativo
+                          && x.Id == clienteId && x.TipoUsuario == ETipoUsuario.Admin).ToList()
+                     .ForEach(x =>
+                     {
+                         x.Login.Cliente = null;
+                         mensagem.Dados.Add(x);
+                     });
+
+                return mensagem;
+            }
         }
     }
 }

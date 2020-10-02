@@ -71,7 +71,7 @@ function buscarVendas() {
                         htmlVendas += '<th>Número da Ordem</th>';
                         htmlVendas += '<th>Cliente</th>';
                         htmlVendas += '<th class="d-none d-md-table-cell">Data da Ordem</th>';
-                        htmlVendas += '<th class="d-none d-md-table-cell">Preço</th>';
+                        htmlVendas += '<th class="d-none d-md-table-cell">Preço (R$)</th>';
                         htmlVendas += '<th>Status</th>';
                         htmlVendas += '<th></th>';
                         htmlVendas += '<th></th>';
