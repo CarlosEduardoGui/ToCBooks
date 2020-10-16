@@ -7,7 +7,6 @@ using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
-using ToCBooks.App.Models.Enum;
 
 namespace ToCBooks.App.Data.DAOs
 {
@@ -304,6 +303,59 @@ namespace ToCBooks.App.Data.DAOs
         public MensagemModel Excluir(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();
+        }
+
+        public MensagemModel ConsultarId(EntidadeDominio Objeto)
+        {
+            var Pedido = (PedidoModel)Objeto;
+
+            using (var db = new ToCBooksContext())
+            {
+                db.Pedido
+               .Include(x => x.Cliente)
+               .Include(x => x.EnderecoEntrega)
+               .Include(x => x.ItensPedido)
+               .Include(x => x.CartaoCreditoPedido)
+               .Where(x => x.Id == Pedido.Id)
+               .ToList()
+               .ForEach(x =>
+               {
+                   x.Cliente.EnderecoEntrega.ForEach(y =>
+                   {
+                       y.Cliente = null;
+                       y = db.EnderecoEntrega
+                       .Include(z => z.Cidade)
+                       .Include(z => z.Cidade.Estado)
+                       .Include(z => z.Cidade.Estado.Pais)
+                       .Where(z => z.Id == y.Id).First();
+                   });
+
+                   x.ItensPedido.ForEach(z =>
+                   {
+                       z.Pedido = null;
+                       z = db.ItensPedidos
+                       .Include(a => a.Pedido)
+                       .Include(a => a.Livro)
+                       .Where(a => a.Id == z.Id).First();
+                   });
+
+                   x.CartaoCreditoPedido.ForEach(a =>
+                   {
+                       a.Pedido = null;
+                       a = db.CartaoCreditoPedido
+                       .Include(b => b.CartaoCredito)
+                       .Include(b => b.Pedido)
+                       .Where(b => b.Id == a.Id).First();
+                   });
+
+                   x.Cliente.CartaoCredito = null;
+                   x.CartaoCreditoPedido.ForEach(c => c.CartaoCredito.CartaoCreditoPedido = null);
+
+                   mensagem.Dados.Add(x);
+               });
+
+                return mensagem;
+            }
         }
     }
 }

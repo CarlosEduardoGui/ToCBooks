@@ -1,9 +1,8 @@
-﻿
-var statusMap = new Map();
+﻿var statusMap = new Map();
 statusMap.set(2, '<span class="badge badge-success">Aprovada</span>');
 statusMap.set(3, '<span class="badge badge-danger">Reprovada</span>');
 statusMap.set(4, '<span class="badge badge-info">Em Processamento</span>');
-statusMap.set(5, '<span class="badge badge-info">Entregue</span>');
+statusMap.set(5, '<span class="badge badge-primary">Entregue</span>');
 statusMap.set(6, '<span class="badge badge-info">Em Trâsito</span>');
 statusMap.set(7, '<span class="badge badge-info">Troca Autorizada</span>');
 statusMap.set(8, '<span class="badge badge-info">Em Troca</span>');
@@ -14,6 +13,53 @@ jQuery(document).ready(function () {
 
     jQuery(document).on('click', '.ver_pedidos_retornados', function () {
         jQuery("#modal_produtos_troca").modal("show");
+    });
+
+    jQuery(document).on('click', '.Aprovada', function () {
+
+        var id = jQuery(this).attr('id');
+
+        var objeto = {
+            Id: id,
+        };
+
+        TrocarStatusAtivo(objeto);
+    });
+
+
+    jQuery(document).on('click', '.EmTransito', function () {
+
+        var id = jQuery(this).attr('id');
+
+        var objeto = {
+            Id: id,
+        };
+
+        TrocarStatusEmTransito(objeto);
+    });
+
+
+    jQuery(document).on('click', '.AceitarTroca', function () {
+
+        var id = jQuery(this).attr('id');
+
+        var objeto = {
+            Id: id,
+        };
+
+        TrocarStatusEmTroca(objeto);
+    });
+
+
+    jQuery(document).on('click', '.Trocar', function () {
+
+        var id = jQuery(this).attr('id');
+
+        var objeto = {
+            Id: id,
+        };
+
+        TrocarStatusTrocaAutorizada(objeto);
     });
 
 });
@@ -126,7 +172,7 @@ function renderizaHtmlAprovada(vendas, i) {
                 htmlVendaAprovada += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + i + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
                 htmlVendaAprovada += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + i + '" >';
                 htmlVendaAprovada += '<li class="dropdown-item">';
-                htmlVendaAprovada += '<a href="#">Enviar para Entrega</a>';
+                htmlVendaAprovada += '<a class="Aprovada" id="' + vendas.Id + '" name="'+ vendas.Id +'">Enviar para Entrega</a>';
                 htmlVendaAprovada += '</li>';
                 htmlVendaAprovada += '</ul>';
                 htmlVendaAprovada += '</div>';
@@ -168,25 +214,13 @@ function rendeziraHtmlTroca(vendas, j) {
             htmlVendaTroca += '<td class="d-none d-md-table-cell">' + vendas.TotalPedido + '</td>';
             htmlVendaTroca += '<td>' + statusMap.get(vendas.StatusAtual) + '</td>';
 
-            if (vendas.StatusAtual == 5) {
+            if (vendas.StatusAtual == 7) {
                 htmlVendaTroca += '<td class="text-right">';
                 htmlVendaTroca += '<div class="dropdown show d-inline-block widget-dropdown">';
                 htmlVendaTroca += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + j + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
                 htmlVendaTroca += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + j + '" >';
                 htmlVendaTroca += '<li class="dropdown-item">';
-                htmlVendaTroca += '<a href="#">Em Troca</a>';
-                htmlVendaTroca += '</li>';
-                htmlVendaTroca += '</ul>';
-                htmlVendaTroca += '</div>';
-                htmlVendaTroca += '</td>';
-
-            } else if (vendas.StatusAtual == 7) {
-                htmlVendaTroca += '<td class="text-right">';
-                htmlVendaTroca += '<div class="dropdown show d-inline-block widget-dropdown">';
-                htmlVendaTroca += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + j + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
-                htmlVendaTroca += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + j + '" >';
-                htmlVendaTroca += '<li class="dropdown-item">';
-                htmlVendaTroca += '<a href="#">Troca Autorizada</a>';
+                htmlVendaTroca += '<a href="#" class="Trocar" id="' + vendas.Id + '" name="' + vendas.Id +'">Trocar</a>';
                 htmlVendaTroca += '</li>';
                 htmlVendaTroca += '</ul>';
                 htmlVendaTroca += '</div>';
@@ -198,7 +232,7 @@ function rendeziraHtmlTroca(vendas, j) {
                 htmlVendaTroca += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + j + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
                 htmlVendaTroca += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + j + '" >';
                 htmlVendaTroca += '<li class="dropdown-item">';
-                htmlVendaTroca += '<a href="#">Trocado</a>';
+                htmlVendaTroca += '<a href="#" class="AceitarTroca" id="' + vendas.Id + '" name="' + vendas.Id +'">Aceitar Troca</a>';
                 htmlVendaTroca += '</li>';
                 htmlVendaTroca += '</ul>';
                 htmlVendaTroca += '</div>';
@@ -249,7 +283,7 @@ function rendeziraHtmlTransito(vendas, k) {
                 htmlVendaTransito += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + k + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
                 htmlVendaTransito += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + k + '" >';
                 htmlVendaTransito += '<li class="dropdown-item">';
-                htmlVendaTransito += '<a href="#">Confirmar Entrega</a>';
+                htmlVendaTransito += '<a href="#" class="EmTransito" id="' + vendas.Id + '" name="' + vendas.Id +'">Confirmar Entrega</a>';
                 htmlVendaTransito += '</li>';
                 htmlVendaTransito += '</ul>';
                 htmlVendaTransito += '</div>';
@@ -276,6 +310,157 @@ function rendeziraHtmlTransito(vendas, k) {
 
 }
 
+
+
+function TrocarStatusAtivo(pedido) { //Troca o Status Ativo para Em Transito
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "15", mapKey: "PedidoModel", JsonString: JSON.stringify(pedido) },
+        cache: false,
+        beforeSend: function (xhr) {
+            console.log("Trocando status de Ativo para EmTransito");
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+                    if (respostaControle.Codigo == 0) {
+                        buscarVendas();
+                    } else {
+                        alert(respostaControle.Resposta);
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+
+
+function TrocarStatusEmTransito(pedido) { //Troca o Status Em Transito para Entregue
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "16", mapKey: "PedidoModel", JsonString: JSON.stringify(pedido) },
+        cache: false,
+        beforeSend: function (xhr) {
+            console.log("Trocando status de EmTransito para Entregue");
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+                    if (respostaControle.Codigo == 0) {
+                        buscarVendas();
+                    } else {
+                        alert(respostaControle.Resposta);
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+
+
+function TrocarStatusEmTroca(pedido) { //Troca o Status Em Transito para Entregue
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "17", mapKey: "PedidoModel", JsonString: JSON.stringify(pedido) },
+        cache: false,
+        beforeSend: function (xhr) {
+            console.log("Trocando status de Entregue para EmTroca");
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+                    if (respostaControle.Codigo == 0) {
+                        buscarVendas();
+                    } else {
+                        alert(respostaControle.Resposta);
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+
+
+
+function TrocarStatusEmTroca(pedido) { //Troca o Status Em Transito para Entregue
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "18", mapKey: "PedidoModel", JsonString: JSON.stringify(pedido) },
+        cache: false,
+        beforeSend: function (xhr) {
+            console.log("Trocando status de EmTroca para TrocaAutorizada");
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+                    if (respostaControle.Codigo == 0) {
+                        buscarVendas();
+                    } else {
+                        alert(respostaControle.Resposta);
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+
+
+function TrocarStatusTrocaAutorizada(pedido) { //Troca o Status Em Transito para Entregue
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "19", mapKey: "PedidoModel", JsonString: JSON.stringify(pedido) },
+        cache: false,
+        beforeSend: function (xhr) {
+            console.log("Trocando status de TrocaAutorizada para Trocado");
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+                    if (respostaControle.Codigo == 0) {
+                        buscarVendas();
+                    } else {
+                        alert(respostaControle.Resposta);
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
 
 function FormatarHora(DataRecebida) {
 

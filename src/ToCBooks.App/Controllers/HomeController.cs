@@ -33,6 +33,11 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("12", new AtualizarCarrinhoCommand());
             mapCommand.Add("13", new ConfirmarPedidoCommand());
             mapCommand.Add("14", new ProcessarPagamentosCommand());
+            mapCommand.Add("15", new TrocaStatusAprovadoCommand());
+            mapCommand.Add("16", new TrocaStatusEmTransitoCommand());
+            mapCommand.Add("17", new TrocaStatusEntregueCommand());
+            mapCommand.Add("18", new TrocaStatusEmTrocaCommand());
+
 
             mapVH.Add("PedidoModel", new PedidoVH());
             mapVH.Add("LivrosModel", new LivroVH());

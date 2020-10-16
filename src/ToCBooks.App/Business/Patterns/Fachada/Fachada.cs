@@ -115,6 +115,45 @@ namespace ToCBooks.Data.Business.Patterns
 
             #endregion
 
+            #region Validadores de Status de Troca
+
+            var ValidadorStatusTroca = new List<IStrategy>
+            {
+                new ValidadorTrocaStatusAprovado()
+            };
+
+
+            var ValidadorStatusEmTransito = new List<IStrategy>
+            {
+                new ValidadorTrocaStatusEmTransito()
+            };
+
+
+            var ValidadorStatusEntregue = new List<IStrategy>
+            {
+                new ValidadorTrocaStatusEntregue()
+            };
+
+
+            var ValidadorStatusEmTroca = new List<IStrategy>
+            {
+                new ValidadorTrocaStatusEmTroca()
+            };
+
+
+            var ValidadorStatusTrocaAutorizada = new List<IStrategy>
+            {
+                new ValidadorTrocaStatusTrocaAutorizada()
+            };
+
+
+            var ValidadorStatusTrocado = new List<IStrategy>
+            {
+                new ValidadorTrocaStatusTrocado()
+            };
+
+            #endregion
+
             mapValidadores.Add("LivrosModel", ValidadoresLivro);
             mapValidadores.Add("Parametro", ValidadoresParametro);
             mapValidadores.Add("ClienteModel", ValidadoresCliente);
@@ -124,12 +163,43 @@ namespace ToCBooks.Data.Business.Patterns
             mapValidadores.Add("EnderecoEntregaModel", ValidadoresEnderecoEntrega);
             mapValidadores.Add("ItemEstoque", ValidadoresEstoque);
             mapValidadores.Add("CupomModel", ValidadoresCupom);
+            mapValidadores.Add(ETipoStatus.Aprovada.ToString(), ValidadorStatusTroca);
+            mapValidadores.Add(ETipoStatus.EmTransito.ToString(), ValidadorStatusEmTransito);
+            mapValidadores.Add(ETipoStatus.Entregue.ToString(), ValidadorStatusEntregue);
+            mapValidadores.Add(ETipoStatus.EmTroca.ToString(), ValidadorStatusEmTroca);
+            mapValidadores.Add(ETipoStatus.TrocaAutorizada.ToString(), ValidadorStatusTrocaAutorizada);
+            mapValidadores.Add(ETipoStatus.Trocado.ToString(), ValidadorStatusTrocado);
+
             mapExpressoes.Add("LivrosModel", new BuscaLivros());
         }
 
         public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
-            throw new NotImplementedException();
+            var Despachante = (Despachante)Objeto;
+            Objeto = Despachante.Entidade;
+
+            MensagemModel Mensagem = new MensagemModel();
+            try
+            {
+                foreach (var Validador in mapValidadores[Objeto.GetType().Name])
+                    Validador.Validar(Despachante.Entidade);
+
+                mapDao[Objeto.GetType().Name].Atualizar(Objeto);
+
+                Mensagem.Codigo = 0;
+                Mensagem.Resposta = "Troca de Status Concluida...";
+                Mensagem.Dados = null;
+
+                return Mensagem;
+            }
+            catch (Exception Error)
+            {
+                Mensagem.Codigo = ETipoCodigo.Errado;
+                Mensagem.Resposta = Error.Message;
+                Mensagem.Dados = null;
+            }
+
+            return Mensagem;
         }
 
         public MensagemModel Cadastrar(EntidadeDominio Objeto)
@@ -541,11 +611,167 @@ namespace ToCBooks.Data.Business.Patterns
                 }
             });
 
-            MensagemModel Mensagem = new MensagemModel();
-            Mensagem.Codigo = ETipoCodigo.Correto;
-            Mensagem.Resposta = "Pedidos Processados com sucesso !!!";
+            MensagemModel Mensagem = new MensagemModel
+            {
+                Codigo = ETipoCodigo.Correto,
+                Resposta = "Pedidos Processados com sucesso !!!"
+            };
 
             return Mensagem;
+        }
+
+
+        public MensagemModel TrocaStatusProdutoAtivo(EntidadeDominio Objeto) //Troca para Em Trânsito
+        {
+            try
+            {
+                var Despachante = (Despachante)Objeto;
+                Objeto = Despachante.Entidade;
+
+                var resultado = new PedidoDAO().ConsultarId(Objeto);
+                Objeto.StatusAtual = resultado.Dados[0].StatusAtual;
+
+                foreach (var Validador in mapValidadores[resultado.Dados[0].StatusAtual.ToString()])
+                    Validador.Validar(Objeto);
+
+
+                resultado.Dados[0].StatusAtual = ETipoStatus.EmTransito;
+
+                return mapDao[Objeto.GetType().Name].Atualizar(resultado.Dados[0]);
+            }
+            catch (Exception e)
+            {
+                MensagemModel Mensagem = new MensagemModel
+                {
+                    Codigo = ETipoCodigo.Errado,
+                    Resposta = e.Message
+                };
+
+                return Mensagem;
+            }
+        }
+
+
+        public MensagemModel TrocaStatusProdutoEmTransito(EntidadeDominio Objeto) //Troca para Entregue
+        {
+            try
+            {
+                var Despachante = (Despachante)Objeto;
+                Objeto = Despachante.Entidade;
+
+                var resultado = new PedidoDAO().ConsultarId(Objeto);
+                Objeto.StatusAtual = resultado.Dados[0].StatusAtual;
+
+                foreach (var Validador in mapValidadores[resultado.Dados[0].StatusAtual.ToString()])
+                    Validador.Validar(Objeto);
+
+
+                resultado.Dados[0].StatusAtual = ETipoStatus.Entregue;
+
+                return mapDao[Objeto.GetType().Name].Atualizar(resultado.Dados[0]);
+            }
+            catch (Exception e)
+            {
+                MensagemModel Mensagem = new MensagemModel
+                {
+                    Codigo = ETipoCodigo.Errado,
+                    Resposta = e.Message
+                };
+
+                return Mensagem;
+            }
+        }
+
+        public MensagemModel TrocaStatusProdutoEntregue(EntidadeDominio Objeto) //Troca para Em EmTroca
+        {
+            try
+            {
+                var Despachante = (Despachante)Objeto;
+                Objeto = Despachante.Entidade;
+
+                var resultado = new PedidoDAO().ConsultarId(Objeto);
+                Objeto.StatusAtual = resultado.Dados[0].StatusAtual;
+
+                foreach (var Validador in mapValidadores[resultado.Dados[0].StatusAtual.ToString()])
+                    Validador.Validar(Objeto);
+
+
+                resultado.Dados[0].StatusAtual = ETipoStatus.EmTroca;
+
+                return mapDao[Objeto.GetType().Name].Atualizar(resultado.Dados[0]);
+            }
+            catch (Exception e)
+            {
+                MensagemModel Mensagem = new MensagemModel
+                {
+                    Codigo = ETipoCodigo.Errado,
+                    Resposta = e.Message
+                };
+
+                return Mensagem;
+            }
+        }
+
+        public MensagemModel TrocaStatusProdutoEmTroca(EntidadeDominio Objeto) //Troca para Em TrocaAutorizada
+        {
+            try
+            {
+                var Despachante = (Despachante)Objeto;
+                Objeto = Despachante.Entidade;
+
+                var resultado = new PedidoDAO().ConsultarId(Objeto);
+                Objeto.StatusAtual = resultado.Dados[0].StatusAtual;
+
+                foreach (var Validador in mapValidadores[resultado.Dados[0].StatusAtual.ToString()])
+                    Validador.Validar(Objeto);
+
+
+                resultado.Dados[0].StatusAtual = ETipoStatus.TrocaAutorizada;
+
+                return mapDao[Objeto.GetType().Name].Atualizar(resultado.Dados[0]);
+            }
+            catch (Exception e)
+            {
+                MensagemModel Mensagem = new MensagemModel
+                {
+                    Codigo = ETipoCodigo.Errado,
+                    Resposta = e.Message
+                };
+
+                return Mensagem;
+            }
+        }
+
+
+
+        public MensagemModel TrocaStatusTrocaAutorizada(EntidadeDominio Objeto) //Troca para Em Trânsito
+        {
+            try
+            {
+                var Despachante = (Despachante)Objeto;
+                Objeto = Despachante.Entidade;
+
+                var resultado = new PedidoDAO().ConsultarId(Objeto);
+                Objeto.StatusAtual = resultado.Dados[0].StatusAtual;
+
+                foreach (var Validador in mapValidadores[resultado.Dados[0].StatusAtual.ToString()])
+                    Validador.Validar(Objeto);
+
+
+                resultado.Dados[0].StatusAtual = ETipoStatus.Trocado;
+
+                return mapDao[Objeto.GetType().Name].Atualizar(resultado.Dados[0]);
+            }
+            catch (Exception e)
+            {
+                MensagemModel Mensagem = new MensagemModel
+                {
+                    Codigo = ETipoCodigo.Errado,
+                    Resposta = e.Message
+                };
+
+                return Mensagem;
+            }
         }
     }
 }

@@ -28,6 +28,15 @@ jQuery(document).ready(function () {
 
     });
 
+    jQuery(document).on('click', "#id_devolucao", function (e) {
+        e.preventDefault();
+
+        var id = jQuery(this).attr("value");
+
+        SolicitarTrocaProduto(id);
+
+    });
+
 });
 
 function buscarPedidos() {
@@ -103,6 +112,7 @@ function buscaPedido(id) {
             if (e.readyState == 4 && e.status == 200) {
 
                 try {
+
                     var respostaControle = JSON.parse(e.responseText);
                     console.log(respostaControle.Dados);
                     if (respostaControle.Codigo == 1)
@@ -110,6 +120,7 @@ function buscaPedido(id) {
                     var htmlListaProduto = '';
                     var htmlTotal = '';
                     var htmlStatus = '';
+                    var htmlDevolucao = '';
 
                     console.log(respostaControle.Dados);
 
@@ -123,18 +134,53 @@ function buscaPedido(id) {
                             htmlTotal += '<li><a href="#">Total <span>R$ ' + pedido.TotalPedido + '</span></a></li>';
 
                             htmlStatus += '<li><a>Status: ' + statusMap.get(pedido.StatusAtual) + '</a></li>';
+                            if (pedido.StatusAtual == 5) {
+                                htmlDevolucao += '<button type="button" value="' + pedido.Id + '"  id="id_devolucao" class="btn btn-block" data-dismiss="modal">Devolver</button>';
+                            }
 
                             jQuery("#lista_produto").html(htmlListaProduto);
                             jQuery("#total").html(htmlTotal);
                             jQuery("#status").html(htmlStatus);
-                            jQuery("#id_pedido").val(pedido.Id);
+                            jQuery("#devolucao").html(htmlDevolucao);
+
                         });
 
                     } else {
-                        htmlPedido += '<tr><td>Nenhum Registro Encontrado</td></tr>';
+                        htmlPedido += 'Nenhum Registro Encontrado';
                     }
 
                     jQuery("#modalDetalhes").modal('show');
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+
+
+function SolicitarTrocaProduto(id) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 17, mapKey: "PedidoModel", JsonString: JSON.stringify({ id }) },
+        cache: false,
+        beforeSend: function (xhr) {
+            console.log("Solicitando a troca do produto");
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Codigo == 0) {
+                        alert("Pedido de Troca feito com sucesso!");
+                        buscarPedidos();
+                    }
 
                 } catch (error) {
                     console.log(error);
