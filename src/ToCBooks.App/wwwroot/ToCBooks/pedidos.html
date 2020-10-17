@@ -215,34 +215,32 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalDetalhes" tabindex="-1" role="dialog" aria-labelledby="modalDetalhes" aria-hidden="true">
             <!--class="modal fade"-->
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Detalhe</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <h5 class="modal-title" id="examplemodallabel">Detalhes</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="">
-                            <div class="order_box">
-                                <h2>Sua Compra</h2>
-                                <ul class="list">
-                                    <li><a href="#">Produto <span>Total</span></a></li>
-                                    <li><a href="#">Harry Potter<span class="middle">x 02</span> <span class="last">R$720.00</span></a></li>
-                                    <li><a href="#">Mecânica Quântica<span class="middle">x 02</span> <span class="last">R$720.00</span></a></li>
-                                    <li><a href="#">Cálculo básico<span class="middle">x 02</span> <span class="last">R$720.00</span></a></li>
-                                </ul>
-                                <ul class="list list_2">
-                                    <li><a href="#">Subtotal <span>R$2160.00</span></a></li>
-                                    <li><a href="#">Total <span>R$2160.00</span></a></li>
-                                </ul>
-                                <ul class="list">
-                                    <li><a>Status: Devolvido</a></li>
-                                </ul>
-                            </div>
+                        <div class="order_box">
+                            <h2>Sua Compra em Detalhes</h2>
+                            <ul id="lista_produto" class="list">
+                                <!--<li><a href="#">produto <span>total</span></a></li>
+                                <li><a href="#">harry potter<span class="middle">x 02</span> <span class="last">r$720.00</span></a></li>
+                                <li><a href="#">mecânica quântica<span class="middle">x 02</span> <span class="last">r$720.00</span></a></li>
+                                <li><a href="#">cálculo básico<span class="middle">x 02</span> <span class="last">r$720.00</span></a></li>-->
+                            </ul>
+                            <ul  id="total" class="list list_2">
+                                <!--<li><a href="#">subtotal <span>r$2160.00</span></a></li>
+                                <li><a href="#">total <span>r$2160.00</span></a></li>-->
+                            </ul>
+                            <ul id="status" class="list">
+                                <!--<li><a>status: devolvido</a></li>-->
+                            </ul>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -250,8 +248,8 @@
                             <div class="col-lg-4">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                             </div>
-                            <div class="col-lg-8">
-                                <button type="button" class="btn btn-block" data-dismiss="modal">Devolução</button>
+                            <div class="col-lg-8" id="devolucao">
+                                <!--<button type="button"  id="id_pedido" class="btn btn-block" data-dismiss="modal">Devolver</button>-->
                             </div>
                         </div>
                     </div>

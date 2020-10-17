@@ -49,7 +49,7 @@ namespace ToCBooks.App.Data.DAOs
 
             MensagemModel Mensagem = new MensagemModel
             {
-                Codigo = ETipoCodigo.Errado,
+                Codigo = ETipoCodigo.Correto,
                 Dados = null
             };
 

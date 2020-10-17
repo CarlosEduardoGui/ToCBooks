@@ -193,88 +193,85 @@
                 </nav>
             </header>
 
-
             <div class="content-wrapper">
                 <div class="content">
+
                     <div class="row">
                         <div class="col-12">
                             <!-- Recent Order Table -->
                             <div class="card card-table-border-none" id="recent-orders">
                                 <div class="card-header justify-content-between">
-                                    <h2>Vendas</h2>
+                                    <h2>Gestão de Vendas</h2>
                                     <div class="date-range-report ">
                                         <span></span>
                                     </div>
                                 </div>
                                 <div class="card-body pt-0 pb-5">
-                                    <div id="tvendas">
-                                        <table class="table card-table table-responsive table-responsive-large"
-                                               style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>Order ID</th>
-                                                    <th>User Name</th>
-                                                    <th class="d-none d-md-table-cell">Order Date</th>
-                                                    <th class="d-none d-md-table-cell">Order Cost</th>
-                                                    <th>Status</th>
-                                                    <th></th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>24541</td>
-                                                    <td>
-                                                        <a class="text-dark" href=""> Coach Swagger</a>
-                                                    </td>
-                                                    <td class="d-none d-md-table-cell">Oct 20, 2018</td>
-                                                    <td class="d-none d-md-table-cell">$230</td>
-                                                    <td>
-                                                        <span class="badge badge-info">Em Processamento</span>
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <div class="dropdown show d-inline-block widget-dropdown">
-                                                            <a class="dropdown-toggle icon-burger-mini" href=""
-                                                               role="button" id="dropdown-recent-order1"
-                                                               data-toggle="dropdown" aria-haspopup="true"
-                                                               aria-expanded="false" data-display="static"></a>
-                                                            <ul class="dropdown-menu dropdown-menu-right"
-                                                                aria-labelledby="dropdown-recent-order1">
-                                                                <li class="dropdown-item">
-                                                                    <a href="#">Enviar para Entrega</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>24541</td>
-                                                    <td>
-                                                        <a class="text-dark" href=""> Toddler Shoes, Gucci Watch</a>
-                                                    </td>
-                                                    <td class="d-none d-md-table-cell">Nov 15, 2018</td>
-                                                    <td class="d-none d-md-table-cell">$550</td>
-                                                    <td>
-                                                        <span class="badge badge-primary">Em Transito</span>
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <div class="dropdown show d-inline-block widget-dropdown">
-                                                            <a class="dropdown-toggle icon-burger-mini" href="#"
-                                                               role="button" id="dropdown-recent-order2"
-                                                               data-toggle="dropdown" aria-haspopup="true"
-                                                               aria-expanded="false" data-display="static"></a>
-                                                            <ul class="dropdown-menu dropdown-menu-right"
-                                                                aria-labelledby="dropdown-recent-order2">
-                                                                <li class="dropdown-item">
-                                                                    <a href="#">Confirmar Entrega</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                    <table class="table card-table table-responsive table-responsive-large"
+                                           style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Número da Ordem</th>
+                                                <th>Cliente</th>
+                                                <th class="d-none d-md-table-cell">Data da Ordem</th>
+                                                <th class="d-none d-md-table-cell">Preço (R$)</th>
+                                                <th>Status</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody_vendas_confirmadas">
+                                            <!--<tr>
+                                <td>24541</td>
+                                <td>
+                                    <a class="text-dark" href=""> Coach Swagger</a>
+                                </td>
+                                <td class="d-none d-md-table-cell">Oct 20, 2018</td>
+                                <td class="d-none d-md-table-cell">$230</td>
+                                <td>
+                                    <span class="badge badge-info">Em Processamento</span>
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown show d-inline-block widget-dropdown">
+                                        <a class="dropdown-toggle icon-burger-mini" href=""
+                                           role="button" id="dropdown-recent-order1"
+                                           data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false" data-display="static"></a>
+                                        <ul class="dropdown-menu dropdown-menu-right"
+                                            aria-labelledby="dropdown-recent-order1">
+                                            <li class="dropdown-item">
+                                                <a href="#">Enviar para Entrega</a>
+                                            </li>
+                                        </ul>
                                     </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>24541</td>
+                                <td>
+                                    <a class="text-dark" href=""> Toddler Shoes, Gucci Watch</a>
+                                </td>
+                                <td class="d-none d-md-table-cell">Nov 15, 2018</td>
+                                <td class="d-none d-md-table-cell">$550</td>
+                                <td>
+                                    <span class="badge badge-primary">Em Transito</span>
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown show d-inline-block widget-dropdown">
+                                        <a class="dropdown-toggle icon-burger-mini" href="#"
+                                           role="button" id="dropdown-recent-order2"
+                                           data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false" data-display="static"></a>
+                                        <ul class="dropdown-menu dropdown-menu-right"
+                                            aria-labelledby="dropdown-recent-order2">
+                                            <li class="dropdown-item">
+                                                <a href="#">Confirmar Entrega</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>-->
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -286,7 +283,7 @@
                             <!-- Recent Order Table -->
                             <div class="card card-table-border-none" id="recent-orders">
                                 <div class="card-header justify-content-between">
-                                    <h2>Pedidos de Troca</h2>
+                                    <h2>Gestão de Entrega</h2>
                                     <div class="date-range-report ">
                                         <span></span>
                                     </div>
@@ -296,69 +293,153 @@
                                            style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Order ID</th>
-                                                <th>User Name</th>
-                                                <th class="d-none d-md-table-cell">Order Date</th>
-                                                <th class="d-none d-md-table-cell">Order Cost</th>
+                                                <th>Número da Ordem</th>
+                                                <th>Cliente</th>
+                                                <th class="d-none d-md-table-cell">Data da Ordem</th>
+                                                <th class="d-none d-md-table-cell">Preço (R$)</th>
                                                 <th>Status</th>
-                                                <th></th>
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="tbody_vendas_transito">
+                                            <!--<tr>
+                                <td>24541</td>
+                                <td>
+                                    <a class="text-dark" href=""> Hat Black Suits</a>
+                                </td>
+                                <td class="d-none d-md-table-cell">Nov 18, 2018</td>
+                                <td class="d-none d-md-table-cell">$325</td>
+                                <td>
+                                    <span class="badge badge-warning">Troca Solicitada</span>
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown show d-inline-block widget-dropdown">
+                                        <a class="dropdown-toggle icon-burger-mini" href="#"
+                                           role="button" id="dropdown-recent-order3"
+                                           data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false" data-display="static"></a>
+                                        <ul class="dropdown-menu dropdown-menu-right"
+                                            aria-labelledby="dropdown-recent-order3">
+                                            <li class="dropdown-item">
+                                                <a href="#">Autorizar Troca</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>24541</td>
+                                <td>
+                                    <a class="text-dark" href=""> Hat Black Suits</a>
+                                </td>
+                                <td class="d-none d-md-table-cell">Nov 18, 2018</td>
+                                <td class="d-none d-md-table-cell">$325</td>
+                                <td>
+                                    <span class="badge badge-warning">Em Troca</span>
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown show d-inline-block widget-dropdown">
+                                        <a class="dropdown-toggle icon-burger-mini" href="#"
+                                           role="button" id="dropdown-recent-order3"
+                                           data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false" data-display="static"></a>
+                                        <ul class="dropdown-menu dropdown-menu-right"
+                                            aria-labelledby="dropdown-recent-order3">
+                                            <li class="dropdown-item">
+                                                <a class="ver_pedidos_retornados" href="#">
+                                                    Confirmar
+                                                    Recebimento
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>-->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Recent Order Table -->
+                            <div class="card card-table-border-none" id="recent-orders">
+                                <div class="card-header justify-content-between">
+                                    <h2>Gestão de Troca</h2>
+                                    <div class="date-range-report ">
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="card-body pt-0 pb-5">
+                                    <table class="table card-table table-responsive table-responsive-large"
+                                           style="width:100%">
+                                        <thead>
                                             <tr>
-                                                <td>24541</td>
-                                                <td>
-                                                    <a class="text-dark" href=""> Hat Black Suits</a>
-                                                </td>
-                                                <td class="d-none d-md-table-cell">Nov 18, 2018</td>
-                                                <td class="d-none d-md-table-cell">$325</td>
-                                                <td>
-                                                    <span class="badge badge-warning">Troca Solicitada</span>
-                                                </td>
-                                                <td class="text-right">
-                                                    <div class="dropdown show d-inline-block widget-dropdown">
-                                                        <a class="dropdown-toggle icon-burger-mini" href="#"
-                                                           role="button" id="dropdown-recent-order3"
-                                                           data-toggle="dropdown" aria-haspopup="true"
-                                                           aria-expanded="false" data-display="static"></a>
-                                                        <ul class="dropdown-menu dropdown-menu-right"
-                                                            aria-labelledby="dropdown-recent-order3">
-                                                            <li class="dropdown-item">
-                                                                <a href="#">Autorizar Troca</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
+                                                <th>Número da Ordem</th>
+                                                <th>Cliente</th>
+                                                <th class="d-none d-md-table-cell">Data da Ordem</th>
+                                                <th class="d-none d-md-table-cell">Preço (R$)</th>
+                                                <th>Status</th>
+                                                <th></th>
                                             </tr>
-                                            <tr>
-                                                <td>24541</td>
-                                                <td>
-                                                    <a class="text-dark" href=""> Hat Black Suits</a>
-                                                </td>
-                                                <td class="d-none d-md-table-cell">Nov 18, 2018</td>
-                                                <td class="d-none d-md-table-cell">$325</td>
-                                                <td>
-                                                    <span class="badge badge-warning">Em Troca</span>
-                                                </td>
-                                                <td class="text-right">
-                                                    <div class="dropdown show d-inline-block widget-dropdown">
-                                                        <a class="dropdown-toggle icon-burger-mini" href="#"
-                                                           role="button" id="dropdown-recent-order3"
-                                                           data-toggle="dropdown" aria-haspopup="true"
-                                                           aria-expanded="false" data-display="static"></a>
-                                                        <ul class="dropdown-menu dropdown-menu-right"
-                                                            aria-labelledby="dropdown-recent-order3">
-                                                            <li class="dropdown-item">
-                                                                <a class="ver_pedidos_retornados" href="#">
-                                                                    Confirmar
-                                                                    Recebimento
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody_vendas_trocas">
+                                            <!--<tr>
+                                <td>24541</td>
+                                <td>
+                                    <a class="text-dark" href=""> Hat Black Suits</a>
+                                </td>
+                                <td class="d-none d-md-table-cell">Nov 18, 2018</td>
+                                <td class="d-none d-md-table-cell">$325</td>
+                                <td>
+                                    <span class="badge badge-warning">Troca Solicitada</span>
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown show d-inline-block widget-dropdown">
+                                        <a class="dropdown-toggle icon-burger-mini" href="#"
+                                           role="button" id="dropdown-recent-order3"
+                                           data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false" data-display="static"></a>
+                                        <ul class="dropdown-menu dropdown-menu-right"
+                                            aria-labelledby="dropdown-recent-order3">
+                                            <li class="dropdown-item">
+                                                <a href="#">Autorizar Troca</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>24541</td>
+                                <td>
+                                    <a class="text-dark" href=""> Hat Black Suits</a>
+                                </td>
+                                <td class="d-none d-md-table-cell">Nov 18, 2018</td>
+                                <td class="d-none d-md-table-cell">$325</td>
+                                <td>
+                                    <span class="badge badge-warning">Em Troca</span>
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown show d-inline-block widget-dropdown">
+                                        <a class="dropdown-toggle icon-burger-mini" href="#"
+                                           role="button" id="dropdown-recent-order3"
+                                           data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false" data-display="static"></a>
+                                        <ul class="dropdown-menu dropdown-menu-right"
+                                            aria-labelledby="dropdown-recent-order3">
+                                            <li class="dropdown-item">
+                                                <a class="ver_pedidos_retornados" href="#">
+                                                    Confirmar
+                                                    Recebimento
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>-->
                                         </tbody>
                                     </table>
                                 </div>
