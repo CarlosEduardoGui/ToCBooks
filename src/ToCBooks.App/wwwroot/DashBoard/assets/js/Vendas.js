@@ -163,7 +163,7 @@ function renderizaHtmlAprovada(vendas, i) {
             htmlVendaAprovada += '<a class="text-dark" href="">' + vendas.Cliente.Nome + '</a>';
             htmlVendaAprovada += '</td>';
             htmlVendaAprovada += '<td class="d-none d-md-table-cell">' + FormatarHora(vendas.DataCadastro) + '</td>';
-            htmlVendaAprovada += '<td class="d-none d-md-table-cell">' + vendas.TotalPedido + '</td>';
+            htmlVendaAprovada += '<td class="d-none d-md-table-cell">' + parseFloat(vendas.TotalPedido).toFixed(2) + '</td>';
             htmlVendaAprovada += '<td>' + statusMap.get(vendas.StatusAtual) + '</td>';
 
             if (vendas.StatusAtual == 2) {

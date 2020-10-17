@@ -74,7 +74,7 @@ function buscarPedidos() {
                             htmlPedido += '<label>Status: ' + statusMap.get(pedido.StatusAtual) + ' </label>';
                             htmlPedido += '</div>';
                             htmlPedido += '<div class="col">';
-                            htmlPedido += '<label class="dinheiro">R$ ' + pedido.TotalPedido + ' </label>';
+                            htmlPedido += '<label class="dinheiro">R$ ' + parseFloat(pedido.TotalPedido).toFixed(2) + ' </label>';
                             htmlPedido += '</div>';
                             htmlPedido += '<div class="col">';
                             htmlPedido += '<button value="' + pedido.Id + '" class="btn_detalhes genric-btn info circle arrow" >Detalhes<span class="lnr lnr-arrow-right"></span></button>'; //data-toggle="modal" data-target="#exampleModal"
