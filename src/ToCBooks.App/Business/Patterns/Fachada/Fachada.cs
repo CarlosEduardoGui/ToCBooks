@@ -725,6 +725,7 @@ namespace ToCBooks.Data.Business.Patterns
                 foreach (var Validador in mapValidadores[resultado.Dados[0].StatusAtual.ToString()])
                     Validador.Validar(Objeto);
 
+                GerarCupomTroca((PedidoModel) resultado.Dados[0]);
 
                 resultado.Dados[0].StatusAtual = ETipoStatus.TrocaAutorizada;
 
@@ -742,6 +743,45 @@ namespace ToCBooks.Data.Business.Patterns
             }
         }
 
+        public MensagemModel ReintregarItensAoEstoque(Despachante Objeto)
+        {
+            var Pedido = (PedidoModel) new PedidoDAO().ConsultarId(Objeto.Entidade).Dados[0];
+
+            var EstoqueDAO = new EstoqueDAO();
+            foreach(var Item in Pedido.ItensPedido)
+            {
+                var ItemEstoque = new ItemEstoque();
+                ItemEstoque.Livro = Item.Livro;
+
+                Objeto.Entidade = ItemEstoque;
+                ItemEstoque = (ItemEstoque) EstoqueDAO.Consultar(Objeto).Dados[0];
+                ItemEstoque.Livro = Item.Livro;
+
+                ItemEstoque.Qtde += Item.Qtde;
+
+                EstoqueDAO.Atualizar(ItemEstoque);
+            }
+
+            GerarCupomTroca(Pedido);
+
+            Pedido.StatusAtual = ETipoStatus.TrocaAutorizada;
+
+            return mapDao[Pedido.GetType().Name].Atualizar(Pedido);
+        }
+
+        private MensagemModel GerarCupomTroca(PedidoModel Pedido)
+        {
+            ClienteModel Cliente = Pedido.Cliente;
+            Cliente.Credito += (float) Pedido.TotalPedido;
+
+            new ClienteDAO().Atualizar(Cliente);
+
+            MensagemModel Mensagem = new MensagemModel();
+            Mensagem.Codigo = ETipoCodigo.Correto;
+            Mensagem.Resposta = "Credito Adicionado com sucesso !!!";
+
+            return Mensagem;
+        }
 
 
         public MensagemModel TrocaStatusTrocaAutorizada(EntidadeDominio Objeto) //Troca para Em Trânsito

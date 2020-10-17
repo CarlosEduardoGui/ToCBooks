@@ -1,4 +1,8 @@
-﻿var statusMap = new Map();
+﻿
+var PedidoTemp = '';
+
+
+var statusMap = new Map();
 statusMap.set(2, '<span class="badge badge-success">Aprovada</span>');
 statusMap.set(3, '<span class="badge badge-danger">Reprovada</span>');
 statusMap.set(4, '<span class="badge badge-info">Em Processamento</span>');
@@ -43,11 +47,13 @@ jQuery(document).ready(function () {
 
         var id = jQuery(this).attr('id');
 
-        var objeto = {
+        var Pedido = {
             Id: id,
         };
 
-        TrocarStatusEmTroca(objeto);
+        PedidoTemp = Pedido;
+
+        ConsultarPedido(Pedido);
     });
 
 
@@ -59,11 +65,105 @@ jQuery(document).ready(function () {
             Id: id,
         };
 
-        TrocarStatusTrocaAutorizada(objeto);
+        TrocarStatusTrocaAutorizada(id);
     });
 
+    jQuery("#btn_salvar_precificacao").on('click', function (e) {
+        e.preventDefault();
+
+        jQuery("#modal_produtos_troca").modal('hide');
+        TrocarStatusEmTroca(PedidoTemp);
+    });
+
+    jQuery("#btn_retornar_estoque").on('click', function (e) {
+        e.preventDefault();
+
+        jQuery("#modal_produtos_troca").modal('hide');
+        RetornarItensAoEstoque(PedidoTemp);
+    });
 });
 
+
+function RetornarItensAoEstoque(pedido) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: "19", mapKey: "PedidoModel", JsonString: JSON.stringify(pedido) },
+        cache: false,
+        beforeSend: function (xhr) {
+            console.log("Trocando status de Entregue para EmTroca");
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+                    if (respostaControle.Codigo == 0) {
+                        buscarVendas();
+                    } else {
+                        alert(respostaControle.Resposta);
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+
+
+function ConsultarPedido(Pedido) {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 1, mapKey: "PedidoModel", JsonString: JSON.stringify(Pedido) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+
+                try {
+
+                    var respostaControle = JSON.parse(e.responseText);
+
+                    if (respostaControle.Codigo == 1)
+                        alert("Erro ao buscar pedido do cliente...");
+
+                    if (respostaControle.Dados.length > 0) {
+
+                        var htmlTabela = ''
+                        respostaControle.Dados.forEach(Pedido => {
+                            Pedido.ItensPedido.forEach(Item => {
+                                htmlTabela += '<tr><td>' + Pedido.Id + '</td>';
+                                htmlTabela += '<td><a class="text-dark" href = "">' + Item.Livro.Titulo + '</a></td>';
+                                htmlTabela += '<td><a class="text-dark" href = ""> ' + Item.Qtde + ' Uds</a></td>';
+                                htmlTabela += '<td class="d-none d-md-table-cell">' + FormatarHora(Pedido.DataCadastro) + '</td>';
+                                htmlTabela += '<td class="d-none d-md-table-cell">R$' + (Item.Qtde * Item.Livro.Preco).toFixed(2) + '</td></tr>';
+                            });
+                        });
+
+                        jQuery("#tbody_tabela_reiintregacao").html(htmlTabela);
+
+                        jQuery("#modal_produtos_troca").modal('show');
+
+                    } else {
+                        htmlPedido += 'Nenhum Registro Encontrado';
+                    }
+
+                    jQuery("#modalDetalhes").modal('show');
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
 
 function ProcessarPedidosPendentes() {
     jQuery.ajax({
@@ -172,7 +272,7 @@ function renderizaHtmlAprovada(vendas, i) {
                 htmlVendaAprovada += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + i + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
                 htmlVendaAprovada += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + i + '" >';
                 htmlVendaAprovada += '<li class="dropdown-item">';
-                htmlVendaAprovada += '<a class="Aprovada" id="' + vendas.Id + '" name="'+ vendas.Id +'">Enviar para Entrega</a>';
+                htmlVendaAprovada += '<a class="Aprovada" id="' + vendas.Id + '" name="' + vendas.Id + '">Enviar para Entrega</a>';
                 htmlVendaAprovada += '</li>';
                 htmlVendaAprovada += '</ul>';
                 htmlVendaAprovada += '</div>';
@@ -211,7 +311,7 @@ function rendeziraHtmlTroca(vendas, j) {
             htmlVendaTroca += '<a class="text-dark" href="">' + vendas.Cliente.Nome + '</a>';
             htmlVendaTroca += '</td>';
             htmlVendaTroca += '<td class="d-none d-md-table-cell">' + FormatarHora(vendas.DataCadastro) + '</td>';
-            htmlVendaTroca += '<td class="d-none d-md-table-cell">' + vendas.TotalPedido + '</td>';
+            htmlVendaTroca += '<td class="d-none d-md-table-cell">' + (vendas.TotalPedido).toFixed(2) + '</td>';
             htmlVendaTroca += '<td>' + statusMap.get(vendas.StatusAtual) + '</td>';
 
             if (vendas.StatusAtual == 7) {
@@ -220,7 +320,7 @@ function rendeziraHtmlTroca(vendas, j) {
                 htmlVendaTroca += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + j + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
                 htmlVendaTroca += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + j + '" >';
                 htmlVendaTroca += '<li class="dropdown-item">';
-                htmlVendaTroca += '<a href="#" class="Trocar" id="' + vendas.Id + '" name="' + vendas.Id +'">Trocar</a>';
+                htmlVendaTroca += '<a style="cursor: pointer;" class="Trocar" id="' + vendas.Id + '" name="' + vendas.Id + '">Trocar</a>';
                 htmlVendaTroca += '</li>';
                 htmlVendaTroca += '</ul>';
                 htmlVendaTroca += '</div>';
@@ -232,7 +332,7 @@ function rendeziraHtmlTroca(vendas, j) {
                 htmlVendaTroca += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + j + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
                 htmlVendaTroca += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + j + '" >';
                 htmlVendaTroca += '<li class="dropdown-item">';
-                htmlVendaTroca += '<a href="#" class="AceitarTroca" id="' + vendas.Id + '" name="' + vendas.Id +'">Aceitar Troca</a>';
+                htmlVendaTroca += '<a style="cursor: pointer;" class="AceitarTroca" id="' + vendas.Id + '" name="' + vendas.Id + '">Aceitar Troca</a>';
                 htmlVendaTroca += '</li>';
                 htmlVendaTroca += '</ul>';
                 htmlVendaTroca += '</div>';
@@ -283,7 +383,7 @@ function rendeziraHtmlTransito(vendas, k) {
                 htmlVendaTransito += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + k + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
                 htmlVendaTransito += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + k + '" >';
                 htmlVendaTransito += '<li class="dropdown-item">';
-                htmlVendaTransito += '<a href="#" class="EmTransito" id="' + vendas.Id + '" name="' + vendas.Id +'">Confirmar Entrega</a>';
+                htmlVendaTransito += '<a href="#" class="EmTransito" id="' + vendas.Id + '" name="' + vendas.Id + '">Confirmar Entrega</a>';
                 htmlVendaTransito += '</li>';
                 htmlVendaTransito += '</ul>';
                 htmlVendaTransito += '</div>';

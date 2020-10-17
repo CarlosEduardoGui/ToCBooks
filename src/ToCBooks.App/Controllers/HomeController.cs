@@ -37,6 +37,7 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("16", new TrocaStatusEmTransitoCommand());
             mapCommand.Add("17", new TrocaStatusEntregueCommand());
             mapCommand.Add("18", new TrocaStatusEmTrocaCommand());
+            mapCommand.Add("19", new ReintegrarEstoqueCommand());
 
 
             mapVH.Add("PedidoModel", new PedidoVH());

@@ -25,6 +25,7 @@ namespace ToCBooks.App.Business.Models
         public ETipoUsuario TipoUsuario { get; set; }
 
         public ETipoGenero TipoGenero { get; set; }
+        public float Credito { get; set; }
 
         public bool Ativo { get; set; }
     }

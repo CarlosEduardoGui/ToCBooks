@@ -96,7 +96,7 @@
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
-                    <h1>Bem-Vindo Carlos</h1>
+                    <h1>Bem-Vindo <span id="nome_cliente"></span></h1>
                     <nav class="d-flex align-items-center">
                         <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
                         <a href="category.html">Compras</a>
@@ -110,6 +110,11 @@
     <section class="order_details section_gap">
         <div class="container">
             <hr />
+            <div class="row">
+                <div class="col-12" style="text-align: right;">
+                    <h3 id="qtde_credito"></h3>
+                </div>
+            </div>
             <div class="order_details_table">
                 <h2>Perfil</h2>
                 <div class="row">
@@ -311,6 +316,7 @@
     <!--gmaps Js-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="js/gmaps.min.js"></script>
+    <script src="js/My/perfil.js"></script>
     <script src="js/main.js"></script>
 </body>
 

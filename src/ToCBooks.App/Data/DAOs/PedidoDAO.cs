@@ -144,7 +144,7 @@ namespace ToCBooks.App.Data.DAOs
                     .Include(x => x.EnderecoEntrega)
                     .Include(x => x.ItensPedido)
                     .Include(x => x.CartaoCreditoPedido)
-                    .Where(x => x.Id == Pedido.Id && x.Cliente.Id == Despachante.Login.ClienteId).ToList()
+                    .Where(x => x.Id == Pedido.Id).ToList()
                     .ForEach(x =>
                     {
                         x.Cliente.EnderecoEntrega.ForEach(y =>
