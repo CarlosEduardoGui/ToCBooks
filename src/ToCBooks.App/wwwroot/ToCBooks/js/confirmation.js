@@ -28,10 +28,11 @@ function CarregarDetalhes() {
 
                         jQuery("#pedido").html("Número da Ordem: " + resposta_controle.Dados[0].Id);
                         jQuery("#data_compra").html("Data: " + FormataData(resposta_controle.Dados[0].DataCadastro));
-                        jQuery("#total_compra").html("Total: " + resposta_controle.Dados[0].TotalPedido);
+                        jQuery("#total_compra").html("Total: " + resposta_controle.Dados[0].TotalPedido.toFixed(2));
 
                         jQuery("#Rua").html("Rua: " + EnderecoEntrega.Nome);
                         jQuery("#Cidade").html("Cidade: " + EnderecoEntrega.Cidade.Nome);
+                        jQuery("#Bairro").html("Bairro: " + EnderecoEntrega.Bairro);
                         jQuery("#Estado").html("Estado: " + EnderecoEntrega.Cidade.Estado.Nome);
                         jQuery("#Pais").html("País: " + EnderecoEntrega.Cidade.Estado.Pais.Nome);
                         jQuery("#CEP").html("CEP: " + EnderecoEntrega.CEP);
@@ -44,6 +45,11 @@ function CarregarDetalhes() {
                             htmlPedidos += '<td><h5>x ' + Item.Qtde + '</h5></td>';
                             htmlPedidos += '<td><p>R$' + (Item.Livro.Preco * Item.Qtde).toFixed(2) + '</p></td></tr>';
                         });
+
+                        if (resposta_controle.Dados[0].CupomDesconto != null)
+                            htmlPedidos += '<tr><td></td><td>Desconto</td><td>' + resposta_controle.Dados[0].CupomDesconto.Desconto.toFixed(2) + '%</td>'
+
+                        htmlPedidos += '<tr><td></td><td>Total</td><td>R$' + resposta_controle.Dados[0].TotalPedido.toFixed(2) + '</td>'
 
                         jQuery("#tbody_itens_pedidos").html(htmlPedidos);
 

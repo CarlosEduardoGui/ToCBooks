@@ -68,9 +68,9 @@ function BuscarUltimosProdutosCadastrados() {
                                 htmlUltimosLancamentos += '<div class="product-details">';
                                 htmlUltimosLancamentos += '<h6>' + ultimoLivro.Titulo + '</h6>';
                                 htmlUltimosLancamentos += '<div class="price">';
-                                htmlUltimosLancamentos += '<h6>R$ ' + ultimoLivro.Preco + '</h6>';
+                                htmlUltimosLancamentos += '<h6>R$ ' + ultimoLivro.Preco.toFixed(2) + '</h6>';
                                 var precoDesconto = ultimoLivro.Preco + (ultimoLivro.Preco * 0.10);
-                                htmlUltimosLancamentos += '<h6 class="l-through">R$ ' + precoDesconto + '</h6>';
+                                htmlUltimosLancamentos += '<h6 class="l-through">R$ ' + precoDesconto.toFixed(2) + '</h6>';
                                 htmlUltimosLancamentos += '</div>';
                                 htmlUltimosLancamentos += '<div class="prd-bottom">';
                                 htmlUltimosLancamentos += '<a href="#" class="social-info">';
