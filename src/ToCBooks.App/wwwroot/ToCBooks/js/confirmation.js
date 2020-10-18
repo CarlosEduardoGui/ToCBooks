@@ -30,6 +30,7 @@ function CarregarDetalhes() {
 
                         jQuery("#pedido").html("Número da Ordem: <strong>" + resposta_controle.Dados[0].Id + '<strong>');
                         jQuery("#data_compra").html("Data: " + FormataData(resposta_controle.Dados[0].DataCadastro));
+                        jQuery("#desconto_compra").html("Desconto Por Crédito (R$): <strong> -" + resposta_controle.Dados[0].DescontoPorCredito.toFixed(2) + '</strong>');
                         jQuery("#total_compra").html("Total (R$): <strong>" + resposta_controle.Dados[0].TotalPedido.toFixed(2) + '</strong>');
 
                         jQuery("#Rua").html("Rua: " + EnderecoEntrega.Nome);
@@ -46,6 +47,7 @@ function CarregarDetalhes() {
                             htmlPedidos += '<td><h5>x ' + Item.Qtde + '</h5></td>';
                             htmlPedidos += '<td><p>R$ ' + (Item.Livro.Preco * Item.Qtde).toFixed(2) + '</p></td></tr>';
                         });
+
 
                         jQuery("#tbody_itens_pedidos").html(htmlPedidos);
 

@@ -229,7 +229,12 @@ function BuscarCarrinho() {
                         });
 
                         jQuery("#lista_produtos").html(htmlLista);
-                        jQuery("#span_total_compra").html("R$" + TotalCompra.toFixed(2));
+                        jQuery("#span_total_desconto_credito").html("- R$" + Carrinho.DescontoCredito.toFixed(2));
+
+                        TotalCompra = (TotalCompra - Carrinho.DescontoCredito).toFixed(2);
+                        if (TotalCompra < 0)
+                            TotalCompra = 0.00;
+                        jQuery("#span_total_compra").html("R$" + TotalCompra);
                         
 
                     } else {

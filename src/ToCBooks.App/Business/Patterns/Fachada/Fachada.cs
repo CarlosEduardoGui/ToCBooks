@@ -380,6 +380,7 @@ namespace ToCBooks.Data.Business.Patterns
                 if (!FlagItemExistente)
                     Carrinho.Itens.Add((ItemEstoque)Despachante.Entidade);
 
+
                 SessionLink.Session.SetString("Carrinho", JsonConvert.SerializeObject(Carrinho));
 
                 Mensagem.Codigo = ETipoCodigo.Correto;
@@ -465,10 +466,20 @@ namespace ToCBooks.Data.Business.Patterns
                     }
                 }
 
-                SessionLink.Session.SetString("Carrinho", JsonConvert.SerializeObject(CarrinhoAtual));
-
                 if (SessionLink.Session.GetString("ClienteID") == null)
                     throw new Exception("Necessário fazer Login para Continuar...");
+
+                var ClienteAtual = new ClienteModel
+                {
+                    Id = Guid.Parse(SessionLink.Session.GetString("ClienteID"))
+                };
+
+                Objeto.Entidade = ClienteAtual;
+                ClienteAtual = (ClienteModel)new ClienteDAO().Consultar(Objeto).Dados[0];
+
+                CarrinhoAtual.DescontoCredito = ClienteAtual.Credito;
+
+                SessionLink.Session.SetString("Carrinho", JsonConvert.SerializeObject(CarrinhoAtual));
 
             }
             catch (Exception Error)
@@ -513,7 +524,7 @@ namespace ToCBooks.Data.Business.Patterns
                     Id = Guid.Parse(SessionLink.Session.GetString("ClienteID"))
                 };
                 Despachante.Entidade = ClienteTemp;
-                Pedido.Cliente = (ClienteModel)new ClienteDAO().Consultar(Despachante).Dados.FirstOrDefault();
+                Pedido.Cliente = (ClienteModel) new ClienteDAO().Consultar(Despachante).Dados.FirstOrDefault();
                 Pedido.EnderecoEntrega = Pedido.Cliente.EnderecoEntrega.Find(x => x.Id == Pedido.EnderecoEntrega.Id);
 
                 for (var i = 0; i < Pedido.ItensPedido.Count; i++)
@@ -546,6 +557,24 @@ namespace ToCBooks.Data.Business.Patterns
 
                     Pedido.CartaoCreditoPedido.Add(RelCartaoPedido);
                 });
+
+                ClienteTemp.Credito = CarrinhoAtual.DescontoCredito - (float) Pedido.TotalPedido;
+                if (ClienteTemp.Credito < 0)
+                    ClienteTemp.Credito = 0;
+
+                new ClienteDAO().Atualizar(ClienteTemp);
+
+                if (CarrinhoAtual.DescontoCredito > 0)
+                {
+                    Pedido.DescontoPorCredito = CarrinhoAtual.DescontoCredito;
+
+                    var TotalCompra = (Pedido.TotalPedido - Pedido.DescontoPorCredito);
+                    if (TotalCompra < 0)
+                        Pedido.TotalPedido = 0;
+                    else
+                        Pedido.TotalPedido = TotalCompra;    
+                }
+
 
                 CarrinhoAtual.Itens.Clear();
                 SessionLink.Session.SetString("Carrinho", JsonConvert.SerializeObject(CarrinhoAtual));

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ToCBooks.App.Business.Models
 {
@@ -10,5 +11,7 @@ namespace ToCBooks.App.Business.Models
         }
 
         public List<ItemEstoque> Itens { get; set; }
+        [NotMapped]
+        public float DescontoCredito { get; set; }
     }
 }

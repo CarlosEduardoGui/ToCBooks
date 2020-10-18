@@ -19,6 +19,7 @@ namespace ToCBooks.App.Business.Models
         public ClienteModel Cliente { get; set; }
 
         public List<ItemPedido> ItensPedido { get; set; }
+        public float DescontoPorCredito { get; set; }
 
         public CupomModel CupomDesconto { get; set; }
 
