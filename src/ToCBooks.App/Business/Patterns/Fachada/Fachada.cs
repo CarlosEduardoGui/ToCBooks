@@ -558,11 +558,11 @@ namespace ToCBooks.Data.Business.Patterns
                     Pedido.CartaoCreditoPedido.Add(RelCartaoPedido);
                 });
 
-                ClienteTemp.Credito = CarrinhoAtual.DescontoCredito - (float) Pedido.TotalPedido;
-                if (ClienteTemp.Credito < 0)
-                    ClienteTemp.Credito = 0;
+                Pedido.Cliente.Credito = CarrinhoAtual.DescontoCredito - (float) Pedido.TotalPedido;
+                if (Pedido.Cliente.Credito < 0)
+                    Pedido.Cliente.Credito = 0;
 
-                new ClienteDAO().Atualizar(ClienteTemp);
+                new ClienteDAO().Atualizar(Pedido.Cliente);
 
                 if (CarrinhoAtual.DescontoCredito > 0)
                 {
