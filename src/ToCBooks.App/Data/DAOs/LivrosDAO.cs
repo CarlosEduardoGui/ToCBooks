@@ -39,7 +39,26 @@ namespace ToCBooks.App.Data.DAOs
                     .Include(x => x.Precificacao)
                     .Where(x => x.Id == Objeto.Id).First();
 
-                LivroAtual.Preco = Livro.Preco;
+                if (Livro.Preco > 0)
+                    LivroAtual.Preco = Livro.Preco;
+
+                if (Livro.Titulo != "" && Livro.Titulo != null)
+                {
+                    LivroAtual.Titulo = Livro.Titulo;
+                    LivroAtual.Paginas = Livro.Paginas;
+                    LivroAtual.Altura = Livro.Altura;
+                    LivroAtual.Peso = Livro.Peso;
+                    LivroAtual.Profundidade = Livro.Profundidade;
+                    LivroAtual.Largura = Livro.Largura;
+                    LivroAtual.ISBN = Livro.ISBN;
+                    LivroAtual.Foto = Livro.Foto;
+                    LivroAtual.Descricao = Livro.Descricao;
+                    LivroAtual.Ano = Livro.Ano;
+                    LivroAtual.Edicao = Livro.Edicao;
+                    LivroAtual.Editora = Livro.Editora;
+                    LivroAtual.CodigoDeBarras = Livro.CodigoDeBarras;
+                    LivroAtual.Autor = Livro.Autor;
+                }
                 db.Livro.Update(LivroAtual);
                 db.SaveChanges();
             }
@@ -86,7 +105,36 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel ConsultaCustomizada(EntidadeDominio Objeto)
         {
-            throw new NotImplementedException();
+            var Livro = (LivrosModel)Objeto;
+            Expression<Func<LivrosModel, bool>> Busca = x => x.Titulo.Contains(Livro.Titulo)
+            && x.StatusAtual == Livro.StatusAtual && x.Autor.Contains(Livro.Autor) && x.Editora.Contains(Livro.Editora);
+            //&& x.CodigoDeBarras.Contains(Livro.CodigoDeBarras) && x.Ano == Livro.Ano && x.Edicao <= Livro.Edicao
+            //&& x.Paginas <= Livro.Paginas && x.Altura <= Livro.Altura && x.Largura <= Livro.Largura && x.Peso <=Livro.Peso
+            //&& x.Profundidade <= Livro.Profundidade && x.ISBN.Contains(Livro.ISBN);
+
+            return Buscar(Busca);
+        }
+
+        public MensagemModel Buscar(Expression<Func<LivrosModel, bool>> predicate)
+        {
+            MensagemModel Mensagem = new MensagemModel();
+            using (var db = new ToCBooksContext())
+            {
+
+                db.Livro
+                    .Include(x => x.Precificacao)
+                    .Include(x => x.Categorias)
+                    .Where(predicate.Compile()).ToList().ForEach(x =>
+                    {
+                        Mensagem.Dados.Add(x);
+                    });
+
+            }
+
+            Mensagem.Codigo = ETipoCodigo.Correto;
+            Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
+
+            return Mensagem;
         }
 
         public MensagemModel Consultar(EntidadeDominio Objeto)

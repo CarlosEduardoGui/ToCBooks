@@ -43,13 +43,25 @@ jQuery(document).ready(function () {
             Categorias.push(categoria);
         });
 
-        var livro = {
-            Titulo: formData.get('titulo'), Preco: formData.get('preco'), Descricao: formData.get('descricao'), Foto: formData.get("foto"),
-            Autor: formData.get("autor"), Ano: formData.get('ano'), Editora: formData.get('editora'), Edicao: formData.get("edicao"),
-            CodigoDeBarras: formData.get('barras'), ISBN: formData.get('isbn'), Paginas: formData.get("paginas"), Altura: formData.get("altura"),
-            Largura: formData.get("largura"), Profundidade: formData.get('profundidade'), Peso: formData.get("peso"),
-            Categorias: Categorias, Precificacao: { Id: jQuery("#cad_grupo_precificacao").val() },Preco: '0.00'
-        };
+        var IdLivro = jQuery("#cad_id_livro").val();
+        var Livro = {};
+        if (IdLivro == '')
+            livro = {
+                Titulo: formData.get('titulo'), Preco: formData.get('preco'), Descricao: formData.get('descricao'), Foto: formData.get("foto"),
+                Autor: formData.get("autor"), Ano: formData.get('ano'), Editora: formData.get('editora'), Edicao: formData.get("edicao"),
+                CodigoDeBarras: formData.get('barras'), ISBN: formData.get('isbn'), Paginas: formData.get("paginas"), Altura: formData.get("altura"),
+                Largura: formData.get("largura"), Profundidade: formData.get('profundidade'), Peso: formData.get("peso"),
+                Categorias: Categorias, Precificacao: { Id: jQuery("#cad_grupo_precificacao").val() }, Preco: '0.00'
+            };
+        else
+            livro = {
+                Id: IdLivro,
+                Titulo: formData.get('titulo'), Preco: formData.get('preco'), Descricao: formData.get('descricao'), Foto: formData.get("foto"),
+                Autor: formData.get("autor"), Ano: formData.get('ano'), Editora: formData.get('editora'), Edicao: formData.get("edicao"),
+                CodigoDeBarras: formData.get('barras'), ISBN: formData.get('isbn'), Paginas: formData.get("paginas"), Altura: formData.get("altura"),
+                Largura: formData.get("largura"), Profundidade: formData.get('profundidade'), Peso: formData.get("peso"),
+                Categorias: Categorias, Precificacao: { Id: jQuery("#cad_grupo_precificacao").val() }, Preco: '0.00'
+            };
 
         var objetoEnvio = { oper: '2', mapKey: 'LivrosModel', jsonString: JSON.stringify(livro) }
 
@@ -129,19 +141,14 @@ jQuery(document).ready(function () {
         e.preventDefault();
         var formData = new FormData(this);
 
-        var Categorias = new Array();
-        jQuery("#busca_categoria").val().forEach(elemento => {
-            var categoria = { NomeCategoria: '' };
-            categoria.NomeCategoria = elemento;
-            Categorias.push(categoria);
-        });
+
 
         var livro = {
             Titulo: formData.get('titulo'), Preco: formData.get('preco'), Descricao: formData.get('descricao'),
             Autor: formData.get("autor"), Ano: formData.get('ano'), Editora: formData.get('editora'), Edicao: formData.get("edicao"),
             CodigoDeBarras: formData.get('barras'), ISBN: formData.get('isbn'), Paginas: formData.get("paginas"), Altura: formData.get("altura"),
             Largura: formData.get("largura"), Profundidade: formData.get('profundidade'), Peso: formData.get("peso"),
-            Categorias: Categorias, Preco: '0.00', StatusAtual: formData.get("status")
+            Preco: '0.00', StatusAtual: formData.get("status")
         };
 
         var objetoEnvio = { oper: '5', mapKey: 'LivrosModel', jsonString: JSON.stringify(livro) }
@@ -355,11 +362,14 @@ function consultarLivro(objetoEnvio) {
                         jQuery("#cad_categoria_livro").val(livro.Categorias);
                         jQuery("#cad_categoria_livro").selectpicker('refresh');
                         jQuery("#cad_descricao").val(livro.Descricao);
+                        jQuery("#preview_imagem_livro").attr("src", livro.Foto);
 
                         jQuery("#grupo_def_preco").val(livro.Precificacao.Id);
-                        jQuery("#cad_grupo_precificacao").val(livro.Precificacao.id);
                         jQuery("#grupo_def_preco").selectpicker('refresh');
-                        jQuery("#cad_grupo_precificacao").selectpicker('refresh');
+
+                        jQuery("#cad_grupo_precificacao").selectpicker("val", livro.Precificacao.Id);
+                        //jQuery("#cad_categoria_livro").selectpicker('val', IdsCategorias);
+                        
                     }
                 } catch (error) {
                     console.log(error);

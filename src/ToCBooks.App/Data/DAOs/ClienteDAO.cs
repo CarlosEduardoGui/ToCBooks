@@ -171,9 +171,8 @@ namespace ToCBooks.App.Data.DAOs
         public MensagemModel ConsultaCustomizada(EntidadeDominio Objeto)
         {
             var Cliente = (ClienteModel)Objeto;
-            Expression<Func<ClienteModel, bool>> Busca = x => x.Nome == Cliente.Nome
-            && x.CPF == Cliente.CPF && x.Telefone.Numero == Cliente.Telefone.Numero
-            && x.Login.Email == Cliente.Login.Email;
+            Expression<Func<ClienteModel, bool>> Busca = x => x.Nome.Contains(Cliente.Nome)
+            && x.CPF.Contains(Cliente.CPF) && x.Login.Email.Contains(Cliente.Login.Email);
 
             return Buscar(Busca);
         }

@@ -14,10 +14,9 @@ jQuery(document).ready(function () {
     jQuery("#btn_consultar_clientes").on("click", function () {
 
         var Login = { Email: jQuery("#cons_email").val() };
-        var Telefone = { Numero: jQuery("#cons_telefone").val() };
 
         var ObjetoConsulta = {
-            Nome: jQuery("#cons_nome").val(), CPF: jQuery("#cons_cpf").val(), Login: Login, Telefone: Telefone
+            Nome: jQuery("#cons_nome").val(), CPF: jQuery("#cons_cpf").val(), Login: Login
         }
 
         consultarCliente(ObjetoConsulta);
