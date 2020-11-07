@@ -74,6 +74,11 @@ namespace ToCBooks.App.Data.DAOs
             }
         }
 
+        public MensagemModel ConsultarPorId(Guid Id)
+        {
+            throw new NotImplementedException();
+        }
+
         public MensagemModel Desativar(EntidadeDominio Objeto)
         {
             using (var db = new ToCBooksContext())

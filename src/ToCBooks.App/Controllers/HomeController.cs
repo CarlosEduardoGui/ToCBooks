@@ -38,6 +38,8 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("17", new TrocaStatusEntregueCommand());
             mapCommand.Add("18", new TrocaStatusEmTrocaCommand());
             mapCommand.Add("19", new ReintegrarEstoqueCommand());
+            mapCommand.Add("20", new AtualizarSenhaCommand());
+            mapCommand.Add("21", new ConsultarSenhaLoginCommand());
 
 
             mapVH.Add("PedidoModel", new PedidoVH());
@@ -57,17 +59,6 @@ namespace ToCBooks.App.Controllers
         private Dictionary<string, ICommand> mapCommand = new Dictionary<string, ICommand>();
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        [Route("Teste")]
-        public ViewResult Teste()
-        {
-            return View("testes_les");
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
@@ -110,13 +101,6 @@ namespace ToCBooks.App.Controllers
 
 
             return JsonConvert.SerializeObject(lMensagem, Formatting.Indented);
-        }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

@@ -89,6 +89,11 @@ namespace ToCBooks.App.Data.DAOs
             return Mensagem;
         }
 
+        public MensagemModel ConsultarPorId(Guid Id)
+        {
+            throw new NotImplementedException();
+        }
+
         public MensagemModel ConsultarQuantidade(EntidadeDominio Objeto)
         {
             MensagemModel Mensagem = new MensagemModel();

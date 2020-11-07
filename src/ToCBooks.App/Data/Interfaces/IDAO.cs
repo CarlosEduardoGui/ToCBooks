@@ -23,5 +23,7 @@ namespace ToCBooks.App.Data.Interfaces
         MensagemModel Buscar(Expression<Func<EntidadeDominio, bool>> predicate);
 
         MensagemModel ConsultaCustomizada(EntidadeDominio Objeto);
+
+        MensagemModel ConsultarPorId(Guid Id);
     }
 }

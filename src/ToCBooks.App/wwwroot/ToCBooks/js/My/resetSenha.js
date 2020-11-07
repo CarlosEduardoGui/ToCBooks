@@ -16,7 +16,7 @@
 
         if (validarSenha(jQuery("#senha1").val(), jQuery("#senha2").val())) {
             var Object = {
-                email: jQuery('#email_banco').val(),
+                email: jQuery('#email').val(),
                 senha: jQuery('#senha1').val(),
                 clienteId: jQuery('#id_cliente').val(),
                 tipoUsuario: jQuery('#eTipoUsuario').val()
@@ -35,8 +35,8 @@
 function AtualizarSenha(objeto) {
     jQuery.ajax({
         type: "POST",
-        url: 'https://localhost:44354/Login',
-        data: { oper: 2, mapKey: 'LoginModel', JsonString: JSON.stringify(objeto) },
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 20, mapKey: 'LoginModel', JsonString: JSON.stringify(objeto) },
         cache: false,
         beforeSend: function (xhr) {
 
@@ -53,7 +53,7 @@ function AtualizarSenha(objeto) {
                         alert("Senha alterada");
                         window.location = "perfil.html";
                     } else {
-                        alert("Usuário não Cadastrado");
+                        alert(resposta_controle.Resposta);
                     }
 
                 } catch (error) {
@@ -79,7 +79,7 @@ function trazerDados() {
     jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
-        data: { oper: "1", mapKey: "LoginModel", JsonString: JSON.stringify({}) },
+        data: { oper: 21, mapKey: "LoginModel", JsonString: JSON.stringify({}) },
         cache: false,
         beforeSend: function (xhr) {
 
@@ -89,16 +89,18 @@ function trazerDados() {
 
                 try {
                     var respostaControle = JSON.parse(e.responseText);
+                    console.log(respostaControle);
 
                     if (respostaControle.Codigo == 1)
-                        alert("Erro ao Buscar Endereços...");
+                        alert("Erro ao buscar Login");
                     else {
                         if (respostaControle.Dados.length > 0) {
                             respostaControle.Dados.forEach(login => {
-                                jQuery("#id_cliente").val(login.ClienteId);
-                                jQuery("#id_login").val(login.Id);
-                                jQuery("#email_banco").val(login.Email);
+                                jQuery("#id_cliente").val(login.Login.ClienteId);
+                                jQuery("#id_login").val(login.Login.Id);
+                                jQuery("#email").val(login.Login.Email);
                                 jQuery("#eTipoUsuario").val(login.TipoUsuario);
+                                jQuery("#dataCadastro").val(login.Login.DataCadastro);
                             });
                         }
                     }

@@ -357,5 +357,10 @@ namespace ToCBooks.App.Data.DAOs
                 return mensagem;
             }
         }
+
+        public MensagemModel ConsultarPorId(Guid Id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

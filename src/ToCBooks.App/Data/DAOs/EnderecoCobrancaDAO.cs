@@ -90,6 +90,11 @@ namespace ToCBooks.App.Data.DAOs
             return Mensagem;
         }
 
+        public MensagemModel ConsultarPorId(Guid Id)
+        {
+            throw new NotImplementedException();
+        }
+
         public MensagemModel Desativar(EntidadeDominio Objeto)
         {
             throw new NotImplementedException();

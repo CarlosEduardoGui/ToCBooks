@@ -26,6 +26,10 @@ namespace ToCBooks.App.Data.DAOs
             {
                 var Login = (LoginModel)Objeto;
 
+                var idLogin = db.Login.Where(x => x.Email == Login.Email).Select(x => x.Id).FirstOrDefault();
+
+                Login.Id = idLogin;
+
                 db.Login.Update(Login);
                 result = db.SaveChanges();
 
@@ -130,7 +134,7 @@ namespace ToCBooks.App.Data.DAOs
                 db.Cliente
                     .Include(x => x.Login)
                      .Where(x => x.StatusAtual == ETipoStatus.Ativo
-                          && x.Id == clienteId && x.TipoUsuario == ETipoUsuario.Admin).ToList()
+                          && x.Login.ClienteId == clienteId).ToList()
                      .ForEach(x =>
                      {
                          x.Login.Cliente = null;
