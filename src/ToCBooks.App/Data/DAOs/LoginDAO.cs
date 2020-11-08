@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
+using ToCBooks.App.Business.Validadores;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
 using ToCBooks.App.Models.Enum;
@@ -26,9 +27,8 @@ namespace ToCBooks.App.Data.DAOs
             {
                 var Login = (LoginModel)Objeto;
 
-                var idLogin = db.Login.Where(x => x.Email == Login.Email).Select(x => x.Id).FirstOrDefault();
-
-                Login.Id = idLogin;
+                Login.Id = db.Login.Where(x => x.Email == Login.Email).Select(x => x.Id).FirstOrDefault();
+                Login.Senha = new Criptografia().Encrypt(Login.Senha);
 
                 db.Login.Update(Login);
                 result = db.SaveChanges();
@@ -77,6 +77,8 @@ namespace ToCBooks.App.Data.DAOs
                     Login = (LoginModel)Entidade.Entidade;
                 }
 
+
+                Login.Senha = new Criptografia().Encrypt(Login.Senha);
 
                 var idCliente =
                     db.Login

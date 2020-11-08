@@ -29,8 +29,7 @@ namespace ToCBooks.App.Business.Validadores
             if (Cliente.Login.Email.Equals("") || Cliente.Login.Email == null)
                 throw new Exception("Email inconsistente...");
 
-            var clienteDAO = new ClienteDAO();
-            if (clienteDAO.ClienteExiste(Cliente))
+            if (new ClienteDAO().ClienteExiste(Cliente))
                 throw new Exception("Cliente já está cadastrado no sistema...");
 
             if (Cliente.Nome.Equals("") || Cliente.Nome == null)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
+using ToCBooks.App.Business.Validadores;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
 
@@ -53,6 +54,8 @@ namespace ToCBooks.App.Data.DAOs
             using (var db = new ToCBooksContext())
             {
                 var Cliente = (ClienteModel)Objeto;
+
+                Cliente.Login.Senha = new Criptografia().Encrypt(Cliente.Login.Senha);
 
                 db.Cliente.Add(Cliente);
                 result = db.SaveChanges();
