@@ -109,9 +109,9 @@
     <!-- End Banner Area -->
     <div class="container">
         <div class="row">
-            <div class="col-xl-3 col-lg-4 col-md-5">
-                <div class="sidebar-categories">
-                    <div class="head">Categoria - Tópico</div>
+            <!--<div class="col-xl-3 col-lg-4 col-md-5">
+                <div class="sidebar-categories">-->
+                    <!--<div class="head">Categoria - Tópico</div>
                     <ul class="main-categories">
                         <li class="main-nav-list">
                             <a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable">
@@ -138,13 +138,13 @@
                                 <li class="main-nav-list child"><a href="#">Auto Ajuda<span class="number">(11)</span></a></li>
                             </ul>
                         </li>
-                    </ul>
-                </div>
-                <div class="sidebar-filter mt-50">
+                    </ul>-->
+                <!--</div>-->
+                <!--<div class="sidebar-filter mt-50">
                     <div class="top-filter-head">Filtro por Produto</div>
-                    <div class="common-filter">
-                        <div class="head">Autor</div>
-                        <form action="#">
+                    <div class="common-filter">-->
+                        <!--<div class="head">Autor</div>-->
+                        <!--<form action="#">
                             <ul>
                                 <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Stephen King<span>(29)</span></label></li>
                                 <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">George R.R. Martin<span>(29)</span></label></li>
@@ -152,8 +152,8 @@
                                 <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">J. K. Rowling<span>(19)</span></label></li>
                                 <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Moyses<span>(19)</span></label></li>
                             </ul>
-                        </form>
-                    </div>
+                        </form>-->
+                    <!--</div>
                     <div class="common-filter">
                         <div class="head">Preço</div>
                         <div class="price-range-area">
@@ -168,16 +168,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>-->
+            <!--</div>-->
             <div class="col-xl-9 col-lg-8 col-md-7">
                 <!-- Start Filter Bar -->
                 <div class="filter-bar d-flex flex-wrap align-items-center">
                     <div class="sorting">
-                        <select>
+                        <select id="ordenacao">
                             <option value="0">Ordenar</option>
                             <option value="1">Maior para Menor</option>
-                            <option value="1">Alfabética</option>
+                            <option value="2">Alfabética</option>
                         </select>
                     </div>
                     <div class="sorting mr-auto">
@@ -200,9 +200,9 @@
                 <!-- End Filter Bar -->
                 <!-- Start Best Seller -->
                 <section class="lattest-product-area pb-40 category-list">
-                    <div class="row">
+                    <div class="row" id="listagemProduto">
                         <!-- single product -->
-                        <div class="col-lg-4 col-md-6">
+                        <!--<div class="col-lg-4 col-md-6">
                             <div class="single-product">
                                 <img class="img-fluid" src="img/it.jpg" alt="">
                                 <div class="product-details">
@@ -230,9 +230,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <!-- single product -->
-                        <div class="col-lg-4 col-md-6">
+                        <!--<div class="col-lg-4 col-md-6">
                             <div class="single-product">
                                 <img class="img-fluid" src="img/it.jpg" alt="">
                                 <div class="product-details">
@@ -260,9 +260,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <!-- single product -->
-                        <div class="col-lg-4 col-md-6">
+                        <!--<div class="col-lg-4 col-md-6">
                             <div class="single-product">
                                 <img class="img-fluid" src="img/it.jpg" alt="">
                                 <div class="product-details">
@@ -290,9 +290,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <!-- single product -->
-                        <div class="col-lg-4 col-md-6">
+                        <!--<div class="col-lg-4 col-md-6">
                             <div class="single-product">
                                 <img class="img-fluid" src="img/it.jpg" alt="">
                                 <div class="product-details">
@@ -320,9 +320,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <!-- single product -->
-                        <div class="col-lg-4 col-md-6">
+                        <!--<div class="col-lg-4 col-md-6">
                             <div class="single-product">
                                 <img class="img-fluid" src="img/it.jpg" alt="">
                                 <div class="product-details">
@@ -350,9 +350,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <!-- single product -->
-                        <div class="col-lg-4 col-md-6">
+                        <!--<div class="col-lg-4 col-md-6">
                             <div class="single-product">
                                 <img class="img-fluid" src="img/it.jpg" alt="">
                                 <div class="product-details">
@@ -380,7 +380,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </section>
                 <!-- End Best Seller -->
@@ -406,6 +406,9 @@
                 <!-- End Filter Bar -->
             </div>
         </div>
+        <br />
+        <br />
+        <br />
     </div>
     <!-- start footer Area -->
     <footer class="footer-area section_gap">
@@ -435,21 +438,6 @@
                                 <div class="info"></div>
                             </form>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3  col-md-6 col-sm-6">
-                    <div class="single-footer-widget mail-chimp">
-                        <h6 class="mb-20">Propagandas</h6>
-                        <ul class="instafeed d-flex flex-wrap">
-                            <li><img src="img/i1.jpg" alt=""></li>
-                            <li><img src="img/i2.jpg" alt=""></li>
-                            <li><img src="img/i3.jpg" alt=""></li>
-                            <li><img src="img/i4.jpg" alt=""></li>
-                            <li><img src="img/i5.jpg" alt=""></li>
-                            <li><img src="img/i6.jpg" alt=""></li>
-                            <li><img src="img/i7.jpg" alt=""></li>
-                            <li><img src="img/i8.jpg" alt=""></li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
@@ -492,6 +480,7 @@
     <!--gmaps Js-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="js/gmaps.min.js"></script>
+    <script src="js/My/category.js"></script>
     <script src="js/main.js"></script>
 </body>
 

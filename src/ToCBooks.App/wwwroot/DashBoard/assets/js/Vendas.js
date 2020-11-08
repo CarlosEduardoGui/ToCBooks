@@ -272,7 +272,7 @@ function renderizaHtmlAprovada(vendas, i) {
                 htmlVendaAprovada += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + i + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
                 htmlVendaAprovada += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + i + '" >';
                 htmlVendaAprovada += '<li class="dropdown-item">';
-                htmlVendaAprovada += '<a class="Aprovada" id="' + vendas.Id + '" name="' + vendas.Id + '">Enviar para Entrega</a>';
+                htmlVendaAprovada += '<a class="Aprovada" id="' + vendas.Id + '" name="enviarParaEntrega">Enviar para Entrega</a>';
                 htmlVendaAprovada += '</li>';
                 htmlVendaAprovada += '</ul>';
                 htmlVendaAprovada += '</div>';
@@ -314,25 +314,26 @@ function rendeziraHtmlTroca(vendas, j) {
             htmlVendaTroca += '<td class="d-none d-md-table-cell">' + (vendas.TotalPedido).toFixed(2) + '</td>';
             htmlVendaTroca += '<td>' + statusMap.get(vendas.StatusAtual) + '</td>';
 
-            if (vendas.StatusAtual == 7) {
-                htmlVendaTroca += '<td class="text-right">';
-                htmlVendaTroca += '<div class="dropdown show d-inline-block widget-dropdown">';
-                htmlVendaTroca += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + j + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
-                htmlVendaTroca += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + j + '" >';
-                htmlVendaTroca += '<li class="dropdown-item">';
-                htmlVendaTroca += '<a style="cursor: pointer;" class="Trocar" id="' + vendas.Id + '" name="' + vendas.Id + '">Trocar</a>';
-                htmlVendaTroca += '</li>';
-                htmlVendaTroca += '</ul>';
-                htmlVendaTroca += '</div>';
-                htmlVendaTroca += '</td>';
+            //if (vendas.StatusAtual == 7) {
+            //    //htmlVendaTroca += '<td class="text-right">';
+            //    //htmlVendaTroca += '<div class="dropdown show d-inline-block widget-dropdown">';
+            //    //htmlVendaTroca += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + j + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
+            //    //htmlVendaTroca += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + j + '" >';
+            //    //htmlVendaTroca += '<li class="dropdown-item">';
+            //    //htmlVendaTroca += '<a style="cursor: pointer;" class="Trocar" id="' + vendas.Id + '" name="' + vendas.Id + '">Trocar</a>';
+            //    //htmlVendaTroca += '</li>';
+            //    //htmlVendaTroca += '</ul>';
+            //    //htmlVendaTroca += '</div>';
+            //    //htmlVendaTroca += '</td>';
 
-            } else if (vendas.StatusAtual == 8) {
+            //} else
+            if (vendas.StatusAtual == 8) {
                 htmlVendaTroca += '<td class="text-right">';
                 htmlVendaTroca += '<div class="dropdown show d-inline-block widget-dropdown">';
-                htmlVendaTroca += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + j + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
+                htmlVendaTroca += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="emTroca' + j + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
                 htmlVendaTroca += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + j + '" >';
                 htmlVendaTroca += '<li class="dropdown-item">';
-                htmlVendaTroca += '<a style="cursor: pointer;" class="AceitarTroca" id="' + vendas.Id + '" name="' + vendas.Id + '">Aceitar Troca</a>';
+                htmlVendaTroca += '<a style="cursor: pointer;" class="AceitarTroca" id="' + vendas.Id + '" name="aceitarTroca">Aceitar Troca</a>';
                 htmlVendaTroca += '</li>';
                 htmlVendaTroca += '</ul>';
                 htmlVendaTroca += '</div>';
@@ -380,10 +381,10 @@ function rendeziraHtmlTransito(vendas, k) {
             if (vendas.StatusAtual == 6) {
                 htmlVendaTransito += '<td class="text-right">';
                 htmlVendaTransito += '<div class="dropdown show d-inline-block widget-dropdown">';
-                htmlVendaTransito += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="dropdown-recent-order' + k + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
+                htmlVendaTransito += '<a class="dropdown-toggle icon-burger-mini" href="#" role="button" id="emTransito' + k + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>';
                 htmlVendaTransito += '<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order' + k + '" >';
                 htmlVendaTransito += '<li class="dropdown-item">';
-                htmlVendaTransito += '<a href="#" class="EmTransito" id="' + vendas.Id + '" name="' + vendas.Id + '">Confirmar Entrega</a>';
+                htmlVendaTransito += '<a href="#" class="EmTransito" id="' + vendas.Id + '" name="confirmarEntrega">Confirmar Entrega</a>';
                 htmlVendaTransito += '</li>';
                 htmlVendaTransito += '</ul>';
                 htmlVendaTransito += '</div>';

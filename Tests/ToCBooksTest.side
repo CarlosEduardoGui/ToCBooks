@@ -5124,6 +5124,786 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "650217d6-edc3-4a8e-a5a1-647892f290eb",
+    "name": "Fluxo Carrinho",
+    "commands": [{
+      "id": "31abe98f-fdbd-4cf9-86f5-e6395f20917c",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44354/TocBooks/login.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1b1a2b62-ab4e-45ff-bf9f-3b24971197e6",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "css=.login_box_img",
+      "targets": [
+        ["css=.login_box_img", "css:finder"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": "531.6666564941406,210.79998779296875"
+    }, {
+      "id": "72848434-bcaa-4a8a-874f-47a537f33b3a",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "css=.login_box_img",
+      "targets": [
+        ["css=.login_box_img", "css:finder"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": "531.6666564941406,210.79998779296875"
+    }, {
+      "id": "13ace224-cae1-43a8-9ac5-c7d8ef0bb527",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "css=.login_box_img",
+      "targets": [
+        ["css=.login_box_img", "css:finder"],
+        ["xpath=//div/div/div/div", "xpath:position"]
+      ],
+      "value": "531.6666564941406,210.79998779296875"
+    }, {
+      "id": "4e7811f3-a7a1-40dd-8681-eae45c11832d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.login_box_area > .container > .row",
+      "targets": [
+        ["css=.login_box_area > .container > .row", "css:finder"],
+        ["xpath=//section[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "499c32b5-b1cf-483f-9704-be6b8b618de5",
+      "comment": "",
+      "command": "type",
+      "target": "id=senha",
+      "targets": [
+        ["id=senha", "id"],
+        ["name=senha", "name"],
+        ["css=#senha", "css:finder"],
+        ["xpath=//input[@id='senha']", "xpath:attributes"],
+        ["xpath=//form[@id='form_login']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Mo147258@"
+    }, {
+      "id": "0aad9307-a685-4ffa-a07c-91586cb004eb",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_login",
+      "targets": [
+        ["id=btn_login", "id"],
+        ["css=#btn_login", "css:finder"],
+        ["xpath=//button[@id='btn_login']", "xpath:attributes"],
+        ["xpath=//div/div/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f76cf988-1c9b-4282-b4bc-1563ec8f285c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar > .container",
+      "targets": [
+        ["css=.navbar > .container", "css:finder"],
+        ["xpath=//div[@id='undefined-sticky-wrapper']/header/div/nav/div", "xpath:idRelative"],
+        ["xpath=//nav/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bfa59948-ed77-4fdf-99f0-5852090285e6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//div[@id='undefined-sticky-wrapper']/header/div/nav/div/a/img", "xpath:idRelative"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4c7bfb9b-2aa4-4260-9bc9-063cbbd638de",
+      "comment": "",
+      "command": "click",
+      "target": "css=.social-info:nth-child(3) > .lnr-move",
+      "targets": [
+        ["css=.social-info:nth-child(3) > .lnr-move", "css:finder"],
+        ["xpath=//div[@id='ultimosLancamentos']/div/div[2]/div/div/div/div[2]/a[3]/span", "xpath:idRelative"],
+        ["xpath=//a[3]/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "93e3dc0a-5b69-4e43-a744-0ccf8ac80793",
+      "comment": "",
+      "command": "type",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "2"
+    }, {
+      "id": "805ce814-1080-4412-acf8-3e45eaf5590e",
+      "comment": "",
+      "command": "click",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8bfb7175-50e1-473a-955f-84bb4b4c4a4f",
+      "comment": "",
+      "command": "type",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "3"
+    }, {
+      "id": "041df972-b012-439f-bbd6-49a32e2f7b50",
+      "comment": "",
+      "command": "click",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4bbc513b-d736-4cc6-a1d3-3e126d729a7f",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "893f1cac-f833-49b3-bf77-099b3bf18297",
+      "comment": "",
+      "command": "type",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "4"
+    }, {
+      "id": "106c3b5c-0af9-4ac0-a4e4-43337f524d2c",
+      "comment": "",
+      "command": "click",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f65f4f9-ae13-4657-99e6-250b69d491fa",
+      "comment": "",
+      "command": "type",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "5"
+    }, {
+      "id": "5c68c90d-9499-4fea-a247-8fa78650635b",
+      "comment": "",
+      "command": "click",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0ea08775-8ead-441e-9265-2a28c6e5d40b",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_add_carrinho",
+      "targets": [
+        ["id=btn_add_carrinho", "id"],
+        ["css=#btn_add_carrinho", "css:finder"],
+        ["xpath=//a[contains(text(),'Comprar')]", "xpath:link"],
+        ["xpath=//a[@id='btn_add_carrinho']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div[2]/a", "xpath:idRelative"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e1157850-a8b1-4e16-a21e-507c1cea4fcf",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(3)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(3)", "css:finder"],
+        ["xpath=//tbody[@id='tbody_tabela_carrinho']/tr/td[3]", "xpath:idRelative"],
+        ["xpath=//td[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "46d58915-7ca4-440b-8bfe-93d2f071faac",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-warning",
+      "targets": [
+        ["css=.btn-warning", "css:finder"],
+        ["xpath=//tbody[@id='tbody_tabela_carrinho']/tr/td[6]/button", "xpath:idRelative"],
+        ["xpath=//td[6]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5dc836ad-8345-409a-a4a3-7fd4eae01105",
+      "comment": "",
+      "command": "click",
+      "target": "css=.gray_btn",
+      "targets": [
+        ["css=.gray_btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Continue Comprando')]", "xpath:link"],
+        ["xpath=//tbody[@id='tbody_tabela_carrinho']/tr[2]/td[6]/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[8]", "xpath:href"],
+        ["xpath=//td[6]/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c0881a00-e03e-43a2-b3d3-9937e1ce91ac",
+      "comment": "",
+      "command": "click",
+      "target": "css=.add-btn",
+      "targets": [
+        ["css=.add-btn", "css:finder"],
+        ["xpath=//div[@id='livros']/div/div/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'ToCBooks/single-product.html?id_livro=42b860d2-eaf6-4b1a-8686-c16021d7ccca')]", "xpath:href"],
+        ["xpath=//div/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dae018f8-d298-4732-a0cd-994184bf3c63",
+      "comment": "",
+      "command": "type",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "2"
+    }, {
+      "id": "f34fe6de-edfa-4fb2-b623-03084927bcab",
+      "comment": "",
+      "command": "click",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2b9bf94e-cfc3-49f0-9053-2cb24d67ae44",
+      "comment": "",
+      "command": "type",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "3"
+    }, {
+      "id": "57ab8710-668e-4c21-ba32-6063694f63f7",
+      "comment": "",
+      "command": "click",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c9114e7a-061e-4cc7-9194-5d6dc02f0992",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4b0f0e23-52f3-438e-9a12-46947c1037eb",
+      "comment": "",
+      "command": "type",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "4"
+    }, {
+      "id": "55928375-dfcf-42c6-8ca4-4fe948d90887",
+      "comment": "",
+      "command": "click",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d284e9c3-7cdb-4ba4-adc5-e14d6b866ee0",
+      "comment": "",
+      "command": "type",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "5"
+    }, {
+      "id": "7c23ccca-6375-4645-bf38-ce2d957adcbc",
+      "comment": "",
+      "command": "click",
+      "target": "id=qtdItem",
+      "targets": [
+        ["id=qtdItem", "id"],
+        ["css=#qtdItem", "css:finder"],
+        ["xpath=//input[@id='qtdItem']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "00101926-6e74-4dee-83a9-2dcebc6c9da8",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_add_carrinho",
+      "targets": [
+        ["id=btn_add_carrinho", "id"],
+        ["css=#btn_add_carrinho", "css:finder"],
+        ["xpath=//a[contains(text(),'Comprar')]", "xpath:link"],
+        ["xpath=//a[@id='btn_add_carrinho']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div[2]/a", "xpath:idRelative"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d257073-045b-4e8f-b3ec-deb18f9c795d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.gray_btn",
+      "targets": [
+        ["css=.gray_btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Continue Comprando')]", "xpath:link"],
+        ["xpath=//tbody[@id='tbody_tabela_carrinho']/tr[3]/td[6]/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[8]", "xpath:href"],
+        ["xpath=//td[6]/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "71e684f1-b60b-4ae2-95c5-6ab66a9850e2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.social-info:nth-child(4)",
+      "targets": [
+        ["css=.social-info:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='ultimosLancamentos']/div/div[2]/div[2]/div/div/div/a[4]", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, 'ToCBooks/single-product.html?id_livro=2085225f-a3dc-4ace-ba4e-570cdae485f7')])[2]", "xpath:href"],
+        ["xpath=//a[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "046596de-4ba8-4cc4-b4f0-499896c75b00",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_add_carrinho",
+      "targets": [
+        ["id=btn_add_carrinho", "id"],
+        ["css=#btn_add_carrinho", "css:finder"],
+        ["xpath=//a[contains(text(),'Comprar')]", "xpath:link"],
+        ["xpath=//a[@id='btn_add_carrinho']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div[2]/a", "xpath:idRelative"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a0c69c3c-34a9-4004-a747-52ce05ea1448",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) .btn",
+      "targets": [
+        ["css=tr:nth-child(2) .btn", "css:finder"],
+        ["xpath=//tbody[@id='tbody_tabela_carrinho']/tr[2]/td[6]/button", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[6]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "efe776b0-f0da-480c-8a4e-834619c615a3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.gray_btn",
+      "targets": [
+        ["css=.gray_btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Continue Comprando')]", "xpath:link"],
+        ["xpath=//tbody[@id='tbody_tabela_carrinho']/tr[3]/td[6]/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/')])[8]", "xpath:href"],
+        ["xpath=//td[6]/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5ec02c94-44fc-49bb-a5cb-626c5dc31ee9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.social-info:nth-child(4) > .lnr",
+      "targets": [
+        ["css=.social-info:nth-child(4) > .lnr", "css:finder"],
+        ["xpath=//div[@id='ultimosLancamentos']/div/div[2]/div[2]/div/div/div/a[4]/span", "xpath:idRelative"],
+        ["xpath=//a[4]/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "920cbcca-a64e-4088-a5b1-fe187b73c004",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_add_carrinho",
+      "targets": [
+        ["id=btn_add_carrinho", "id"],
+        ["css=#btn_add_carrinho", "css:finder"],
+        ["xpath=//a[contains(text(),'Comprar')]", "xpath:link"],
+        ["xpath=//a[@id='btn_add_carrinho']", "xpath:attributes"],
+        ["xpath=//div[@id='produto']/div[2]/div/ul/div[2]/a", "xpath:idRelative"],
+        ["xpath=//div[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cdf596e6-b530-4848-aea2-97ae5849781d",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_confirmar_venda",
+      "targets": [
+        ["id=btn_confirmar_venda", "id"],
+        ["css=#btn_confirmar_venda", "css:finder"],
+        ["xpath=//a[contains(text(),'Continuar para Compra')]", "xpath:link"],
+        ["xpath=//a[@id='btn_confirmar_venda']", "xpath:attributes"],
+        ["xpath=//tbody[@id='tbody_tabela_carrinho']/tr[4]/td[6]/div/a[2]", "xpath:idRelative"],
+        ["xpath=//div/a[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "77ff02da-fa15-4aaa-b55e-27c33bc5b7c2",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "2576x1416",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ea26cc8e-8dce-4c6a-af5a-dd6594baca5e",
+    "name": "Fluxo de Troca de Status",
+    "commands": [{
+      "id": "de699fed-d935-49da-b652-ab0589c04181",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44354/TocBooks/login.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dac19363-d011-444e-ad1e-99473ef17a14",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "2560x1400",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cb8cdf40-5b50-40dd-8757-8d2608885b6d",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='form_login']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d5f738d-1d33-41d5-9ca0-f91d3ba120f4",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='form_login']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "carloseduardo030399@gmail.com"
+    }, {
+      "id": "effe04cf-cf04-4cf2-8415-58da2f5de6e0",
+      "comment": "",
+      "command": "type",
+      "target": "id=senha",
+      "targets": [
+        ["id=senha", "id"],
+        ["name=senha", "name"],
+        ["css=#senha", "css:finder"],
+        ["xpath=//input[@id='senha']", "xpath:attributes"],
+        ["xpath=//form[@id='form_login']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Mo147258@"
+    }, {
+      "id": "8ef5a84f-b349-4bd6-9dbd-cc9c42f713f9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.login_form_inner",
+      "targets": [
+        ["css=.login_form_inner", "css:finder"],
+        ["xpath=//div/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cc825c83-a658-4881-98ca-bc8f7739de84",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_login",
+      "targets": [
+        ["id=btn_login", "id"],
+        ["css=#btn_login", "css:finder"],
+        ["xpath=//button[@id='btn_login']", "xpath:attributes"],
+        ["xpath=//div/div/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "811cff16-5fb9-40bb-a36e-7c0d3e25cd95",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44354/DashBoard/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b6f079ff-4a18-404c-8934-a6e52b09c616",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(4) .nav-text",
+      "targets": [
+        ["css=li:nth-child(4) .nav-text", "css:finder"],
+        ["xpath=//ul[@id='sidebar-menu']/li[4]/a/span", "xpath:idRelative"],
+        ["xpath=//li[4]/a/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "81df9001-b4f6-4252-bd07-79b0159e1ffc",
+      "comment": "",
+      "command": "click",
+      "target": "id=dropdown-recent-order1",
+      "targets": [
+        ["id=dropdown-recent-order1", "id"],
+        ["css=tr:nth-child(1) #dropdown-recent-order1", "css:finder"],
+        ["xpath=//a[@id='dropdown-recent-order1']", "xpath:attributes"],
+        ["xpath=//tbody[@id='tbody_vendas_confirmadas']/tr/td[6]/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#')]", "xpath:href"],
+        ["xpath=//td[6]/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9394767a-0300-468f-8de1-53bf4c79665d",
+      "comment": "",
+      "command": "click",
+      "target": "name=enviarParaEntrega",
+      "targets": [
+        ["id=de14c59e-97a7-4b12-ab35-5e9ebdadd970", "id"],
+        ["name=enviarParaEntrega", "name"],
+        ["css=#de14c59e-97a7-4b12-ab35-5e9ebdadd970", "css:finder"],
+        ["xpath=//a[contains(text(),'Enviar para Entrega')]", "xpath:link"],
+        ["xpath=//a[@id='de14c59e-97a7-4b12-ab35-5e9ebdadd970']", "xpath:attributes"],
+        ["xpath=//tbody[@id='tbody_vendas_confirmadas']/tr/td[6]/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//td[6]/div/ul/li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d1ec16a-e97b-49ca-af3c-8401274c9333",
+      "comment": "",
+      "command": "click",
+      "target": "id=emTransito1",
+      "targets": [
+        ["id=emTransito1", "id"],
+        ["css=tr:nth-child(1) #emTransito1", "css:finder"],
+        ["xpath=//a[@id='emTransito1']", "xpath:attributes"],
+        ["xpath=//tbody[@id='tbody_vendas_transito']/tr/td[6]/div/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#')]", "xpath:href"],
+        ["xpath=//td[6]/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d32f4225-6c8e-483e-aeb9-cff535227d7f",
+      "comment": "",
+      "command": "click",
+      "target": "name=confirmarEntrega",
+      "targets": [
+        ["id=de14c59e-97a7-4b12-ab35-5e9ebdadd970", "id"],
+        ["linkText=Confirmar Entrega", "linkText"],
+        ["name=confirmarEntrega", "name"],
+        ["css=#de14c59e-97a7-4b12-ab35-5e9ebdadd970", "css:finder"],
+        ["xpath=//a[contains(text(),'Confirmar Entrega')]", "xpath:link"],
+        ["xpath=//a[@id='de14c59e-97a7-4b12-ab35-5e9ebdadd970']", "xpath:attributes"],
+        ["xpath=//tbody[@id='tbody_vendas_transito']/tr/td[6]/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[3]", "xpath:href"],
+        ["xpath=//div[2]/div/div/div[2]/table/tbody/tr/td[6]/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Confirmar Entrega')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1ceebdfd-7077-4a20-bd85-8fa502d4bcd5",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44354/TocBooks/pedidos.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c81d65c3-d8ef-42a9-8a1e-e53c26d61101",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(5) .btn_detalhes",
+      "targets": [
+        ["css=.row:nth-child(5) .btn_detalhes", "css:finder"],
+        ["xpath=//button[@value='00317b90-0174-4b13-b06b-186e3c777520']", "xpath:attributes"],
+        ["xpath=//div[@id='pedido']/div/div[2]/div[4]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/div[4]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8cff750e-1ba5-4e1f-8f73-5edb0b62f3ac",
+      "comment": "",
+      "command": "click",
+      "target": "id=id_devolucao",
+      "targets": [
+        ["id=id_devolucao", "id"],
+        ["css=#id_devolucao", "css:finder"],
+        ["xpath=//button[@id='id_devolucao']", "xpath:attributes"],
+        ["xpath=//div[@id='devolucao']/button", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div[2]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Devolver')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6a85e2b9-a297-4949-b166-9e3d8734b181",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44354/DashBoard/Vendas.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "88c340d5-270a-4e79-bee3-3652b1f1046a",
+      "comment": "",
+      "command": "click",
+      "target": "id=emTroca1",
+      "targets": [
+        ["id=emTroca1", "id"],
+        ["css=#emTroca1", "css:finder"],
+        ["xpath=//a[@id='emTroca1']", "xpath:attributes"],
+        ["xpath=//tbody[@id='tbody_vendas_trocas']/tr[10]/td[6]/div/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '#')])[5]", "xpath:href"],
+        ["xpath=//tr[10]/td[6]/div/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "db19a5f4-9ef1-4d97-bd37-d522def23c3d",
+      "comment": "",
+      "command": "click",
+      "target": "name=aceitarTroca",
+      "targets": [
+        ["id=70e4146e-9776-4e8a-b54a-d70a905ff603", "id"],
+        ["linkText=Aceitar Troca", "linkText"],
+        ["name=aceitarTroca", "name"],
+        ["css=#\\37 0e4146e-9776-4e8a-b54a-d70a905ff603", "css:finder"],
+        ["xpath=//a[contains(text(),'Aceitar Troca')]", "xpath:link"],
+        ["xpath=//a[@id='70e4146e-9776-4e8a-b54a-d70a905ff603']", "xpath:attributes"],
+        ["xpath=//tbody[@id='tbody_vendas_trocas']/tr[10]/td[6]/div/ul/li/a", "xpath:idRelative"],
+        ["xpath=//tr[10]/td[6]/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Aceitar Troca')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "75381dee-f17f-4941-9b53-4805dcb9b3f3",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_retornar_estoque",
+      "targets": [
+        ["id=btn_retornar_estoque", "id"],
+        ["css=#btn_retornar_estoque", "css:finder"],
+        ["xpath=//button[@id='btn_retornar_estoque']", "xpath:attributes"],
+        ["xpath=//div[@id='modal_produtos_troca']/div/div/div[3]/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//div[2]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e0a65040-32b4-4bda-a432-ab9ef4c13f4c",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44354/TocBooks/pedidos.html",
+      "targets": [],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "25ce6354-8915-411b-883b-8cb581304b71",
@@ -5181,6 +5961,20 @@
     "parallel": false,
     "timeout": 300,
     "tests": ["1db885f0-9be6-4daa-9c27-94d0ff5b8367"]
+  }, {
+    "id": "552c6728-4c39-469b-b3c0-2c867a4a68b0",
+    "name": "Carrinho",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["650217d6-edc3-4a8e-a5a1-647892f290eb"]
+  }, {
+    "id": "748ec666-623d-4921-96b3-859396fc0101",
+    "name": "Troca de Status",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["ea26cc8e-8dce-4c6a-af5a-dd6594baca5e"]
   }],
   "urls": ["https://localhost:44354/TocBooks/login.html"],
   "plugins": []
