@@ -32,7 +32,7 @@
         ["xpath=//input[@id='senha1']", "xpath:attributes"],
         ["xpath=//div[2]/input", "xpath:position"]
       ],
-      "value": "1234"
+      "value": "Mo147258@"
     }, {
       "id": "2f3475f9-7d6b-4d6b-8f94-2a2918c91452",
       "comment": "",
@@ -45,7 +45,7 @@
         ["xpath=//input[@id='senha2']", "xpath:attributes"],
         ["xpath=//div[3]/input", "xpath:position"]
       ],
-      "value": "1234"
+      "value": "Mo147258@"
     }, {
       "id": "11ad7f3c-366b-4c65-aa87-1530ae6a80d6",
       "comment": "",
@@ -825,7 +825,7 @@
         ["xpath=//form[@id='contactForm']/div[2]/input", "xpath:idRelative"],
         ["xpath=//div[2]/input", "xpath:position"]
       ],
-      "value": "1234"
+      "value": "Mo147258@"
     }, {
       "id": "a11070a3-6715-469d-8595-1d9c793386e3",
       "comment": "",
