@@ -5,11 +5,11 @@ using ToCBooks.Data.Business.Patterns;
 
 namespace ToCBooks.App.Patterns.Commands
 {
-    public class ReintegrarEstoqueCommand : ICommand
+    public class OrdenacaoLivrosCommand : ICommand
     {
         public MensagemModel Executar(EntidadeDominio Objeto, HttpContext SessionLink)
         {
-            return new Fachada().ReintregarItensAoEstoque((Despachante)Objeto);
+            return new Fachada().OrdenarLivrosPreco();
         }
     }
 }

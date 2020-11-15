@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using ToCBooks.App.Business.Interfaces;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
@@ -24,7 +21,7 @@ namespace ToCBooks.App.Business.Validadores
                 if (Cliente.Login.Senha == null)
                     throw new Exception("Campo Senha inválido.");
 
-                if(VerificaSenhaForte(Cliente.Login.Senha))
+                if (VerificaSenhaForte(Cliente.Login.Senha))
                     throw new Exception("Senha inserida não é uma senha forte.");
 
                 Mensagem.Codigo = ETipoCodigo.Correto;
@@ -36,7 +33,7 @@ namespace ToCBooks.App.Business.Validadores
             {
                 Mensagem.Codigo = ETipoCodigo.Errado;
                 Mensagem.Resposta = ex.Message;
-                
+
                 return Mensagem;
             }
         }

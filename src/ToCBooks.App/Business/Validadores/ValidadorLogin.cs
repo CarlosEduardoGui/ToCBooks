@@ -20,7 +20,7 @@ namespace ToCBooks.App.Business.Validadores
             if (Login.Senha == null || Login.Senha.Equals("") || Login.Senha.Equals(" "))
                 throw new Exception("Senha está inconsistente...");
 
-            if(!ValidadorSenhaForte.VerificaSenhaForte(Login.Senha))
+            if (!ValidadorSenhaForte.VerificaSenhaForte(Login.Senha))
                 throw new Exception("Senha está inconsistente...");
 
 

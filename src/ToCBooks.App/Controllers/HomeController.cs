@@ -3,12 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using ToCBooks.App.Business.Models;
 using ToCBooks.App.Commands;
 using ToCBooks.App.Interfaces;
-using ToCBooks.App.Models;
 using ToCBooks.App.Patterns.Commands;
 using ToCBooks.App.Patterns.ViewHelpers;
 using ToCBooks.App.ViewHelpers;
@@ -40,6 +38,8 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("19", new ReintegrarEstoqueCommand());
             mapCommand.Add("20", new AtualizarSenhaCommand());
             mapCommand.Add("21", new ConsultarSenhaLoginCommand());
+            mapCommand.Add("22", new OrdenacaoLivrosCommand());
+            mapCommand.Add("23", new OrdenacaoNomeLivrosCommand());
 
 
             mapVH.Add("PedidoModel", new PedidoVH());

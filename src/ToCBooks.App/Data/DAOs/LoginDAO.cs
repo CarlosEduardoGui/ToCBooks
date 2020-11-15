@@ -7,7 +7,6 @@ using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Business.Validadores;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
-using ToCBooks.App.Models.Enum;
 
 namespace ToCBooks.App.Data.DAOs
 {

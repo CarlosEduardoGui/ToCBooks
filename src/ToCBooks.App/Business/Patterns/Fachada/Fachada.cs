@@ -525,7 +525,7 @@ namespace ToCBooks.Data.Business.Patterns
                     Id = Guid.Parse(SessionLink.Session.GetString("ClienteID"))
                 };
                 Despachante.Entidade = ClienteTemp;
-                Pedido.Cliente = (ClienteModel) new ClienteDAO().Consultar(Despachante).Dados.FirstOrDefault();
+                Pedido.Cliente = (ClienteModel)new ClienteDAO().Consultar(Despachante).Dados.FirstOrDefault();
                 Pedido.EnderecoEntrega = Pedido.Cliente.EnderecoEntrega.Find(x => x.Id == Pedido.EnderecoEntrega.Id);
 
                 for (var i = 0; i < Pedido.ItensPedido.Count; i++)
@@ -559,7 +559,7 @@ namespace ToCBooks.Data.Business.Patterns
                     Pedido.CartaoCreditoPedido.Add(RelCartaoPedido);
                 });
 
-                Pedido.Cliente.Credito = CarrinhoAtual.DescontoCredito - (float) Pedido.TotalPedido;
+                Pedido.Cliente.Credito = CarrinhoAtual.DescontoCredito - (float)Pedido.TotalPedido;
                 if (Pedido.Cliente.Credito < 0)
                     Pedido.Cliente.Credito = 0;
 
@@ -573,7 +573,7 @@ namespace ToCBooks.Data.Business.Patterns
                     if (TotalCompra < 0)
                         Pedido.TotalPedido = 0;
                     else
-                        Pedido.TotalPedido = TotalCompra;    
+                        Pedido.TotalPedido = TotalCompra;
                 }
 
 
@@ -755,7 +755,7 @@ namespace ToCBooks.Data.Business.Patterns
                 foreach (var Validador in mapValidadores[resultado.Dados[0].StatusAtual.ToString()])
                     Validador.Validar(Objeto);
 
-                GerarCupomTroca((PedidoModel) resultado.Dados[0]);
+                GerarCupomTroca((PedidoModel)resultado.Dados[0]);
 
                 resultado.Dados[0].StatusAtual = ETipoStatus.TrocaAutorizada;
 
@@ -775,16 +775,16 @@ namespace ToCBooks.Data.Business.Patterns
 
         public MensagemModel ReintregarItensAoEstoque(Despachante Objeto)
         {
-            var Pedido = (PedidoModel) new PedidoDAO().ConsultarId(Objeto.Entidade).Dados[0];
+            var Pedido = (PedidoModel)new PedidoDAO().ConsultarId(Objeto.Entidade).Dados[0];
 
             var EstoqueDAO = new EstoqueDAO();
-            foreach(var Item in Pedido.ItensPedido)
+            foreach (var Item in Pedido.ItensPedido)
             {
                 var ItemEstoque = new ItemEstoque();
                 ItemEstoque.Livro = Item.Livro;
 
                 Objeto.Entidade = ItemEstoque;
-                ItemEstoque = (ItemEstoque) EstoqueDAO.Consultar(Objeto).Dados[0];
+                ItemEstoque = (ItemEstoque)EstoqueDAO.Consultar(Objeto).Dados[0];
                 ItemEstoque.Livro = Item.Livro;
 
                 ItemEstoque.Qtde += Item.Qtde;
@@ -802,7 +802,7 @@ namespace ToCBooks.Data.Business.Patterns
         private MensagemModel GerarCupomTroca(PedidoModel Pedido)
         {
             ClienteModel Cliente = Pedido.Cliente;
-            Cliente.Credito += (float) Pedido.TotalPedido;
+            Cliente.Credito += (float)Pedido.TotalPedido;
 
             new ClienteDAO().Atualizar(Cliente);
 
@@ -845,12 +845,23 @@ namespace ToCBooks.Data.Business.Patterns
         }
 
 
-        public MensagemModel ConsultarSenhaLogin(EntidadeDominio Objeto) 
+        public MensagemModel ConsultarSenhaLogin(EntidadeDominio Objeto)
         {
             var Despachante = (Despachante)Objeto;
             Objeto = Despachante.Entidade;
 
             return mapDao[Objeto.GetType().Name].ConsultarPorId(Despachante.Login.ClienteId);
+        }
+
+
+        public MensagemModel OrdenarLivrosPreco()
+        {
+            return new LivrosDAO().OrdenarPreco();
+        }
+
+        public MensagemModel OrdenarLivrosNome()
+        {
+            return new LivrosDAO().OrdenarNome();
         }
     }
 }

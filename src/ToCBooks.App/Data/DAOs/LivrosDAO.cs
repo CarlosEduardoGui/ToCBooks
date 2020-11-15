@@ -115,6 +115,39 @@ namespace ToCBooks.App.Data.DAOs
             return Buscar(Busca);
         }
 
+        public MensagemModel OrdenarPreco()
+        {
+            var Mensagem = new MensagemModel();
+            using (var db = new ToCBooksContext())
+            {
+                db.Livro.OrderByDescending(x => x.Preco)
+                    .ToList()
+                    .ForEach(x => { Mensagem.Dados.Add(x); });
+            }
+
+            Mensagem.Codigo = ETipoCodigo.Correto;
+            Mensagem.Resposta = "Dados encontrados";
+
+            return Mensagem;
+        }
+
+
+        public MensagemModel OrdenarNome()
+        {
+            var Mensagem = new MensagemModel();
+            using (var db = new ToCBooksContext())
+            {
+                db.Livro.OrderBy(x => x.Titulo)
+                    .ToList()
+                    .ForEach(x => { Mensagem.Dados.Add(x); });
+            }
+
+            Mensagem.Codigo = ETipoCodigo.Correto;
+            Mensagem.Resposta = "Dados encontrados";
+
+            return Mensagem;
+        }
+
         public MensagemModel Buscar(Expression<Func<LivrosModel, bool>> predicate)
         {
             MensagemModel Mensagem = new MensagemModel();
