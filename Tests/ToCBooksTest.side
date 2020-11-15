@@ -5904,6 +5904,160 @@
       "targets": [],
       "value": ""
     }]
+  }, {
+    "id": "e6b17304-90ab-49c2-9f49-bb5b1af7cef2",
+    "name": "Listagem de Livros",
+    "commands": [{
+      "id": "b0c70869-1d0d-4a35-8bae-bd0ddfe28833",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44354/TocBooks/login.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "61756321-276d-40fb-87f1-7190eba3064c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1266x1380",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "85727b5e-2826-4a61-b020-590416bbe596",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='form_login']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "42695c63-7a9b-4415-8d0a-478a4ac82fe1",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='form_login']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "carloseduardo030399@gmail.com"
+    }, {
+      "id": "249cd168-d3a0-40eb-a354-d0ecbe530c9a",
+      "comment": "",
+      "command": "click",
+      "target": "id=senha",
+      "targets": [
+        ["id=senha", "id"],
+        ["name=senha", "name"],
+        ["css=#senha", "css:finder"],
+        ["xpath=//input[@id='senha']", "xpath:attributes"],
+        ["xpath=//form[@id='form_login']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "89b3c24b-c7cc-4b99-b8e0-1d85aac7d318",
+      "comment": "",
+      "command": "type",
+      "target": "id=senha",
+      "targets": [
+        ["id=senha", "id"],
+        ["name=senha", "name"],
+        ["css=#senha", "css:finder"],
+        ["xpath=//input[@id='senha']", "xpath:attributes"],
+        ["xpath=//form[@id='form_login']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "Mo147258@"
+    }, {
+      "id": "b0ac6794-98b4-412a-bad9-6b5edc0ddde7",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn_login",
+      "targets": [
+        ["id=btn_login", "id"],
+        ["css=#btn_login", "css:finder"],
+        ["xpath=//button[@id='btn_login']", "xpath:attributes"],
+        ["xpath=//div/div/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3ce367f6-34c8-454f-8eea-e90fda44a3ab",
+      "comment": "",
+      "command": "click",
+      "target": "css=.active > .nav-link",
+      "targets": [
+        ["css=.active > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Home')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/Index.html')])[2]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a67a8961-5a36-4ccf-83d4-f60738f36487",
+      "comment": "",
+      "command": "open",
+      "target": "https://localhost:44354/ToCBooks/category.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0be25ea5-6fec-459c-9859-65b9b83457ed",
+      "comment": "",
+      "command": "click",
+      "target": "css=.current",
+      "targets": [
+        ["css=.current", "css:finder"],
+        ["xpath=//body[@id='category']/div[2]/div/div[2]/div/div/div/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Ordenar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f4074a8a-82d5-4c82-a35b-44da4bd07a4c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.option:nth-child(2)",
+      "targets": [
+        ["css=.option:nth-child(2)", "css:finder"],
+        ["xpath=//body[@id='category']/div[2]/div/div[2]/div/div/div/ul/li[2]", "xpath:idRelative"],
+        ["xpath=//div/div[2]/div/div/div/ul/li[2]", "xpath:position"],
+        ["xpath=//li[contains(.,'Maior para Menor')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "753efb2f-5a77-4222-be54-ed8fcfcfef26",
+      "comment": "",
+      "command": "click",
+      "target": "css=.current",
+      "targets": [
+        ["css=.current", "css:finder"],
+        ["xpath=//body[@id='category']/div[2]/div/div[2]/div/div/div/span", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div[2]/div/div/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Maior para Menor')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "66f9230f-7ba5-4fac-8ac7-222d331e6604",
+      "comment": "",
+      "command": "click",
+      "target": "css=.option:nth-child(3)",
+      "targets": [
+        ["css=.option:nth-child(3)", "css:finder"],
+        ["xpath=//body[@id='category']/div[2]/div/div[2]/div/div/div/ul/li[3]", "xpath:idRelative"],
+        ["xpath=//div/div/div/ul/li[3]", "xpath:position"],
+        ["xpath=//li[contains(.,'Alfabética')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "25ce6354-8915-411b-883b-8cb581304b71",
@@ -5975,6 +6129,13 @@
     "parallel": false,
     "timeout": 300,
     "tests": ["ea26cc8e-8dce-4c6a-af5a-dd6594baca5e"]
+  }, {
+    "id": "99b57389-e154-4a55-ae82-2224249a91c9",
+    "name": "Listagem",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["e6b17304-90ab-49c2-9f49-bb5b1af7cef2", "4ce4f8d8-ddab-4b70-927f-fbfebe88ae5a"]
   }],
   "urls": ["https://localhost:44354/TocBooks/login.html"],
   "plugins": []
