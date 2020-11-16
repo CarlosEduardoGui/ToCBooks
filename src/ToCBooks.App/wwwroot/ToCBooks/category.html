@@ -111,7 +111,7 @@
         <div class="row">
             <div class="col-xl-3 col-lg-4 col-md-5">
                 <div class="sidebar-categories">
-                    <div class="head">Categoria - Tópico</div>
+                    <!--<div class="head">Categoria - Tópico</div>
                     <ul class="main-categories">
                         <li class="main-nav-list">
                             <a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable">
@@ -138,35 +138,19 @@
                                 <li class="main-nav-list child"><a href="#">Auto Ajuda<span class="number">(11)</span></a></li>
                             </ul>
                         </li>
-                    </ul>
+                    </ul>-->
                 </div>
                 <div class="sidebar-filter mt-50">
-                    <div class="top-filter-head">Filtro por Produto</div>
+                    <div class="top-filter-head">Filtro por Autor</div>
                     <div class="common-filter">
                         <div class="head">Autor</div>
-                        <form action="#">
-                            <ul>
-                                <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Stephen King<span>(29)</span></label></li>
-                                <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">George R.R. Martin<span>(29)</span></label></li>
-                                <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">J. R. R. Tolkien<span>(19)</span></label></li>
-                                <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">J. K. Rowling<span>(19)</span></label></li>
-                                <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Moyses<span>(19)</span></label></li>
-                            </ul>
-                        </form>
-                    </div>
-                    <div class="common-filter">
-                        <div class="head">Preço</div>
-                        <div class="price-range-area">
-                            <div id="price-range"></div>
-                            <div class="value-wrapper d-flex">
-                                <div class="price">Preço:</div>
-                                <span>$</span>
-                                <div id="lower-value"></div>
-                                <div class="to">até</div>
-                                <span>$</span>
-                                <div id="upper-value"></div>
-                            </div>
-                        </div>
+                        <ul id="FiltroAutor">
+                            <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Stephen King<span>(29)</span></label></li>
+                            <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">George R.R. Martin<span>(29)</span></label></li>
+                            <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">J. R. R. Tolkien<span>(19)</span></label></li>
+                            <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">J. K. Rowling<span>(19)</span></label></li>
+                            <li class="filter-list"><input class="pixel-radio" type="radio" id="samsung" name="brand"><label for="samsung">Moyses<span>(19)</span></label></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -174,7 +158,7 @@
                 <!-- Start Filter Bar -->
                 <div class="filter-bar d-flex flex-wrap align-items-center">
                     <div class="sorting">
-                    <select id="ordenacao">
+                        <select id="ordenacao">
                             <option value="0">Ordenar</option>
                             <option value="1">Maior para Menor</option>
                             <option value="2">Alfabética</option>

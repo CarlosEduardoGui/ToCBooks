@@ -6,6 +6,7 @@ using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
+using System.Collections.Generic;
 
 namespace ToCBooks.App.Data.DAOs
 {
@@ -138,6 +139,7 @@ namespace ToCBooks.App.Data.DAOs
             using (var db = new ToCBooksContext())
             {
                 db.Livro.OrderBy(x => x.Titulo)
+                    .Where(x => x.StatusAtual == ETipoStatus.Ativo)
                     .ToList()
                     .ForEach(x => { Mensagem.Dados.Add(x); });
             }
@@ -158,6 +160,29 @@ namespace ToCBooks.App.Data.DAOs
                     .Include(x => x.Precificacao)
                     .Include(x => x.Categorias)
                     .Where(predicate.Compile()).ToList().ForEach(x =>
+                    {
+                        Mensagem.Dados.Add(x);
+                    });
+
+            }
+
+            Mensagem.Codigo = ETipoCodigo.Correto;
+            Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
+
+            return Mensagem;
+        }
+
+        public MensagemModel BuscarPorAutor(EntidadeDominio Objeto) 
+        {
+            var Mensagem = new MensagemModel();
+            using (var db = new ToCBooksContext())
+            {
+                var Autor = (LivrosModel)Objeto;
+
+                db.Livro
+                    .Include(x => x.Precificacao)
+                    .Include(x => x.Categorias)
+                    .Where(x => x.Autor.Contains(Autor.Autor)).ToList().ForEach(x =>
                     {
                         Mensagem.Dados.Add(x);
                     });

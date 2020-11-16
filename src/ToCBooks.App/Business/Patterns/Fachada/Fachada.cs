@@ -863,5 +863,10 @@ namespace ToCBooks.Data.Business.Patterns
         {
             return new LivrosDAO().OrdenarNome();
         }
+
+        public MensagemModel BuscarPorAutor(EntidadeDominio Objeto) 
+        {
+            return new LivrosDAO().BuscarPorAutor(Objeto)
+        }
     }
 }

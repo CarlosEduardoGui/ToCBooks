@@ -1,21 +1,19 @@
 ﻿jQuery(document).ready(function () {
     buscarLivros();
+    buscarAutoresFiltro();
 
-    jQuery("#btn_consultar").on('click', function () {
-        jQuery("#modal_busca").modal("show");
+    jQuery("#autorLivro").on('click', function () {
+        alert(jQuery("#autorLivro").val());
     });
 
     jQuery("#ordenacao").on('change', function () {
         var ordenacao = jQuery("#ordenacao").val();
-        console.log(ordenacao);
 
         if (ordenacao == 1) {
             ordenarBuscaPreco(ordenacao);
         } else {
             ordenarBuscaNome(ordenacao);
         }
-        
-
     });
 });
 
@@ -116,6 +114,51 @@ function ordenarBuscaNome(ordenacao) {
     });
 }
 
+
+function buscarAutoresFiltro() {
+    jQuery.ajax({
+        type: "POST",
+        url: 'https://localhost:44354/Operations',
+        data: { oper: 1, mapKey: "LivrosModel", JsonString: JSON.stringify({}) },
+        cache: false,
+        beforeSend: function (xhr) {
+
+        },
+        complete: function (e, xhr, result) {
+            if (e.readyState == 4 && e.status == 200) {
+                try {
+                    var respostaControle = JSON.parse(e.responseText);
+                    var htmlFiltro = '';
+                    var htmlComparacao = '';
+                    var radio = 1;
+                    var autores = [];
+                    var countAutor = 1;
+
+                    console.log(respostaControle);
+
+
+                    if (respostaControle.Codigo == 0) {
+                        respostaControle.Dados.forEach(Livro => {
+                            htmlFiltro += '<li class="filter-list"><input class="form-check-input autor_check" id="autorLivro" type="radio" name="' + Livro.Autor + '" value="' + Livro.Autor + '"><label for="">' + Livro.Autor + '</label></li>';
+                        });
+
+
+                    }
+                    else {
+                        alert(respostaControle.Resposta);
+                    }
+
+                    jQuery("#FiltroAutor").html(htmlFiltro);
+
+                } catch (error) {
+                    console.log(error);
+                    alert("Erro na Comunicação com o Servidor...");
+                }
+            }
+        }
+    });
+}
+
 function CriarHtml(respostaControle) {
     var htmlListagemProduto = '';
 
@@ -131,10 +174,6 @@ function CriarHtml(respostaControle) {
         htmlListagemProduto += '<h6 class="l-through">R$' + precoDesconto + '</h6>';
         htmlListagemProduto += '</div>';
         htmlListagemProduto += '<div class="prd-bottom">';
-        htmlListagemProduto += '<a href="" class="social-info">';
-        htmlListagemProduto += '<span class="ti-bag"></span>';
-        htmlListagemProduto += '<p class="hover-text">Adicionar a Sacola</p>';
-        htmlListagemProduto += '</a>';
         htmlListagemProduto += '<a href="" class="social-info">';
         htmlListagemProduto += '<span class="lnr lnr-sync"></span>';
         htmlListagemProduto += '<p class="hover-text">Comprar</p>';

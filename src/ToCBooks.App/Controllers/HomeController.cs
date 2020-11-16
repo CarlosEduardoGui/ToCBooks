@@ -40,7 +40,7 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("21", new ConsultarSenhaLoginCommand());
             mapCommand.Add("22", new OrdenacaoLivrosCommand());
             mapCommand.Add("23", new OrdenacaoNomeLivrosCommand());
-
+            mapCommand.Add("24", new BuscarPorAutorCommand());
 
             mapVH.Add("PedidoModel", new PedidoVH());
             mapVH.Add("LivrosModel", new LivroVH());

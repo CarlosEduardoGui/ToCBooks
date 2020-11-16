@@ -73,10 +73,6 @@ function BuscarUltimosProdutosCadastrados() {
                                 htmlUltimosLancamentos += '<h6 class="l-through">R$ ' + precoDesconto.toFixed(2) + '</h6>';
                                 htmlUltimosLancamentos += '</div>';
                                 htmlUltimosLancamentos += '<div class="prd-bottom">';
-                                htmlUltimosLancamentos += '<a href="#" class="social-info">';
-                                htmlUltimosLancamentos += '<span class="ti-bag"></span>';
-                                htmlUltimosLancamentos += '<p class="hover-text">Adicionar na sacola</p>';
-                                htmlUltimosLancamentos += '</a>';
                                 htmlUltimosLancamentos += '<a href="ToCBooks/single-product.html?id_livro=' + ultimoLivro.Id + '" class="social-info">';
                                 htmlUltimosLancamentos += '<span class="lnr lnr-sync"></span>';
                                 htmlUltimosLancamentos += '<p class="hover-text">Comprar</p>';
