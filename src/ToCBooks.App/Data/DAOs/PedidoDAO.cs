@@ -19,6 +19,66 @@ namespace ToCBooks.App.Data.DAOs
             throw new NotImplementedException();
         }
 
+        public MensagemModel ConsultarPorPeriodo(Periodo Periodo)
+        {
+            MensagemModel Mensagem = new MensagemModel();
+
+            using (var db = new ToCBooksContext())
+            {
+                db.Pedido
+                .Include(x => x.Cliente)
+                .Include(x => x.EnderecoEntrega)
+                .Include(x => x.ItensPedido)
+                .Include(x => x.CartaoCreditoPedido)
+                .Where(x => x.DataCadastro >= Periodo.Inicio && x.DataCadastro <= Periodo.Fim).OrderBy(x => x.DataCadastro).ToList()
+                .ForEach(x =>
+                {
+                    x.CartoesCredito = new List<CartaoCreditoModel>();
+                    x.CartaoCreditoPedido.ForEach(y => x.CartoesCredito.Add(db.CartaoCredito.Where(z => z.Id == y.CartaoCreditoID).FirstOrDefault()));
+
+                    x.Cliente.EnderecoEntrega.ForEach(y =>
+                    {
+                        y.Cliente = null;
+                        y = db.EnderecoEntrega
+                        .Include(z => z.Cidade)
+                        .Include(z => z.Cidade.Estado)
+                        .Include(z => z.Cidade.Estado.Pais)
+                        .Where(z => z.Id == y.Id).First();
+                    });
+
+                    x.ItensPedido.ForEach(z =>
+                    {
+                        z.Pedido = null;
+                        z = db.ItensPedidos
+                        .Include(a => a.Pedido)
+                        .Include(a => a.Livro)
+                        .Include(a => a.Livro.Categorias)
+                        .Where(a => a.Id == z.Id).First();
+                    });
+
+                    x.CartaoCreditoPedido.ForEach(a =>
+                    {
+                        a.Pedido = null;
+                        a = db.CartaoCreditoPedido
+                        .Include(b => b.CartaoCredito)
+                        .Include(b => b.Pedido)
+                        .Where(b => b.Id == a.Id).First();
+                    });
+
+                    x.Cliente.CartaoCredito = null;
+                    x.CartaoCreditoPedido.ForEach(c => c.CartaoCredito.CartaoCreditoPedido = null);
+
+                    Mensagem.Dados.Add(x);
+                });
+
+                Mensagem.Codigo = ETipoCodigo.Correto;
+                Mensagem.Resposta = "Pedidos Encontrados...";
+
+
+                return Mensagem;
+            }
+        }
+
         public MensagemModel Atualizar(EntidadeDominio Objeto)
         {
             MensagemModel Mensagem = new MensagemModel();

@@ -866,7 +866,12 @@ namespace ToCBooks.Data.Business.Patterns
 
         public MensagemModel BuscarPorAutor(EntidadeDominio Objeto) 
         {
-            return new LivrosDAO().BuscarPorAutor(Objeto)
+            return new LivrosDAO().BuscarPorAutor(Objeto);
+        }
+
+        public MensagemModel FiltroGraficoBarra(Periodo Periodo)
+        {
+            return new PedidoDAO().ConsultarPorPeriodo(Periodo);
         }
     }
 }
