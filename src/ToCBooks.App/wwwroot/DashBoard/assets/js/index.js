@@ -24,12 +24,12 @@ jQuery(document).ready(function () {
         var Periodo = { Inicio: DataInicio, Fim: DataFim };
 
 
-        BuscarPedidosPorPeriodo(Periodo);
+        BuscarPedidosPorPeriodo(Periodo, true);
     });
 });
 
 
-function BuscarPedidosPorPeriodo(Periodo) {
+function BuscarPedidosPorPeriodo(Periodo, Destroy = false) {
     jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
@@ -137,7 +137,7 @@ function BuscarPedidosPorPeriodo(Periodo) {
                         for (var i = 0; i < Datas.length; i++) 
                             Datas[i] = FormatarData(Datas[i]);
 
-                        MontarGraficoBarra(Datas, Datasets);
+                        MontarGraficoBarra(Datas, Datasets, Destroy);
 
                     } else {
                         alert("Erro ao buscar Pedidos...");
@@ -158,7 +158,7 @@ function MontarGraficoBarra(Labels, Datasets, Destroy = false) {
     if (acquisition3 !== null) {
 
         if (Destroy)
-            graficoBarra.Destroy();
+            graficoBarra.destroy();
 
         graficoBarra = new Chart(acquisition3, {
             type: "bar",
