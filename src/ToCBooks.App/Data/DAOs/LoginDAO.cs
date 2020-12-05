@@ -101,6 +101,14 @@ namespace ToCBooks.App.Data.DAOs
                         mensagem.Dados.Add(x);
                     });
 
+                if (mensagem.Dados.Count == 0)
+                {
+                    mensagem.Codigo = ETipoCodigo.Errado;
+                    mensagem.Resposta = "Usuário nao encontrado";
+
+                    return mensagem;
+                }
+
                 mensagem.Codigo = ETipoCodigo.Correto;
                 mensagem.Resposta = "Usuário encontrado com sucesso";
 

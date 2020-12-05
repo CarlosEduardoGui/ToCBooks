@@ -8,7 +8,9 @@ namespace ToCBooks.App.ViewHelpers
     {
         public EntidadeDominio GetEntidade(string JsonString)
         {
-            return JsonConvert.DeserializeObject<LivrosModel>(JsonString);
+            var a = JsonConvert.DeserializeObject<LivrosModel>(JsonString);
+
+            return a;
         }
     }
 }

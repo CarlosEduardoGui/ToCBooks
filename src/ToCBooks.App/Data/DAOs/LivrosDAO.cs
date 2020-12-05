@@ -172,29 +172,6 @@ namespace ToCBooks.App.Data.DAOs
             return Mensagem;
         }
 
-        public MensagemModel BuscarPorAutor(EntidadeDominio Objeto) 
-        {
-            var Mensagem = new MensagemModel();
-            using (var db = new ToCBooksContext())
-            {
-                var Autor = (LivrosModel)Objeto;
-
-                db.Livro
-                    .Include(x => x.Precificacao)
-                    .Include(x => x.Categorias)
-                    .Where(x => x.Autor.Contains(Autor.Autor)).ToList().ForEach(x =>
-                    {
-                        Mensagem.Dados.Add(x);
-                    });
-
-            }
-
-            Mensagem.Codigo = ETipoCodigo.Correto;
-            Mensagem.Resposta = "Dados Encontrados Com Sucesso ...";
-
-            return Mensagem;
-        }
-
         public MensagemModel Consultar(EntidadeDominio Objeto)
         {
             MensagemModel Mensagem = new MensagemModel();
@@ -272,6 +249,35 @@ namespace ToCBooks.App.Data.DAOs
 
             Mensagem.Codigo = 0;
             Mensagem.Resposta = "Preço Atualizado Com Sucesso ...";
+
+            return Mensagem;
+        }
+
+
+        public MensagemModel ConsultarPorAutor(EntidadeDominio Objeto)
+        {
+            MensagemModel Mensagem = new MensagemModel();
+            using (var db = new ToCBooksContext())
+            {
+                LivrosModel Livro;
+                if (Objeto.GetType().Name == "Despachante")
+                {
+                    var Despachante = (Despachante)Objeto;
+                    Livro = (LivrosModel)Despachante.Entidade;
+                }
+                else
+                    Livro = (LivrosModel)Objeto;
+
+                db.Livro
+                        .Include(x => x.Precificacao)
+                        .Include(x => x.Categorias)
+                        .Where(x => x.StatusAtual == ETipoStatus.Ativo && x.Autor == Livro.Autor)
+                        .OrderByDescending(x => x.Autor).ToList()
+                        .ForEach(x => Mensagem.Dados.Add(x));
+            }
+
+            Mensagem.Codigo = ETipoCodigo.Correto;
+            Mensagem.Resposta = "Livro consultado com sucesso";
 
             return Mensagem;
         }

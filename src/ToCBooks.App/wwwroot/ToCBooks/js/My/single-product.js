@@ -91,7 +91,7 @@ function BuscarProduto(objeto) {
                             livro.Categorias.forEach(categoria => {
                                 htmlItem += '<li><a class="active"><span>Categoria: </span>: ' + categoria.NomeCategoria + '</a></li>';
                             });
-                            htmlItem += '<li><a class="active"><span>Disponibilidade: </span>: Arrumar</a></li>';
+                            //htmlItem += '<li><a class="active"><span>Disponibilidade: </span>: Arrumar</a></li>';
                             htmlItem += '</lu>';
                             htmlItem += '<p>'+ livro.Descricao +'</p>';
                             htmlItem += '<div class="product_count">';
