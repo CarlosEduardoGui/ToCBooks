@@ -271,7 +271,7 @@ function CriarHtml(respostaControle) {
             htmlListagemProduto += '<h6 class="l-through">R$' + precoDesconto.toFixed(2) + '</h6>';
             htmlListagemProduto += '</div>';
             htmlListagemProduto += '<div class="prd-bottom">';
-            htmlListagemProduto += '<a href="" class="social-info">';
+            htmlListagemProduto += '<a href="single-product.html?id_livro=' + Livros.Id + '" class="social-info">';
             htmlListagemProduto += '<span class="lnr lnr-sync"></span>';
             htmlListagemProduto += '<p class="hover-text">Comprar</p>';
             htmlListagemProduto += '</a>';

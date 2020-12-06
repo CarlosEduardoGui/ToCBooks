@@ -873,5 +873,29 @@ namespace ToCBooks.Data.Business.Patterns
         {
             return new PedidoDAO().ConsultarPorPeriodo(Periodo);
         }
+
+
+        public MensagemModel AlterarDados(EntidadeDominio Objeto) 
+        {
+            var Mensagem = new MensagemModel();
+            if (SessionLink != null)
+            {
+                if (SessionLink.Session.GetString("ClienteID") != null)
+                {
+                    var Despachante = (Despachante)Objeto;
+
+                    return new ClienteDAO().ConsultarPorId(Despachante.Login.ClienteId);
+                }
+            }
+            else
+            {
+                Mensagem.Codigo = ETipoCodigo.Errado;
+                Mensagem.Resposta = "Necessário Realizar Login";
+            }
+
+            
+            
+            return Mensagem;
+        }
     }
 }

@@ -59,6 +59,7 @@ namespace ToCBooks.App.Data.DAOs
                     LivroAtual.Editora = Livro.Editora;
                     LivroAtual.CodigoDeBarras = Livro.CodigoDeBarras;
                     LivroAtual.Autor = Livro.Autor;
+                    LivroAtual.Categorias = Livro.Categorias;
                 }
                 db.Livro.Update(LivroAtual);
                 db.SaveChanges();

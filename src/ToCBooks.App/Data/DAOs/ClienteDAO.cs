@@ -232,7 +232,43 @@ namespace ToCBooks.App.Data.DAOs
 
         public MensagemModel ConsultarPorId(Guid Id)
         {
-            throw new NotImplementedException();
+            using (var db = new ToCBooksContext())
+            {
+                db.Cliente
+                       .Include(x => x.Login)
+                       .Include(x => x.EnderecoCobranca)
+                       .Include(x => x.EnderecoEntrega)
+                       .Include(x => x.CartaoCredito)
+                       .Include(x => x.Telefone)
+                       .Where(x => x.StatusAtual == ETipoStatus.Ativo && x.Id == Id).ToList().ForEach(x =>
+                       {
+                           x.Login.Cliente = null;
+                           x.EnderecoCobranca.ForEach(y =>
+                           {
+                               y.Cliente = null;
+                               y = db.EnderecoCobranca
+                               .Include(z => z.Cidade)
+                               .Include(z => z.Cidade.Estado)
+                               .Include(z => z.Cidade.Estado.Pais)
+                               .Where(z => z.Id == y.Id).First();
+                           });
+                           x.EnderecoEntrega.ForEach(y =>
+                           {
+                               y.Cliente = null;
+                               y = db.EnderecoEntrega
+                               .Include(z => z.Cidade)
+                               .Include(z => z.Cidade.Estado)
+                               .Include(z => z.Cidade.Estado.Pais)
+                               .Where(z => z.Id == y.Id).First();
+                           });
+                           x.CartaoCredito.ForEach(y => y.Cliente = null);
+
+                           mensagem.Dados.Add(x);
+                       });
+
+                mensagem.Codigo = ETipoCodigo.Correto;
+                return mensagem;
+            }
         }
     }
 }

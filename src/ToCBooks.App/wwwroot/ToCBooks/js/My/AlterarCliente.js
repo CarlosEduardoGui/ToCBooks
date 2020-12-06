@@ -72,7 +72,7 @@ function buscarCliente() {
     jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
-        data: { oper: 1, mapKey: "ClienteModel", JsonString: JSON.stringify({}) },
+        data: { oper: 26, mapKey: "ClienteModel", JsonString: JSON.stringify({}) },
         cache: false,
         beforeSend: function (xhr) {
 
@@ -103,7 +103,7 @@ function buscarCliente() {
 
                     }
                     else
-                        alert("Erro ao Buscar Livros...");
+                        alert(respostaControle.Resposta);
 
                 } catch (error) {
                     console.log(error);
