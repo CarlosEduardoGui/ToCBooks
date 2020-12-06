@@ -76,6 +76,8 @@ function BuscarProduto(objeto) {
                     if (resposta_controle.Codigo == 0) {
                         var htmlItem = '';
 
+                        console.log(resposta_controle);
+
                         resposta_controle.Dados.forEach(livro => {
                             htmlItem += '<div class="col-lg-6">';
                             htmlItem += '<div class="single-prd-item">';
@@ -93,10 +95,15 @@ function BuscarProduto(objeto) {
                             });
                             //htmlItem += '<li><a class="active"><span>Disponibilidade: </span>: Arrumar</a></li>';
                             htmlItem += '</lu>';
+                            htmlItem += '<label><strong>Autor(a):</strong> ' + livro.Autor + '</label><br />';
+                            htmlItem += '<label><strong>Editora:</strong> ' + livro.Editora + '</label><br />';
+                            htmlItem += '<label><strong>Quantidade de Páginas:</strong> ' + livro.Paginas + '</label><br />';
+                            htmlItem += '<label><strong>Peso:</strong> ' + livro.Peso + '</label><br />';
+                            htmlItem += '<label><strong>Código de Barras:</strong> ' + livro.CodigoDeBarras + '</label>';
                             htmlItem += '<p>'+ livro.Descricao +'</p>';
                             htmlItem += '<div class="product_count">';
                             htmlItem += '<label for="qty">Quantidade:</label>';
-                            htmlItem += '<input type="number" id="qtdItem" value="1"/></button>';
+                            htmlItem += '<input type="number" id="qtdItem" min="1" value="1"/></button>';
                             htmlItem += '</div>';
                             htmlItem += '<div class="card_area d-flex align-items-center">';
                             htmlItem += '<a class="primary-btn" style="cursor: pointer;" id="btn_add_carrinho" id_livro="' + livro.Id + '">Comprar</a>';
