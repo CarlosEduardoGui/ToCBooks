@@ -85,22 +85,39 @@ namespace ToCBooks.App.Data.DAOs
                 var ObjetoPersistido = db.Cliente
                         .Include(x => x.Login)
                         .Include(x => x.EnderecoCobranca)
+                        .Include(x => x.EnderecoCobranca)
                         .Include(x => x.EnderecoEntrega)
                         .Include(x => x.CartaoCredito)
                         .Include(x => x.Telefone)
-                        .Where(x => x.Id == Despachante.Login.ClienteId).ToList().FirstOrDefault();
+                        .Where(x => x.Id == Cliente.Id)
+                        .ToList()
+                        .FirstOrDefault();
 
                 if (ObjetoPersistido != null)
                 {
+                    ObjetoPersistido.EnderecoCobranca.ForEach(x =>
+                    {
+                        x = db.EnderecoCobranca.Where(y => y.Id == x.Id)
+                        .Include(y => y.Cidade)
+                        .Include(y => y.Cidade.Estado)
+                        .Include(y => y.Cidade.Estado.Pais).FirstOrDefault();
+                    });
+
+                    ObjetoPersistido.EnderecoEntrega.ForEach(x =>
+                    {
+                        x = db.EnderecoEntrega.Where(y => y.Id == x.Id)
+                        .Include(y => y.Cidade)
+                        .Include(y => y.Cidade.Estado)
+                        .Include(y => y.Cidade.Estado.Pais).FirstOrDefault();
+                    });
+
                     ObjetoPersistido.Login.Cliente = null;
                     ObjetoPersistido.EnderecoCobranca.ForEach(x => x.Cliente = null);
                     ObjetoPersistido.EnderecoEntrega.ForEach(x => x.Cliente = null);
                     ObjetoPersistido.CartaoCredito.ForEach(x => x.Cliente = null);
 
                     mensagem.Dados.Add(ObjetoPersistido);
-                }
-
-                else
+                } else
                     db.Cliente
                         .Include(x => x.Login)
                         .Include(x => x.EnderecoCobranca)

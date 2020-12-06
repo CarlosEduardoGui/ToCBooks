@@ -434,7 +434,9 @@ function consultarLivros(objetoEnvio) {
                             htmlLivros += '<div class="media-body align-self-center"><a href="#"><h6 class="mb-3 text-dark font-weight-medium">';
                             htmlLivros += Livro.Titulo;
                             htmlLivros += '</h6></a><p class="float-md-right"><span class="text-dark mr-2">';
+                            htmlLivros += '<button type="button" id_livro="' + Livro.Id + '" class="definir_estoque"><i style="font-size: 20px;" class="mdi mdi-settings" ></i ></button > |';
                             htmlLivros += '<button type="button" class="editar_livro" id_livro="' + Livro.Id + '"><i style="font-size: 20px;" class="mdi mdi-account-edit"></i></button>';
+                            htmlLivros += '<button type="button" id_livro="' + Livro.Id + '" class="definir_preco"><i style="font-size: 20px;" class="mdi mdi-square-inc-cash" ></i ></button > |';
 
                             if (Livro.StatusAtual == 0)
                                 htmlLivros += '</span><button type="button" class="desativar" id_livro="' + Livro.Id + '"><i style="font-size: 20px;" class="mdi mdi-trash-can"></i></button></p>';
