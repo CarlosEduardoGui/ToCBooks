@@ -8,7 +8,7 @@ function ConsultarCliente() {
     jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
-        data: { oper: 1, mapKey: "ClienteModel", JsonString: JSON.stringify({}) },
+        data: { oper: 26, mapKey: "ClienteModel", JsonString: JSON.stringify({}) },
         cache: false,
         beforeSend: function (xhr) {
 
