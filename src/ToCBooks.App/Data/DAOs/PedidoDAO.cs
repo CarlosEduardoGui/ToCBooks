@@ -7,6 +7,7 @@ using ToCBooks.App.Business.Models;
 using ToCBooks.App.Business.Models.Enum;
 using ToCBooks.App.Data.Context;
 using ToCBooks.App.Data.Interfaces;
+using ToCBooks.App.Models.Enum;
 
 namespace ToCBooks.App.Data.DAOs
 {
@@ -247,7 +248,10 @@ namespace ToCBooks.App.Data.DAOs
                     return mensagem;
                 }
 
-                if (new LoginDAO().ConsultarPorId(Despachante.Login.ClienteId).Dados.Count() != 0)
+                var tipoCliente = (ClienteModel)new LoginDAO().ConsultarPorId(Despachante.Login.ClienteId).Dados.FirstOrDefault();
+                //var loginModel = (ClienteModel)tipoCliente.Dados.FirstOrDefault();
+
+                if (tipoCliente.Login.TipoUsuario == ETipoUsuario.Admin && tipoCliente.TipoUsuario == ETipoUsuario.Admin)
                 {
                     db.Pedido
                     .Include(x => x.Cliente)

@@ -5,7 +5,7 @@ jQuery(document).ready(function () {
         var login = {
             email: jQuery('#email').val(),
             senha: jQuery('#senha1').val(),
-            tipoUsuario: 1
+            tipoUsuario: 2
         };
 
         var cartaoCredito = {
