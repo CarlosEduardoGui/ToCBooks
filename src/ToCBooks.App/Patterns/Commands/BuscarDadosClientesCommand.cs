@@ -5,10 +5,10 @@ using ToCBooks.Data.Business.Patterns;
 
 namespace ToCBooks.App.Patterns.Commands
 {
-    public class AlterarDadosCommand : ICommand
+    public class BuscarDadosClientesCommand : ICommand
     {
         public Fachada Fachada { get; set; }
-        public AlterarDadosCommand()
+        public BuscarDadosClientesCommand()
         {
             Fachada = new Fachada();
         }
@@ -17,7 +17,7 @@ namespace ToCBooks.App.Patterns.Commands
         {
             Fachada.SessionLink = SessionLink;
 
-            return Fachada.AlterarDados(Objeto);
+            return Fachada.BuscarDados(Objeto);
         }
     }
 }

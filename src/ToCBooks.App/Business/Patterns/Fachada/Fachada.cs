@@ -864,7 +864,7 @@ namespace ToCBooks.Data.Business.Patterns
             return new LivrosDAO().OrdenarNome();
         }
 
-        public MensagemModel BuscarPorAutor(EntidadeDominio Objeto) 
+        public MensagemModel BuscarPorAutor(EntidadeDominio Objeto)
         {
             return new LivrosDAO().ConsultarPorAutor(Objeto);
         }
@@ -875,7 +875,7 @@ namespace ToCBooks.Data.Business.Patterns
         }
 
 
-        public MensagemModel AlterarDados(EntidadeDominio Objeto) 
+        public MensagemModel BuscarDados(EntidadeDominio Objeto)
         {
             var Mensagem = new MensagemModel();
             if (SessionLink != null)
@@ -893,9 +893,28 @@ namespace ToCBooks.Data.Business.Patterns
                 Mensagem.Resposta = "Necessário Realizar Login";
             }
 
-            
-            
             return Mensagem;
+        }
+
+        public MensagemModel AlterarDadosCliente(EntidadeDominio Objeto)
+        {
+            var Mensagem = new MensagemModel();
+            try
+            {
+                var despachante = (Despachante)Objeto;
+
+                new ValidadorAtualizarDadosCliente().Validar(despachante.Entidade);
+
+                return new ClienteDAO().Atualizar(despachante.Entidade);
+            }
+            catch (Exception ex)
+            {
+                Mensagem.Codigo = ETipoCodigo.Correto;
+                Mensagem.Resposta = ex.Message;
+
+                return Mensagem;
+            }
+
         }
     }
 }

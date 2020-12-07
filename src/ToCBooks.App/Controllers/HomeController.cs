@@ -42,7 +42,8 @@ namespace ToCBooks.App.Controllers
             mapCommand.Add("23", new OrdenacaoNomeLivrosCommand());
             mapCommand.Add("24", new BuscarPorAutorCommand());
             mapCommand.Add("25", new FiltroGraficoBarraCommand());
-            mapCommand.Add("26", new AlterarDadosCommand());
+            mapCommand.Add("26", new BuscarDadosClientesCommand());
+            mapCommand.Add("27", new AlterarDadosClienteCommand());
 
             mapVH.Add("PedidoModel", new PedidoVH());
             mapVH.Add("LivrosModel", new LivroVH());

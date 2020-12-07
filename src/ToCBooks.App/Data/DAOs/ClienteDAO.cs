@@ -29,7 +29,7 @@ namespace ToCBooks.App.Data.DAOs
                 db.Cliente.Update(Cliente);
                 result = db.SaveChanges();
 
-                if (result == 1)
+                if (result == 3)
                 {
                     mensagem.Codigo = ETipoCodigo.Correto;
                     mensagem.Resposta = "Cliente atualizado!";

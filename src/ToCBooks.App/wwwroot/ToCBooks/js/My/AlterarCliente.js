@@ -30,8 +30,9 @@ jQuery(document).ready(function () {
             Id: jQuery("#id_login").val(),
             Senha: jQuery("#senha").val(),
             ClienteID: jQuery("#id_cliente").val(),
-            email: formData.get('email')
-        }
+            email: formData.get('email'),
+            tipoUsuario: 2
+        };
 
         var cliente = {
             Id: jQuery("#id_cliente").val(),
@@ -41,7 +42,9 @@ jQuery(document).ready(function () {
             tipoGenero: formData.get('eTipoGenero'),
             dataNascimento: formData.get('dataNascimento'),
             telefone: telefone,
-            tipoUsuario: 2
+            tipoUsuario: 2,
+            ativo: true,
+            credito: jQuery("#valor_carteira").val()
         };
 
 
@@ -98,6 +101,7 @@ function buscarCliente() {
                         jQuery("#telefone").val(Cliente.Telefone.Numero);
                         jQuery("#eTipoTelefone").val(Cliente.Telefone.Tipo);
                         jQuery("#id_telefone").val(Cliente.Telefone.Id);
+                        jQuery("#valor_carteira").val(Cliente.Credito);
 
                         jQuery("select").niceSelect("update");
 
@@ -119,7 +123,7 @@ function atualizarCliente(objeto) {
     jQuery.ajax({
         type: "POST",
         url: 'https://localhost:44354/Operations',
-        data: { oper: 2, mapKey: "ClienteModel", JsonString: JSON.stringify(objeto) },
+        data: { oper: 27, mapKey: "ClienteModel", JsonString: JSON.stringify(objeto) },
         cache: false,
         beforeSend: function (xhr) {
 
@@ -132,6 +136,7 @@ function atualizarCliente(objeto) {
 
                     if (resposta_controle.Codigo == 0) {
                         alert("Dados Atualizados");
+
                     } else {
                         alert(resposta_controle.Resposta);
                     }
