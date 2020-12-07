@@ -27,18 +27,10 @@ namespace ToCBooks.App.Data.DAOs
                 var Cliente = (ClienteModel)Objeto;
 
                 db.Cliente.Update(Cliente);
-                result = db.SaveChanges();
+                db.SaveChanges();
 
-                if (result == 3)
-                {
-                    mensagem.Codigo = ETipoCodigo.Correto;
-                    mensagem.Resposta = "Cliente atualizado!";
-
-                    return mensagem;
-                }
-
-                mensagem.Codigo = ETipoCodigo.Errado;
-                mensagem.Resposta = "Erro ao atualizar Cliente";
+                mensagem.Codigo = ETipoCodigo.Correto;
+                mensagem.Resposta = "Cliente atualizado!";
 
                 return mensagem;
             }
@@ -117,7 +109,8 @@ namespace ToCBooks.App.Data.DAOs
                     ObjetoPersistido.CartaoCredito.ForEach(x => x.Cliente = null);
 
                     mensagem.Dados.Add(ObjetoPersistido);
-                } else
+                }
+                else
                     db.Cliente
                         .Include(x => x.Login)
                         .Include(x => x.EnderecoCobranca)
