@@ -5,6 +5,14 @@ VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToCBooks.App", "src\ToCBooks.App\ToCBooks.App.csproj", "{C3B85812-3DA6-4480-B48D-08CC99DB5874}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToCBooks.API", "ToCBooks.API\ToCBooks.API.csproj", "{F368AC35-E485-46B7-BDC9-B045794CC356}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToCBooks.Domain", "ToCBooks.Domain\ToCBooks.Domain.csproj", "{FE0FAD0A-E24A-463E-822A-EA983329DEC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToCBooks.Infraestrutura", "ToCBooks.Infraestrutura\ToCBooks.Infraestrutura.csproj", "{B03851CD-E9D2-4806-9E50-B8D8FB644D94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToCBooks.Aplicacao", "ToCBooks.Aplicacao\ToCBooks.Aplicacao.csproj", "{051A7820-538A-4C28-A7D1-83161AAD5607}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{C3B85812-3DA6-4480-B48D-08CC99DB5874}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3B85812-3DA6-4480-B48D-08CC99DB5874}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3B85812-3DA6-4480-B48D-08CC99DB5874}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F368AC35-E485-46B7-BDC9-B045794CC356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F368AC35-E485-46B7-BDC9-B045794CC356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F368AC35-E485-46B7-BDC9-B045794CC356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F368AC35-E485-46B7-BDC9-B045794CC356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE0FAD0A-E24A-463E-822A-EA983329DEC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0FAD0A-E24A-463E-822A-EA983329DEC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0FAD0A-E24A-463E-822A-EA983329DEC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0FAD0A-E24A-463E-822A-EA983329DEC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B03851CD-E9D2-4806-9E50-B8D8FB644D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B03851CD-E9D2-4806-9E50-B8D8FB644D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B03851CD-E9D2-4806-9E50-B8D8FB644D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B03851CD-E9D2-4806-9E50-B8D8FB644D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{051A7820-538A-4C28-A7D1-83161AAD5607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{051A7820-538A-4C28-A7D1-83161AAD5607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{051A7820-538A-4C28-A7D1-83161AAD5607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{051A7820-538A-4C28-A7D1-83161AAD5607}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
