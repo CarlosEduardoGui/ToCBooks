@@ -35,10 +35,10 @@ namespace ToCBooks.App.Business.Validadores
                 if (Cliente.TipoGenero == 0)
                     throw new Exception("Gênero inconsistente...");
 
-                if(Cliente.Telefone.DDD == 0)
+                if (Cliente.Telefone.DDD == 0)
                     throw new Exception("DDD do Telefone inconsistente...");
-            
-                if(Cliente.Telefone.Numero == 0)
+
+                if (Cliente.Telefone.Numero == 0)
                     throw new Exception("Número do Telefone inconsistente...");
 
                 Mensagem.Codigo = ETipoCodigo.Correto;
