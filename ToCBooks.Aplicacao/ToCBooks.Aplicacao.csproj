@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="InputModels\" />
-    <Folder Include="Servicos\Interfaces\" />
-    <Folder Include="Servicos\Implementacoes\" />
-    <Folder Include="ViewModels\" />
+    <ProjectReference Include="..\ToCBooks.Domain\ToCBooks.Domain.csproj" />
   </ItemGroup>
 
 </Project>
