@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ToCBooks.Domain\ToCBooks.Domain.csproj" />
+    <ProjectReference Include="..\ToCBooks.Infraestrutura\ToCBooks.Infraestrutura.csproj" />
   </ItemGroup>
 
 </Project>

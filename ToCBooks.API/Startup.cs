@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using ToCBooks.Aplicacao.InputModels;
 using ToCBooks.Aplicacao.Servicos.Implementacoes;
 using ToCBooks.Aplicacao.Servicos.Interfaces;
+using ToCBooks.Aplicacao.ViewModels;
 using ToCBooks.Infraestrutura.Context;
 
 namespace ToCBooks.API
@@ -21,6 +24,10 @@ namespace ToCBooks.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ToCBooksDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddSingleton<ToCBooksDbContext>();
 
             services.AddScoped<ILivrosServico, LivrosServico>();
 

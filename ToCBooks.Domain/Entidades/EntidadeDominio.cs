@@ -1,5 +1,5 @@
 ﻿using System;
-using ToCBooks.Domain.Enum;
+using ToCBooks.Domain.Enums;
 
 namespace ToCBooks.Domain.Entidades
 {

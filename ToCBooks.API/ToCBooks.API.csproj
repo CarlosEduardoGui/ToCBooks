@@ -9,10 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ToCBooks.Aplicacao\ToCBooks.Aplicacao.csproj" />
     <ProjectReference Include="..\ToCBooks.Infraestrutura\ToCBooks.Infraestrutura.csproj" />
   </ItemGroup>
