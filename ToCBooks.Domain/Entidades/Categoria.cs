@@ -1,4 +1,6 @@
-﻿namespace ToCBooks.Domain.Entidades
+﻿using System.Collections.Generic;
+
+namespace ToCBooks.Domain.Entidades
 {
     public class Categoria : EntidadeDominio
     {
@@ -8,5 +10,7 @@
         }
 
         public string NomeCategoria { get; private set; }
+
+        public List<LivrosCategorias> Livro { get; private set; }
     }
 }

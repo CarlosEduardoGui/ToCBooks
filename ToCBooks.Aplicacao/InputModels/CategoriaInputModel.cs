@@ -2,11 +2,6 @@
 {
     public class CategoriaInputModel
     {
-        public CategoriaInputModel(string nomeCategoria)
-        {
-            NomeCategoria = nomeCategoria;
-        }
-
-        public string NomeCategoria { get; private set; }
+        public string NomeCategoria { get; set; }
     }
 }

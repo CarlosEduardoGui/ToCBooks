@@ -27,8 +27,6 @@ namespace ToCBooks.API
             services.AddDbContext<ToCBooksDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddSingleton<ToCBooksDbContext>();
-
             services.AddScoped<ILivrosServico, LivrosServico>();
 
             services.AddControllers();

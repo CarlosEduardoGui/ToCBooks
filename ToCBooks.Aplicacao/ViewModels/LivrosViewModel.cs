@@ -4,15 +4,16 @@ namespace ToCBooks.Aplicacao.ViewModels
 {
     public class LivrosViewModel
     {
-        public LivrosViewModel(string titulo, double preco, string autor, string editora, int paginas, List<CategoriaViewModel> categorias, string foto)
+        public LivrosViewModel(string titulo, double preco, string autor, string editora, int paginas, string foto)
         {
             Titulo = titulo;
             Preco = preco;
             Autor = autor;
             Editora = editora;
             Paginas = paginas;
-            Categorias = categorias;
             Foto = foto;
+
+            Categorias = new List<CategoriaViewModel>();
         }
 
         public string Titulo { get; private set; }
